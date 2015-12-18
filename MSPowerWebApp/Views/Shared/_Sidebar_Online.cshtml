@@ -1,0 +1,17 @@
+﻿ <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active"><a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product</a></li>
+            <li><a href="@Url.Action("ProductListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product Listing</a></li>
+
+            <li class="active"><a href="@Url.Action("Service", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Service</a></li>
+            <li><a href="@Url.Action("ServiceListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Service Listing</a></li>
+
+            <li class="active"><a href="@Url.Action("NewsLetter", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> News Letter</a></li>
+            <li><a href="@Url.Action("NewsLetterListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> News Letter Listing</a></li>
+
+            <li class="active"><a href="@Url.Action("ContactUs", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Contact Us</a></li>
+            <li><a href="@Url.Action("ContactUsListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Contact Us Listing</a></li>
+
+
+        </ul>

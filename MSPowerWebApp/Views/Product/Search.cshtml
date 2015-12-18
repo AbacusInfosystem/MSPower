@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/Product/product_search_event.js"></script>
+
+<script src="~/Scripts/Product/product_search_method.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Product
+           
+            <small>Listing Page</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">Product Listing</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <div class="box-body no-padding">
+
+                        <div class="row">
+
+                            <div class="col-md-12" style="padding-left: 26px; padding-bottom: 10px; padding-top: 10px;">
+
+                                <form id="frmSearch_Product">
+
+                                    <div class="btn-group">
+                                        <a id="btnCreate" class="btn btn-default btn-sm" href="@Url.Action("Index", "Product")" role="button">Create</a>
+                                    </div>
+
+                                    <div class="btn-group">
+                                        <button id="btnEdit" type="button" class="btn btn-default btn-sm" role="button">Edit</button>
+                                        <button id="btnDelete" type="button" class="btn btn-warning btn-sm">Delete</button>
+                                    </div>
+
+                                    <input type="hidden" id="hdnProduct_Id" name="Filter.Product_Id"/>
+
+                                    <input type="hidden" id="hdnCurrentPage" name="Page.CurrentPage" />
+                                
+                                </form>
+                            </div>
+
+                        </div>
+
+                        <table id="tblProduct" class="table table-hover table-responsive ">
+                            <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type='radio' name='r1' class='iradio-list' />
+                                    </th>
+                                    <td>183</td>
+                                    <td>John Doe</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="box-footer clearfix">
+
+                        <div class="pagination pagination-sm no-margin pull-right">
+
+                            <ul></ul>
+                        </div>
+
+                        <div id="divSearchGridOverlay" class="overlay">
+
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('.iradio-list').iCheck({
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+    });
+
+</script>
