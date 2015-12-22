@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticateRepo.cs" />
+    <Compile Include="ContactUsRepo.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="NewsLetterRepo.cs" />
     <Compile Include="ProductRepo.cs" />

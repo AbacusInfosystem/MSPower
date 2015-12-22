@@ -1,5 +1,134 @@
-﻿@{
+﻿@model MSPowerWebApp.Models.ContactUsViewModel
+
+
+<script src="~/Scripts/ContactUs/contactus_events.js"></script>
+<script src="~/Scripts/ContactUs/contactus_method.js"></script>
+
+
+@{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+        <h1>
+            ContactUs
+
+            <small>Create / Update Page</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">ContactUs</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <form id="frmContactUs">
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtContactUs_Title">ContactUs Title</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtContactUs_Title" placeholder="Enter ContactUs Title" value="@Model.ContactUs.ContactUs_Title" name="ContactUs.ContactUs_Title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtContactName">ContactUs Address</label>
+
+                                        <textarea id="editor1" rows="10" cols="80" name="ContactUs.ContactUs_Address">@Model.ContactUs.ContactUs_Address</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="fileUpload_ContactUs_Image">Upload ContactUs Images</label>
+
+                                        <input type="file" class="form-control input-sm" id="fileUpload_ContactUs_Image" placeholder="Upload ContactUs Image" name="">
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label style="color: #333">
+
+                                            @if (Model.ContactUs.Is_Active == true)
+                                            {
+                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+                                            else
+                                            {
+                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+
+                                            <input type="hidden" id="hdnContactUs_Status" name="ContactUs.Is_Active" value="@Model.ContactUs.Is_Active">
+                                        </label>
+
+                                    </div>
+
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "ContactUs")" role="button">Cancel</a>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+
+                                        <input type="hidden" name="Filter.ContactUs_Id" id="hdnContactUs_Id" value="@Model.ContactUs.ContactUs_Id">
+
+                                        <input type="hidden" name="ContactUs.ContactUs_Id" id="hdfContactUs_Id" value="@Model.ContactUs.ContactUs_Id">
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<script src="http://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('.iradio-list').iCheck({
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+    });
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('ContactUs.ContactUs_Address');
+
+</script>
+

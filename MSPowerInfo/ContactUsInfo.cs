@@ -4,14 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Web.Mvc;
+
 namespace MSPowerInfo
 {
-    class ContactUsInfo
+    public class ContactUsInfo
     {
 
-        public int Contact_Us_Id { get; set; }
+        public int ContactUs_Id { get; set; }
 
-        public string Contact_Us_Address { get; set; }
+        public string ContactUs_Title { get; set; }
+
+        [AllowHtml]
+
+
+        public string ContactUs_Address { get; set; }
 
         public string Latitude { get; set; }
 

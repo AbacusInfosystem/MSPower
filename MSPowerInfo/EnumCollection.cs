@@ -20,11 +20,14 @@ namespace MSPowerInfo
     public enum StoredProcedures
     {
 
+        // Authentication and Session Store Procedures
+
         Authenticate_User_sp,
 
         Get_Session_Data_sp,
 
 
+        // Products Store Procedures
 
         Get_Product_By_Id_Sp,
 
@@ -35,6 +38,8 @@ namespace MSPowerInfo
         Update_Product_Sp,
 
 
+        // Services Store Procedures
+
         Get_Services_By_Id_Sp,
 
         Get_Services_Sp,
@@ -44,6 +49,7 @@ namespace MSPowerInfo
         Update_Services_Sp,
 
 
+        // NewsLetter Store Procedures
 
         Get_NewsLetter_By_Id_Sp,
 
@@ -51,7 +57,18 @@ namespace MSPowerInfo
 
         Insert_NewsLetter_Sp,
 
-        Update_NewsLetter_Sp
+        Update_NewsLetter_Sp,
+
+
+        // ContactUs Store Procedures
+
+        Get_ContactUs_By_Id_Sp,
+
+        Get_ContactUss_Sp,
+
+        Insert_ContactUs_Sp,
+
+        Update_ContactUs_Sp
 
 
     }

@@ -208,6 +208,55 @@ namespace MSPowerWebApp
 
 
 
+            #region ContactUs
+
+            routes.MapRoute(
+               name: "contactus-1",
+               url: "cms/contactus",
+               defaults: new { controller = "ContactUs", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-2",
+               url: "cms/contactus/search",
+               defaults: new { controller = "ContactUs", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-3",
+               url: "cms/contactus/insert-contactus",
+               defaults: new { controller = "ContactUs", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-4",
+               url: "cms/contactus/update-contactus",
+               defaults: new { controller = "ContactUs", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-5",
+               url: "cms/contactus/get-contactus",
+               defaults: new { controller = "ContactUs", action = "Get_ContactUss", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "contactus-6",
+              url: "cms/contactus/get-contactus-by-id",
+              defaults: new { controller = "ContactUs", action = "Get_ContactUs_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "contactus-7",
+             url: "cms/contactus/delete-contactus",
+             defaults: new { controller = "ContactUs", action = "Delete", id = UrlParameter.Optional }
+         );
+
+            #endregion
+
+
+
+
             routes.MapRoute(
                 name: "cms-1",
                 url: "cms/login",
