@@ -1,26 +1,26 @@
-﻿function Bind_Products(data) {
+﻿function Bind_NewsLetters(data) {
 
     var htmlText = "";
 
-    if (data.Products.length > 0) {
+    if (data.NewsLetters.length > 0) {
 
-        for (i = 0; i < data.Products.length; i++) {
+        for (i = 0; i < data.NewsLetters.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='p1' id='p1_" + data.Products[i].Product_Id + "' class='iradio-list'/>";
+            htmlText += "<input type='radio' name='nl1' id='nl1_" + data.NewsLetters[i].NewsLetter_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Products[i].Product_Title;
+            htmlText += data.NewsLetters[i].NewsLetter_Title;
 
             htmlText += "</td>";
 
-            if (data.Products[i].Is_Active == true) {
+            if (data.NewsLetters[i].Is_Active == true) {
 
                 htmlText += "<td>";
 
@@ -51,16 +51,16 @@
         htmlText += "</tr>";
     }
 
-    $("#tblProduct").find("tr:gt(0)").remove();
+    $("#tblNewsLetter").find("tr:gt(0)").remove();
 
-    $('#tblProduct tr:first').after(htmlText);
+    $('#tblNewsLetter tr:first').after(htmlText);
 
     $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
 
-    if (data.Products.length > 0) {
+    if (data.NewsLetters.length > 0) {
 
         $('#hdnCurrentPage').val(data.Pager.CurrentPage);
 
@@ -87,16 +87,16 @@ function PageMore(Id) {
 
     $('#hdnCurrentPage').val((parseInt(Id) - 1));
 
-    Get_All_Products();
+    Get_All_NewsLetters();
 }
 
-function Get_All_Products()
-{
-    var pViewModel = {
+function Get_All_NewsLetters() {
+
+    var nlViewModel = {
 
         Filter: {
 
-            Product_Id: ""
+            NewsLetter_Id: ""
         },
 
         Pager: {
@@ -107,6 +107,6 @@ function Get_All_Products()
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Product/Get_Products", "json", JSON.stringify(pViewModel), "POST", "application/json", false, Bind_Products, "", null);
+    CallAjax("/NewsLetter/Get_NewsLetters", "json", JSON.stringify(nlViewModel), "POST", "application/json", false, Bind_NewsLetters, "", null);
 
 }

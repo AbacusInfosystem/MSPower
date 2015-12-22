@@ -30,113 +30,112 @@ namespace MSPowerRepo
         {
             List<ProductInfo> products = new List<ProductInfo>();
 
-            //SqlDataAccess sqlDataAccess = new SqlDataAccess();
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
 
-            //SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
 
-            //_con.Open();
+            _con.Open();
 
-            products = Seed_Product();
- 
-            //DataTable dt = _sqlDataAccess.ExecuteDataTable(null, "", CommandType.StoredProcedure, _con);
 
-            //if (dt != null && dt.Rows.Count > 0)
-            //{
-            //    foreach (DataRow dr in Helper.GetRows(dt, ref pager))
-            //    {
-            //        products.Add(Get_Product_Values(dr));
-            //    }
-            //}
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_Products_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in Helper.GetRows(dt, ref pager))
+                {
+                    products.Add(Get_Product_Values(dr));
+                }
+            }
 
             return products;
         }
 
-        private List<ProductInfo> Seed_Product()
-        {
-            List<ProductInfo> retVal = new List<ProductInfo>();
+        //private List<ProductInfo> Seed_Product()
+        //{
+        //    List<ProductInfo> retVal = new List<ProductInfo>();
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
+        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
 
-            return retVal;
-        }
+        //    return retVal;
+        //}
 
         public ProductInfo Get_Product_By_Id(int product_Id)
         {
             ProductInfo product = new ProductInfo();
 
-            //SqlDataAccess sqlDataAccess = new SqlDataAccess();
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
 
-            //SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
 
-            //_con.Open();
+            _con.Open();
 
-            //List<SqlParameter> param = new List<SqlParameter>();
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            //param.Add(new SqlParameter("@Product_Id", product_Id));
+            param.Add(new SqlParameter("@Product_Id", product_Id));
 
-            //DataTable dt = _sqlDataAccess.ExecuteDataTable(param, "", CommandType.StoredProcedure, _con);
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
 
-            //if (dt != null && dt.Rows.Count > 0)
-            //{
-            //    foreach (DataRow dr in dt.Rows)
-            //    {
-            //        product = Get_Product_Values(dr);
-            //    }
-            //}
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    product = Get_Product_Values(dr);
+                }
+            }
 
-            product = Seed_Product().Where(a => a.Product_Id == product_Id).Single();
+            //product = Seed_Product().Where(a => a.Product_Id == product_Id).Single();
 
 
             return product;
@@ -144,9 +143,9 @@ namespace MSPowerRepo
 
         public int Insert_Product(ProductInfo product)
         {
-            //SqlDataAccess sqlDataAccess = new SqlDataAccess();
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
 
-            //SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
 
             _con.Open();
 
@@ -170,16 +169,16 @@ namespace MSPowerRepo
 
             //param.Add(new SqlParameter("@UpdatedBy", product.UpdatedBy));
 
-            int product_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, "", CommandType.StoredProcedure, _con));
+            int product_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_Product_Sp.ToString(), CommandType.StoredProcedure, _con));
 
             return product_Id;
         }
 
         public void Update_Product(ProductInfo product)
         {
-            //SqlDataAccess sqlDataAccess = new SqlDataAccess();
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
 
-            //SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
 
             _con.Open();
 
@@ -205,10 +204,12 @@ namespace MSPowerRepo
 
             //param.Add(new SqlParameter("@UpdatedBy", product.UpdatedBy));
 
-            _sqlDataAccess.ExecuteNonQuery(param, "", CommandType.StoredProcedure, _con);
+            _sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_Product_Sp.ToString(), CommandType.StoredProcedure, _con);
+
         }
 
         public ProductInfo Get_Product_Values(DataRow dr)
+       
         {
             ProductInfo retVal = new ProductInfo();
 
@@ -222,17 +223,21 @@ namespace MSPowerRepo
 
             retVal.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
-            retVal.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            retVal.Created_On = Convert.ToDateTime(dr["Created_On"]);
 
-            retVal.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            retVal.Created_By = Convert.ToInt32(dr["Created_By"]);
 
-            retVal.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            retVal.Updated_By = Convert.ToInt32(dr["Updated_By"]);
+
+            retVal.Updated_On = Convert.ToDateTime(dr["Updated_On"]);
 
             return retVal;
         }
 
         private List<SqlParameter> Set_Product_Values(ProductInfo product)
+       
         {
+            
             List<SqlParameter> param = new List<SqlParameter>();
 
             param.Add(new SqlParameter("@Product_Title", product.Product_Title));
@@ -243,15 +248,16 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Is_Active", product.Is_Active));
 
-            param.Add(new SqlParameter("@CreatedOn", product.CreatedOn));
+            param.Add(new SqlParameter("@Updated_On", product.Updated_On));
 
-            param.Add(new SqlParameter("@UpdatedOn", product.UpdatedOn));
-
-            param.Add(new SqlParameter("@UpdatedBy", product.UpdatedBy));
+            param.Add(new SqlParameter("@Updated_By", product.Updated_By));
 
             if (product.Product_Id == 0)
             {
-                param.Add(new SqlParameter("@CreatedBy", product.CreatedBy));
+
+                param.Add(new SqlParameter("@Created_On", product.Created_On));
+
+                param.Add(new SqlParameter("@Created_By", product.Created_By));
             }
 
             if (product.Product_Id != 0)

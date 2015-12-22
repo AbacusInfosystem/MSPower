@@ -211,7 +211,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\NewsLetterViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\ServicesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -938,10 +940,17 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\NewsLetter\newsletter_events.js" />
+    <Content Include="Scripts\NewsLetter\newsletter_method.js" />
+    <Content Include="Scripts\NewsLetter\newsletter_search_events.js" />
+    <Content Include="Scripts\NewsLetter\newsletter_search_method.js" />
     <Content Include="Scripts\Product\product_event.js" />
     <Content Include="Scripts\Product\product_method.js" />
     <Content Include="Scripts\Product\product_search_event.js" />
     <Content Include="Scripts\Product\product_search_method.js" />
+    <Content Include="Scripts\Services\services_events.js" />
+    <Content Include="Scripts\Services\services_search_event.js" />
+    <Content Include="Scripts\Services\services_search_method.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

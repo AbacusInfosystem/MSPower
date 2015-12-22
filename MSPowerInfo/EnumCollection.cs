@@ -19,10 +19,43 @@ namespace MSPowerInfo
 
     public enum StoredProcedures
     {
+
         Authenticate_User_sp,
 
-        Get_Session_Data_sp
+        Get_Session_Data_sp,
+
+
+
+        Get_Product_By_Id_Sp,
+
+        Get_Products_Sp,
+
+        Insert_Product_Sp,
+
+        Update_Product_Sp,
+
+
+        Get_Services_By_Id_Sp,
+
+        Get_Services_Sp,
+
+        Insert_Services_sp,
+
+        Update_Services_Sp,
+
+
+
+        Get_NewsLetter_By_Id_Sp,
+
+        Get_NewsLetters_Sp,
+
+        Insert_NewsLetter_Sp,
+
+        Update_NewsLetter_Sp
+
+
     }
+
 
     public enum Language
     {

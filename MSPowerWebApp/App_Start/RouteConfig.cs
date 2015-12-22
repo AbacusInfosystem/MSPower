@@ -106,6 +106,108 @@ namespace MSPowerWebApp
          );
             #endregion
 
+
+
+            #region Services
+
+           
+            routes.MapRoute(
+               name: "services-2",
+               url: "cms/services/search",
+               defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "services-3",
+               url: "cms/services/insert-services",
+               defaults: new { controller = "Services", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "services-4",
+               url: "cms/services/update-services",
+               defaults: new { controller = "Services", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "services-5",
+               url: "cms/services/get-services",
+               defaults: new { controller = "Services", action = "Get_Services", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "services-6",
+              url: "cms/services/get-services-by-id",
+              defaults: new { controller = "Services", action = "Get_Services_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "services-7",
+             url: "cms/services/delete-services",
+             defaults: new { controller = "Services", action = "Delete", id = UrlParameter.Optional }
+         );
+
+            routes.MapRoute(
+              name: "services-1",
+              url: "cms/services",
+              defaults: new { controller = "Services", action = "Index", id = UrlParameter.Optional }
+          );
+
+            #endregion
+
+
+
+
+            #region NewsLetter
+
+            routes.MapRoute(
+               name: "newsletter-1",
+               url: "cms/newsletter",
+               defaults: new { controller = "NewsLetter", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-2",
+               url: "cms/newsletter/search",
+               defaults: new { controller = "NewsLetter", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-3",
+               url: "cms/newsletter/insert-newsletter",
+               defaults: new { controller = "NewsLetter", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-4",
+               url: "cms/newsletter/update-newsletter",
+               defaults: new { controller = "NewsLetter", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-5",
+               url: "cms/newsletter/get-newsletters",
+               defaults: new { controller = "NewsLetter", action = "Get_NewsLetters", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "newsletter-6",
+              url: "cms/newsletter/get-newsletter-by-id",
+              defaults: new { controller = "NewsLetter", action = "Get_NewsLetter_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "newsletter-7",
+             url: "cms/newsletter/delete-newsletter",
+             defaults: new { controller = "NewsLetter", action = "Delete", id = UrlParameter.Optional }
+         );
+
+
+            #endregion
+
+
+
+
             routes.MapRoute(
                 name: "cms-1",
                 url: "cms/login",

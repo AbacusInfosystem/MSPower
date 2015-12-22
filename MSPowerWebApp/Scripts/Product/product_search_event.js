@@ -1,6 +1,6 @@
 ﻿$(function () {
 
-    $('#hdfCurrentPage').val(0);
+    $('#hdnCurrentPage').val(0);
 
     $("#btnEdit").click(function () {
 
@@ -35,4 +35,5 @@
     });
 
     Get_All_Products();
+
 });

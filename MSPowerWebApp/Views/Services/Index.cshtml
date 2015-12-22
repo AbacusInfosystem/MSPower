@@ -1,6 +1,12 @@
-﻿@{
-    ViewBag.Title = "Services";
-}
+﻿@model MSPowerWebApp.Models.ServicesViewModel
+
+<script src="~/Scripts/Services/services_events.js"></script>
+
+        @{ 
+            ViewBag.Title = "Services"; 
+            
+         }
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -35,46 +41,65 @@
 
                             <div class="col-md-12">
 
-                                <div class="form-group">
-                                    <label style="color: #333" for="txtServices_Name">Services Name</label>
+                                <form id="frmServices">
 
-                                    <input type="text" class="form-control input-sm" id="txtServices_Name" placeholder="Enter Services Name" value="" name="">
-                                </div>
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtServices_Name">Services Name</label>
 
-                                <div class="form-group">
-                                    <label style="color: #333" for="txtContactName">Services Description</label>
+                                        <input type="text" class="form-control input-sm" id="txtServices_Name" placeholder="Enter Services Name" name="Service.Service_Title" value="@Model.Service.Service_Title">
+                                    </div>
 
-                                    <textarea id="editor1" name="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
-                                </div>
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtContactName">Services Description</label>
 
-                                <div class="form-group">
-                                    <label style="color: #333" for="fileUpload_Services_Image">Upload Services Images</label>
+                                        <textarea id="editor1" rows="10" cols="80" name="Service.Service_Description">@Model.Service.Service_Description</textarea>
+                                    </div>
 
-                                    <input type="file" class="form-control input-sm" id="fileUpload_Services_Image" placeholder="Upload Services Image" name="">
+                                    <div class="form-group">
+                                        <label style="color: #333" for="fileUpload_Services_Image">Upload Services Images</label>
 
-                                    <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
-                                </div>
+                                        <input type="file" class="form-control input-sm" id="fileUpload_Services_Image" placeholder="Upload Services Image" name="">
 
-                                <div class="form-group">
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                    </div>
 
-                                    <label style="color: #333">
+                                    <div class="form-group">
 
-                                        <input type="checkbox" name="chkServices_Status" checked />&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                        <label style="color: #333">
 
-                                        <input type="hidden" id="hdnServices_Status" name="" value="">
-                                    </label>
+                                            @if (Model.Service.Is_Active == true)
+                                            {
+                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+                                            else
+                                            {
+                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
 
-                                </div>
+                                            <input type="hidden" id="hdnServices_Status" name="Service.Is_Active" value="@Model.Service.Is_Active">
+                                        </label>
 
-                                <div class="btn-group">
+                                    </div>
 
-                                    <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
 
-                                    <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
 
-                                    <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Product")" role="button">Cancel</a>
+                                    <div class="btn-group">
 
-                                </div>
+                                        <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Services")" role="button">Cancel</a>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+
+                                        <input type="hidden" name="Filter.Service_Id" id="hdnServices_Id" value="@Model.Service.Service_Id">
+
+                                        <input type="hidden" name="Service.Service_Id" id="hdfServices_Id" value="@Model.Service.Service_Id">
+
+                                    </div>
+
+                                </form>
 
                             </div>
 
@@ -107,6 +132,6 @@
 
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('Service.Service_Description');
 
 </script>

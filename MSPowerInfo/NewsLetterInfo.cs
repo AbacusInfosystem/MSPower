@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace MSPowerInfo
 {
-    class NewsLetterInfo
+    public class NewsLetterInfo
 
     {
 
-        public int News_Letter_Id { get; set; }
+        public int NewsLetter_Id { get; set; }
 
         public int Language_Id { get; set; }
 
-        public string News_Letter_Title { get; set; }
+        public string NewsLetter_Title { get; set; }
 
-        public string News_Letter_Description { get; set; }
+        [AllowHtml]
 
-        public DateTime New_Letter_Release_Date { get; set; }
+        public string NewsLetter_Description { get; set; }
+
+        public DateTime NewLetter_Release_Date { get; set; }
 
         public bool Is_Active { get; set; }
 

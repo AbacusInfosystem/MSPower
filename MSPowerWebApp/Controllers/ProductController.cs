@@ -27,7 +27,7 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult Index(ProductViewModel pViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Create, Update";
+            ViewBag.Title = "MS POWER ERP :: Create, Update";
 
             return View(pViewModel);
         }
@@ -36,7 +36,7 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult Search(ProductViewModel pViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Search";
+            ViewBag.Title = "MS POWER :: Search";
 
             if (TempData["pViewModel"] != null)
             {
@@ -52,17 +52,17 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-                pViewModel.Product.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                pViewModel.Product.Created_By = ((UserInfo)Session["User"]).UserId;
 
-                pViewModel.Product.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                pViewModel.Product.Updated_By = ((UserInfo)Session["User"]).UserId;
 
-                pViewModel.Product.CreatedOn = DateTime.Now;
+                pViewModel.Product.Created_On = DateTime.Now;
 
-                pViewModel.Product.UpdatedOn = DateTime.Now;
+                pViewModel.Product.Updated_On = DateTime.Now;
 
                 ProductManager pMan = new ProductManager();
 
-                pViewModel.Product.Product_Id = 1;
+                //pViewModel.Product.Product_Id = 1;
 
                 pViewModel.Product.Product_Id = pMan.Insert_Product(pViewModel.Product);
 
@@ -89,9 +89,9 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-                pViewModel.Product.UpdatedOn = DateTime.Now;
+                pViewModel.Product.Updated_On = DateTime.Now;
 
-                pViewModel.Product.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                pViewModel.Product.Updated_By = ((UserInfo)Session["User"]).UserId;
 
                 ProductManager pMan = new ProductManager();
 
@@ -121,9 +121,9 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-                pViewModel.Product.UpdatedOn = DateTime.Now;
+                pViewModel.Product.Updated_On = DateTime.Now;
 
-                pViewModel.Product.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                pViewModel.Product.Updated_By = ((UserInfo)Session["User"]).UserId;
 
                 ProductManager pMan = new ProductManager();
 

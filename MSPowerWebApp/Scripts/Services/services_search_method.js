@@ -1,26 +1,26 @@
-﻿function Bind_Products(data) {
+﻿function Bind_Services(data) {
 
     var htmlText = "";
 
-    if (data.Products.length > 0) {
+    if (data.Services.length > 0) {
 
-        for (i = 0; i < data.Products.length; i++) {
+        for (i = 0; i < data.Services.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='p1' id='p1_" + data.Products[i].Product_Id + "' class='iradio-list'/>";
+            htmlText += "<input type='radio' name='s1' id='s1_" + data.Services[i].Service_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Products[i].Product_Title;
+            htmlText += data.Services[i].Service_Title;
 
             htmlText += "</td>";
 
-            if (data.Products[i].Is_Active == true) {
+            if (data.Services[i].Is_Active == true) {
 
                 htmlText += "<td>";
 
@@ -51,16 +51,16 @@
         htmlText += "</tr>";
     }
 
-    $("#tblProduct").find("tr:gt(0)").remove();
+    $("#tblServices").find("tr:gt(0)").remove();
 
-    $('#tblProduct tr:first').after(htmlText);
+    $('#tblServices tr:first').after(htmlText);
 
     $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
 
-    if (data.Products.length > 0) {
+    if (data.Services.length > 0) {
 
         $('#hdnCurrentPage').val(data.Pager.CurrentPage);
 
@@ -87,16 +87,18 @@ function PageMore(Id) {
 
     $('#hdnCurrentPage').val((parseInt(Id) - 1));
 
-    Get_All_Products();
+    Get_All_Services();
 }
 
-function Get_All_Products()
-{
-    var pViewModel = {
+function Get_All_Services() {
+
+   
+
+    var sViewModel = {
 
         Filter: {
 
-            Product_Id: ""
+            Service_Id: ""
         },
 
         Pager: {
@@ -107,6 +109,6 @@ function Get_All_Products()
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Product/Get_Products", "json", JSON.stringify(pViewModel), "POST", "application/json", false, Bind_Products, "", null);
+    CallAjax("/services/get_services", "json", JSON.stringify(sViewModel), "POST", "application/json", false, Bind_Services, "", null);
 
 }
