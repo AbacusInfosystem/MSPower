@@ -1,0 +1,136 @@
+﻿@model MSPowerWebApp.Models.Job_OpeningViewModel
+
+<script src="~/Scripts/Job_Opening/job_opening_events.js"></script>
+<script src="~/Scripts/Job_Opening/job_opening_method.js"></script>
+
+@{
+    ViewBag.Title = "Job_Opening";
+}
+
+<!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+
+        <h1>
+            Job_Opening
+
+            <small>Create / Update Page</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">Job_Opening</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <form id="frmJob_Opening">
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtJob_Opening_Title">Job_Opening Title</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtJob_Title" placeholder="Enter Job Title" value="@Model.Job_Opening.Job_Title" name="Job_Opening.Job_Title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtContactName">Job_Opening Description</label>
+
+                                        <textarea id="editor1" rows="10" cols="80" name="Job_Opening.Job_Description">@Model.Job_Opening.Job_Description</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="fileUpload_Job_Opening_Image">Upload Job_Opening Images</label>
+
+                                        <input type="file" class="form-control input-sm" id="fileUpload_Job_Opening_Image" placeholder="Upload Job_Opening Image" name="">
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label style="color: #333">
+
+                                            @if (Model.Job_Opening.Is_Active == true)
+                                            {
+                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+                                            else
+                                            {
+                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+
+                                            <input type="hidden" id="hdnJob_Opening_Status" name="Job_Opening.Is_Active" value="@Model.Job_Opening.Is_Active">
+                                        </label>
+
+                                    </div>
+
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Job_Opening")" role="button">Cancel</a>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+
+                                        <input type="hidden" name="Filter.Job_Opening_Id" id="hdnJob_Opening_Id" value="@Model.Job_Opening.Job_Opening_Id">
+
+                                        <input type="hidden" name="Job_Opening.Job_Opening_Id" id="hdfJob_Opening_Id" value="@Model.Job_Opening.Job_Opening_Id">
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<script src="http://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('.iradio-list').iCheck({
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+    });
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('Job_Opening.Job_Description');
+
+</script>
+

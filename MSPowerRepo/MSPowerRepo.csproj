@@ -57,6 +57,7 @@
     <Compile Include="AuthenticateRepo.cs" />
     <Compile Include="ContactUsRepo.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Job_OpeningRepo.cs" />
     <Compile Include="NewsLetterRepo.cs" />
     <Compile Include="ProductRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

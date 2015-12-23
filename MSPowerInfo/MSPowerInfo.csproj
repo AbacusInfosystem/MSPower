@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ContactUsInfo.cs" />
     <Compile Include="EnumCollection.cs" />
+    <Compile Include="Job_OpeningInfo.cs" />
     <Compile Include="LanguageInfo.cs" />
     <Compile Include="NewsLetterInfo.cs" />
     <Compile Include="PaginationInfo.cs" />

@@ -68,7 +68,20 @@ namespace MSPowerInfo
 
         Insert_ContactUs_Sp,
 
-        Update_ContactUs_Sp
+        Update_ContactUs_Sp,
+
+
+
+        // Job Opening Store Procedures
+
+
+        Get_Job_Opening_By_Id_Sp,
+
+        Get_Job_Openings_Sp,
+
+        Insert_Job_Opening_Sp,
+
+        Update_Job_Opening_Sp
 
 
     }

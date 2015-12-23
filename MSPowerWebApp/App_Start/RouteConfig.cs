@@ -39,6 +39,7 @@ namespace MSPowerWebApp
                 defaults: new { controller = "NewsLetter", action = "Search", id = UrlParameter.Optional }
             );
 
+
             routes.MapRoute(
                 name: "menu-5",
                 url: "cms/about-us",
@@ -56,6 +57,14 @@ namespace MSPowerWebApp
                url: "cms/gallery/search",
                defaults: new { controller = "Gallery", action = "Search", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+              name: "menu-8",
+              url: "cms/job_opening/search",
+              defaults: new { controller = "Job_Opening", action = "Search", id = UrlParameter.Optional }
+           );
+
+
 
             #endregion
 
@@ -257,6 +266,54 @@ namespace MSPowerWebApp
 
 
 
+
+            #region Job_Opening
+
+            routes.MapRoute(
+               name: "job_opening-1",
+               url: "cms/job_opening",
+               defaults: new { controller = "Job_Opening", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-2",
+               url: "cms/job_opening/search",
+               defaults: new { controller = "Job_Opening", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-3",
+               url: "cms/job_opening/insert-job_opening",
+               defaults: new { controller = "Job_Opening", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-4",
+               url: "cms/job_opening/update-job_opening",
+               defaults: new { controller = "Job_Opening", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-5",
+               url: "cms/job_opening/get-job_opening",
+               defaults: new { controller = "Job_Opening", action = "Get_Job_Openings", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "job_opening-6",
+              url: "cms/job_opening/get-job_opening-by-id",
+              defaults: new { controller = "Job_Opening", action = "Get_Job_Opening_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "job_opening-7",
+             url: "cms/job_opening/delete-job_opening",
+             defaults: new { controller = "Job_Opening", action = "Delete", id = UrlParameter.Optional }
+         );
+            #endregion
+
+
+
             routes.MapRoute(
                 name: "cms-1",
                 url: "cms/login",
@@ -328,6 +385,23 @@ namespace MSPowerWebApp
               defaults: new { controller = "WebSite", action = "ContactUsListing", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
+
+
+             routes.MapRoute(
+             name: "website-9",
+             url: "{language}/job_opening/",
+             defaults: new { controller = "WebSite", action = "Job_Opening", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
+            routes.MapRoute(
+             name: "website-10",
+             url: "{language}/job_opening-listing/",
+             defaults: new { controller = "WebSite", action = "Job_OpeningListing", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
 
             #endregion
 
