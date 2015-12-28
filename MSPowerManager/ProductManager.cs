@@ -11,7 +11,7 @@ namespace MSPowerManager
 {
     public class ProductManager
     {
-        public ProductRepo _pRepo = null;
+         public ProductRepo _pRepo = null;
 
         public ProductManager()
         {

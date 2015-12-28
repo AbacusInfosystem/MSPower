@@ -16,4 +16,15 @@
             <li class="active"><a href="@Url.Action("Job_Opening", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Opening</a></li>
             <li><a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Opening Listing</a></li>
 
+            <li><a href="@Url.Action("Index", "Enquiry", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Enquiry</a></li>
+
+            <li class="active"><a href="@Url.Action("Enquiry", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Enquiry</a></li>
+            <li><a href="@Url.Action("EnquiryListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Enquiry Listing</a></li>
+
+
+            <li><a href="@Url.Action("Index", "Job_Application", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application</a></li>
+
+            <li class="active"><a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application</a></li>
+            <li><a href="@Url.Action("Job_ApplicationListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application Listing</a></li>
+
         </ul>

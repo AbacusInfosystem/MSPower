@@ -1,0 +1,155 @@
+﻿@model MSPowerWebApp.Models.Job_ApplicationViewModel
+
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Index</title>
+
+    <script src="~/Content/AdminLTE/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/Job_Application/job_application_events.js"></script>
+
+    <script src="~/Scripts/Job_Application/job_application_method.js"></script>
+
+</head>
+
+<body>
+
+    @{Html.RenderPartial("_Sidebar_Online");}
+
+    <div>
+        Contact Us. @Session["Language"].ToString();
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <form id="frmJob_Application">
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtFirst_Name">First Name</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtFirst_Name" placeholder="Enter Customer Name" value="@Model.Job_Application.First_Name" name="Job_Application.First_Name">
+                                    </div>
+
+                                    <div></div>
+
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtLast_Name">Last Name</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtLast_Name" placeholder="Enter Last Name" value="@Model.Job_Application.Last_Name" name="Job_Application.Last_Name">
+                                    </div>
+
+                                    <div></div>
+
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtEmail">Email</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtEmail" placeholder="Enter Email" value="@Model.Job_Application.Email" name="Job_Application.Email">
+                                    </div>
+
+                                    <div></div>
+
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtReference">Reference</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtReference" placeholder="Enter Reference" value="@Model.Job_Application.Reference" name="Job_Application.Reference">
+                                    </div>
+
+                                    <div></div>
+
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtAdditional_Information">Additional Information</label>
+
+                                        <textarea id="editor1" rows="4" cols="80" name="Job_Application.Additional_Information">@Model.Job_Application.Additional_Information</textarea>
+                                    </div>
+
+                                    <div></div>
+
+                                   
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtCreated_On">Created On</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtCreated_On" placeholder="Created On" value="@Model.Job_Application.Created_On" name="Job_Application.Created_On">
+                                    </div>
+
+
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Job_Application")" role="button">Cancel</a>
+
+                                        @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
+
+                                        <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
+
+                                        @*<input type="hidden" name="Job_Application.Job_Application_Id" id="hdfJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">*@
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+@*<script src="http://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>*@
+
+@*<script>
+
+        //$(document).ready(function () {
+        //    $('.iradio-list').iCheck({
+        //        radioClass: 'iradio_square-green',
+        //        increaseArea: '20%' // optional
+        //    });
+        //});
+
+        // Replace the <textarea id="editor1"> with a CKEditor
+
+        // instance, using default configuration.
+
+        //CKEDITOR.replace('Job_Application.Job_Application_Description');
+
+    </script>*@

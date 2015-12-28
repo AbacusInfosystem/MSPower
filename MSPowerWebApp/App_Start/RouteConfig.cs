@@ -65,6 +65,20 @@ namespace MSPowerWebApp
            );
 
 
+            routes.MapRoute(
+             name: "menu-9",
+             url: "cms/enquiry/search",
+             defaults: new { controller = "Enquiry", action = "Search", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+            name: "menu-10",
+            url: "cms/job_application/search",
+            defaults: new { controller = "Job_Application", action = "Search", id = UrlParameter.Optional }
+         );
+
+
 
             #endregion
 
@@ -115,8 +129,6 @@ namespace MSPowerWebApp
          );
             #endregion
 
-
-
             #region Services
 
            
@@ -163,9 +175,6 @@ namespace MSPowerWebApp
           );
 
             #endregion
-
-
-
 
             #region NewsLetter
 
@@ -214,9 +223,6 @@ namespace MSPowerWebApp
 
             #endregion
 
-
-
-
             #region ContactUs
 
             routes.MapRoute(
@@ -263,10 +269,6 @@ namespace MSPowerWebApp
 
             #endregion
 
-
-
-
-
             #region Job_Opening
 
             routes.MapRoute(
@@ -312,6 +314,71 @@ namespace MSPowerWebApp
          );
             #endregion
 
+            #region Enquiry
+
+
+            routes.MapRoute(
+             name: "Enquiry-2",
+             url: "cms/enquiry/search",
+             defaults: new { controller = "Enquiry", action = "Search", id = UrlParameter.Optional }
+         );
+
+
+            routes.MapRoute(
+              name: "Enquiry-1",
+              url: "cms/enquiry/insert-enquiry",
+              defaults: new { controller = "Enquiry", action = "Insert", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+              name: "Enquiry-3",
+              url: "cms/enquiry/get-enquirys",
+              defaults: new { controller = "Enquiry", action = "Get_Enquirys", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+             name: "Enquiry-4",
+             url: "cms/enquiry/get-enquiry-by-id",
+             defaults: new { controller = "Enquiry", action = "Get_Enquiry_By_Id", id = UrlParameter.Optional }
+         );
+
+
+            #endregion
+
+            #region Job_Application
+
+
+            routes.MapRoute(
+             name: "Job_Application-2",
+             url: "cms/job_application/search",
+             defaults: new { controller = "Job_Application", action = "Search", id = UrlParameter.Optional }
+         );
+
+
+            routes.MapRoute(
+              name: "Job_Application-1",
+              url: "cms/job_application/insert-job_application",
+              defaults: new { controller = "Job_Application", action = "Insert", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+              name: "Job_Application-3",
+              url: "cms/job_application/get-job_applications",
+              defaults: new { controller = "Job_Application", action = "Get_Job_Applications", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+             name: "Job_Application-4",
+             url: "cms/job_application/get-job_application-by-id",
+             defaults: new { controller = "Job_Application", action = "Get_Job_Application_By_Id", id = UrlParameter.Optional }
+         );
+
+
+            #endregion
 
 
             routes.MapRoute(
@@ -327,6 +394,7 @@ namespace MSPowerWebApp
             );
 
             #endregion
+
 
             #region Website
 
@@ -395,15 +463,59 @@ namespace MSPowerWebApp
 
            );
 
+             routes.MapRoute(
+              name: "website-10",
+              url: "{language}/job_opening-listing/",
+              defaults: new { controller = "WebSite", action = "Job_OpeningListing", language = UrlParameter.Optional }
+              
+             );
+
+              routes.MapRoute(
+             name: "website-11",
+             url: "{language}/enquiry/",
+             defaults: new { controller = "WebSite", action = "Enquiry", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
             routes.MapRoute(
-             name: "website-10",
-             url: "{language}/job_opening-listing/",
-             defaults: new { controller = "WebSite", action = "Job_OpeningListing", language = UrlParameter.Optional }
+             name: "website-12",
+             url: "{language}/enquiry-listing/",
+             defaults: new { controller = "WebSite", action = "EnquiryListing", language = UrlParameter.Optional }
+
                 //constraints: new { language = new LanguageRouteConstraint() }
          );
 
+              routes.MapRoute(
+             name: "website-13",
+             url: "{language}/job_application/",
+             defaults: new { controller = "WebSite", action = "Job_Application", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
+            routes.MapRoute(
+             name: "website-14",
+             url: "{language}/job_application-listing/",
+             defaults: new { controller = "WebSite", action = "Job_ApplicationListing", language = UrlParameter.Optional }
+
+             //constraints: new { language = new LanguageRouteConstraint() }
+         );
 
             #endregion
+
+
+            routes.MapRoute(
+              name: "default-03",
+              url: "{language}",
+              defaults: new { controller = "WebSite", action = "Index", language = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "default-04",
+             url: "{language}",
+             defaults: new { controller = "WebSite", action = "Index", language = UrlParameter.Optional }
+         );
 
             routes.MapRoute(
                 name: "default-01",
@@ -416,6 +528,8 @@ namespace MSPowerWebApp
                url: "{controller}/{action}",
                defaults: new { controller = "WebSite", action = "Index", id = UrlParameter.Optional }
            );
+
+
         }
     }
 }

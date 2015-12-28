@@ -153,6 +153,8 @@ namespace MSPowerWebApp.Controllers
             {
                 Job_OpeningManager joMan = new Job_OpeningManager();
 
+                //joViewModel.Job_Opening = joMan.Get_Job_Opening_By_Id(joViewModel.Job_Opening.Job_Opening_Id);
+
                 joViewModel.Job_Opening = joMan.Get_Job_Opening_By_Id(joViewModel.Filter.Job_Opening_Id);
             }
 

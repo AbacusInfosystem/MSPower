@@ -200,7 +200,9 @@
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AuthenticateController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\EnquiryController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\Job_ApplicationController.cs" />
     <Compile Include="Controllers\Job_OpeningController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\NewsLetterController.cs" />
@@ -212,6 +214,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ContactUsViewModel.cs" />
+    <Compile Include="Models\EnquiryViewModel.cs" />
+    <Compile Include="Models\Job_ApplicationViewModel.cs" />
     <Compile Include="Models\Job_OpeningViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NewsLetterViewModel.cs" />
@@ -927,11 +931,19 @@
     <Content Include="Scripts\ContactUs\contactus_method.js" />
     <Content Include="Scripts\ContactUs\contactus_search_events.js" />
     <Content Include="Scripts\ContactUs\contactus_search_method.js" />
+    <Content Include="Scripts\Enquiry\enquiry_events.js" />
+    <Content Include="Scripts\Enquiry\enquiry_method.js" />
+    <Content Include="Scripts\Enquiry\enquiry_search_events.js" />
+    <Content Include="Scripts\Enquiry\enquiry_search_method.js" />
     <Content Include="Scripts\generic.ajax.js" />
     <Content Include="Scripts\generic.custom.validation.js" />
     <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\generic.message.js" />
     <Content Include="Scripts\genric.authorize.js" />
+    <Content Include="Scripts\Job_Application\job_application_events.js" />
+    <Content Include="Scripts\Job_Application\job_application_method.js" />
+    <Content Include="Scripts\Job_Application\job_application_search_events.js" />
+    <Content Include="Scripts\Job_Application\job_application_search_method.js" />
     <Content Include="Scripts\Job_Opening\job_opening_events.js" />
     <Content Include="Scripts\Job_Opening\job_opening_method.js" />
     <Content Include="Scripts\Job_Opening\job_opening_search_events.js" />
@@ -1018,6 +1030,16 @@
     <Content Include="Views\Job_Opening\Search.cshtml" />
     <Content Include="Views\WebSite\Job_Opening.cshtml" />
     <Content Include="Views\WebSite\Job_OpeningListing.cshtml" />
+    <Content Include="Views\Enquiry\Index.cshtml" />
+    <Content Include="Views\Enquiry\Search.cshtml" />
+    <Content Include="Views\Enquiry\EnquiryDetail.cshtml" />
+    <Content Include="Views\WebSite\EnquiryListing.cshtml" />
+    <Content Include="Views\WebSite\Enquiry.cshtml" />
+    <Content Include="Views\Job_Application\Index.cshtml" />
+    <Content Include="Views\Job_Application\Search.cshtml" />
+    <Content Include="Views\Job_Application\Job_ApplicationDetail.cshtml" />
+    <Content Include="Views\WebSite\Job_Application.cshtml" />
+    <Content Include="Views\WebSite\Job_ApplicationListing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

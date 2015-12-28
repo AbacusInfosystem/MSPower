@@ -1,0 +1,150 @@
+﻿@model MSPowerWebApp.Models.Job_ApplicationViewModel
+
+
+<script src="~/Scripts/Job_Application/job_application_search_events.js"></script>
+
+<script src="~/Scripts/Job_Application/job_application_search_method.js"></script>
+
+@{
+    ViewBag.Title = "Job_Application";
+}
+
+<!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+
+        <h1>
+            Job Application
+
+            <small>Create / Update Page</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">Job_Application</li>
+        </ol>
+    </section>
+
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <div class="box">
+
+                <div class="box-body">
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <form id="frmJob_Application">
+
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtFirst_Name">First Name : @Model.Job_Application.First_Name</label>
+
+                                </div>
+
+                                <div></div>
+
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtLast_Name">Last Name : @Model.Job_Application.Last_Name</label>
+
+                                </div>
+
+                                <div></div>
+
+                              
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtEmail">Email : @Model.Job_Application.Email</label>
+
+                                </div>
+
+                                <div></div>
+
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtReference">Reference : @Model.Job_Application.Reference</label>
+
+                                </div>
+
+                                <div></div>
+
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtAdditional_Information">Additional Information : @Model.Job_Application.Additional_Information</label>
+
+                                </div>
+
+                                <div></div>
+
+                                <div class="form-group">
+                                    <label style="color: #333" for="txtCreated_On">Created On : @Model.Job_Application.Created_On</label>
+
+                                </div>
+
+
+                                @*<div class="form-group">
+                                        <label style="color: #333" for="fileUpload_Job_Application_Image">Upload Job_Application Images</label>
+
+                                        <input type="file" class="form-control input-sm" id="fileUpload_Job_Application_Image" placeholder="Upload Job_Application Image" name="">
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label style="color: #333">
+
+                                            @if (Model.Job_Application.Is_Active == true)
+                                            {
+                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+                                            else
+                                            {
+                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+
+                                            <input type="hidden" id="hdnJob_Application_Status" name="Job_Application.Is_Active" value="@Model.Job_Application.Is_Active">
+                                        </label>
+
+                                    </div>*@
+
+                                <div class="btn-group">
+
+                                    @*<button type="button" class="btn btn-default btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>*@
+
+                                    <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Job_Application")" role="button">Cancel</a>
+
+                                    @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
+
+                                    <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
+
+                                    @*<input type="hidden" name="Job_Application.Job_Application_Id" id="hdfJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">*@
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+
+        </div>
+
+    </div>
+
+</div>

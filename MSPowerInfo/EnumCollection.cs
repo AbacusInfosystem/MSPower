@@ -18,6 +18,7 @@ namespace MSPowerInfo
     }
 
     public enum StoredProcedures
+    
     {
 
         // Authentication and Session Store Procedures
@@ -81,7 +82,28 @@ namespace MSPowerInfo
 
         Insert_Job_Opening_Sp,
 
-        Update_Job_Opening_Sp
+        Update_Job_Opening_Sp,
+
+
+
+        // Enquiry Store Procedures
+
+
+        Get_Enquiry_By_Id_Sp,
+
+        Get_Enquirys_Sp,
+
+        Insert_Enquiry_Sp,
+
+
+         // Job_Application Store Procedures
+
+
+        Get_Job_Application_By_Id_Sp,
+
+        Get_Job_Applications_Sp,
+
+        Insert_Job_Application_Sp
 
 
     }
