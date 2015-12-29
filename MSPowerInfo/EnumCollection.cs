@@ -103,10 +103,24 @@ namespace MSPowerInfo
 
         Get_Job_Applications_Sp,
 
-        Insert_Job_Application_Sp
+        Insert_Job_Application_Sp,
+
+
+        // About Us Store Procedures
+
+
+        Get_AboutUs_By_Id_Sp,
+
+        Get_AboutUss_Sp,
+
+        Insert_AboutUs_Sp,
+
+        Update_AboutUs_Sp
 
 
     }
+
+
 
 
     public enum Language

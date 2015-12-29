@@ -213,6 +213,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AboutUsViewModel.cs" />
     <Compile Include="Models\ContactUsViewModel.cs" />
     <Compile Include="Models\EnquiryViewModel.cs" />
     <Compile Include="Models\Job_ApplicationViewModel.cs" />
@@ -927,6 +928,10 @@
     <Content Include="Content\fonts\ionicons.ttf" />
     <Content Include="Content\fonts\ionicons.woff" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\AboutUs\aboutus_events.js" />
+    <Content Include="Scripts\AboutUs\aboutus_method.js" />
+    <Content Include="Scripts\AboutUs\aboutus_search_events.js" />
+    <Content Include="Scripts\AboutUs\aboutus_search_method.js" />
     <Content Include="Scripts\ContactUs\contactus_events.js" />
     <Content Include="Scripts\ContactUs\contactus_method.js" />
     <Content Include="Scripts\ContactUs\contactus_search_events.js" />
@@ -1040,6 +1045,10 @@
     <Content Include="Views\Job_Application\Job_ApplicationDetail.cshtml" />
     <Content Include="Views\WebSite\Job_Application.cshtml" />
     <Content Include="Views\WebSite\Job_ApplicationListing.cshtml" />
+    <Content Include="Views\AboutUs\Search.cshtml" />
+    <Content Include="Views\WebSite\AboutUs.cshtml" />
+    <Content Include="Views\WebSite\AboutUsListing.cshtml" />
+    <Content Include="Views\AboutUs\AboutUsDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

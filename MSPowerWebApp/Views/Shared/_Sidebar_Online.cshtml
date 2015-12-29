@@ -1,6 +1,7 @@
 ﻿ <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
+
             <li class="active"><a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product</a></li>
             <li><a href="@Url.Action("ProductListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product Listing</a></li>
 
@@ -26,5 +27,8 @@
 
             <li class="active"><a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application</a></li>
             <li><a href="@Url.Action("Job_ApplicationListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application Listing</a></li>
+
+            <li class="active"><a href="@Url.Action("AboutUs", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> AboutUs</a></li>
+            <li><a href="@Url.Action("AboutUsListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> AboutUs Listing</a></li>
 
         </ul>

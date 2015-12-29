@@ -1,5 +1,131 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model MSPowerWebApp.Models.AboutUsViewModel
+
+
+<script src="~/Scripts/AboutUs/aboutus_events.js"></script>
+<script src="~/Scripts/AboutUs/aboutus_method.js"></script>
+
+
+@{
+    ViewBag.Title = "AboutUs";
 }
 
-<h2>Index</h2>
+<!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+
+        <h1>
+            AboutUs
+
+            <small>Create / Update Page</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">AboutUs</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <form id="frmAboutUs">
+
+                                   
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtAbout_Us_Description">AboutUs Description</label>
+
+                                        <textarea id="editor1" rows="10" cols="80" name="AboutUs.About_Us_Description">@Model.AboutUs.About_Us_Description</textarea>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        <label style="color: #333" for="fileUpload_AboutUs_Image">Upload AboutUs Images</label>
+
+                                        <input type="file" class="form-control input-sm" id="fileUpload_AboutUs_Image" placeholder="Upload AboutUs Image" name="">
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label style="color: #333">
+
+                                            @if (Model.AboutUs.Is_Active == true)
+                                            {
+                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+                                            else
+                                            {
+                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+
+                                            <input type="hidden" id="hdnAboutUs_Status" name="AboutUs.Is_Active" value="@Model.AboutUs.Is_Active">
+                                        </label>
+
+                                    </div>*@
+
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "AboutUs")" role="button">Cancel</a>
+
+                                        @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
+
+                                        <input type="hidden" name="AboutUs.About_Us_Id" id="hdnAbout_Us_Id" value="@Model.AboutUs.About_Us_Id">
+
+                                        @*<input type="hidden" name="AboutUs.AboutUs_Id" id="hdfAboutUs_Id" value="@Model.AboutUs.AboutUs_Id">*@
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<script src="http://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+
+@*<script>
+
+    //$(document).ready(function () {
+    //    $('.iradio-list').iCheck({
+    //        radioClass: 'iradio_square-green',
+    //        increaseArea: '20%' // optional
+    //    });
+    //});
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('AboutUs.AboutUs_Description');
+
+</script>*@

@@ -347,6 +347,52 @@ namespace MSPowerWebApp
 
             #endregion
 
+            #region AboutUs
+
+            routes.MapRoute(
+               name: "aboutus-1",
+               url: "cms/aboutus",
+               defaults: new { controller = "AboutUs", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-2",
+               url: "cms/aboutus/search",
+               defaults: new { controller = "AboutUs", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-3",
+               url: "cms/aboutus/insert-aboutus",
+               defaults: new { controller = "AboutUs", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-4",
+               url: "cms/aboutus/update-aboutus",
+               defaults: new { controller = "AboutUs", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-5",
+               url: "cms/aboutus/get-aboutuss",
+               defaults: new { controller = "AboutUs", action = "Get_AboutUss", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "aboutus-6",
+              url: "cms/aboutus/get-aboutus-by-id",
+              defaults: new { controller = "AboutUs", action = "Get_AboutUs_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "aboutus-7",
+             url: "cms/aboutus/delete-aboutus",
+             defaults: new { controller = "AboutUs", action = "Delete", id = UrlParameter.Optional }
+         );
+            #endregion
+
+
             #region Job_Application
 
 
@@ -501,6 +547,23 @@ namespace MSPowerWebApp
 
              //constraints: new { language = new LanguageRouteConstraint() }
          );
+
+            routes.MapRoute(
+             name: "website-15",
+             url: "{language}/aboutus/",
+             defaults: new { controller = "WebSite", action = "AboutUs", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
+            routes.MapRoute(
+             name: "website-16",
+             url: "{language}/aboutus-listing/",
+             defaults: new { controller = "WebSite", action = "AboutUsListing", language = UrlParameter.Optional }
+
+             //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
 
             #endregion
 
