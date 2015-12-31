@@ -28,52 +28,58 @@ namespace MSPowerWebApp
             );
 
             routes.MapRoute(
-                name: "menu-3",
+               name: "menu-3",
+               url: "cms/productdetail/search",
+               defaults: new { controller = "ProductDetail", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+                name: "menu-4",
                 url: "cms/services/search",
                 defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-                name: "menu-4",
+                name: "menu-5",
                 url: "cms/news-letter/search",
                 defaults: new { controller = "NewsLetter", action = "Search", id = UrlParameter.Optional }
             );
 
 
             routes.MapRoute(
-                name: "menu-5",
+                name: "menu-6",
                 url: "cms/about-us",
                 defaults: new { controller = "AboutUs", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-                name: "menu-6",
+                name: "menu-7",
                 url: "cms/contact-us/search",
                 defaults: new { controller = "ContactUs", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-               name: "menu-7",
+               name: "menu-8",
                url: "cms/gallery/search",
                defaults: new { controller = "Gallery", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-              name: "menu-8",
+              name: "menu-9",
               url: "cms/job_opening/search",
               defaults: new { controller = "Job_Opening", action = "Search", id = UrlParameter.Optional }
            );
 
 
             routes.MapRoute(
-             name: "menu-9",
+             name: "menu-10",
              url: "cms/enquiry/search",
              defaults: new { controller = "Enquiry", action = "Search", id = UrlParameter.Optional }
           );
 
 
             routes.MapRoute(
-            name: "menu-10",
+            name: "menu-11",
             url: "cms/job_application/search",
             defaults: new { controller = "Job_Application", action = "Search", id = UrlParameter.Optional }
          );
@@ -126,6 +132,51 @@ namespace MSPowerWebApp
              name: "product-7",
              url: "cms/product/delete-product",
              defaults: new { controller = "Product", action = "Delete", id = UrlParameter.Optional }
+         );
+            #endregion
+
+            #region ProductDetail
+
+            routes.MapRoute(
+               name: "productdetail-1",
+               url: "cms/productdetail",
+               defaults: new { controller = "ProductDetail", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-2",
+               url: "cms/productdetail/search",
+               defaults: new { controller = "ProductDetail", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-3",
+               url: "cms/product_detail/insert-productdetail",
+               defaults: new { controller = "ProductDetail", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-4",
+               url: "cms/productdetail/update-productdetail",
+               defaults: new { controller = "ProductDetail", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-5",
+               url: "cms/productdetail/get-productdetails",
+               defaults: new { controller = "ProductDetail", action = "Get_ProductDetails", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "productdetail-6",
+              url: "cms/productdetail/get-productdetail-by-id",
+              defaults: new { controller = "Product_Detail", action = "Get_ProductDetail_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "productdetail-7",
+             url: "cms/productdetail/delete-productdetail",
+             defaults: new { controller = "ProductDetail", action = "Delete", id = UrlParameter.Optional }
          );
             #endregion
 
@@ -392,7 +443,6 @@ namespace MSPowerWebApp
          );
             #endregion
 
-
             #region Job_Application
 
 
@@ -426,6 +476,15 @@ namespace MSPowerWebApp
 
             #endregion
 
+            #region Language
+
+            routes.MapRoute(
+               name: "language-1",
+               url: "cms/language",
+               defaults: new { controller = "Language", action = "Index", id = UrlParameter.Optional }
+           );
+
+            #endregion
 
             routes.MapRoute(
                 name: "cms-1",
@@ -460,41 +519,55 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
               name: "website-3",
+              url: "{language}/productdetail/",
+              defaults: new { controller = "WebSite", action = "ProductDetail", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-4",
+              url: "{language}/productdetail-listing/",
+              defaults: new { controller = "WebSite", action = "ProductDetailListing", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-5",
               url: "{language}/services/",
               defaults: new { controller = "WebSite", action = "Service", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-              name: "website-4",
+              name: "website-6",
               url: "{language}/service-listing/",
               defaults: new { controller = "WebSite", action = "ServiceListing", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-              name: "website-5",
+              name: "website-7",
               url: "{language}/news-letter/",
               defaults: new { controller = "WebSite", action = "NewsLetter", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-              name: "website-6",
+              name: "website-8",
               url: "{language}/news-letter-listing/",
               defaults: new { controller = "WebSite", action = "NewsLetterListing", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-             name: "website-7",
+             name: "website-9",
              url: "{language}/contact-us/",
              defaults: new { controller = "WebSite", action = "ContactUs", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
          );
 
             routes.MapRoute(
-              name: "website-8",
+              name: "website-10",
               url: "{language}/contact-us-listing/",
               defaults: new { controller = "WebSite", action = "ContactUsListing", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
@@ -502,7 +575,7 @@ namespace MSPowerWebApp
 
 
              routes.MapRoute(
-             name: "website-9",
+             name: "website-11",
              url: "{language}/job_opening/",
              defaults: new { controller = "WebSite", action = "Job_Opening", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
@@ -510,14 +583,14 @@ namespace MSPowerWebApp
            );
 
              routes.MapRoute(
-              name: "website-10",
+              name: "website-12",
               url: "{language}/job_opening-listing/",
               defaults: new { controller = "WebSite", action = "Job_OpeningListing", language = UrlParameter.Optional }
               
              );
 
               routes.MapRoute(
-             name: "website-11",
+             name: "website-13",
              url: "{language}/enquiry/",
              defaults: new { controller = "WebSite", action = "Enquiry", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
@@ -525,7 +598,7 @@ namespace MSPowerWebApp
            );
 
             routes.MapRoute(
-             name: "website-12",
+             name: "website-14",
              url: "{language}/enquiry-listing/",
              defaults: new { controller = "WebSite", action = "EnquiryListing", language = UrlParameter.Optional }
 
@@ -533,7 +606,7 @@ namespace MSPowerWebApp
          );
 
               routes.MapRoute(
-             name: "website-13",
+             name: "website-15",
              url: "{language}/job_application/",
              defaults: new { controller = "WebSite", action = "Job_Application", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
@@ -541,7 +614,7 @@ namespace MSPowerWebApp
            );
 
             routes.MapRoute(
-             name: "website-14",
+             name: "website-16",
              url: "{language}/job_application-listing/",
              defaults: new { controller = "WebSite", action = "Job_ApplicationListing", language = UrlParameter.Optional }
 
@@ -549,7 +622,7 @@ namespace MSPowerWebApp
          );
 
             routes.MapRoute(
-             name: "website-15",
+             name: "website-17",
              url: "{language}/aboutus/",
              defaults: new { controller = "WebSite", action = "AboutUs", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
@@ -557,7 +630,7 @@ namespace MSPowerWebApp
            );
 
             routes.MapRoute(
-             name: "website-16",
+             name: "website-18",
              url: "{language}/aboutus-listing/",
              defaults: new { controller = "WebSite", action = "AboutUsListing", language = UrlParameter.Optional }
 

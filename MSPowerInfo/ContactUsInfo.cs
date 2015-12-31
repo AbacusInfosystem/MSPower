@@ -13,7 +13,10 @@ namespace MSPowerInfo
 
         public int ContactUs_Id { get; set; }
 
+        public int Language_Id { get; set; }
+
         public string ContactUs_Title { get; set; }
+
 
         [AllowHtml]
 

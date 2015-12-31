@@ -12,12 +12,11 @@ namespace MSPowerInfo
     
     {
 
-          public ProductInfo()
+        public ProductInfo()
         
           {
           
           }
-
 
         public int Product_Id { get; set; }
 

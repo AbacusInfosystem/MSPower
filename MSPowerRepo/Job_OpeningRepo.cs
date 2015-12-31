@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 using MSPowerInfo;
 using DataAccess.Sql;
 using System.Configuration;
@@ -14,6 +13,7 @@ using System.Data;
 
 namespace MSPowerRepo
 {
+
     public class Job_OpeningRepo
     {
 
@@ -28,7 +28,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<Job_OpeningInfo> Get_Job_Openings(ref PaginationInfo pager)
+        public List<Job_OpeningInfo> Get_Job_Openings(ref PaginationInfo pager, int language_Id)
         {
             List<Job_OpeningInfo> job_openings = new List<Job_OpeningInfo>();
 
@@ -38,8 +38,11 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_Job_Openings_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Job_Openings_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -52,68 +55,7 @@ namespace MSPowerRepo
             return job_openings;
         }
 
-        //private List<Job_OpeningInfo> Seed_Job_Opening()
-        //{
-        //    List<Job_OpeningInfo> retVal = new List<Job_OpeningInfo>();
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 1, Job_Opening_Title = "ABC", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 2, Job_Opening_Title = "EFG", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_OpeningInfo() { Job_Opening_Id = 3, Job_Opening_Title = "HIJ", Job_Opening_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    return retVal;
-        //}
-
-        public Job_OpeningInfo Get_Job_Opening_By_Id(int job_opening_Id)
+        public Job_OpeningInfo Get_Job_Opening_By_Id(int job_opening_Id, int language_Id)
         {
             Job_OpeningInfo job_opening = new Job_OpeningInfo();
 
@@ -127,7 +69,11 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Job_Opening_Id", job_opening_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Job_Opening_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -136,9 +82,6 @@ namespace MSPowerRepo
                     job_opening = Get_Job_Opening_Values(dr);
                 }
             }
-
-            //job_opening = Seed_Job_Opening().Where(a => a.Job_Opening_Id == job_opening_Id).Single();
-
 
             return job_opening;
         }
@@ -152,24 +95,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Job_Opening_Values(job_opening);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Job_Opening_Title", job_opening.Job_Opening_Title));
-
-            //param.Add(new SqlParameter("@Job_Opening_Description", job_opening.Job_Opening_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", job_opening.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", job_opening.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", job_opening.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", job_opening.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", job_opening.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", job_opening.UpdatedBy));
 
             int job_opening_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_Job_Opening_Sp.ToString(), CommandType.StoredProcedure, _con));
 
@@ -186,26 +111,6 @@ namespace MSPowerRepo
 
             List<SqlParameter> param = Set_Job_Opening_Values(job_opening);
 
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Job_Opening_Id", job_opening.Job_Opening_Id));
-
-            //param.Add(new SqlParameter("@Job_Opening_Title", job_opening.Job_Opening_Title));
-
-            //param.Add(new SqlParameter("@Job_Opening_Description", job_opening.Job_Opening_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", job_opening.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", job_opening.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", job_opening.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", job_opening.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", job_opening.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", job_opening.UpdatedBy));
-
             _sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_Job_Opening_Sp.ToString(), CommandType.StoredProcedure, _con);
 
         }
@@ -216,6 +121,8 @@ namespace MSPowerRepo
             Job_OpeningInfo retVal = new Job_OpeningInfo();
 
             retVal.Job_Opening_Id = Convert.ToInt32(dr["Job_Opening_Id"]);
+
+            retVal.Language_Id = Convert.ToInt32(dr["Language_Id"]);
 
             retVal.Job_Title = Convert.ToString(dr["Job_Title"]);
 
@@ -241,6 +148,8 @@ namespace MSPowerRepo
         {
             
             List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", job_opening.Language_Id));
 
             param.Add(new SqlParameter("@Job_Title", job_opening.Job_Title));
 

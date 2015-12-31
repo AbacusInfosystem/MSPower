@@ -23,6 +23,7 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult Index(NewsLetterViewModel nlViewModel)
         {
+
             ViewBag.Title = "MS POWER ERP :: Create, Update";
 
             return View(nlViewModel);
@@ -48,6 +49,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    nlViewModel.NewsLetter.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    nlViewModel.NewsLetter.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 nlViewModel.NewsLetter.Created_By = ((UserInfo)Session["User"]).UserId;
 
                 nlViewModel.NewsLetter.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -87,6 +98,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    nlViewModel.NewsLetter.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    nlViewModel.NewsLetter.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 nlViewModel.NewsLetter.Updated_On = DateTime.Now;
 
                 nlViewModel.NewsLetter.NewLetter_Release_Date = DateTime.Now;
@@ -120,6 +141,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    nlViewModel.NewsLetter.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    nlViewModel.NewsLetter.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 nlViewModel.NewsLetter.Updated_On = DateTime.Now;
 
                 nlViewModel.NewsLetter.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -151,9 +182,21 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 NewsLetterManager nlMan = new NewsLetterManager();
 
-                nlViewModel.NewsLetter = nlMan.Get_NewsLetter_By_Id(nlViewModel.Filter.NewsLetter_Id);
+                nlViewModel.NewsLetter = nlMan.Get_NewsLetter_By_Id(nlViewModel.Filter.NewsLetter_Id, language_Id);
             }
 
             catch (Exception ex)
@@ -176,9 +219,20 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 pager = nlViewModel.Pager;
 
-                nlViewModel.NewsLetters = nlMan.Get_NewsLetters(ref pager);
+                nlViewModel.NewsLetters = nlMan.Get_NewsLetters(ref pager, language_Id);
 
                 nlViewModel.Pager = pager;
 

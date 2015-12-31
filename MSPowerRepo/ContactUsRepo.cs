@@ -26,7 +26,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<ContactUsInfo> Get_ContactUss(ref PaginationInfo pager)
+        public List<ContactUsInfo> Get_ContactUss(ref PaginationInfo pager, int language_Id)
         {
             List<ContactUsInfo> contactuss = new List<ContactUsInfo>();
 
@@ -36,8 +36,11 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_ContactUss_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_ContactUss_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -50,68 +53,7 @@ namespace MSPowerRepo
             return contactuss;
         }
 
-        //private List<ContactUsInfo> Seed_ContactUs()
-        //{
-        //    List<ContactUsInfo> retVal = new List<ContactUsInfo>();
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 1, ContactUs_Title = "ABC", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 2, ContactUs_Title = "EFG", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ContactUsInfo() { ContactUs_Id = 3, ContactUs_Title = "HIJ", ContactUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    return retVal;
-        //}
-
-        public ContactUsInfo Get_ContactUs_By_Id(int contactus_Id)
+        public ContactUsInfo Get_ContactUs_By_Id(int contactus_Id, int language_Id)
         {
             ContactUsInfo contactus = new ContactUsInfo();
 
@@ -125,7 +67,11 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@ContactUs_Id", contactus_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_ContactUs_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -134,9 +80,6 @@ namespace MSPowerRepo
                     contactus = Get_ContactUs_Values(dr);
                 }
             }
-
-            //contactus = Seed_ContactUs().Where(a => a.ContactUs_Id == contactus_Id).Single();
-
 
             return contactus;
         }
@@ -150,24 +93,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_ContactUs_Values(contactus);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@ContactUs_Title", contactus.ContactUs_Title));
-
-            //param.Add(new SqlParameter("@ContactUs_Description", contactus.ContactUs_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", contactus.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", contactus.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", contactus.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", contactus.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", contactus.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", contactus.UpdatedBy));
 
             int contactus_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_ContactUs_Sp.ToString(), CommandType.StoredProcedure, _con));
 
@@ -183,27 +108,7 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_ContactUs_Values(contactus);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@ContactUs_Id", contactus.ContactUs_Id));
-
-            //param.Add(new SqlParameter("@ContactUs_Title", contactus.ContactUs_Title));
-
-            //param.Add(new SqlParameter("@ContactUs_Description", contactus.ContactUs_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", contactus.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", contactus.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", contactus.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", contactus.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", contactus.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", contactus.UpdatedBy));
-
+ 
             _sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_ContactUs_Sp.ToString(), CommandType.StoredProcedure, _con);
 
         }
@@ -214,6 +119,8 @@ namespace MSPowerRepo
             ContactUsInfo retVal = new ContactUsInfo();
 
             retVal.ContactUs_Id = Convert.ToInt32(dr["ContactUs_Id"]);
+
+            retVal.Language_Id = Convert.ToInt32(dr["Language_Id"]);
 
             retVal.ContactUs_Title = Convert.ToString(dr["ContactUs_Title"]);
 
@@ -241,6 +148,8 @@ namespace MSPowerRepo
         {
             
             List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", contactus.Language_Id));
 
             param.Add(new SqlParameter("@ContactUs_Title", contactus.ContactUs_Title));
 

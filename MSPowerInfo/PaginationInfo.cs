@@ -15,6 +15,7 @@ namespace MSPowerInfo
             PageSize = 5;
 
             IsPagingRequired = true;
+
         }
 
         public int CurrentPage { get; set; }

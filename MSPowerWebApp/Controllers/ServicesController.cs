@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-
 using MSPowerWebApp.Filters;
 
 using MSPowerInfo;
@@ -19,6 +17,7 @@ namespace MSPowerWebApp.Controllers
     {
         //
         // GET: /Services/
+        
 
         public ServicesManager _sMan;
 
@@ -26,6 +25,17 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult Index(ServicesViewModel sViewModel)
         {
+            _sMan = new ServicesManager();
+
+            if (Session["Language"].ToString() == Language.en.ToString())
+            {
+                sViewModel.Service_Categories = _sMan.Get_Services_Categories(Convert.ToInt32(Language.en));  
+            } 
+            else
+            {
+                sViewModel.Service_Categories = _sMan.Get_Services_Categories(Convert.ToInt32(Language.ch));
+            }
+
             ViewBag.Title = "MS POWER ERP :: Create, Update";
 
             return View(sViewModel);
@@ -51,6 +61,15 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    sViewModel.Service.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    sViewModel.Service.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 sViewModel.Service.Created_By = ((UserInfo)Session["User"]).UserId;
 
                 sViewModel.Service.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -88,11 +107,17 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-                sViewModel.Service.Created_By = ((UserInfo)Session["User"]).UserId;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    sViewModel.Service.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    sViewModel.Service.Language_Id = Convert.ToInt32(Language.ch);
+                }
 
                 sViewModel.Service.Updated_By = ((UserInfo)Session["User"]).UserId;
-
-                sViewModel.Service.Created_On = DateTime.Now;
 
                 sViewModel.Service.Updated_On = DateTime.Now;
 
@@ -123,6 +148,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    sViewModel.Service.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    sViewModel.Service.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 sViewModel.Service.Updated_On = DateTime.Now;
 
                 sViewModel.Service.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -154,9 +189,22 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 ServicesManager sMan = new ServicesManager();
 
-                sViewModel.Service = sMan.Get_Services_By_Id(sViewModel.Filter.Services_Id);
+                sViewModel.Service = sMan.Get_Services_By_Id(sViewModel.Filter.Services_Id, language_Id);
+
+                sViewModel.Service_Categories= sMan.Get_Services_Categories(language_Id);
             }
 
             catch (Exception ex)
@@ -179,9 +227,20 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 pager = sViewModel.Pager;
 
-                sViewModel.Services = sMan.Get_Services(ref pager);
+                sViewModel.Services = sMan.Get_Services(ref pager, language_Id);
 
                 sViewModel.Pager = pager;
 

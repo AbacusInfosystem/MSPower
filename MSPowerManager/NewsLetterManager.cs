@@ -19,14 +19,14 @@ namespace MSPowerManager
             _nlRepo = new NewsLetterRepo();
         }
 
-        public List<NewsLetterInfo> Get_NewsLetters(ref PaginationInfo Pager)
+         public List<NewsLetterInfo> Get_NewsLetters(ref PaginationInfo pager, int language_Id)
         {
-            return _nlRepo.Get_NewsLetters(ref Pager);
+            return _nlRepo.Get_NewsLetters(ref pager, language_Id);
         }
 
-        public NewsLetterInfo Get_NewsLetter_By_Id(int newsletter_Id)
+         public NewsLetterInfo Get_NewsLetter_By_Id(int newsletter_Id, int language_Id)
         {
-            return _nlRepo.Get_NewsLetter_By_Id(newsletter_Id);
+            return _nlRepo.Get_NewsLetter_By_Id(newsletter_Id, language_Id);
         }
 
         public int Insert_NewsLetter(NewsLetterInfo newsletter)

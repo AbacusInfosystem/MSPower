@@ -50,6 +50,28 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="drpServiceCategory" style="color: #333" class="lookup-title">Service Category</label>
+                                        <select class="form-control input-sm" id="drpServiceCategory" name="Service.Service_Category_Id">
+                                            <option value="" >--Select--</option>
+
+                                            @foreach (var item in Model.Service_Categories)
+                                            {
+                                                if (item.Id == Model.Service.Service_Category_Id)
+                                                {
+                                                    <option value="@item.Id" selected="selected">@item.Value</option>
+                                                }
+
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Value</option>
+                                                }
+                                            }
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group">
                                         <label style="color: #333" for="txtContactName">Services Description</label>
 
                                         <textarea id="editor1" rows="10" cols="80" name="Service.Service_Description">@Model.Service.Service_Description</textarea>
@@ -77,6 +99,7 @@
                                                 }
 
                                             <input type="hidden" id="hdnServices_Status" name="Service.Is_Active" value="@Model.Service.Is_Active">
+
                                         </label>
 
                                     </div>

@@ -48,6 +48,15 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.en);
+                }
+
+                else
+                {
+                    jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.ch);
+                }
 
                 jaViewModel.Job_Application.Created_On = DateTime.Now;
 
@@ -114,6 +123,15 @@ namespace MSPowerWebApp.Controllers
             try
             {
 
+                if(Session["Language"].ToString() == Language.en.ToString())
+                {
+                    jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 Job_ApplicationManager jaMan = new Job_ApplicationManager();
 
                 // this should be delete method.
@@ -142,9 +160,21 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 Job_ApplicationManager jaMan = new Job_ApplicationManager();
 
-                jaViewModel.Job_Application = jaMan.Get_Job_Application_By_Id(jaViewModel.Filter.Job_Application_Id);
+                jaViewModel.Job_Application = jaMan.Get_Job_Application_By_Id(jaViewModel.Filter.Job_Application_Id, language_Id);
             }
 
             catch (Exception ex)
@@ -167,9 +197,20 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+                int language_Id = 0;
+
+                if(Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 pager = jaViewModel.Pager;
 
-                jaViewModel.Job_Applications = jaMan.Get_Job_Applications(ref pager);
+                jaViewModel.Job_Applications = jaMan.Get_Job_Applications(ref pager, language_Id);
 
                 jaViewModel.Pager = pager;
 

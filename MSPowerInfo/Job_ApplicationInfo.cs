@@ -16,8 +16,9 @@ namespace MSPowerInfo
           
           }
 
-
         public int Job_Application_Id { get; set; }
+
+        public int Language_Id { get; set; }
 
         [AllowHtml]
 

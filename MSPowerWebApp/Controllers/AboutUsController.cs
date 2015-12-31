@@ -16,7 +16,7 @@ namespace MSPowerWebApp.Controllers
 {
     public class AboutUsController : Controller
     {
-        //
+        
         // GET: /AboutUs/
 
         public AboutUsManager _auMan;
@@ -50,6 +50,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    auViewModel.AboutUs.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    auViewModel.AboutUs.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 auViewModel.AboutUs.Created_By = ((UserInfo)Session["User"]).UserId;
 
                 auViewModel.AboutUs.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -59,8 +69,6 @@ namespace MSPowerWebApp.Controllers
                 auViewModel.AboutUs.Updated_On = DateTime.Now;
 
                 AboutUsManager auMan = new AboutUsManager();
-
-                //auViewModel.AboutUs.AboutUs_Id = 1;
 
                 auViewModel.AboutUs.About_Us_Id = auMan.Insert_AboutUs(auViewModel.AboutUs);
 
@@ -73,10 +81,6 @@ namespace MSPowerWebApp.Controllers
                 Logger.Error("Test Controller - Insert" + ex.ToString());
             }
 
-            //TempData["auViewModel"] = auViewModel;
-
-            //return RedirectToAction("Search");
-
             return View("Index", auViewModel);
 
         }
@@ -87,6 +91,15 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    auViewModel.AboutUs.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    auViewModel.AboutUs.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 auViewModel.AboutUs.Updated_On = DateTime.Now;
 
                 auViewModel.AboutUs.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -104,20 +117,27 @@ namespace MSPowerWebApp.Controllers
                 Logger.Error("Test Controller - Update" + ex.ToString());
             }
 
-            //TempData["auViewModel"] = auViewModel;
+                //TempData["auViewModel"] = auViewModel;
 
-            //return RedirectToAction("Search");
-
-            return View("Index", auViewModel);
+                return View("Index", auViewModel);
 
         }
 
-        // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS UPDATING AN EXISTING RECORD, THEN THIS METHOD WOULD GET HIT.
+        // IF USER CLICKS ON DELETE BUTTON, THEN THIS METHOD WOULD GET HIT.
 
         public ActionResult Delete(AboutUsViewModel auViewModel)
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    auViewModel.AboutUs.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    auViewModel.AboutUs.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 auViewModel.AboutUs.Updated_On = DateTime.Now;
 
                 auViewModel.AboutUs.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -126,22 +146,18 @@ namespace MSPowerWebApp.Controllers
 
                 // this should be delete method.
 
-                //auMan.Update_AboutUs(auViewModel.AboutUs);
-
                 auViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
             }
-
-            catch (Exception ex)
-            
+            catch (Exception ex)          
             {
                 auViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("Test Controller - Update" + ex.ToString());
             }
 
-            TempData["auViewModel"] = auViewModel;
+                TempData["auViewModel"] = auViewModel;
 
-            return View("Search");
+                return View("Search");
 
         }
 
@@ -151,9 +167,20 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 AboutUsManager auMan = new AboutUsManager();
 
-                auViewModel.AboutUs = auMan.Get_AboutUs_By_Id(auViewModel.Filter.About_Us_Id);
+                auViewModel.AboutUs = auMan.Get_AboutUs_By_Id(auViewModel.Filter.About_Us_Id, language_Id);
             }
 
             catch (Exception ex)
@@ -163,7 +190,7 @@ namespace MSPowerWebApp.Controllers
                 Logger.Error("Test Controller-Get_Test_By_Id" + ex.ToString());
             }
 
-            return View("Index", auViewModel);
+                return View("Index", auViewModel);
         }
 
         // WHEN PRODUCT LISTING PAGE GETS LOADED, THIS METHOD GETS HIT TO GET ALL PRODUCTS FROM DB.
@@ -176,9 +203,21 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 pager = auViewModel.Pager;
 
-                auViewModel.AboutUss = auMan.Get_AboutUss(ref pager);
+                auViewModel.AboutUss = auMan.Get_AboutUss(ref pager, language_Id);
 
                 auViewModel.Pager = pager;
 

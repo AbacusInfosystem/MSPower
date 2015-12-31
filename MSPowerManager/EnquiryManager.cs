@@ -20,14 +20,14 @@ namespace MSPowerManager
             _eRepo = new EnquiryRepo();
         }
 
-        public List<EnquiryInfo> Get_Enquirys(ref PaginationInfo Pager)
+        public List<EnquiryInfo> Get_Enquirys(ref PaginationInfo pager, int language_Id)
         {
-            return _eRepo.Get_Enquirys(ref Pager);
+            return _eRepo.Get_Enquirys(ref pager, language_Id);
         }
 
-        public EnquiryInfo Get_Enquiry_By_Id(int enquiry_Id)
+        public EnquiryInfo Get_Enquiry_By_Id(int enquiry_Id, int language_Id)
         {
-            return _eRepo.Get_Enquiry_By_Id(enquiry_Id);
+            return _eRepo.Get_Enquiry_By_Id(enquiry_Id, language_Id);
         }
 
         public int Insert_Enquiry(EnquiryInfo enquiry)

@@ -38,6 +38,23 @@ namespace MSPowerInfo
 
         Update_Product_Sp,
 
+        
+
+        // Products_Detail Store Procedures
+
+        Get_Product_Detail_By_Id_Sp,
+
+        Get_Product_Details_Sp,
+
+        Get_Columns_Sp,
+
+        Get_Column_By_Id_Sp,
+
+        Get_Product_Categories_Sp,
+
+        Get_Product_Volts_Sp,
+
+        Get_Product_Columns_Sp,
 
         // Services Store Procedures
 
@@ -49,6 +66,7 @@ namespace MSPowerInfo
 
         Update_Services_Sp,
 
+        Get_Services_Categories_Sp,
 
         // NewsLetter Store Procedures
 
@@ -75,7 +93,6 @@ namespace MSPowerInfo
 
         // Job Opening Store Procedures
 
-
         Get_Job_Opening_By_Id_Sp,
 
         Get_Job_Openings_Sp,
@@ -88,7 +105,6 @@ namespace MSPowerInfo
 
         // Enquiry Store Procedures
 
-
         Get_Enquiry_By_Id_Sp,
 
         Get_Enquirys_Sp,
@@ -98,7 +114,6 @@ namespace MSPowerInfo
 
          // Job_Application Store Procedures
 
-
         Get_Job_Application_By_Id_Sp,
 
         Get_Job_Applications_Sp,
@@ -107,7 +122,6 @@ namespace MSPowerInfo
 
 
         // About Us Store Procedures
-
 
         Get_AboutUs_By_Id_Sp,
 
@@ -119,14 +133,11 @@ namespace MSPowerInfo
 
 
     }
-
-
-
-
+    
     public enum Language
     {
-        en,
+        en = 1,
 
-        ch,
+        ch = 2,
     }
 }

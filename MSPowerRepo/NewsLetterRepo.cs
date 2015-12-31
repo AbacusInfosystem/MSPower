@@ -27,7 +27,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<NewsLetterInfo> Get_NewsLetters(ref PaginationInfo pager)
+        public List<NewsLetterInfo> Get_NewsLetters(ref PaginationInfo pager, int language_Id)
         {
             List<NewsLetterInfo> newsletters = new List<NewsLetterInfo>();
 
@@ -37,8 +37,11 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_NewsLetters_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_NewsLetters_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -112,7 +115,7 @@ namespace MSPowerRepo
         //    return retVal;
         //}
 
-        public NewsLetterInfo Get_NewsLetter_By_Id(int newsletter_Id)
+        public NewsLetterInfo Get_NewsLetter_By_Id(int newsletter_Id, int language_Id)
         {
             NewsLetterInfo newsletter = new NewsLetterInfo();
 
@@ -126,7 +129,11 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@NewsLetter_Id", newsletter_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_NewsLetter_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             if (dt != null && dt.Rows.Count > 0)
             {

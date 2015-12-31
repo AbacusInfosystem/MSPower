@@ -21,14 +21,14 @@ namespace MSPowerManager
             _joRepo = new Job_OpeningRepo();
         }
 
-        public List<Job_OpeningInfo> Get_Job_Openings(ref PaginationInfo Pager)
+        public List<Job_OpeningInfo> Get_Job_Openings(ref PaginationInfo pager, int language_Id)
         {
-            return _joRepo.Get_Job_Openings(ref Pager);
+            return _joRepo.Get_Job_Openings(ref pager, language_Id);
         }
 
-        public Job_OpeningInfo Get_Job_Opening_By_Id(int job_opening_Id)
+        public Job_OpeningInfo Get_Job_Opening_By_Id(int job_opening_Id, int language_Id)
         {
-            return _joRepo.Get_Job_Opening_By_Id(job_opening_Id);
+            return _joRepo.Get_Job_Opening_By_Id(job_opening_Id, language_Id);
         }
 
         public int Insert_Job_Opening(Job_OpeningInfo job_opening)

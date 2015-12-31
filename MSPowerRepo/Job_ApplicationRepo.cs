@@ -26,7 +26,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<Job_ApplicationInfo> Get_Job_Applications(ref PaginationInfo pager)
+        public List<Job_ApplicationInfo> Get_Job_Applications(ref PaginationInfo pager, int language_Id)
         {
             List<Job_ApplicationInfo> job_applications = new List<Job_ApplicationInfo>();
 
@@ -36,8 +36,11 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_Job_Applications_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Job_Applications_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -50,68 +53,7 @@ namespace MSPowerRepo
             return job_applications;
         }
 
-        //private List<Job_ApplicationInfo> Seed_Job_Application()
-        //{
-        //    List<Job_ApplicationInfo> retVal = new List<Job_ApplicationInfo>();
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 1, Job_Application_Title = "ABC", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 2, Job_Application_Title = "EFG", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new Job_ApplicationInfo() { Job_Application_Id = 3, Job_Application_Title = "HIJ", Job_Application_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    return retVal;
-        //}
-
-        public Job_ApplicationInfo Get_Job_Application_By_Id(int job_application_Id)
+        public Job_ApplicationInfo Get_Job_Application_By_Id(int job_application_Id, int language_Id)
         {
             Job_ApplicationInfo job_application = new Job_ApplicationInfo();
 
@@ -125,6 +67,8 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Job_Application_Id", job_application_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Job_Application_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
@@ -134,9 +78,6 @@ namespace MSPowerRepo
                     job_application = Get_Job_Application_Values(dr);
                 }
             }
-
-            //job_application = Seed_Job_Application().Where(a => a.Job_Application_Id == job_application_Id).Single();
-
 
             return job_application;
         }
@@ -150,24 +91,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Job_Application_Values(job_application);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Job_Application_Title", job_application.Job_Application_Title));
-
-            //param.Add(new SqlParameter("@Job_Application_Description", job_application.Job_Application_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", job_application.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", job_application.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", job_application.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", job_application.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", job_application.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", job_application.UpdatedBy));
 
             int job_application_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_Job_Application_Sp.ToString(), CommandType.StoredProcedure, _con));
 
@@ -183,29 +106,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Job_Application_Values(job_application);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Job_Application_Id", job_application.Job_Application_Id));
-
-            //param.Add(new SqlParameter("@Job_Application_Title", job_application.Job_Application_Title));
-
-            //param.Add(new SqlParameter("@Job_Application_Description", job_application.Job_Application_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", job_application.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", job_application.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", job_application.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", job_application.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", job_application.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", job_application.UpdatedBy));
-
-            //_sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_Job_Application_Sp.ToString(), CommandType.StoredProcedure, _con);
-
         }
 
         public Job_ApplicationInfo Get_Job_Application_Values(DataRow dr)
@@ -214,6 +114,8 @@ namespace MSPowerRepo
             Job_ApplicationInfo retVal = new Job_ApplicationInfo();
 
             retVal.Job_Application_Id = Convert.ToInt32(dr["Job_Application_Id"]);
+
+            retVal.Language_Id = Convert.ToInt32(dr["Language_Id"]);
 
             retVal.First_Name = Convert.ToString(dr["First_Name"]);
 
@@ -233,9 +135,9 @@ namespace MSPowerRepo
         private List<SqlParameter> Set_Job_Application_Values(Job_ApplicationInfo job_application)
        
         {
-            
-
             List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", job_application.Language_Id));
 
             param.Add(new SqlParameter("@First_Name", job_application.First_Name));
 

@@ -49,6 +49,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    cuViewModel.ContactUs.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    cuViewModel.ContactUs.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 cuViewModel.ContactUs.Created_By = ((UserInfo)Session["User"]).UserId;
 
                 cuViewModel.ContactUs.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -65,7 +75,9 @@ namespace MSPowerWebApp.Controllers
 
                 cuViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
             }
+
             catch (Exception ex)
+            
             {
                 cuViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
@@ -86,6 +98,15 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    cuViewModel.ContactUs.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    cuViewModel.ContactUs.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 cuViewModel.ContactUs.Updated_On = DateTime.Now;
 
                 cuViewModel.ContactUs.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -117,6 +138,15 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    cuViewModel.ContactUs.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    cuViewModel.ContactUs.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 cuViewModel.ContactUs.Updated_On = DateTime.Now;
 
                 cuViewModel.ContactUs.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -149,9 +179,21 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 ContactUsManager cuMan = new ContactUsManager();
 
-                cuViewModel.ContactUs = cuMan.Get_ContactUs_By_Id(cuViewModel.Filter.ContactUs_Id);
+                cuViewModel.ContactUs = cuMan.Get_ContactUs_By_Id(cuViewModel.Filter.ContactUs_Id, language_Id);
             }
 
             catch (Exception ex)
@@ -174,9 +216,20 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 pager = cuViewModel.Pager;
 
-                cuViewModel.ContactUss = cuMan.Get_ContactUss(ref pager);
+                cuViewModel.ContactUss = cuMan.Get_ContactUss(ref pager, language_Id);
 
                 cuViewModel.Pager = pager;
 

@@ -26,7 +26,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<ProductInfo> Get_Products(ref PaginationInfo pager)
+        public List<ProductInfo> Get_Products(ref PaginationInfo pager, int language_Id)
         {
             List<ProductInfo> products = new List<ProductInfo>();
 
@@ -36,8 +36,11 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_Products_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Products_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -50,68 +53,7 @@ namespace MSPowerRepo
             return products;
         }
 
-        //private List<ProductInfo> Seed_Product()
-        //{
-        //    List<ProductInfo> retVal = new List<ProductInfo>();
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 1, Product_Title = "ABC", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 2, Product_Title = "EFG", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ProductInfo() { Product_Id = 3, Product_Title = "HIJ", Product_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    return retVal;
-        //}
-
-        public ProductInfo Get_Product_By_Id(int product_Id)
+        public ProductInfo Get_Product_By_Id(int product_Id, int language_Id)
         {
             ProductInfo product = new ProductInfo();
 
@@ -125,7 +67,11 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Product_Id", product_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -134,9 +80,6 @@ namespace MSPowerRepo
                     product = Get_Product_Values(dr);
                 }
             }
-
-            //product = Seed_Product().Where(a => a.Product_Id == product_Id).Single();
-
 
             return product;
         }
@@ -150,24 +93,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Product_Values(product);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Product_Title", product.Product_Title));
-
-            //param.Add(new SqlParameter("@Product_Description", product.Product_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", product.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", product.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", product.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", product.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", product.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", product.UpdatedBy));
 
             int product_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_Product_Sp.ToString(), CommandType.StoredProcedure, _con));
 
@@ -183,26 +108,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Product_Values(product);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Product_Id", product.Product_Id));
-
-            //param.Add(new SqlParameter("@Product_Title", product.Product_Title));
-
-            //param.Add(new SqlParameter("@Product_Description", product.Product_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", product.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", product.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", product.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", product.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", product.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", product.UpdatedBy));
 
             _sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_Product_Sp.ToString(), CommandType.StoredProcedure, _con);
 
@@ -267,6 +172,42 @@ namespace MSPowerRepo
 
             return param;
         }
+
+        //public List<LookUpInfo> Get_Product_Categories1(int language_Id)
+        //{
+        //    List<LookUpInfo> product_categories1 = new List<LookUpInfo>();
+
+        //    SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+        //    SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+        //    _con.Open();
+
+        //    List<SqlParameter> param = new List<SqlParameter>();
+
+        //    param.Add(new SqlParameter("@Language_Id", language_Id));
+
+        //    DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Categories1_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+        //    _con.Close();
+
+        //    if (dt != null && dt.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            LookUpInfo product_category = new LookUpInfo();
+
+        //            product_category.Id = Convert.ToInt32(dr["Product_Category_Id"]);
+
+        //            product_category.Value = Convert.ToString(dr["Product_Category1_EN"]);
+
+        //            product_categories1.Add(product_category);
+        //        }
+        //    }
+
+        //    return product_categories1;
+        //}
+
     }
 }
 
@@ -291,20 +232,4 @@ namespace MSPowerRepo
 
 
 
-            //if (products != null && products.Count > 0)
-            //{
-            //    int count = 0;
-
-            //    count = products.Count();
-
-            //    if (pager.IsPagingRequired)
-            //    {
-            //        products = products.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
-            //    }
-
-            //    pager.TotalRecords = count;
-
-            //    int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
-
-            //    pager.TotalPages = pages;
-            //}
+          

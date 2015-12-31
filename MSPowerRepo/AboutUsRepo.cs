@@ -27,7 +27,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<AboutUsInfo> Get_AboutUss(ref PaginationInfo pager)
+        public List<AboutUsInfo> Get_AboutUss(ref PaginationInfo pager, int language_Id)
         {
             List<AboutUsInfo> aboutuss = new List<AboutUsInfo>();
 
@@ -37,8 +37,11 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_AboutUss_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_AboutUss_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -51,68 +54,7 @@ namespace MSPowerRepo
             return aboutuss;
         }
 
-        //private List<AboutUsInfo> Seed_AboutUs()
-        //{
-        //    List<AboutUsInfo> retVal = new List<AboutUsInfo>();
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 1, AboutUs_Title = "ABC", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 2, AboutUs_Title = "EFG", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new AboutUsInfo() { AboutUs_Id = 3, AboutUs_Title = "HIJ", AboutUs_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    return retVal;
-        //}
-
-        public AboutUsInfo Get_AboutUs_By_Id(int aboutus_Id)
+        public AboutUsInfo Get_AboutUs_By_Id(int aboutus_Id, int language_Id)
         {
             AboutUsInfo aboutus = new AboutUsInfo();
 
@@ -126,6 +68,8 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@About_Us_Id", aboutus_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_AboutUs_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
@@ -135,9 +79,6 @@ namespace MSPowerRepo
                     aboutus = Get_AboutUs_Values(dr);
                 }
             }
-
-            //aboutus = Seed_AboutUs().Where(a => a.AboutUs_Id == aboutus_Id).Single();
-
 
             return aboutus;
         }
@@ -151,24 +92,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_AboutUs_Values(aboutus);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@AboutUs_Title", aboutus.AboutUs_Title));
-
-            //param.Add(new SqlParameter("@AboutUs_Description", aboutus.AboutUs_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", aboutus.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", aboutus.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", aboutus.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", aboutus.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", aboutus.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", aboutus.UpdatedBy));
 
             int aboutus_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_AboutUs_Sp.ToString(), CommandType.StoredProcedure, _con));
 
@@ -184,26 +107,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_AboutUs_Values(aboutus);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@AboutUs_Id", aboutus.AboutUs_Id));
-
-            //param.Add(new SqlParameter("@AboutUs_Title", aboutus.AboutUs_Title));
-
-            //param.Add(new SqlParameter("@AboutUs_Description", aboutus.AboutUs_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", aboutus.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", aboutus.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", aboutus.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", aboutus.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", aboutus.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", aboutus.UpdatedBy));
 
             _sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_AboutUs_Sp.ToString(), CommandType.StoredProcedure, _con);
 

@@ -1,5 +1,10 @@
 ﻿$(function () {
 
+    if ($("#drpServiceCategory").val() != "") {
+
+        $("#drpServiceCategory").attr("disabled", "disabled");
+    }
+
     $("#btnSave").click(function () {
 
         alert("I am an alert!");

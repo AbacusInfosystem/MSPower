@@ -50,7 +50,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-               
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 eViewModel.Enquiry.Created_On = DateTime.Now;
 
                 EnquiryManager eMan = new EnquiryManager();
@@ -116,7 +125,17 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-              
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
+
                 EnquiryManager eMan = new EnquiryManager();
 
                 // this should be delete method.
@@ -145,9 +164,21 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 EnquiryManager eMan = new EnquiryManager();
 
-                eViewModel.Enquiry = eMan.Get_Enquiry_By_Id(eViewModel.Filter.Enquiry_Id);
+                eViewModel.Enquiry = eMan.Get_Enquiry_By_Id(eViewModel.Filter.Enquiry_Id, language_Id);
             }
 
             catch (Exception ex)
@@ -170,9 +201,21 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
+
                 pager = eViewModel.Pager;
 
-                eViewModel.Enquirys = eMan.Get_Enquirys(ref pager);
+                eViewModel.Enquirys = eMan.Get_Enquirys(ref pager, language_Id);
 
                 eViewModel.Pager = pager;
 

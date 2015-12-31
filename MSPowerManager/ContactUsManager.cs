@@ -20,14 +20,14 @@ namespace MSPowerManager
             _cuRepo = new ContactUsRepo();
         }
 
-        public List<ContactUsInfo> Get_ContactUss(ref PaginationInfo Pager)
+        public List<ContactUsInfo> Get_ContactUss(ref PaginationInfo pager, int language_Id)
         {
-            return _cuRepo.Get_ContactUss(ref Pager);
+            return _cuRepo.Get_ContactUss(ref pager, language_Id);
         }
 
-        public ContactUsInfo Get_ContactUs_By_Id(int contactus_Id)
+        public ContactUsInfo Get_ContactUs_By_Id(int contactus_Id, int language_Id)
         {
-            return _cuRepo.Get_ContactUs_By_Id(contactus_Id);
+            return _cuRepo.Get_ContactUs_By_Id(contactus_Id, language_Id);
         }
 
         public int Insert_ContactUs(ContactUsInfo contactus)

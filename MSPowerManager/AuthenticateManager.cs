@@ -10,6 +10,7 @@ namespace MSPowerManager
 {
     public class AuthenticateManager
     {
+        
         public UserInfo AuthenticateUser(string userName, string password)
         {
             AuthenticateRepo authRepo = new AuthenticateRepo();
@@ -27,5 +28,6 @@ namespace MSPowerManager
 
             return retVal;
         }
+    
     }
 }

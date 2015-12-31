@@ -1,0 +1,217 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/ProductDetail/productdetail_search_events.js"></script>
+
+<script src="~/Scripts/ProductDetail/productdetail_search_method.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Product Detail
+
+            <small>Listing Page</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">ProductDetail Listing</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <div class="box-body no-padding">
+
+                        <div class="row">
+
+                            <div class="col-md-12" style="padding-left: 26px; padding-bottom: 10px; padding-top: 10px;">
+
+                                <form id="frmSearch_ProductDetail">
+
+                                    <div class="btn-group">
+
+                                        <a id="btnCreate" class="btn btn-default btn-sm" href="@Url.Action("Index", "ProductDetail")" role="button">Create</a>
+
+                                    </div>
+
+                                    <div class="btn-group">
+
+                                        <button id="btnEdit" type="button" class="btn btn-default btn-sm" role="button">Edit</button>
+
+                                        <button id="btnDelete" type="button" class="btn btn-warning btn-sm">Delete</button>
+                                    </div>
+
+                                    <input type="hidden" id="hdnProductDetail_Id" name="Filter.Product_Category_Id" />
+
+                                    <input type="hidden" id="hdnColumnDetail_Id" name="Filter.Product_Category_Id" />
+
+                                    <input type="hidden" id="hdnCurrentPage" name="Page.CurrentPage" />
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                        <table id="tblProductDetail" class="table table-hover table-responsive ">
+                            <tbody>
+                                <tr>
+                                    <th colspan="4">Product Category</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>Category1</th>
+                                    <th>Category2</th>
+                                    <th>Category3</th>
+                                </tr>
+                                @*<tr>
+                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
+                                    <td>Discrete Thyristors</td>
+                                    <td>Phase Control Thyristor</td>
+                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
+                                </tr>
+                                <tr>
+                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
+                                    <td>Discrete Thyristors</td>
+                                    <td>Phase Control Thyristor</td>
+                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
+                                </tr>
+                                <tr>
+                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
+                                    <td>Discrete Thyristors</td>
+                                    <td>Phase Control Thyristor</td>
+                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
+                                </tr>
+                                <tr>
+                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
+                                    <td>Discrete Thyristors</td>
+                                    <td>Phase Control Thyristor</td>
+                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
+                                </tr>
+                                <tr>
+                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
+                                    <td>Discrete Thyristors</td>
+                                    <td>Phase Control Thyristor</td>
+                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
+                                </tr>
+                                <tr>
+                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
+                                    <td>Discrete Thyristors</td>
+                                    <td>Phase Control Thyristor</td>
+                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
+                                </tr>*@
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+
+                            <div class="col-md-2" style="padding-left: 26px; padding-bottom: 10px; padding-top: 10px;">
+                                <div class="form-group">
+                                    <label for="drpProduct_Volts" style="color: #333" class="lookup-title">Volts</label>
+                                    <select class="form-control input-sm" id="drpProduct_Volts" name="volts.Volts">
+                                        <option value="">--Select--</option>
+
+                                @foreach (var item in Model.Volts)
+                                    {
+                                if (item.Id == Model.Product_Detail.Volts)
+                                {
+                                    <option value="@item.Id" selected="selected">@item.Value</option>
+                                }
+
+                                else
+                                {
+                                    <option value="@item.Id">@item.Value</option>
+                                }
+                            }
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <table id="tblColumnDetail" class="table table-hover table-responsive ">
+                            <tbody>
+                                <tr>
+                                    <th colspan="11">Products</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>Column1</th>
+                                    <th>Column2</th>
+                                    <th>Column3</th>
+                                    <th>Column4</th>
+                                    <th>Column5</th>
+                                    <th>Column6</th>
+                                    <th>Column7</th>
+                                    <th>Column8</th>
+                                    <th>Column9</th>
+                                    <th>Column10</th>
+                                    @*<th>Column11</th>
+                        <th>Column12</th>
+                        <th>Column13</th>
+                        <th>Column14</th>
+                        <th>Column15</th>
+                        <th>Column16</th>
+                        <th>Column17</th>
+                        <th>Column18</th>
+                        <th>Column19</th>
+                        <th>Column20</th>
+                        <th>Column21</th>
+                        <th>Column22</th>
+                        <th>Column23</th>
+                        <th>Column24</th>
+                        <th>Column25</th>*@
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="box-footer clearfix">
+
+                        <div class="pagination pagination-sm no-margin pull-right">
+
+                            <ul></ul>
+                        </div>
+
+                        <div id="divSearchGridOverlay" class="overlay">
+
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('.iradio-list').iCheck({
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+    });
+
+</script>

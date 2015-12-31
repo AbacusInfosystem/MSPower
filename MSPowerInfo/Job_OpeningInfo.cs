@@ -16,8 +16,9 @@ namespace MSPowerInfo
           
           }
 
-
         public int Job_Opening_Id { get; set; }
+
+        public int Language_Id { get; set; }
 
         public string Job_Title { get; set; }
 
@@ -36,7 +37,6 @@ namespace MSPowerInfo
         public DateTime Updated_On { get; set; }
 
         public int Updated_By { get; set; }
-
 
     }
 }

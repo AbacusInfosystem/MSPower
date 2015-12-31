@@ -52,6 +52,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+
+                    joViewModel.Job_Opening.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    joViewModel.Job_Opening.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 joViewModel.Job_Opening.Created_By = ((UserInfo)Session["User"]).UserId;
 
                 joViewModel.Job_Opening.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -89,6 +99,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+
+                    joViewModel.Job_Opening.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    joViewModel.Job_Opening.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 joViewModel.Job_Opening.Updated_On = DateTime.Now;
 
                 joViewModel.Job_Opening.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -120,6 +140,16 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+
+                    joViewModel.Job_Opening.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    joViewModel.Job_Opening.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 joViewModel.Job_Opening.Updated_On = DateTime.Now;
 
                 joViewModel.Job_Opening.Updated_By = ((UserInfo)Session["User"]).UserId;
@@ -151,11 +181,24 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+
+                else
+
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 Job_OpeningManager joMan = new Job_OpeningManager();
 
                 //joViewModel.Job_Opening = joMan.Get_Job_Opening_By_Id(joViewModel.Job_Opening.Job_Opening_Id);
 
-                joViewModel.Job_Opening = joMan.Get_Job_Opening_By_Id(joViewModel.Filter.Job_Opening_Id);
+                joViewModel.Job_Opening = joMan.Get_Job_Opening_By_Id(joViewModel.Filter.Job_Opening_Id, language_Id);
             }
 
             catch (Exception ex)
@@ -178,9 +221,21 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 pager = joViewModel.Pager;
 
-                joViewModel.Job_Openings = joMan.Get_Job_Openings(ref pager);
+                joViewModel.Job_Openings = joMan.Get_Job_Openings(ref pager, language_Id);
 
                 joViewModel.Pager = pager;
 

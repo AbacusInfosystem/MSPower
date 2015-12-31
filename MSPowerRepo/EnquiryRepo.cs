@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 using MSPowerInfo;
 using DataAccess.Sql;
 using System.Configuration;
@@ -13,9 +12,8 @@ using System.Data;
 
 
 namespace MSPowerRepo
-
 {
-    
+  
     public class EnquiryRepo
     {
 
@@ -30,7 +28,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<EnquiryInfo> Get_Enquirys(ref PaginationInfo pager)
+        public List<EnquiryInfo> Get_Enquirys(ref PaginationInfo pager, int language_Id)
         {
             List<EnquiryInfo> enquirys = new List<EnquiryInfo>();
 
@@ -40,8 +38,13 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_Enquirys_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Enquirys_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -54,68 +57,7 @@ namespace MSPowerRepo
             return enquirys;
         }
 
-        //private List<EnquiryInfo> Seed_Enquiry()
-        //{
-        //    List<EnquiryInfo> retVal = new List<EnquiryInfo>();
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 1, Enquiry_Title = "ABC", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 2, Enquiry_Title = "EFG", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new EnquiryInfo() { Enquiry_Id = 3, Enquiry_Title = "HIJ", Enquiry_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    return retVal;
-        //}
-
-        public EnquiryInfo Get_Enquiry_By_Id(int enquiry_Id)
+        public EnquiryInfo Get_Enquiry_By_Id(int enquiry_Id, int language_Id)
         {
             EnquiryInfo enquiry = new EnquiryInfo();
 
@@ -129,6 +71,8 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Enquiry_Id", enquiry_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Enquiry_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
@@ -138,9 +82,6 @@ namespace MSPowerRepo
                     enquiry = Get_Enquiry_Values(dr);
                 }
             }
-
-            //enquiry = Seed_Enquiry().Where(a => a.Enquiry_Id == enquiry_Id).Single();
-
 
             return enquiry;
         }
@@ -154,24 +95,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Enquiry_Values(enquiry);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Enquiry_Title", enquiry.Enquiry_Title));
-
-            //param.Add(new SqlParameter("@Enquiry_Description", enquiry.Enquiry_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", enquiry.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", enquiry.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", enquiry.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", enquiry.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", enquiry.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", enquiry.UpdatedBy));
 
             int enquiry_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_Enquiry_Sp.ToString(), CommandType.StoredProcedure, _con));
 
@@ -187,29 +110,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Enquiry_Values(enquiry);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Enquiry_Id", enquiry.Enquiry_Id));
-
-            //param.Add(new SqlParameter("@Enquiry_Title", enquiry.Enquiry_Title));
-
-            //param.Add(new SqlParameter("@Enquiry_Description", enquiry.Enquiry_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", enquiry.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", enquiry.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", enquiry.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", enquiry.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", enquiry.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", enquiry.UpdatedBy));
-
-            //_sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_Enquiry_Sp.ToString(), CommandType.StoredProcedure, _con);
-
         }
 
         public EnquiryInfo Get_Enquiry_Values(DataRow dr)
@@ -253,8 +153,6 @@ namespace MSPowerRepo
         private List<SqlParameter> Set_Enquiry_Values(EnquiryInfo enquiry)
        
         {
-            
-
             List<SqlParameter> param = new List<SqlParameter>();
 
             param.Add(new SqlParameter("@Language_Id", enquiry.Language_Id));
@@ -283,11 +181,7 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Delivery", enquiry.Delivery));
 
-            //if (enquiry.Enquiry_Id == 0)
-            //{
             param.Add(new SqlParameter("@Created_On", enquiry.Created_On));
-
-            //}
 
             if (enquiry.Enquiry_Id != 0)
             {

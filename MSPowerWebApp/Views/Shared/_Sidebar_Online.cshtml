@@ -5,6 +5,9 @@
             <li class="active"><a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product</a></li>
             <li><a href="@Url.Action("ProductListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product Listing</a></li>
 
+            <li class="active"><a href="@Url.Action("ProductDetail", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product_Detail</a></li>
+            <li><a href="@Url.Action("ProductDetailListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product_Detail Listing</a></li>
+
             <li class="active"><a href="@Url.Action("Service", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Service</a></li>
             <li><a href="@Url.Action("ServiceListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Service Listing</a></li>
 

@@ -18,14 +18,14 @@ namespace MSPowerManager
             _pRepo = new ProductRepo();
         }
 
-        public List<ProductInfo> Get_Products(ref PaginationInfo Pager)
+        public List<ProductInfo> Get_Products(ref PaginationInfo Pager, int language_Id)
         {
-            return _pRepo.Get_Products(ref Pager);
+            return _pRepo.Get_Products(ref Pager, language_Id);
         }
 
-        public ProductInfo Get_Product_By_Id(int product_Id)
+        public ProductInfo Get_Product_By_Id(int product_Id, int language_Id)
         {
-            return _pRepo.Get_Product_By_Id(product_Id);
+            return _pRepo.Get_Product_By_Id(product_Id, language_Id);
         }
 
         public int Insert_Product(ProductInfo product)
@@ -37,5 +37,11 @@ namespace MSPowerManager
         {
             _pRepo.Update_Product(product);
         }
+
+        //public List<LookUpInfo> Get_Product_Categories(int language_Id)
+        //{
+
+        //    return _pRepo.Get_Product_Categories(language_Id);
+        //}
     }
 }

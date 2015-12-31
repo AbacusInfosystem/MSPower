@@ -26,7 +26,7 @@ namespace MSPowerRepo
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
-        public List<ServicesInfo> Get_Services(ref PaginationInfo pager)
+        public List<ServicesInfo> Get_Services(ref PaginationInfo pager, int language_Id)
         {
             List<ServicesInfo> services = new List<ServicesInfo>();
 
@@ -36,8 +36,11 @@ namespace MSPowerRepo
 
             _con.Open();
 
+            List<SqlParameter> param = new List<SqlParameter>();
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(null, StoredProcedures.Get_Services_Sp.ToString(), CommandType.StoredProcedure, _con);
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Services_Sp.ToString(), CommandType.StoredProcedure, _con);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -50,69 +53,7 @@ namespace MSPowerRepo
             return services;
         }
 
-        //private List<ServicesInfo> Seed_Services()
-
-        //{
-        //    List<ServicesInfo> retVal = new List<ServicesInfo>();
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 1, Product_Title = "ABC", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 2, Product_Title = "EFG", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = false, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    retVal.Add(new ServicesInfo() { Services_Id = 3, Product_Title = "HIJ", Services_Description = "<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
-
-        //    return retVal;
-        //}
-
-        public ServicesInfo Get_Services_By_Id(int service_Id)
+        public ServicesInfo Get_Services_By_Id(int service_Id, int language_Id)
         {
             ServicesInfo services = new ServicesInfo();
 
@@ -126,7 +67,11 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Service_Id", service_Id));
 
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Services_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -135,9 +80,6 @@ namespace MSPowerRepo
                     services = Get_Services_Values(dr);
                 }
             }
-
-            //Services = Seed_Services().Where(a => a.Services_Id == Services_Id).Single();
-
 
             return services;
         }
@@ -151,24 +93,6 @@ namespace MSPowerRepo
             _con.Open();
 
             List<SqlParameter> param = Set_Services_Values(service);
-
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Services_Title", services.Services_Title));
-
-            //param.Add(new SqlParameter("@Services_Description", services.Services_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", services.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", services.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", services.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", services.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", services.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", services.UpdatedBy));
 
             int services_Id = Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_Services_sp.ToString(), CommandType.StoredProcedure, _con));
 
@@ -185,26 +109,6 @@ namespace MSPowerRepo
 
             List<SqlParameter> param = Set_Services_Values(service);
 
-            //List<SqlParameter> param = new List<SqlParameter>();
-
-            //param.Add(new SqlParameter("@Services_Id", services.Services_Id));
-
-            //param.Add(new SqlParameter("@Services_Title", services.Product_Title));
-
-            //param.Add(new SqlParameter("@Services_Description", services.Services_Description));
-
-            //param.Add(new SqlParameter("@Language_Id", services.Language_Id));
-
-            //param.Add(new SqlParameter("@Is_Active", services.Is_Active));
-
-            //param.Add(new SqlParameter("@CreatedOn", services.CreatedOn));
-
-            //param.Add(new SqlParameter("@CreatedBy", services.CreatedBy));
-
-            //param.Add(new SqlParameter("@UpdatedOn", services.UpdatedOn));
-
-            //param.Add(new SqlParameter("@UpdatedBy", services.UpdatedBy));
-
             _sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Update_Services_Sp.ToString(), CommandType.StoredProcedure, _con);
 
         }
@@ -217,6 +121,8 @@ namespace MSPowerRepo
             retVal.Service_Id = Convert.ToInt32(dr["Service_Id"]);
 
             retVal.Service_Title = Convert.ToString(dr["Service_Title"]);
+
+            retVal.Service_Category_Id = Convert.ToInt32(dr["Service_Category_Id"]);
 
             retVal.Service_Description = Convert.ToString(dr["Service_Description"]);
 
@@ -243,6 +149,8 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Service_Title", services.Service_Title));
 
+            param.Add(new SqlParameter("Service_Category_Id", services.Service_Category_Id));
+
             param.Add(new SqlParameter("@Service_Description", services.Service_Description));
 
             param.Add(new SqlParameter("@Language_Id", services.Language_Id));
@@ -268,6 +176,42 @@ namespace MSPowerRepo
 
             return param;
         }
+
+        public List<LookUpInfo> Get_Services_Categories(int language_Id)
+        {
+            List<LookUpInfo> services_categories = new List<LookUpInfo>();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Services_Categories_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    LookUpInfo service_category = new LookUpInfo();
+
+                    service_category.Id = Convert.ToInt32(dr["Service_Category_Id"]);
+
+                    service_category.Value = Convert.ToString(dr["Service_Category"]);
+
+                    services_categories.Add(service_category);
+                }
+            }
+
+            return services_categories;
+        }
+    
     }
 }
 
@@ -291,24 +235,6 @@ namespace MSPowerRepo
 
 
 
-
-            //if (products != null && products.Count > 0)
-            //{
-            //    int count = 0;
-
-            //    count = products.Count();
-
-            //    if (pager.IsPagingRequired)
-            //    {
-            //        products = products.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
-            //    }
-
-            //    pager.TotalRecords = count;
-
-            //    int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
-
-            //    pager.TotalPages = pages;
-            //}
 
 
     

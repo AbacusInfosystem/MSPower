@@ -20,14 +20,14 @@ namespace MSPowerManager
             _jaRepo = new Job_ApplicationRepo();
         }
 
-        public List<Job_ApplicationInfo> Get_Job_Applications(ref PaginationInfo Pager)
+         public List<Job_ApplicationInfo> Get_Job_Applications(ref PaginationInfo pager, int language_Id)
         {
-            return _jaRepo.Get_Job_Applications(ref Pager);
+            return _jaRepo.Get_Job_Applications(ref pager, language_Id);
         }
 
-        public Job_ApplicationInfo Get_Job_Application_By_Id(int job_application_Id)
+         public Job_ApplicationInfo Get_Job_Application_By_Id(int job_application_Id, int language_Id)
         {
-            return _jaRepo.Get_Job_Application_By_Id(job_application_Id);
+            return _jaRepo.Get_Job_Application_By_Id(job_application_Id, language_Id);
         }
 
         public int Insert_Job_Application(Job_ApplicationInfo job_application)

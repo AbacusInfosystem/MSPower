@@ -21,6 +21,8 @@ namespace MSPowerWebApp.Models
 
         public Product_Filter Filter { get; set; }
 
+        //public List<LookUpInfo> Product_Categories { get; set; }
+
         public ProductViewModel()
         {
             Product = new ProductInfo();
@@ -30,6 +32,8 @@ namespace MSPowerWebApp.Models
             Products = new List<ProductInfo>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
+            //Product_Categories = new List<LookUpInfo>();
         }
     }
 
