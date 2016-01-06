@@ -21,6 +21,6 @@ namespace MSPowerInfo
 
         public int Volts { get; set; }
 
-        public int Column_Ref_Id { get; set; }
+        public int Product_Column_Ref_Id { get; set; }
     }
 }

@@ -56,6 +56,8 @@ namespace MSPowerInfo
 
         Get_Product_Columns_Sp,
 
+        Get_Product_Details_Headers_Sp,
+
         // Services Store Procedures
 
         Get_Services_By_Id_Sp,

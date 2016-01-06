@@ -121,9 +121,11 @@ namespace MSPowerRepo
 
             List<SqlParameter> param = new List<SqlParameter>();
 
-            param.Add(new SqlParameter("@Language_Id", product_category_column_mapping_Id));
+            param.Add(new SqlParameter("@Product_Category_Column_Mapping_Id", product_category_column_mapping_Id));
 
-            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Columns_Sp.ToString(), CommandType.StoredProcedure, _con);
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -134,6 +136,36 @@ namespace MSPowerRepo
             }
 
             return productcolummns;
+        }
+
+
+        public List<ProductDetailHeaderInfo> Get_Product_Details_Header(int product_column_ref_Id)
+        {
+            List<ProductDetailHeaderInfo> productheadercolummns = new List<ProductDetailHeaderInfo>();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Product_Column_Ref_Id", product_column_ref_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_Headers_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    productheadercolummns.Add(Get_Product_Details_Header_Values(dr));
+                }
+            }
+
+            return productheadercolummns;
         }
 
         //public ProductDetailInfo Get_ProductDetail_By_Id(int productdetail_Id, int language_Id)
@@ -227,7 +259,7 @@ namespace MSPowerRepo
 
             retval.Volts = Convert.ToInt32(dr["Volts"]);
 
-            retval.Column_Ref_Id = Convert.ToInt32(dr["Column_Ref_Id"]);
+            retval.Product_Column_Ref_Id = Convert.ToInt32(dr["Product_Column_Ref_Id"]);
 
             return retval;
 
@@ -244,6 +276,17 @@ namespace MSPowerRepo
             retval.Col2 = Convert.ToString(dr["Col2"]);
 
             retval.Col3 = Convert.ToString(dr["Col3"]);
+
+            return retval;
+
+        }
+
+        public ProductDetailHeaderInfo Get_Product_Details_Header_Values(DataRow dr)
+        {
+
+            ProductDetailHeaderInfo retval = new ProductDetailHeaderInfo();
+
+            retval.Product_Column_Name = Convert.ToString(dr["Product_Column_Name"]);
 
             return retval;
 
@@ -281,7 +324,7 @@ namespace MSPowerRepo
 
             param.Add(new SqlParameter("@Product_Category_Column_Mapping_Id", volt.Product_Category_Column_Mapping_Id));
 
-            param.Add(new SqlParameter("@Column_Ref_Id", volt.Column_Ref_Id));
+            param.Add(new SqlParameter("@Product_Column_Ref_Id", volt.Product_Column_Ref_Id));
 
             if (volt.Product_Category_Id != 0)
             {
@@ -306,6 +349,23 @@ namespace MSPowerRepo
             if (productcolumn.Product_Category_Column_Mapping_Id != 0)
             {
                 param.Add(new SqlParameter("@Product_Category_Column_Mapping_Id", productcolumn.Product_Category_Column_Mapping_Id));
+            }
+
+            return param;
+
+        }
+
+
+        private List<SqlParameter> Set_Product_Details__Header_Values(ProductDetailHeaderInfo productheadercolumn)
+        {
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Product_Column_Name", productheadercolumn.Product_Column_Name));
+
+            if (productheadercolumn.Product_Column_Ref_Id != 0)
+            {
+                param.Add(new SqlParameter("@Product_Column_Ref_Id", productheadercolumn.Product_Column_Ref_Id));
             }
 
             return param;

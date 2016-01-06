@@ -34,6 +34,12 @@ namespace MSPowerManager
             return _pdRepo.Get_Product_Details(product_category_column_mapping_Id);
         }
 
+        public List<ProductDetailHeaderInfo> Get_Product_Details_Header(int product_column_ref_Id)
+        {
+            return _pdRepo.Get_Product_Details_Header(product_column_ref_Id);
+        }
+
+
 
     }
 }

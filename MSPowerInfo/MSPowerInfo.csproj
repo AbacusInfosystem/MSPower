@@ -50,6 +50,7 @@
     <Compile Include="LookUpInfo.cs" />
     <Compile Include="NewsLetterInfo.cs" />
     <Compile Include="PaginationInfo.cs" />
+    <Compile Include="ProductDetailHeaderInfo.cs" />
     <Compile Include="ProductDetailInfo.cs" />
     <Compile Include="ProductInfo.cs" />
     <Compile Include="ProductCategoryInfo.cs" />

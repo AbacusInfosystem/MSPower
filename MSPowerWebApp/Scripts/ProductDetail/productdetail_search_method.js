@@ -12,7 +12,7 @@
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='pd1' id='pd1_" + data.Product_Categories[i].Product_Category_Id + "' class='iradio-list'/>";
+            htmlText += "<input type='radio' name='pd1' id='pd1_" + data.Product_Categories[i].Product_Category_Id + "' value ='" + data.Product_Categories[i].Product_Category_Id + "' class='iradio-categories'/>";
 
             htmlText += "</td>";
 
@@ -34,44 +34,28 @@
 
             htmlText += "</td>";
 
-            //if (data.Product_Categories[i].Is_Active == true) {
-
-            //    htmlText += "<td>";
-
-            //    htmlText += "Active";
-
-            //    htmlText += "</td>";
-            //}
-            //else {
-            //    htmlText += "<td>";
-
-            //    htmlText += "Inactive";
-
-            //    htmlText += "</td>";
-            //}
-
             htmlText += "</tr>";
         }
     }
     else
     {
 
-        htmlText += "<tr>";
+            htmlText += "<tr>";
 
-        htmlText += "<td colspan='3'>";
+            htmlText += "<td colspan='3'>";
 
-        htmlText += "No record found.";
+            htmlText += "No record found.";
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "</tr>";
+            htmlText += "</tr>";
     }
 
-    $("#tblProductDetail").find("tr:gt(0)").remove();
+    $("#tblProductCategory").find("tr:gt(1)").remove();
 
-    $('#tblProductDetail tr:first').after(htmlText);
+    $('#tblProductCategory tr:eq(1)').after(htmlText);
 
-    $('.iradio-list').iCheck({
+    $('.iradio-categories').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -86,8 +70,18 @@
         }
     }
     else {
+
         $('.pagination').html("");
+
     }
+
+    //$('.iradio-categories').on("ifChanged", function () {
+
+    //    alert("hii");
+
+    //    Get_Product_Volts($(this).val());
+    //});
+
 
     $("#divSearchGridOverlay").hide();
 
@@ -129,18 +123,38 @@ function Get_Product_Categories() {
 }
 
 
-//////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 function Bind_Product_Details(data) {
 
-    alert("Hiii");
+    alert(data.Product_Details_Header.length);
 
     var htmlText = "";
 
-    if (data.Product_Details.length > 0) {
+    if (data.Product_Details_Header.length > 0) {
 
+        htmlText += "<tr>";
+
+        for (i = 0; i < data.Product_Details_Header.length; i++) {
+
+            alert(data.Product_Details_Header[i].Product_Column_Name);
+
+            htmlText += "<th>";
+
+            htmlText += data.Product_Details_Header[i].Product_Column_Name;
+
+            htmlText += "</th>"
+
+        }
+
+        htmlText += "</tr>";
+    }
+
+    alert(data.Product_Details.length);
+
+    if (data.Product_Details.length > 0) {
+        
         for (i = 0; i < data.Product_Details.length; i++) {
 
             htmlText += "<tr>";
@@ -169,44 +183,33 @@ function Bind_Product_Details(data) {
 
             htmlText += "</td>";
 
-            //if (data.Product_Categories[i].Is_Active == true) {
-
-            //    htmlText += "<td>";
-
-            //    htmlText += "Active";
-
-            //    htmlText += "</td>";
-            //}
-            //else {
-            //    htmlText += "<td>";
-
-            //    htmlText += "Inactive";
-
-            //    htmlText += "</td>";
-            //}
-
             htmlText += "</tr>";
         }
     }
+        
     else {
 
-        htmlText += "<tr>";
+            htmlText += "<tr>";
 
-        htmlText += "<td colspan='3'>";
+            htmlText += "<td colspan='3'>";
 
-        htmlText += "No record found.";
+            htmlText += "No record found.";
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "</tr>";
+            htmlText += "</tr>";
     }
+
+    alert(htmlText);
 
     $("#tblProductDetail").find("tr:gt(0)").remove();
 
     $('#tblProductDetail tr:first').after(htmlText);
 
     $('.iradio-list').iCheck({
+
         radioClass: 'iradio_square-green',
+
         increaseArea: '20%' // optional
     });
 
@@ -222,6 +225,12 @@ function Bind_Product_Details(data) {
     else {
         $('.pagination').html("");
     }
+
+    $('.iradio-list').on("ifChanged", function () {
+
+        alert("hii");
+    });
+
 
     $("#divSearchGridOverlay").hide();
 
@@ -241,27 +250,64 @@ function PageMore(Id) {
     Get_Product_Details();
 }
 
+
+
 function Get_Product_Details() {
 
-    var pdViewModel = {
+    $.ajax({
 
-        Filter: {
+        url: '/ProductDetail/Get_Product_Details',
 
-            Product_Category_Column_Mapping_Id: ""
-        },
+        data: { product_category_column_mapping_Id: $('#drpProduct_Volts').val().split("_")[1], Product_Column_Ref_Id: $('#drpProduct_Volts').val().split("_")[0] }
+      
+    }).success(function (data) {
 
-        Pager: {
+        alert(data);
 
-            CurrentPage: $('#hdnCurrentPage').val()
-        },
-    };
+        $(this).addClass("done");
 
-    $("#divSearchGridOverlay").show();
+        Bind_Product_Details(data);
 
-    CallAjax("/ProductDetail/Get_Product_Details", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Details, "", null);
+    });
 
 }
 
+///////////////////////////////////////////////////////// To retrieve volts values in dropdown
 
+function Get_Product_Volts(Product_Category_Id)
+{
+    $.ajax({
 
+        url: "/ProductDetail/Get_Product_Volts",
+
+        data: { product_category_Id: Product_Category_Id }
+      
+    }).done(function (data) {
+
+        alert(data);
+
+        $(this).addClass("done");
+
+        var htmlText = "";
+
+        htmlText += "<option value ='' > Select Volts </option>";
+
+        for (i = 0; i < data.Volts.length; i++) {
+
+            alert("Ref_Id" + data.Volts[i].Product_Column_Ref_Id);
+
+            alert("Volts" + data.Volts[i].Volts);
+
+            alert("Product_Category_Column_Mapping_Id" + data.Volts[i].Product_Category_Column_Mapping_Id)
+
+            htmlText += "<option value='" + data.Volts[i].Product_Column_Ref_Id + "_" + data.Volts[i].Product_Category_Column_Mapping_Id + "'>" + data.Volts[i].Volts + "</option>";
+
+        }
+
+        alert("htmlText" + htmlText);
+
+        $("#drpProduct_Volts").html(htmlText);
+
+    });
+}
 
