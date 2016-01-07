@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+
+
 namespace MSPowerInfo
 {
     public class ProductInfo
     
     {
 
-          public ProductInfo()
+        public ProductInfo()
         
           {
           
           }
-
 
         public int Product_Id { get; set; }
 
@@ -24,17 +25,18 @@ namespace MSPowerInfo
         public string Product_Title { get; set; }
 
         [AllowHtml]
+
         public string Product_Description { get; set; }
 
         public bool Is_Active { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime Created_On { get; set; }
 
-        public int CreatedBy { get; set; }
+        public int Created_By { get; set; }
 
-        public DateTime UpdatedOn { get; set; }
+        public DateTime Updated_On { get; set; }
 
-        public int UpdatedBy { get; set; }
+        public int Updated_By { get; set; }
 
 
 

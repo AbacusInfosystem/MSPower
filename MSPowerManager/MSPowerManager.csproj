@@ -54,10 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUsManager.cs" />
     <Compile Include="AjaxManager.cs" />
     <Compile Include="AuthenticateManager.cs" />
+    <Compile Include="ContactUsManager.cs" />
+    <Compile Include="EnquiryManager.cs" />
+    <Compile Include="Job_ApplicationManager.cs" />
+    <Compile Include="Job_OpeningManager.cs" />
+    <Compile Include="NewsLetterManager.cs" />
+    <Compile Include="ProductDetailManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

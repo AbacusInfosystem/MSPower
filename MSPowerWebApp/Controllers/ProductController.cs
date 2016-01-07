@@ -27,7 +27,18 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult Index(ProductViewModel pViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Create, Update";
+            _pMan = new ProductManager();
+
+            //if (Session["Language"].ToString() == Language.en.ToString())
+            //{
+            //    pViewModel.Product_Categories = _pMan.Get_Product_Categories(Convert.ToInt32(Language.en));
+            //}
+            //else
+            //{
+            //    pViewModel.Product_Categories = _pMan.Get_Product_Categories(Convert.ToInt32(Language.ch));
+            //}
+
+            ViewBag.Title = "MS POWER ERP :: Create, Update";
 
             pViewModel.Product.Ref_Type = RefType.Product.ToString();
 
@@ -38,7 +49,7 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult Search(ProductViewModel pViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Search";
+            ViewBag.Title = "MS POWER :: Search";
 
             if (TempData["pViewModel"] != null)
             {
@@ -54,17 +65,27 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-                pViewModel.Product.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                pViewModel.Product.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    pViewModel.Product.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    pViewModel.Product.Language_Id = Convert.ToInt32(Language.ch);
+                }
 
-                pViewModel.Product.CreatedOn = DateTime.Now;
+                pViewModel.Product.Created_By = ((UserInfo)Session["User"]).UserId;
 
-                pViewModel.Product.UpdatedOn = DateTime.Now;
+                pViewModel.Product.Updated_By = ((UserInfo)Session["User"]).UserId;
+
+                pViewModel.Product.Created_On = DateTime.Now;
+
+                pViewModel.Product.Updated_On = DateTime.Now;
 
                 ProductManager pMan = new ProductManager();
 
-                pViewModel.Product.Product_Id = 1;
+                //pViewModel.Product.Product_Id = 1;
 
                 pViewModel.Product.Product_Id = pMan.Insert_Product(pViewModel.Product);
 
@@ -91,9 +112,20 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-                pViewModel.Product.UpdatedOn = DateTime.Now;
 
-                pViewModel.Product.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    pViewModel.Product.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    pViewModel.Product.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
+
+                pViewModel.Product.Updated_On = DateTime.Now;
+
+                pViewModel.Product.Updated_By = ((UserInfo)Session["User"]).UserId;
 
                 ProductManager pMan = new ProductManager();
 
@@ -123,13 +155,25 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
-                pViewModel.Product.UpdatedOn = DateTime.Now;
 
-                pViewModel.Product.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    pViewModel.Product.Language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    pViewModel.Product.Language_Id = Convert.ToInt32(Language.ch);
+                }
+
+
+                pViewModel.Product.Updated_On = DateTime.Now;
+
+                pViewModel.Product.Updated_By = ((UserInfo)Session["User"]).UserId;
 
                 ProductManager pMan = new ProductManager();
 
                 // this should be delete method.
+
                 //pMan.Update_Product(pViewModel.Product);
 
                 pViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
@@ -153,9 +197,21 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                 int language_Id = 0;
+
+                 if (Session["Language"].ToString() == Language.en.ToString())
+                 {
+                     language_Id = Convert.ToInt32(Language.en);
+                 }
+                 else
+                 {
+                     language_Id = Convert.ToInt32(Language.ch);
+                 }
+
+
                 ProductManager pMan = new ProductManager();
 
-                pViewModel.Product = pMan.Get_Product_By_Id(pViewModel.Filter.Product_Id);
+                pViewModel.Product = pMan.Get_Product_By_Id(pViewModel.Filter.Product_Id, language_Id);
             }
 
             catch (Exception ex)
@@ -178,9 +234,21 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
+
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
                 pager = pViewModel.Pager;
                 
-                pViewModel.Products = pMan.Get_Products(ref pager);
+                pViewModel.Products = pMan.Get_Products(ref pager, language_Id);
                 
                 pViewModel.Pager = pager;
 

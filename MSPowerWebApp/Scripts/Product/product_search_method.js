@@ -62,7 +62,7 @@
 
     if (data.Products.length > 0) {
 
-        $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+        $('#hdnCurrentPage').val(data.Pager.CurrentPage);
 
         if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 

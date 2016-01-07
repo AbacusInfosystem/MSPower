@@ -1,8 +1,12 @@
 ﻿ <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
+
             <li class="active"><a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product</a></li>
             <li><a href="@Url.Action("ProductListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product Listing</a></li>
+
+            <li class="active"><a href="@Url.Action("ProductDetail", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product_Detail</a></li>
+            <li><a href="@Url.Action("ProductDetailListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Product_Detail Listing</a></li>
 
             <li class="active"><a href="@Url.Action("Service", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Service</a></li>
             <li><a href="@Url.Action("ServiceListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Service Listing</a></li>
@@ -13,5 +17,21 @@
             <li class="active"><a href="@Url.Action("ContactUs", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Contact Us</a></li>
             <li><a href="@Url.Action("ContactUsListing","WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Contact Us Listing</a></li>
 
+            <li class="active"><a href="@Url.Action("Job_Opening", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Opening</a></li>
+            <li><a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Opening Listing</a></li>
+
+            <li><a href="@Url.Action("Index", "Enquiry", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Enquiry</a></li>
+
+            <li class="active"><a href="@Url.Action("Enquiry", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Enquiry</a></li>
+            <li><a href="@Url.Action("EnquiryListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Enquiry Listing</a></li>
+
+
+            <li><a href="@Url.Action("Index", "Job_Application", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application</a></li>
+
+            <li class="active"><a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application</a></li>
+            <li><a href="@Url.Action("Job_ApplicationListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Application Listing</a></li>
+
+            <li class="active"><a href="@Url.Action("AboutUs", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> AboutUs</a></li>
+            <li><a href="@Url.Action("AboutUsListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> AboutUs Listing</a></li>
 
         </ul>

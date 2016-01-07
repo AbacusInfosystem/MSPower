@@ -40,13 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUsInfo.cs" />
     <Compile Include="AttachmentInfo.cs" />
     <Compile Include="ContactUsInfo.cs" />
+    <Compile Include="EnquiryInfo.cs" />
     <Compile Include="EnumCollection.cs" />
+    <Compile Include="Job_ApplicationInfo.cs" />
+    <Compile Include="Job_OpeningInfo.cs" />
     <Compile Include="LanguageInfo.cs" />
+    <Compile Include="LookUpInfo.cs" />
     <Compile Include="NewsLetterInfo.cs" />
     <Compile Include="PaginationInfo.cs" />
+    <Compile Include="ProductDetailHeaderInfo.cs" />
+    <Compile Include="ProductDetailInfo.cs" />
     <Compile Include="ProductInfo.cs" />
+    <Compile Include="ProductCategoryInfo.cs" />
+    <Compile Include="ProductCategoryColumnMappingInfo.cs" />
+    <Compile Include="ProductColumnInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesInfo.cs" />
     <Compile Include="SliderImageInfo.cs" />

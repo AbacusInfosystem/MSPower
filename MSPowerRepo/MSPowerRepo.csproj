@@ -54,11 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUsRepo.cs" />
     <Compile Include="AjaxRepo.cs" />
     <Compile Include="AuthenticateRepo.cs" />
+    <Compile Include="ContactUsRepo.cs" />
+    <Compile Include="EnquiryRepo.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Job_ApplicationRepo.cs" />
+    <Compile Include="Job_OpeningRepo.cs" />
+    <Compile Include="NewsLetterRepo.cs" />
     <Compile Include="ProductRepo.cs" />
+    <Compile Include="ProductDetailRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesRepo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

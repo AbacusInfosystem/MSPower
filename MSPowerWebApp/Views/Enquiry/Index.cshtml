@@ -1,0 +1,232 @@
+﻿@model MSPowerWebApp.Models.EnquiryViewModel
+
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Index</title>
+
+    <script src="~/Content/AdminLTE/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    
+    <script src="~/Scripts/Enquiry/enquiry_events.js"></script>
+
+    <script src="~/Scripts/Enquiry/enquiry_method.js"></script>
+
+</head>
+
+<body>
+
+    @{Html.RenderPartial("_Sidebar_Online");}
+
+    <div>
+        Contact Us. @Session["Language"].ToString();
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <form id="frmEnquiry">
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtCustomer_Name">Customer Name</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter Customer Name" value="@Model.Enquiry.Customer_Name" name="Enquiry.Customer_Name">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtCustomer_Address">Customer Address</label>
+
+                                        <textarea id="editor1" rows="4" cols="80" name="Enquiry.Customer_Address">@Model.Enquiry.Customer_Address</textarea>
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtTel_No">Telephone Number</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtTel_No" placeholder="Enter Telephone Number" value="@Model.Enquiry.Tel_No" name="Enquiry.Tel_No">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtEmail">Email</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtEmail" placeholder="Enter Email" value="@Model.Enquiry.Email" name="Enquiry.Email">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtContact_Person">Contact Person</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtContact_Person" placeholder="Enter Contact Person" value="@Model.Enquiry.Contact_Person" name="Enquiry.Contact_Person">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtContact_Person_Tel_No">Contact Person Telephone No</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtContact_Person_Tel_No" placeholder="Enter Contact Person Tel No" value="@Model.Enquiry.Contact_Person_Tel_No" name="Enquiry.Contact_Person_Tel_No">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtContact_Person_Mobile_No">Contact Person Mobile No</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtContact_Person_Mobile_No" placeholder="Contact Person Mobile No" value="@Model.Enquiry.Contact_Person_Mobile_No" name="Enquiry.Contact_Person_Mobile_No">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtEnquiry_No">Enquiry No</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtEnquiry_No" placeholder="Enquiry No" value="@Model.Enquiry.Enquiry_No" name="Enquiry.Enquiry_No">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtEnquiry_Date">Enquiry Date</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtEnquiry_Date" placeholder="Enquiry Date" value="@Model.Enquiry.Enquiry_Date" name="Enquiry.Enquiry_Date">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtProduct_Name">Product Name</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtProduct_Name" placeholder="Product Name" value="@Model.Enquiry.Product_Name" name="Enquiry.Product_Name">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtQuantity">Quantity</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtQuantity" placeholder="Quantity" value="@Model.Enquiry.Quantity" name="Enquiry.Quantity">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtDelivery">Delivery</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtDelivery" placeholder="Delivery Name" value="@Model.Enquiry.Delivery" name="Enquiry.Delivery">
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtCreated_On">Created On</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtCreated_On" placeholder="Created On" value="@Model.Enquiry.Created_On" name="Enquiry.Created_On">
+                                    </div>
+
+
+                                    @*<div class="form-group">
+                                            <label style="color: #333" for="fileUpload_Enquiry_Image">Upload Enquiry Images</label>
+
+                                            <input type="file" class="form-control input-sm" id="fileUpload_Enquiry_Image" placeholder="Upload Enquiry Image" name="">
+
+                                            <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label style="color: #333">
+
+                                                @if (Model.Enquiry.Is_Active == true)
+                                                {
+                                                    <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                    }
+                                                else
+                                                {
+                                                    <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                    }
+
+                                                <input type="hidden" id="hdnEnquiry_Status" name="Enquiry.Is_Active" value="@Model.Enquiry.Is_Active">
+                                            </label>
+
+                                        </div>*@
+
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Enquiry")" role="button">Cancel</a>
+
+                                        @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
+
+                                        <input type="hidden" name="Enquiry.Enquiry_Id" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id">
+
+                                        @*<input type="hidden" name="Enquiry.Enquiry_Id" id="hdfEnquiry_Id" value="@Model.Enquiry.Enquiry_Id">*@
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+@*<script src="http://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>*@
+
+@*<script>
+
+    //$(document).ready(function () {
+    //    $('.iradio-list').iCheck({
+    //        radioClass: 'iradio_square-green',
+    //        increaseArea: '20%' // optional
+    //    });
+    //});
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+
+    // instance, using default configuration.
+
+    //CKEDITOR.replace('Enquiry.Enquiry_Description');
+
+</script>*@

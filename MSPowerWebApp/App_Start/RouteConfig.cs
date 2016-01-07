@@ -29,33 +29,62 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
                 name: "menu-3",
+               url: "cms/productdetail/search",
+               defaults: new { controller = "ProductDetail", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+                name: "menu-4",
                 url: "cms/services/search",
                 defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-                name: "menu-4",
+                name: "menu-5",
                 url: "cms/news-letter/search",
                 defaults: new { controller = "NewsLetter", action = "Search", id = UrlParameter.Optional }
             );
 
+
             routes.MapRoute(
-                name: "menu-5",
+                name: "menu-6",
                 url: "cms/about-us",
                 defaults: new { controller = "AboutUs", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-                name: "menu-6",
+                name: "menu-7",
                 url: "cms/contact-us/search",
                 defaults: new { controller = "ContactUs", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-               name: "menu-7",
+               name: "menu-8",
                url: "cms/gallery/search",
                defaults: new { controller = "Gallery", action = "Search", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+              name: "menu-9",
+              url: "cms/job_opening/search",
+              defaults: new { controller = "Job_Opening", action = "Search", id = UrlParameter.Optional }
+           );
+
+
+            routes.MapRoute(
+             name: "menu-10",
+             url: "cms/enquiry/search",
+             defaults: new { controller = "Enquiry", action = "Search", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+            name: "menu-11",
+            url: "cms/job_application/search",
+            defaults: new { controller = "Job_Application", action = "Search", id = UrlParameter.Optional }
+         );
+
+
 
             #endregion
 
@@ -106,8 +135,358 @@ namespace MSPowerWebApp
          );
             #endregion
 
-            #region Upload
+            #region ProductDetail
 
+            routes.MapRoute(
+               name: "productdetail-1",
+               url: "cms/product-detail",
+               defaults: new { controller = "ProductDetail", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-2",
+               url: "cms/product-detail/search",
+               defaults: new { controller = "ProductDetail", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-3",
+               url: "cms/product-detail/insert",
+               defaults: new { controller = "ProductDetail", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-4",
+               url: "cms/product-detail/update",
+               defaults: new { controller = "ProductDetail", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "productdetail-5",
+               url: "cms/product-detail/get-product-details",
+               defaults: new { controller = "ProductDetail", action = "Get_ProductDetails", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "productdetail-6",
+              url: "cms/product-detail/get-product-detail-by-id",
+              defaults: new { controller = "ProductDetail", action = "Get_Product_Detail_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "productdetail-7",
+             url: "cms/product-detail/delete-product-detail",
+             defaults: new { controller = "ProductDetail", action = "Delete", id = UrlParameter.Optional }
+         );
+            #endregion
+
+            #region Services
+
+           
+            routes.MapRoute(
+               name: "services-2",
+               url: "cms/services/search",
+               defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "services-3",
+               url: "cms/services/insert-services",
+               defaults: new { controller = "Services", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "services-4",
+               url: "cms/services/update-services",
+               defaults: new { controller = "Services", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "services-5",
+               url: "cms/services/get-services",
+               defaults: new { controller = "Services", action = "Get_Services", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "services-6",
+              url: "cms/services/get-services-by-id",
+              defaults: new { controller = "Services", action = "Get_Services_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "services-7",
+             url: "cms/services/delete-services",
+             defaults: new { controller = "Services", action = "Delete", id = UrlParameter.Optional }
+         );
+
+            routes.MapRoute(
+              name: "services-1",
+              url: "cms/services",
+              defaults: new { controller = "Services", action = "Index", id = UrlParameter.Optional }
+          );
+
+            #endregion
+
+            #region NewsLetter
+
+            routes.MapRoute(
+               name: "newsletter-1",
+               url: "cms/newsletter",
+               defaults: new { controller = "NewsLetter", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-2",
+               url: "cms/newsletter/search",
+               defaults: new { controller = "NewsLetter", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-3",
+               url: "cms/newsletter/insert-newsletter",
+               defaults: new { controller = "NewsLetter", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-4",
+               url: "cms/newsletter/update-newsletter",
+               defaults: new { controller = "NewsLetter", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "newsletter-5",
+               url: "cms/newsletter/get-newsletters",
+               defaults: new { controller = "NewsLetter", action = "Get_NewsLetters", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "newsletter-6",
+              url: "cms/newsletter/get-newsletter-by-id",
+              defaults: new { controller = "NewsLetter", action = "Get_NewsLetter_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "newsletter-7",
+             url: "cms/newsletter/delete-newsletter",
+             defaults: new { controller = "NewsLetter", action = "Delete", id = UrlParameter.Optional }
+         );
+
+
+            #endregion
+
+            #region ContactUs
+
+            routes.MapRoute(
+               name: "contactus-1",
+               url: "cms/contactus",
+               defaults: new { controller = "ContactUs", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-2",
+               url: "cms/contactus/search",
+               defaults: new { controller = "ContactUs", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-3",
+               url: "cms/contactus/insert-contactus",
+               defaults: new { controller = "ContactUs", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-4",
+               url: "cms/contactus/update-contactus",
+               defaults: new { controller = "ContactUs", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "contactus-5",
+               url: "cms/contactus/get-contactus",
+               defaults: new { controller = "ContactUs", action = "Get_ContactUss", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "contactus-6",
+              url: "cms/contactus/get-contactus-by-id",
+              defaults: new { controller = "ContactUs", action = "Get_ContactUs_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "contactus-7",
+             url: "cms/contactus/delete-contactus",
+             defaults: new { controller = "ContactUs", action = "Delete", id = UrlParameter.Optional }
+         );
+
+            #endregion
+
+            #region Job_Opening
+
+            routes.MapRoute(
+               name: "job_opening-1",
+               url: "cms/job_opening",
+               defaults: new { controller = "Job_Opening", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-2",
+               url: "cms/job_opening/search",
+               defaults: new { controller = "Job_Opening", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-3",
+               url: "cms/job_opening/insert-job_opening",
+               defaults: new { controller = "Job_Opening", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-4",
+               url: "cms/job_opening/update-job_opening",
+               defaults: new { controller = "Job_Opening", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "job_opening-5",
+               url: "cms/job_opening/get-job_opening",
+               defaults: new { controller = "Job_Opening", action = "Get_Job_Openings", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "job_opening-6",
+              url: "cms/job_opening/get-job_opening-by-id",
+              defaults: new { controller = "Job_Opening", action = "Get_Job_Opening_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "job_opening-7",
+             url: "cms/job_opening/delete-job_opening",
+             defaults: new { controller = "Job_Opening", action = "Delete", id = UrlParameter.Optional }
+         );
+            #endregion
+
+            #region Enquiry
+
+
+            routes.MapRoute(
+             name: "Enquiry-2",
+             url: "cms/enquiry/search",
+             defaults: new { controller = "Enquiry", action = "Search", id = UrlParameter.Optional }
+         );
+
+
+            routes.MapRoute(
+              name: "Enquiry-1",
+              url: "cms/enquiry/insert-enquiry",
+              defaults: new { controller = "Enquiry", action = "Insert", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+              name: "Enquiry-3",
+              url: "cms/enquiry/get-enquirys",
+              defaults: new { controller = "Enquiry", action = "Get_Enquirys", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+             name: "Enquiry-4",
+             url: "cms/enquiry/get-enquiry-by-id",
+             defaults: new { controller = "Enquiry", action = "Get_Enquiry_By_Id", id = UrlParameter.Optional }
+         );
+
+
+            #endregion
+
+            #region AboutUs
+
+            routes.MapRoute(
+               name: "aboutus-1",
+               url: "cms/aboutus",
+               defaults: new { controller = "AboutUs", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-2",
+               url: "cms/aboutus/search",
+               defaults: new { controller = "AboutUs", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-3",
+               url: "cms/aboutus/insert-aboutus",
+               defaults: new { controller = "AboutUs", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-4",
+               url: "cms/aboutus/update-aboutus",
+               defaults: new { controller = "AboutUs", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "aboutus-5",
+               url: "cms/aboutus/get-aboutuss",
+               defaults: new { controller = "AboutUs", action = "Get_AboutUss", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "aboutus-6",
+              url: "cms/aboutus/get-aboutus-by-id",
+              defaults: new { controller = "AboutUs", action = "Get_AboutUs_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "aboutus-7",
+             url: "cms/aboutus/delete-aboutus",
+             defaults: new { controller = "AboutUs", action = "Delete", id = UrlParameter.Optional }
+         );
+            #endregion
+
+            #region Job_Application
+
+
+            routes.MapRoute(
+             name: "Job_Application-2",
+             url: "cms/job_application/search",
+             defaults: new { controller = "Job_Application", action = "Search", id = UrlParameter.Optional }
+         );
+
+
+            routes.MapRoute(
+              name: "Job_Application-1",
+              url: "cms/job_application/insert-job_application",
+              defaults: new { controller = "Job_Application", action = "Insert", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+              name: "Job_Application-3",
+              url: "cms/job_application/get-job_applications",
+              defaults: new { controller = "Job_Application", action = "Get_Job_Applications", id = UrlParameter.Optional }
+          );
+
+
+            routes.MapRoute(
+             name: "Job_Application-4",
+             url: "cms/job_application/get-job_application-by-id",
+             defaults: new { controller = "Job_Application", action = "Get_Job_Application_By_Id", id = UrlParameter.Optional }
+         );
+
+
+            #endregion
+
+            #region Language
+
+            routes.MapRoute(
+               name: "language-1",
+               url: "cms/language",
+               defaults: new { controller = "Language", action = "Index", id = UrlParameter.Optional }
+           );
+
+            #endregion
+
+            #region Upload
             routes.MapRoute(
                name: "upload-1",
                url: "upload/{module}/{id}",
@@ -148,45 +527,123 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
               name: "website-3",
+              url: "{language}/productdetail/",
+              defaults: new { controller = "WebSite", action = "ProductDetail", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-4",
+              url: "{language}/productdetail-listing/",
+              defaults: new { controller = "WebSite", action = "ProductDetailListing", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-5",
               url: "{language}/services/",
               defaults: new { controller = "WebSite", action = "Service", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-              name: "website-4",
+              name: "website-6",
               url: "{language}/service-listing/",
               defaults: new { controller = "WebSite", action = "ServiceListing", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-              name: "website-5",
+              name: "website-7",
               url: "{language}/news-letter/",
               defaults: new { controller = "WebSite", action = "NewsLetter", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-              name: "website-6",
+              name: "website-8",
               url: "{language}/news-letter-listing/",
               defaults: new { controller = "WebSite", action = "NewsLetterListing", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
             routes.MapRoute(
-             name: "website-7",
+             name: "website-9",
              url: "{language}/contact-us/",
              defaults: new { controller = "WebSite", action = "ContactUs", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
          );
 
             routes.MapRoute(
-              name: "website-8",
+              name: "website-10",
               url: "{language}/contact-us-listing/",
               defaults: new { controller = "WebSite", action = "ContactUsListing", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
+
+
+             routes.MapRoute(
+             name: "website-11",
+             url: "{language}/job_opening/",
+             defaults: new { controller = "WebSite", action = "Job_Opening", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
+             routes.MapRoute(
+              name: "website-12",
+              url: "{language}/job_opening-listing/",
+              defaults: new { controller = "WebSite", action = "Job_OpeningListing", language = UrlParameter.Optional }
+              
+             );
+
+              routes.MapRoute(
+             name: "website-13",
+             url: "{language}/enquiry/",
+             defaults: new { controller = "WebSite", action = "Enquiry", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
+            routes.MapRoute(
+             name: "website-14",
+             url: "{language}/enquiry-listing/",
+             defaults: new { controller = "WebSite", action = "EnquiryListing", language = UrlParameter.Optional }
+
+                //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
+              routes.MapRoute(
+             name: "website-15",
+             url: "{language}/job_application/",
+             defaults: new { controller = "WebSite", action = "Job_Application", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
+            routes.MapRoute(
+             name: "website-16",
+             url: "{language}/job_application-listing/",
+             defaults: new { controller = "WebSite", action = "Job_ApplicationListing", language = UrlParameter.Optional }
+
+             //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
+            routes.MapRoute(
+             name: "website-17",
+             url: "{language}/aboutus/",
+             defaults: new { controller = "WebSite", action = "AboutUs", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+           );
+
+            routes.MapRoute(
+             name: "website-18",
+             url: "{language}/aboutus-listing/",
+             defaults: new { controller = "WebSite", action = "AboutUsListing", language = UrlParameter.Optional }
+
+             //constraints: new { language = new LanguageRouteConstraint() }
+         );
 
             #endregion
 
@@ -215,6 +672,18 @@ namespace MSPowerWebApp
 
 
             routes.MapRoute(
+              name: "default-03",
+              url: "{language}",
+              defaults: new { controller = "WebSite", action = "Index", language = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "default-04",
+             url: "{language}",
+             defaults: new { controller = "WebSite", action = "Index", language = UrlParameter.Optional }
+         );
+
+            routes.MapRoute(
                 name: "default-01",
                 url: "{controller}/{action}/{language}",
                 defaults: new { controller = "WebSite", action = "Index", language = UrlParameter.Optional }
@@ -225,6 +694,8 @@ namespace MSPowerWebApp
                url: "{controller}/{action}",
                defaults: new { controller = "WebSite", action = "Index", id = UrlParameter.Optional }
            );
+
+
         }
     }
 }

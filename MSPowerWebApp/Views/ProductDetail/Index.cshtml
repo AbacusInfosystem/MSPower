@@ -1,0 +1,269 @@
+﻿@model MSPowerWebApp.Models.ProductDetailViewModel
+
+
+<script src="~/Scripts/ProductDetail/productdetail_event.js"></script>
+<script src="~/Scripts/ProductDetail/productdetail_method.js"></script>
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+
+        <h1>
+            Product Detail
+
+            <small>Create / Update Page</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">Product Detail</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <form id="frmProductDetail">
+
+                                    @*<input type="hidden" class="form-control input-sm" name="Product_Details_Header.Role_Id" id="hdnProductColumnRef_Id" value="@Model">*@
+
+                                    <input type="hidden" name="Filter.Product_Column_Ref_Id" id="hdnProductColumnRef_Id" value="@Model.Filter.Product_Column_Ref_Id">
+
+                                    <input type="hidden" name="Filter.Product_Category_Id" id="hdnProductCategory_Id" value="@Model.Filter.Product_Category_Id">
+
+                                    <input type="hidden" name="Filter.Product_Detail_Id" id="hdnProductDetail_Id" value="@Model.Filter.Product_Detail_Id">
+
+                                    <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">
+
+                                    @{
+                                        
+                                        //for (int i = 0; i < Model.Product_Details_Header.Count;i++ )
+                                        //{
+                                        if (Model.Product_Details_Header.Count > 1)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_1">@Model.Product_Details_Header[0].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_1" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col1" name="Product_Detail.Col1">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 2)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_2">@Model.Product_Details_Header[1].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_2" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col2" name="Product_Detail.Col2">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 3)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_3">@Model.Product_Details_Header[2].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_3" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col3" name="Product_Detail.Col3">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 4)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_4">@Model.Product_Details_Header[3].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_4" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col4" name="Product_Detail.Col4">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 5)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_5">@Model.Product_Details_Header[4].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_5" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col5" name="Product_Detail.Col5">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 6)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_6">@Model.Product_Details_Header[5].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_6" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col6" name="Product_Detail.Col6">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 7)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_7">@Model.Product_Details_Header[6].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_7" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col7" name="Product_Detail.Col7">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 8)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_8">@Model.Product_Details_Header[7].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_8" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col8" name="Product_Detail.Col8">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 9)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_9">@Model.Product_Details_Header[8].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_9" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col9" name="Product_Detail.Col9">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 10)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_10">@Model.Product_Details_Header[9].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_10" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col10" name="Product_Detail.Col10">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 11)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_11">@Model.Product_Details_Header[10].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_11" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col11" name="Product_Detail.Col11">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 12)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_12">@Model.Product_Details_Header[11].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_12" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col12" name="Product_Detail.Col12">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 13)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_13">@Model.Product_Details_Header[12].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_13" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col13" name="Product_Detail.Col13">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 14)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_14">@Model.Product_Details_Header[13].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_14" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col14" name="Product_Detail.Col14">
+                                            </div>
+                                        }
+                                        if (Model.Product_Details_Header.Count > 15)
+                                        {
+                                            <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_15">@Model.Product_Details_Header[14].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_15" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col15" name="Product_Detail.Col15">
+                                            </div>
+                                        }
+                                     
+                                        
+                                            @*<div class="form-group">
+
+                                            <label style="color: #333" for="txtProductDetail_@(i+1)">@Model.Product_Details_Header[i].Product_Column_Name</label>
+
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_@(i+1)" placeholder="Enter ProductDetail Column" value="@str" name="Product_Detail.Col@(i+1)">
+                                    
+                                            </div>*@
+                                        //}
+                                    }
+
+                                    @*<div class="form-group">
+
+                                        <label style="color: #333">
+
+                                            @if (Model.Product_Detail.Is_Active == true)
+                                            {
+                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+                                            else
+                                            {
+                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+
+                                            <input type="hidden" id="hdnProductDetail_Status" name="ProductDetail.Is_Active" value="@Model.Product_Detail.Is_Active">
+                                        </label>
+
+                                    </div>*@
+
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "ProductDetail")" role="button">Cancel</a>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+
+                                        <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">                     
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('.iradio-list').iCheck({
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+    });
+
+</script>

@@ -9,9 +9,11 @@
 }
 
 <!-- Content Wrapper. Contains page content -->
+
 <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
+
     <section class="content-header">
 
         <h1>Product
@@ -46,6 +48,29 @@
 
                                             <input type="text" class="form-control input-sm" id="txtProduct_Title" placeholder="Enter Product Title" value="@Model.Product.Product_Title" name="Product.Product_Title">
                                         </div>
+
+                                        @*</div>
+
+                                        <div class="form-group">
+                                            <label for="drpProduct_Category3" style="color: #333" class="lookup-title">Product Category3</label>
+                                            <select class="form-control input-sm" id="drpProduct_Category3" name="Product.Product_Category_Id">
+                                                <option value="">--Select--</option>
+
+                                                @foreach (var item in Model.Product_Categories)
+                                                {
+                                                    if (item.Id == Model.Product.Product_Category_Id)
+                                                    {
+                                                        <option value="@item.Id" selected="selected">@item.Value</option>
+                                                    }
+
+                                                    else
+                                                    {
+                                                        <option value="@item.Id">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+
+                                        </div>*@
 
                                         <div class="form-group">
                                             <label style="color: #333" for="txtContactName">Product Description</label>

@@ -2,13 +2,18 @@
     ViewBag.Title = "Index";
 }
 
+
+<script src="~/Scripts/Services/services_search_event.js"></script>
+<script src="~/Scripts/Services/services_search_method.js"></script>
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Product
+            Services
 
             <small>Listing Page</small>
         </h1>
@@ -31,27 +36,40 @@
 
                             <div class="col-md-12" style="padding-left: 26px; padding-bottom: 10px; padding-top: 10px;">
 
-                                <div class="btn-group">
-                                    <a id="btnCreate" class="btn btn-default btn-sm" href="@Url.Action("Index", "Services")" role="button">Create</a>
-                                </div>
+                                <form id="frmSearch_Services">
 
-                                <div class="btn-group">
-                                    <a id="btnEdit" class="btn btn-default btn-sm" href="@Url.Action("Index", "Services")" role="button">Edit</a>
-                                    <button type="button" class="btn btn-warning btn-sm" id="btnDelete">Delete</button>
-                                </div>
+                                    <div class="btn-group">
 
-                            </div>
+                                        <a id="btnCreate" class="btn btn-default btn-sm" href="@Url.Action("Index", "Services")" role="button">Create</a>
+
+                                    </div>
+
+                                    <div class="btn-group">
+
+                                        <button id="btnEdit" type="button" class="btn btn-default btn-sm" role="button">Edit</button>
+
+                                        <button type="button" class="btn btn-warning btn-sm" id="btnDelete">Delete</button>
+
+                                        <input type="hidden" id="hdnServices_Id" name="Filter.Services_Id" />
+
+                                        <input type="hidden" id="hdnCurrentPage" name="Page.CurrentPage" />
+
+
+
+                                    </div>
+                                </form>
+                        </div>
 
                         </div>
 
-                        <table class="table table-hover table-responsive ">
+                        <table id="tblServices" class="table table-hover table-responsive ">
                             <tbody>
                                 <tr>
                                     <th></th>
                                     <th>Title</th>
                                     <th>Status</th>
                                 </tr>
-                                <tr>
+                                @*<tr>
                                     <th>
                                         <input type='radio' name='r1' class='iradio-list' />
                                     </th>
@@ -106,7 +124,7 @@
                                     </th>
                                     <td>183</td>
                                     <td>Nikhil Kadam</td>
-                                </tr>
+                                </tr>*@
                             </tbody>
                         </table>
 
