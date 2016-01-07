@@ -29,7 +29,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-md-12">
                 <div class="box">
 
                     <div class="box-body no-padding">
@@ -53,13 +53,13 @@
                                         <button id="btnDelete" type="button" class="btn btn-warning btn-sm">Delete</button>
                                     </div>
 
-                                    <input type="hidden" id="hdnProductCategory_Id" name="Filter.Product_Category_Id" />
+                                    <input type="hidden" id="hdn_Product_Category_Id" name="Filter.Product_Category_Id" />
 
-                                    <input type="hidden" id="hdnProductColumnRef_Id" name="Filter.Product_Column_Ref_Id" />
+                                    <input type="hidden" id="hdn_Product_Column_Ref_Id" name="Filter.Product_Column_Ref_Id" />
 
-                                    <input type="hidden" id="hdnProductCategoryColumnMapping_Id" name="Filter.Product_Category_Column_Mapping_Id" />
+                                    <input type="hidden" id="hdn_Product_Category_Column_Mapping_Id" name="Filter.Product_Category_Column_Mapping_Id" />
 
-                                    <input type="hidden" id="hdnProductDetail_Id" name="Filter.Product_Detail_Id" />
+                                    <input type="hidden" id="hdn_Product_Detail_Id" name="Filter.Product_Detail_Id" />
 
                                     <input type="hidden" id="hdnCurrentPage" name="Page.CurrentPage" />
 
@@ -69,55 +69,25 @@
 
                         </div>
 
-                        <table id="tblProductCategory" class="table table-hover table-responsive ">
-                            <tbody>
-                                <tr>
-                                    <th colspan="4">Product Category</th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <th>Category1</th>
-                                    <th>Category2</th>
-                                    <th>Category3</th>
-                                </tr>
-                                @*<tr>
-                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
-                                    <td>Discrete Thyristors</td>
-                                    <td>Phase Control Thyristor</td>
-                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
-                                </tr>
-                                <tr>
-                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
-                                    <td>Discrete Thyristors</td>
-                                    <td>Phase Control Thyristor</td>
-                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
-                                </tr>
-                                <tr>
-                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
-                                    <td>Discrete Thyristors</td>
-                                    <td>Phase Control Thyristor</td>
-                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
-                                </tr>
-                                <tr>
-                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
-                                    <td>Discrete Thyristors</td>
-                                    <td>Phase Control Thyristor</td>
-                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
-                                </tr>
-                                <tr>
-                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
-                                    <td>Discrete Thyristors</td>
-                                    <td>Phase Control Thyristor</td>
-                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
-                                </tr>
-                                <tr>
-                                    <th><input type='radio' name='r1' class='iradio-list' /></th>
-                                    <td>Discrete Thyristors</td>
-                                    <td>Phase Control Thyristor</td>
-                                    <td>Phase Control Thyristor - Stud / Flat Base</td>
-                                </tr>*@
-                            </tbody>
-                        </table>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <table id="tblProductCategory" class="table table-hover table-responsive ">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="4">Product Category</th>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th>Category1</th>
+                                            <th>Category2</th>
+                                            <th>Category3</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
 
                         <div class="row">
 
@@ -127,18 +97,18 @@
                                     <select class="form-control input-sm" id="drpProduct_Volts" name="volts.Volts">
                                         <option value="">--Select--</option>
 
-                                @foreach (var item in Model.Volts)
-                                {
-                                    if (item.Id == Model.Product_Detail.Volts)
-                                {
-                                    <option value="@item.Id" selected="selected">@item.Value</option>
-                                }
+                                        @foreach (var item in Model.Volts)
+                                        {
+                                            if (item.Id == Model.Product_Detail.Volts)
+                                            {
+                                                <option value="@item.Id" selected="selected">@item.Value</option>
+                                            }
 
-                                else
-                                {
-                                    <option value="@item.Id">@item.Value</option>
-                                }
-                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Value</option>
+                                            }
+                                        }
                                     </select>
 
                                 </div>
@@ -147,17 +117,26 @@
 
                         </div>
 
-                        <table id="tblProductDetail" class="table table-hover table-responsive ">
-                            <tbody>
-                                <tr>
-                                    <th colspan="11">Products</th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="row">
+
+                        <div class="col-md-12">
+
+                            <table id="tblProductDetail" class="table table-hover table-responsive ">
+                                <tbody>
+                                    <tr>
+                                        <th colspan="11">Products</th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        </div>
+
 
                     </div>
 
@@ -175,9 +154,9 @@
 
                     </div>
 
-                    <!-- /.box-body -->
+                            <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
+                        <!-- /.box -->
             </div>
         </div>
 

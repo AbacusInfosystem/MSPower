@@ -58,6 +58,10 @@ namespace MSPowerInfo
 
         Get_Product_Details_Headers_Sp,
 
+        Insert_Product_Detail_Sp,
+
+        Update_Product_Detail_Sp,
+
         // Services Store Procedures
 
         Get_Services_By_Id_Sp,

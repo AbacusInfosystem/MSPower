@@ -22,9 +22,18 @@ namespace MSPowerWebApp.Controllers
         {
             ViewBag.Title = "MS POWER ERP :: Create, Update";
 
+            if (TempData["Product_Detail_View_Model"] != null)
+            {
+                pdViewModel = (ProductDetailViewModel)TempData["Product_Detail_View_Model"];
+            }
+
             ProductDetailManager pdMan = new ProductDetailManager();
 
             pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(pdViewModel.Filter.Product_Column_Ref_Id);
+
+            //pdViewModel.Product_Detail = pdMan.Get_Product_Detail_By_Id(pdViewModel.Filter.Product_Detail_Id);
+
+            //pdViewModel.Product_Detail = pdMan.Get_Product_Detail_By_Id(product_detail_Id);
 
             return View("Index", pdViewModel);
 
@@ -88,35 +97,15 @@ namespace MSPowerWebApp.Controllers
 
         // WHEN PRODUCT LISTING PAGE GETS LOADED, THIS METHOD GETS HIT TO GET ALL PRODUCT CATEGORIES FROM DB.
 
-        public JsonResult Get_Product_Volts( int product_category_Id)
+        public JsonResult Get_Product_Volts(int productCategoryId)
         {
             ProductDetailManager pdMan = new ProductDetailManager();
 
             ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
 
-            //PaginationInfo pager = pdViewModel.Pager;
-
             try
             {
-
-                int language_Id = 0;
-
-                if (Session["Language"].ToString() == Language.en.ToString())
-                {
-                    language_Id = Convert.ToInt32(Language.en);
-                }
-                else
-                {
-                    language_Id = Convert.ToInt32(Language.ch);
-                }
-
-                //pager = pdViewModel.Pager;
-
-                pdViewModel.Volts = pdMan.Get_Product_Volts(product_category_Id);
-
-                //pdViewModel.Pager = pager;
-
-                //pdViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", pdViewModel.Pager.TotalRecords, pdViewModel.Pager.CurrentPage + 1, pdViewModel.Pager.PageSize, 10, true);
+                pdViewModel.Volts = pdMan.Get_Product_Volts(productCategoryId);
             }
             catch (Exception ex)
             {
@@ -131,8 +120,9 @@ namespace MSPowerWebApp.Controllers
 
         // WHEN PRODUCT LISTING PAGE GETS LOADED, THIS METHOD GETS HIT TO GET ALL PRODUCT CATEGORIES FROM DB.
 
-        public JsonResult Get_Product_Details(int product_category_column_mapping_Id, int  product_column_ref_Id)
+        public JsonResult Get_Product_Details(int productCategoryColumnMappingId, int productColumnRefId)
         {
+
             ProductDetailManager pdMan = new ProductDetailManager();
 
             ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
@@ -140,33 +130,19 @@ namespace MSPowerWebApp.Controllers
             PaginationInfo pager = pdViewModel.Pager;
 
             try
-            
+
             {
-
-                int language_Id = 0;
-
-                if (Session["Language"].ToString() == Language.en.ToString())
-                {
-                    language_Id = Convert.ToInt32(Language.en);
-                }
-                else
-                {
-                    language_Id = Convert.ToInt32(Language.ch);
-                }
-
                 pager = pdViewModel.Pager;
 
-                pdViewModel.Product_Details = pdMan.Get_Product_Details(product_category_column_mapping_Id);
+                pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(productColumnRefId);
 
-                pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(product_column_ref_Id);
+                pdViewModel.Product_Details = pdMan.Get_Product_Details(productCategoryColumnMappingId, productColumnRefId);
 
                 pdViewModel.Pager = pager;
 
                 pdViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", pdViewModel.Pager.TotalRecords, pdViewModel.Pager.CurrentPage + 1, pdViewModel.Pager.PageSize, 10, true);
             }
-
             catch (Exception ex)
-
             {
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
@@ -177,52 +153,88 @@ namespace MSPowerWebApp.Controllers
 
         }
 
+        // WHEN USER CLICKS ON EDIT BUTTON FROM PRODUCT LISTING PAGE, THIS METHOD WOULD GET HIT.
+
+        public ActionResult Get_Product_Detail_By_Id(ProductDetailViewModel pdViewModel)
+        {
+            try
+            {
+               
+                ProductDetailManager pdMan = new ProductDetailManager();
+
+                pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(pdViewModel.Filter.Product_Column_Ref_Id);
+
+                pdViewModel.Product_Detail = pdMan.Get_Product_Detail_By_Id(pdViewModel.Filter.Product_Detail_Id, pdViewModel.Filter.Product_Column_Ref_Id);
+            }
+
+            catch (Exception ex)
+            {
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Controller-Get_Test_By_Id" + ex.ToString());
+            }
+
+            return View("Index", pdViewModel);
+        }
+
         // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS CREATING A NEW RECORD, THEN THIS METHOD WOULD GET HIT.
 
-        //public ActionResult Insert(ProductDetailViewModel pdViewModel)
-        //{
-        //    try
-        //    {
+        public ActionResult Insert(ProductDetailViewModel pdViewModel)
+        {
+            try
+            {
+                ProductDetailManager pdMan = new ProductDetailManager();
 
-        //        if (Session["Language"].ToString() == Language.en.ToString())
-        //        {
-        //            pdViewModel.Product_Details_Header. = Convert.ToInt32(Language.en);
-        //        }
-        //        else
-        //        {
-        //            pdViewModel.Product.Language_Id = Convert.ToInt32(Language.ch);
-        //        }
+                pdViewModel.Product_Detail.Product_Category_Column_Mapping_Id = pdViewModel.Filter.Product_Category_Column_Mapping_Id;
 
-        //        pdViewModel.Product.Created_By = ((UserInfo)Session["User"]).UserId;
+                pdMan.Insert_Product_Detail(pdViewModel.Product_Detail);
 
-        //        pdViewModel.Product.Updated_By = ((UserInfo)Session["User"]).UserId;
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+            }
+            catch (Exception ex)
+            {
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-        //        pdViewModel.Product.Created_On = DateTime.Now;
+                Logger.Error("Test Controller - Insert" + ex.ToString());
+            }
 
-        //        pdViewModel.Product.Updated_On = DateTime.Now;
+            //TempData["pdViewModel"] = pdViewModel;
 
-        //        ProductManager pMan = new ProductManager();
+            //return RedirectToAction("Search");
 
-        //        //pdViewModel.Product.Product_Id = 1;
+            return View("Index", pdViewModel);
 
-        //        pdViewModel.Product.Product_Id = pMan.Insert_Product(pdViewModel.Product);
+        }
 
-        //        pdViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS UPDATING AN EXISTING RECORD, THEN THIS METHOD WOULD GET HIT.
 
-        //        Logger.Error("Test Controller - Insert" + ex.ToString());
-        //    }
+        public ActionResult Update(ProductDetailViewModel pdViewModel)
+        {
+            try
+            {
+                ProductDetailManager pdMan = new ProductDetailManager();
 
-        //    //TempData["pdViewModel"] = pdViewModel;
+                pdViewModel.Product_Detail.Product_Category_Column_Mapping_Id = pdViewModel.Filter.Product_Category_Column_Mapping_Id;
 
-        //    //return RedirectToAction("Search");
+                pdViewModel.Product_Detail.Product_Detail_Id = pdViewModel.Filter.Product_Detail_Id;
 
-        //    return View("Index", pdViewModel);
+                pdMan.Update_Product_Detail(pdViewModel.Product_Detail);
 
-        //}
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+            }
+            catch (Exception ex)
+            {
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Controller - Update" + ex.ToString());
+            }
+
+
+            TempData["Product_Detail_View_Model"] = pdViewModel;
+
+            return RedirectToAction("Index", pdViewModel);
+
+        }
 
     }
 }

@@ -1,6 +1,7 @@
-﻿function Bind_Product_Categories(data) {
+﻿
+//Product Categories
 
-    alert("Hiii");
+function Bind_Product_Categories(data) {
 
     var htmlText = "";
 
@@ -12,7 +13,7 @@
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='pd1' id='pd1_" + data.Product_Categories[i].Product_Category_Id + "' value ='" + data.Product_Categories[i].Product_Category_Id + "' class='iradio-categories'/>";
+            htmlText += "<input type='radio' name='rdbProductCategories' id='rdb_Product_Category_" + data.Product_Categories[i].Product_Category_Id + "' value ='" + data.Product_Categories[i].Product_Category_Id + "' class='iradio-product-categories'/>";
 
             htmlText += "</td>";
 
@@ -55,7 +56,7 @@
 
     $('#tblProductCategory tr:eq(1)').after(htmlText);
 
-    $('.iradio-categories').iCheck({
+    $('.iradio-product-categories').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -91,44 +92,17 @@
 
 }
 
-
-function PageMore(Id) {
-
-    $("#btnEdit").hide();
-
-    $('#hdnCurrentPage').val((parseInt(Id) - 1));
-
-    Get_Product_Categories();
-}
-
 function Get_Product_Categories() {
-
-    var pdViewModel = {
-
-        Filter: {
-
-            Product_Category_Id: ""
-        },
-
-        Pager: {
-
-            CurrentPage: $('#hdnCurrentPage').val()
-        },
-    };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/ProductDetail/Get_Product_Categories", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Categories, "", null);
+    CallAjax("/ProductDetail/Get_Product_Categories", "json", JSON.stringify(""), "POST", "application/json", false, Bind_Product_Categories, "", null);
 
 }
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Product Details
 
 function Bind_Product_Details(data) {
-
-    alert(data.Product_Details_Header.length);
 
     var htmlText = "";
 
@@ -136,9 +110,9 @@ function Bind_Product_Details(data) {
 
         htmlText += "<tr>";
 
-        for (i = 0; i < data.Product_Details_Header.length; i++) {
+        htmlText += "<th>&nbsp;</th>";
 
-            alert(data.Product_Details_Header[i].Product_Column_Name);
+        for (i = 0; i < data.Product_Details_Header.length; i++) {
 
             htmlText += "<th>";
 
@@ -151,7 +125,6 @@ function Bind_Product_Details(data) {
         htmlText += "</tr>";
     }
 
-    alert(data.Product_Details.length);
 
     if (data.Product_Details.length > 0) {
         
@@ -161,27 +134,144 @@ function Bind_Product_Details(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='pd1' id='pd1_" + data.Product_Details[i].Product_Detail_Id + "' class='iradio-list'/>";
+            htmlText += "<input type='radio' name='rdbProductDetails' id='rdb_Product_Detail_" + data.Product_Details[i].Product_Detail_Id + "' value ='" + data.Product_Details[i].Product_Detail_Id + "' class='iradio-product-details'/>";
 
             htmlText += "</td>";
 
-            htmlText += "<td>";
+            if (data.Product_Details_Header.length >= 1) {
 
-            htmlText += data.Product_Details[i].Col1;
+                htmlText += "<td>";
 
-            htmlText += "</td>";
+                htmlText += data.Product_Details[i].Col1;
 
-            htmlText += "<td>";
+                htmlText += "</td>";
+            }
 
-            htmlText += data.Product_Details[i].Col2;
+            if (data.Product_Details_Header.length >= 2) {
 
-            htmlText += "</td>";
+                htmlText += "<td>";
 
-            htmlText += "<td>";
+                htmlText += data.Product_Details[i].Col2;
 
-            htmlText += data.Product_Details[i].Col3;
+                htmlText += "</td>";
+            }
 
-            htmlText += "</td>";
+            if (data.Product_Details_Header.length >= 3) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col3;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 4) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col4;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 5) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col5;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 6) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col6;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 7) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col7;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 8) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col8;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 9) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col9;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 10) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col10;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 11) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col11;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 12) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col12;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 13) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col13;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 14) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col14;
+
+                htmlText += "</td>";
+            }
+
+            if (data.Product_Details_Header.length >= 15) {
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Col15;
+
+                htmlText += "</td>";
+            }
 
             htmlText += "</tr>";
         }
@@ -200,13 +290,12 @@ function Bind_Product_Details(data) {
             htmlText += "</tr>";
     }
 
-    alert(htmlText);
-
+    
     $("#tblProductDetail").find("tr:gt(0)").remove();
 
     $('#tblProductDetail tr:first').after(htmlText);
 
-    $('.iradio-list').iCheck({
+    $('.iradio-product-details').iCheck({
 
         radioClass: 'iradio_square-green',
 
@@ -226,12 +315,6 @@ function Bind_Product_Details(data) {
         $('.pagination').html("");
     }
 
-    $('.iradio-list').on("ifChanged", function () {
-
-        alert("hii");
-    });
-
-
     $("#divSearchGridOverlay").hide();
 
     $("#btnEdit").hide();
@@ -239,7 +322,6 @@ function Bind_Product_Details(data) {
     $("#btnDelete").hide();
 
 }
-
 
 function PageMore(Id) {
 
@@ -250,21 +332,17 @@ function PageMore(Id) {
     Get_Product_Details();
 }
 
-
-
 function Get_Product_Details() {
 
     $.ajax({
 
         url: '/ProductDetail/Get_Product_Details',
 
-        data: { product_category_column_mapping_Id: $('#drpProduct_Volts').val().split("_")[1], Product_Column_Ref_Id: $('#drpProduct_Volts').val().split("_")[0] }
+        //data: { product_category_column_mapping_Id: $('#drpProduct_Volts').val().split("_")[1], Product_Column_Ref_Id: $('#drpProduct_Volts').val().split("_")[0] }
+
+        data: { productCategoryColumnMappingId: $('#hdn_Product_Category_Column_Mapping_Id').val(), productColumnRefId: $('#hdn_Product_Column_Ref_Id').val() }
       
     }).success(function (data) {
-
-        alert(data);
-
-        $(this).addClass("done");
 
         Bind_Product_Details(data);
 
@@ -272,42 +350,33 @@ function Get_Product_Details() {
 
 }
 
-///////////////////////////////////////////////////////// To retrieve volts values in dropdown
+// Volts
 
-function Get_Product_Volts(Product_Category_Id)
+function Get_Product_Volts(product_category_id)
 {
     $.ajax({
 
         url: "/ProductDetail/Get_Product_Volts",
 
-        data: { product_category_Id: Product_Category_Id }
+        data: { productCategoryId: product_category_id }
       
     }).done(function (data) {
 
-        alert(data);
-
-        $(this).addClass("done");
-
-        var htmlText = "";
-
-        htmlText += "<option value ='' > Select Volts </option>";
-
-        for (i = 0; i < data.Volts.length; i++) {
-
-            alert("Ref_Id" + data.Volts[i].Product_Column_Ref_Id);
-
-            alert("Volts" + data.Volts[i].Volts);
-
-            alert("Product_Category_Column_Mapping_Id" + data.Volts[i].Product_Category_Column_Mapping_Id)
-
-            htmlText += "<option value='" + data.Volts[i].Product_Column_Ref_Id + "_" + data.Volts[i].Product_Category_Column_Mapping_Id + "'>" + data.Volts[i].Volts + "</option>";
-
-        }
-
-        alert("htmlText" + htmlText);
-
-        $("#drpProduct_Volts").html(htmlText);
+        Bind_Product_Volts(data);
 
     });
 }
 
+function Bind_Product_Volts(data)
+{
+    var htmlText = "";
+
+    htmlText += "<option value ='0' > Select Volts </option>";
+
+    for (i = 0; i < data.Volts.length; i++) {
+
+        htmlText += "<option data-col-ref='"+data.Volts[i].Product_Column_Ref_Id +"' data-product-category-mapping-id='" + data.Volts[i].Product_Category_Column_Mapping_Id + "'>" + data.Volts[i].Volts + "</option>";
+    }
+
+    $("#drpProduct_Volts").html(htmlText);
+}

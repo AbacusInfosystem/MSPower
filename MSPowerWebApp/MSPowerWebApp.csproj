@@ -974,6 +974,8 @@
     <Content Include="Scripts\NewsLetter\newsletter_method.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_events.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_method.js" />
+    <Content Include="Scripts\ProductDetail\productdetail_event.js" />
+    <Content Include="Scripts\ProductDetail\productdetail_method.js" />
     <Content Include="Scripts\Product\product_event.js" />
     <Content Include="Scripts\Product\product_method.js" />
     <Content Include="Scripts\Product\product_search_event.js" />
