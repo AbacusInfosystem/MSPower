@@ -1,4 +1,6 @@
 ﻿@model MSPowerWebApp.Models.ProductViewModel
+<script src="~/Scripts/generic.popup.js"></script>
+<script src="~/Scripts/generic.message.js"></script>
 <script src="~/Scripts/Product/product_event.js"></script>
 <script src="~/Scripts/Product/product_method.js"></script>
 
@@ -85,9 +87,12 @@
 
                                             <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Product")" role="button">Cancel</a>
 
-                                            <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+                                            <button type="button" class="btn btn-default btn-sm open-partial-modal" id="btnUploadImage">Upload Image</button>
 
                                             <input type="hidden" name="Filter.Product_Id" id="hdnProduct_Id" value="@Model.Product.Product_Id">
+
+                                            <input type="hidden" name="Product.Ref_Type" id="hdnRef_Type" value="@Model.Product.Ref_Type" />
+
                                         </div>
 
                                     </form>
@@ -122,5 +127,11 @@
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.replace('Product.Product_Description');
+
+    // any partial view which needs to be opened in a modal window can be opened using this method.
+    $(document).on("click", ".open-partial-modal", function () {
+
+        Load_Partial("/upload/product/" + $("#hdnProduct_Id").val(), "Upload Image");
+    });
 
 </script>

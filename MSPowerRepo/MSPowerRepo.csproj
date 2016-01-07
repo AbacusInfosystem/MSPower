@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjaxRepo.cs" />
     <Compile Include="AuthenticateRepo.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ProductRepo.cs" />

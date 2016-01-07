@@ -29,6 +29,8 @@ namespace MSPowerWebApp.Controllers
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
+            pViewModel.Product.Ref_Type = RefType.Product.ToString();
+
             return View(pViewModel);
         }
 

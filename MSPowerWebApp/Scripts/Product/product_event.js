@@ -1,5 +1,6 @@
 ﻿$(function () {
 
+  
     $("#btnSave").click(function () {
 
         if ($("#frmProduct").valid()) {

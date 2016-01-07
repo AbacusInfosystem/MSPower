@@ -106,6 +106,16 @@ namespace MSPowerWebApp
          );
             #endregion
 
+            #region Upload
+
+            routes.MapRoute(
+               name: "upload-1",
+               url: "upload/{module}/{id}",
+               defaults: new { controller = "Upload", action = "Index", module = UrlParameter.Optional, id = UrlParameter.Optional }
+           );
+
+            #endregion
+
             routes.MapRoute(
                 name: "cms-1",
                 url: "cms/login",
@@ -179,6 +189,30 @@ namespace MSPowerWebApp
           );
 
             #endregion
+
+            #region Attachment
+
+            routes.MapRoute(
+            name: "attachment-1",
+            url: "upload/attachments",
+            defaults: new { controller = "Upload", action = "Insert_Attachment", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            name: "attachment-2",
+            url: "upload/delete-attachments",
+            defaults: new { controller = "Upload", action = "Delete_Attachment", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            name: "attachment-3",
+            url: "upload/get-attachments-by-ref-type-id",
+            defaults: new { controller = "Upload", action = "Get_Attachments_By_Ref_Type_Ref_Id", id = UrlParameter.Optional }
+            );
+
+
+            #endregion
+
 
             routes.MapRoute(
                 name: "default-01",
