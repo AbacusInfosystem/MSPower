@@ -486,6 +486,15 @@ namespace MSPowerWebApp
 
             #endregion
 
+            #region Upload
+            routes.MapRoute(
+               name: "upload-1",
+               url: "upload/{module}/{id}",
+               defaults: new { controller = "Upload", action = "Index", module = UrlParameter.Optional, id = UrlParameter.Optional }
+           );
+
+            #endregion
+
             routes.MapRoute(
                 name: "cms-1",
                 url: "cms/login",
@@ -636,6 +645,21 @@ namespace MSPowerWebApp
              //constraints: new { language = new LanguageRouteConstraint() }
          );
 
+            #endregion
+
+            #region Attachment
+
+            routes.MapRoute(
+            name: "image-upload-0",
+            url: "image-upload/upload",
+            defaults: new { controller = "ImageUpload", action = "Upload", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+          name: "image-upload-1",
+          url: "image-upload",
+          defaults: new { controller = "ImageUpload", action = "Index", id = UrlParameter.Optional }
+          );
 
             #endregion
 
@@ -663,6 +687,8 @@ namespace MSPowerWebApp
                url: "{controller}/{action}",
                defaults: new { controller = "WebSite", action = "Index", id = UrlParameter.Optional }
            );
+
+
 
 
         }

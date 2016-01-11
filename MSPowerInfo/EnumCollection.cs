@@ -146,4 +146,17 @@ namespace MSPowerInfo
 
         ch = 2,
     }
+
+    public enum RefType
+    {
+        Product = 1,
+
+        Services = 2,
+        
+        Appliction = 3,
+        
+        NewsLetters = 4,
+    }
+
+
 }

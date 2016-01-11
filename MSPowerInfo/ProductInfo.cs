@@ -38,5 +38,8 @@ namespace MSPowerInfo
 
         public int Updated_By { get; set; }
 
+
+
+        public string Ref_Type { get; set; }
     }
 }
