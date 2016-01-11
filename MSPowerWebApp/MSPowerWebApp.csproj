@@ -954,6 +954,8 @@
     <Content Include="Scripts\generic.multi.autocomplete.js" />
     <Content Include="Scripts\generic.popup.js" />
     <Content Include="Scripts\genric.authorize.js" />
+    <Content Include="Scripts\ImageUpload\image_upload_method.js" />
+    <Content Include="Scripts\ImageUpload\image_upload_events.js" />
     <Content Include="Scripts\Job_Application\job_application_events.js" />
     <Content Include="Scripts\Job_Application\job_application_method.js" />
     <Content Include="Scripts\Job_Application\job_application_search_events.js" />

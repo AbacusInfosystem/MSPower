@@ -56,5 +56,29 @@ namespace MSPowerWebApp.Controllers
             return View("Index",iuViewModel);
         }
 
+        public JsonResult GetImages()
+        {
+            ImageUploadViewModel imgViewModel = new ImageUploadViewModel();
+
+            // Process the list of files found in the directory.
+            string[] fileEntries = Directory.GetFiles(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath"]).ToString());
+
+            foreach (string fileName in fileEntries)
+            {
+                imgViewModel.File_Name.Add(Path.GetFileName(fileName));
+            }
+
+            return Json(imgViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public void DeleteImage(string imageName)
+        {
+            ImageUploadViewModel imgViewModel = new ImageUploadViewModel();
+
+            if (System.IO.File.Exists(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath"].ToString() + "//" + imageName)))
+            {
+                System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath"].ToString() + "//" + imageName));    
+            }
+        }
     }
 }
