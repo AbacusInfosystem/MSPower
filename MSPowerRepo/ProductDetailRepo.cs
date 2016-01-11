@@ -81,7 +81,7 @@ namespace MSPowerRepo
             return volts;
         }
 
-        public List<ProductDetailInfo> Get_Product_Details(int product_category_column_mapping_Id, int product_column_ref_Id)
+        public List<ProductDetailInfo> Get_Product_Details(ref PaginationInfo pager, int product_category_column_mapping_Id, int product_column_ref_Id)
         {
             List<ProductDetailInfo> productDetails = new List<ProductDetailInfo>();
 
@@ -118,7 +118,7 @@ namespace MSPowerRepo
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                foreach (DataRow dr in dt.Rows)
+                foreach (DataRow dr in Helper.GetRows(dt, ref pager))
                 {
                     productDetails.Add(Get_Product_Details_Values(dr, headerCount));
                 }
@@ -153,7 +153,10 @@ namespace MSPowerRepo
                 }
             }
 
+            //productheadercolummns.Add(new ProductDetailHeaderInfo() { Product_Column_Name = "Status" });
+
             return productheadercolummns;
+
         }
 
         public ProductCategoryInfo Get_Product_Category_Values(DataRow dr)
@@ -193,6 +196,7 @@ namespace MSPowerRepo
         }
 
         public ProductDetailInfo Get_Product_Details_Values(DataRow dr, int headerCount)
+        
         {
 
             ProductDetailInfo retval = new ProductDetailInfo();
@@ -200,6 +204,8 @@ namespace MSPowerRepo
             retval.Product_Detail_Id = Convert.ToInt32(dr["Product_Detail_Id"]);
 
             retval.Product_Category_Column_Mapping_Id = Convert.ToInt32(dr["Product_Category_Column_Mapping_Id"]);
+
+            retval.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
             if (headerCount >= 1)
             {
@@ -323,7 +329,7 @@ namespace MSPowerRepo
             return productDetail;
         }
 
-        public void Insert_Product_Detail(ProductDetailInfo productcolumn)
+        public int Insert_Product_Detail(ProductDetailInfo productcolumn)
         {
             SqlDataAccess sqlDataAccess = new SqlDataAccess();
 
@@ -333,7 +339,7 @@ namespace MSPowerRepo
 
             List<SqlParameter> param = Set_Product_Details_Values(productcolumn);
 
-            _sqlDataAccess.ExecuteNonQuery(param, StoredProcedures.Insert_Product_Detail_Sp.ToString(), CommandType.StoredProcedure, _con);
+            return Convert.ToInt32(_sqlDataAccess.ExecuteScalar(param, StoredProcedures.Insert_Product_Detail_Sp.ToString(), CommandType.StoredProcedure, _con));
 
         }
 
@@ -434,6 +440,8 @@ namespace MSPowerRepo
             param.Add(new SqlParameter("@Col14", productDetail.Col14));
 
             param.Add(new SqlParameter("@Col15", productDetail.Col15));
+
+            param.Add(new SqlParameter("@Is_Active", productDetail.Is_Active));
 
             return param;
 

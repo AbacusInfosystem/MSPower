@@ -1,20 +1,15 @@
 ﻿$(function () {
 
     
-
     $('#hdnCurrentPage').val(0);
 
     $("#btnEdit").click(function () {
-
-
 
         $("#frmSearch_Services").attr("action", "/cms/services/get-services-by-id");
 
         $("#frmSearch_Services").attr("method", "POST");
 
         $("#frmSearch_Services").submit();
-
-       
 
     });
 

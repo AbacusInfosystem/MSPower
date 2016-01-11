@@ -40,6 +40,8 @@ namespace MSPowerWebApp.Controllers
 
             ViewBag.Title = "MS POWER ERP :: Create, Update";
 
+            
+
             return View(pViewModel);
         }
 

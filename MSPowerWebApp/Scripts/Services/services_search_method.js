@@ -28,7 +28,8 @@
 
                 htmlText += "</td>";
             }
-            else {
+            else
+            {
                 htmlText += "<td>";
 
                 htmlText += "Inactive";
@@ -39,7 +40,9 @@
             htmlText += "</tr>";
         }
     }
-    else {
+
+    else
+    {
         htmlText += "<tr>";
 
         htmlText += "<td colspan='3'>";
@@ -91,8 +94,6 @@ function PageMore(Id) {
 }
 
 function Get_All_Services() {
-
-   
 
     var sViewModel = {
 

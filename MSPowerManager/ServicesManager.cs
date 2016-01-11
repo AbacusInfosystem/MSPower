@@ -42,7 +42,6 @@ namespace MSPowerManager
 
         public List<LookUpInfo> Get_Services_Categories(int language_Id)
         {
-
             return _sRepo.Get_Services_Categories(language_Id);
         }
 

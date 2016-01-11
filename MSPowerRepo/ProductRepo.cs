@@ -159,7 +159,6 @@ namespace MSPowerRepo
 
             if (product.Product_Id == 0)
             {
-
                 param.Add(new SqlParameter("@Created_On", product.Created_On));
 
                 param.Add(new SqlParameter("@Created_By", product.Created_By));
@@ -172,41 +171,6 @@ namespace MSPowerRepo
 
             return param;
         }
-
-        //public List<LookUpInfo> Get_Product_Categories1(int language_Id)
-        //{
-        //    List<LookUpInfo> product_categories1 = new List<LookUpInfo>();
-
-        //    SqlDataAccess sqlDataAccess = new SqlDataAccess();
-
-        //    SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
-
-        //    _con.Open();
-
-        //    List<SqlParameter> param = new List<SqlParameter>();
-
-        //    param.Add(new SqlParameter("@Language_Id", language_Id));
-
-        //    DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Categories1_Sp.ToString(), CommandType.StoredProcedure, _con);
-
-        //    _con.Close();
-
-        //    if (dt != null && dt.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow dr in dt.Rows)
-        //        {
-        //            LookUpInfo product_category = new LookUpInfo();
-
-        //            product_category.Id = Convert.ToInt32(dr["Product_Category_Id"]);
-
-        //            product_category.Value = Convert.ToString(dr["Product_Category1_EN"]);
-
-        //            product_categories1.Add(product_category);
-        //        }
-        //    }
-
-        //    return product_categories1;
-        //}
 
     }
 }
@@ -228,7 +192,40 @@ namespace MSPowerRepo
 
 
 
+//public List<LookUpInfo> Get_Product_Categories1(int language_Id)
+//{
+//    List<LookUpInfo> product_categories1 = new List<LookUpInfo>();
 
+//    SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+//    SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+//    _con.Open();
+
+//    List<SqlParameter> param = new List<SqlParameter>();
+
+//    param.Add(new SqlParameter("@Language_Id", language_Id));
+
+//    DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Categories1_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+//    _con.Close();
+
+//    if (dt != null && dt.Rows.Count > 0)
+//    {
+//        foreach (DataRow dr in dt.Rows)
+//        {
+//            LookUpInfo product_category = new LookUpInfo();
+
+//            product_category.Id = Convert.ToInt32(dr["Product_Category_Id"]);
+
+//            product_category.Value = Convert.ToString(dr["Product_Category1_EN"]);
+
+//            product_categories1.Add(product_category);
+//        }
+//    }
+
+//    return product_categories1;
+//}
 
 
 
