@@ -2,6 +2,8 @@
 
     $('#hdnCurrentPage').val(0);
 
+    $("#btnCreate").hide();
+
     $("#btnCreate").click(function () {
 
         $("#frmSearch_ProductDetail").attr("action", "/cms/product-detail");
@@ -48,8 +50,6 @@
 
             $("#hdn_Product_Detail_Id").val($(this).val()); 
 
-            $("#hdn_Product_Column_Ref_Id").val($(this).val());
-
             $("#btnEdit").show();
 
             $("#btnDelete").show();
@@ -63,6 +63,8 @@
         $("#hdn_Product_Column_Ref_Id").val($("#drpProduct_Volts option:selected").attr("data-col-ref"));
 
         Get_Product_Details();
+
+        $("#btnCreate").show();
 
     });
 

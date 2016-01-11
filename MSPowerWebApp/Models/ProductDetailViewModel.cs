@@ -28,6 +28,8 @@ namespace MSPowerWebApp.Models
             Columns = new List<ProductColumnInfo>();
 
             Product_Detail = new ProductDetailInfo();
+
+            Filter = new Product_Detail_Filter();
         }
 
 

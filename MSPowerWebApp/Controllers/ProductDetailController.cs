@@ -22,9 +22,20 @@ namespace MSPowerWebApp.Controllers
         {
             ViewBag.Title = "MS POWER ERP :: Create, Update";
 
+            // if tempdata is having a value, it means that user has landed in edit mode.
+
             if (TempData["Product_Detail_View_Model"] != null)
             {
                 pdViewModel = (ProductDetailViewModel)TempData["Product_Detail_View_Model"];
+            }
+
+            // if productdetailid is 0 it means that the user has landed in create mode.
+
+            // hence flush the pdViewModel object by creating a new instance.
+
+            if (pdViewModel.Product_Detail.Product_Detail_Id == 0)
+            {
+                pdViewModel.Product_Detail = new ProductDetailInfo();
             }
 
             ProductDetailManager pdMan = new ProductDetailManager();
@@ -120,12 +131,16 @@ namespace MSPowerWebApp.Controllers
 
         // WHEN PRODUCT LISTING PAGE GETS LOADED, THIS METHOD GETS HIT TO GET ALL PRODUCT CATEGORIES FROM DB.
 
-        public JsonResult Get_Product_Details(int productCategoryColumnMappingId, int productColumnRefId)
+        //public JsonResult Get_Product_Details(int? productCategoryColumnMappingId, int productColumnRefId)
+        //{
+
+        public JsonResult Get_Product_Details(ProductDetailViewModel pdViewModel)
         {
+
 
             ProductDetailManager pdMan = new ProductDetailManager();
 
-            ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
+            //ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
 
             PaginationInfo pager = pdViewModel.Pager;
 
@@ -134,9 +149,9 @@ namespace MSPowerWebApp.Controllers
             {
                 pager = pdViewModel.Pager;
 
-                pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(productColumnRefId);
+                pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(pdViewModel.Filter.Product_Column_Ref_Id);
 
-                pdViewModel.Product_Details = pdMan.Get_Product_Details(productCategoryColumnMappingId, productColumnRefId);
+                pdViewModel.Product_Details = pdMan.Get_Product_Details(ref pager, pdViewModel.Filter.Product_Category_Column_Mapping_Id, pdViewModel.Filter.Product_Column_Ref_Id);
 
                 pdViewModel.Pager = pager;
 
@@ -148,8 +163,11 @@ namespace MSPowerWebApp.Controllers
 
                 Logger.Error("Test Controller - Get_Tests" + ex.ToString());
             }
-
-            return Json(pdViewModel, JsonRequestBehavior.AllowGet);
+            finally
+            {
+                pager = null;
+            }
+            return Json(pdViewModel);
 
         }
 
@@ -187,7 +205,9 @@ namespace MSPowerWebApp.Controllers
 
                 pdViewModel.Product_Detail.Product_Category_Column_Mapping_Id = pdViewModel.Filter.Product_Category_Column_Mapping_Id;
 
-                pdMan.Insert_Product_Detail(pdViewModel.Product_Detail);
+                pdViewModel.Product_Detail.Product_Detail_Id = pdMan.Insert_Product_Detail(pdViewModel.Product_Detail);
+
+                pdViewModel.Filter.Product_Detail_Id = pdViewModel.Product_Detail.Product_Detail_Id;
 
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
             }
@@ -202,7 +222,9 @@ namespace MSPowerWebApp.Controllers
 
             //return RedirectToAction("Search");
 
-            return View("Index", pdViewModel);
+            TempData["Product_Detail_View_Model"] = pdViewModel;
+
+            return RedirectToAction("Index", pdViewModel);
 
         }
 
@@ -228,7 +250,6 @@ namespace MSPowerWebApp.Controllers
 
                 Logger.Error("Test Controller - Update" + ex.ToString());
             }
-
 
             TempData["Product_Detail_View_Model"] = pdViewModel;
 

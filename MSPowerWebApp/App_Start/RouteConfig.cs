@@ -28,7 +28,7 @@ namespace MSPowerWebApp
             );
 
             routes.MapRoute(
-                name: "menu-3",
+               name: "menu-3",
                url: "cms/productdetail/search",
                defaults: new { controller = "ProductDetail", action = "Search", id = UrlParameter.Optional }
            );
@@ -688,7 +688,7 @@ namespace MSPowerWebApp
                defaults: new { controller = "WebSite", action = "Index", id = UrlParameter.Optional }
            );
 
-           
+
 
 
         }

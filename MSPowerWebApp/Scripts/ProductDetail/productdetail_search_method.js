@@ -40,7 +40,6 @@ function Bind_Product_Categories(data) {
     }
     else
     {
-
             htmlText += "<tr>";
 
             htmlText += "<td colspan='3'>";
@@ -121,6 +120,12 @@ function Bind_Product_Details(data) {
             htmlText += "</th>"
 
         }
+
+        htmlText += "<th>";
+
+        htmlText += "Status";
+
+        htmlText += "</th>";
 
         htmlText += "</tr>";
     }
@@ -273,6 +278,22 @@ function Bind_Product_Details(data) {
                 htmlText += "</td>";
             }
 
+            if (data.Product_Details[i].Is_Active == true) {
+
+                htmlText += "<td>";
+
+                htmlText += "Active";
+
+                htmlText += "</td>";
+            }
+            else {
+                htmlText += "<td>";
+
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
+
             htmlText += "</tr>";
         }
     }
@@ -312,7 +333,7 @@ function Bind_Product_Details(data) {
         }
     }
     else {
-        $('.pagination').html("");
+           $('.pagination').html("");
     }
 
     $("#divSearchGridOverlay").hide();
@@ -329,26 +350,57 @@ function PageMore(Id) {
 
     $('#hdnCurrentPage').val((parseInt(Id) - 1));
 
+    $("#hdn_Product_Category_Column_Mapping_Id").val($("#drpProduct_Volts option:selected").attr("data-product-category-mapping-id"));
+
+    $("#hdn_Product_Column_Ref_Id").val($("#drpProduct_Volts option:selected").attr("data-col-ref"));
+
     Get_Product_Details();
 }
 
-function Get_Product_Details() {
 
-    $.ajax({
 
-        url: '/ProductDetail/Get_Product_Details',
+function Get_Product_Details()
+{
 
-        //data: { product_category_column_mapping_Id: $('#drpProduct_Volts').val().split("_")[1], Product_Column_Ref_Id: $('#drpProduct_Volts').val().split("_")[0] }
+    alert($('#drpProduct_Volts').val().split("_")[1]);
 
-        data: { productCategoryColumnMappingId: $('#hdn_Product_Category_Column_Mapping_Id').val(), productColumnRefId: $('#hdn_Product_Column_Ref_Id').val() }
+    var pdViewModel = {
+
+        Filter: {
+
+            //Product_Detail_Id: "",
+
+            Product_Category_Column_Mapping_Id: $('#drpProduct_Volts option:selected').attr('data-product-category-mapping-id'),
+
+            Product_Column_Ref_Id: $('#drpProduct_Volts option:selected').attr('data-col-ref')
+        },
+
+        Pager: {
+
+            CurrentPage: $('#hdnCurrentPage').val()
+        },
+    };
+
+    //$.ajax({
+
+    //    url: '/ProductDetail/Get_Product_Details',
+
+    //    //data: { product_category_column_mapping_Id: $('#drpProduct_Volts').val().split("_")[1], Product_Column_Ref_Id: $('#drpProduct_Volts').val().split("_")[0] }
+
+    //    data: { productCategoryColumnMappingId: $('#hdn_Product_Category_Column_Mapping_Id').val(), productColumnRefId: $('#hdn_Product_Column_Ref_Id').val() }
       
-    }).success(function (data) {
+    //}).success(function (data)
+    //{
+    //    Bind_Product_Details(data);
+    //});
+        
+    $("#divSearchGridOverlay").show();
 
-        Bind_Product_Details(data);
-
-    });
+    CallAjax("/ProductDetail/Get_Product_Details", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Details, "", null);
 
 }
+
+
 
 // Volts
 
@@ -380,3 +432,71 @@ function Bind_Product_Volts(data)
 
     $("#drpProduct_Volts").html(htmlText);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//function Get_Prod_Details() {
+
+//    var pdViewModel = {
+
+//        Filter: {
+
+//            Product_Detail_Id: "",
+
+//            Product_Category_Column_Mapping_Id: $('#hdn_Product_Category_Column_Mapping_Id').val(),
+
+//            Product_Column_Ref_Id: $('#hdn_Product_Column_Ref_Id').val()
+//        },
+
+//        Pager: {
+
+//            CurrentPage: $('#hdnCurrentPage').val()
+//        },
+//    };
+
+//    //$.ajax({
+
+//    //    url: '/ProductDetail/Get_Product_Details',
+
+//    //    //data: { product_category_column_mapping_Id: $('#drpProduct_Volts').val().split("_")[1], Product_Column_Ref_Id: $('#drpProduct_Volts').val().split("_")[0] }
+
+//    //    data: { productCategoryColumnMappingId: $('#hdn_Product_Category_Column_Mapping_Id').val(), productColumnRefId: $('#hdn_Product_Column_Ref_Id').val() }
+
+//    //}).success(function (data)
+//    //{
+//    //    Bind_Product_Details(data);
+//    //});
+
+//    $("#divSearchGridOverlay").show();
+
+//    CallAjax("/ProductDetail/Get_Product_Details", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Details, "", null);
+
+//}

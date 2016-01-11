@@ -25,21 +25,76 @@
         $('#btnUploadImage').show();
     });
 
-    //$('#chkIsActive').on('ifChanged', function (event) {
+    $("#btnAddNew").click(function () {
 
-    //    if ($(this).prop('checked')) {
+        
+        $("#hdnProductDetail_Id").val("0");
 
-    //        $(this).parent().addClass("checked");
+        $("#frmProductDetail").attr("action", "/cms/product-detail");
 
-    //        $("#hdnProductDetail_Status").val(true);
-    //    }
-    //    else {
-    //        $("#hdnProductDetail_Status").val(false);
-    //    }
-    //});
+        $("#frmProductDetail").attr("method", "POST");
 
-    //if ($("#hdnProductDetail_Id").val() == 0) {
+        $("#frmProductDetail").submit();
+         
+    });
 
-    //    $('#btnUploadImage').hide();
-    //}
+    $('#chkIsActive').on('ifChanged', function (event) {
+
+        if ($(this).prop('checked')) {
+
+            $(this).parent().addClass("checked");
+
+            $("#hdnProductDetail_Status").val(true);
+        }
+        else {
+            $("#hdnProductDetail_Status").val(false);
+        }
+    });
+
+    if ($("#hdnProduct_Detail_Id").val() == 0) {
+
+        $('#btnUploadImage').hide();
+    }
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//$('#chkIsActive').on('ifChanged', function (event) {
+
+//    if ($(this).prop('checked')) {
+
+//        $(this).parent().addClass("checked");
+
+//        $("#hdnProductDetail_Status").val(true);
+//    }
+//    else {
+//        $("#hdnProductDetail_Status").val(false);
+//    }
+//});
+
+//if ($("#hdnProductDetail_Id").val() == 0) {
+
+//    $('#btnUploadImage').hide();
+//}
+
