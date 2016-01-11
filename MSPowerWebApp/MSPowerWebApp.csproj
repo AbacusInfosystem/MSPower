@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\EnquiryController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Controllers\Job_ApplicationController.cs" />
     <Compile Include="Controllers\Job_OpeningController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -209,7 +210,6 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
-    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\WebSiteController.cs" />
     <Compile Include="Filters\LanguageAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,9 +218,11 @@
     <Compile Include="Models\AboutUsViewModel.cs" />
     <Compile Include="Models\ContactUsViewModel.cs" />
     <Compile Include="Models\EnquiryViewModel.cs" />
+    <Compile Include="Models\ImageUploadViewModel.cs" />
     <Compile Include="Models\Job_ApplicationViewModel.cs" />
     <Compile Include="Models\Job_OpeningViewModel.cs" />
     <Compile Include="Models\AjaxViewModel.cs" />
+    <Compile Include="Models\LanguageViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NewsLetterViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
@@ -949,6 +951,7 @@
     <Content Include="Scripts\generic.dragdrop.js" />
     <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\generic.message.js" />
+    <Content Include="Scripts\generic.multi.autocomplete.js" />
     <Content Include="Scripts\generic.popup.js" />
     <Content Include="Scripts\genric.authorize.js" />
     <Content Include="Scripts\Job_Application\job_application_events.js" />
@@ -1061,6 +1064,7 @@
     <Content Include="Views\AboutUs\AboutUsDetail.cshtml" />
     <Content Include="Views\ProductDetail\Index.cshtml" />
     <Content Include="Views\ProductDetail\Search.cshtml" />
+    <Content Include="Views\ImageUpload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1069,6 +1073,7 @@
     <Folder Include="Content\Documents\NewsLetter\" />
     <Folder Include="Content\Documents\Product\" />
     <Folder Include="Content\Documents\Services\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

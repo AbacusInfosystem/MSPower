@@ -650,23 +650,16 @@ namespace MSPowerWebApp
             #region Attachment
 
             routes.MapRoute(
-            name: "attachment-1",
-            url: "upload/attachments",
-            defaults: new { controller = "Upload", action = "Insert_Attachment", id = UrlParameter.Optional }
+            name: "image-upload-0",
+            url: "image-upload/upload",
+            defaults: new { controller = "ImageUpload", action = "Upload", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-            name: "attachment-2",
-            url: "upload/delete-attachments",
-            defaults: new { controller = "Upload", action = "Delete_Attachment", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-            name: "attachment-3",
-            url: "upload/get-attachments-by-ref-type-id",
-            defaults: new { controller = "Upload", action = "Get_Attachments_By_Ref_Type_Ref_Id", id = UrlParameter.Optional }
-            );
-
+          name: "image-upload-1",
+          url: "image-upload",
+          defaults: new { controller = "ImageUpload", action = "Index", id = UrlParameter.Optional }
+          );
 
             #endregion
 
@@ -694,6 +687,8 @@ namespace MSPowerWebApp
                url: "{controller}/{action}",
                defaults: new { controller = "WebSite", action = "Index", id = UrlParameter.Optional }
            );
+
+           
 
 
         }
