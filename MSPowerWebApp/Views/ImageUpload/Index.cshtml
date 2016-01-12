@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Image Upload";
 }
-
+<script src="~/Scripts/ImageUpload/image_upload_events.js"></script>
+<script src="~/Scripts/ImageUpload/image_upload_method.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -11,14 +12,13 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-            Image Upload
+        <h1>Upload Site Images
 
             <small>Listing Page</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
-            <li class="active">Image Upload Listing</li>
+            <li class="active">Upload Site Images</li>
         </ol>
     </section>
 
@@ -29,23 +29,61 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-
                     <div class="box-body no-padding">
 
-                    <form id="frmDragAndDrop" method="POST" enctype = "multipart/form-data" action ="/image-upload/upload"> 
-
-                 <input type="file" name="file" id="file"/><br><br> 
-
-                        <input type="submit" value="Upload Image"/>
-
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form id="frmFileUpload" method="POST" enctype="multipart/form-data" action="/image-upload/upload">
+                                    <input type="file" name="file" id="file" />
+                                    <input type="submit" value="Upload Image" />
                     </form>
-                        
+                            </div>
                         </div>
+                        <div id="divImageListing">
+                         @*   <div class="row">
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../Content/Images/ms-power-homepage (2).jpg" style="width: 100%; height: auto;" />
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>*@
+                        </div>
+</div>
                     </div>
                 </div>
             </div>
         </section>
-
     </div>
 
 
