@@ -37,15 +37,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\ExceptionManagement\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MSPowerInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\MSPowerInfo.dll</HintPath>
-    </Reference>
     <Reference Include="MSPowerRepo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\MSPowerRepo.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,6 +63,13 @@
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesManager.cs" />
+    <Compile Include="ImageUploadManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSPowerInfo\MSPowerInfo.csproj">
+      <Project>{987949f0-31c6-411b-9b40-648b26adb5d3}</Project>
+      <Name>MSPowerInfo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

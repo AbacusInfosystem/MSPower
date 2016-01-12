@@ -46,12 +46,6 @@
       <HintPath>..\Libraries\ExceptionManagement\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MSPowerInfo">
-      <HintPath>..\Libraries\MSPowerInfo.dll</HintPath>
-    </Reference>
-    <Reference Include="MSPowerManager">
-      <HintPath>..\Libraries\MSPowerManager.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -954,6 +948,11 @@
     <Content Include="Scripts\generic.multi.autocomplete.js" />
     <Content Include="Scripts\generic.popup.js" />
     <Content Include="Scripts\genric.authorize.js" />
+    <Content Include="Scripts\ImageUpload.js" />
+    <Content Include="Scripts\ImageUpload\imageupload_events.js" />
+    <Content Include="Scripts\ImageUpload\imageupload_method.js" />
+    <Content Include="Scripts\ImageUpload\imageupload_search_events.js" />
+    <Content Include="Scripts\ImageUpload\imageupload_search_method.js" />
     <Content Include="Scripts\Job_Application\job_application_events.js" />
     <Content Include="Scripts\Job_Application\job_application_method.js" />
     <Content Include="Scripts\Job_Application\job_application_search_events.js" />
@@ -1065,6 +1064,7 @@
     <Content Include="Views\ProductDetail\Index.cshtml" />
     <Content Include="Views\ProductDetail\Search.cshtml" />
     <Content Include="Views\ImageUpload\Index.cshtml" />
+    <Content Include="Views\ImageUpload\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1077,6 +1077,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSPowerInfo\MSPowerInfo.csproj">
+      <Project>{987949f0-31c6-411b-9b40-648b26adb5d3}</Project>
+      <Name>MSPowerInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSPowerManager\MSPowerManager.csproj">
+      <Project>{1d660812-a713-499c-95c8-eb1eeec5dd68}</Project>
+      <Name>MSPowerManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
