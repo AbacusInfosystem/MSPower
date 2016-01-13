@@ -1,6 +1,12 @@
-﻿$(function () {
+﻿$(document).ready(function () {
 
-  
+    alert("pageload event fired!");
+
+});
+
+
+$(function () {
+
     $("#btnSave").click(function () {
 
         if ($("#frmProduct").valid()) {

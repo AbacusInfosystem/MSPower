@@ -8,7 +8,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
-    @{Html.RenderPartial("_ServerMessage");}
+     @{Html.RenderPartial("_ServerMessage");}
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -23,6 +23,7 @@
     </section>
 
     <!-- Main content -->
+
     <section class="content">
 
         <div class="row">
@@ -35,7 +36,7 @@
                                 <form id="frmFileUpload" method="POST" enctype="multipart/form-data" action="/image-upload/upload">
                                     <input type="file" name="file" id="file" />
                                     <input type="submit" value="Upload Image" />
-                                </form>
+                    </form>
                             </div>
                         </div>
                         <div id="divImageListing">
@@ -78,11 +79,11 @@
                                 </div>
                             </div>*@
                         </div>
+</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 
 

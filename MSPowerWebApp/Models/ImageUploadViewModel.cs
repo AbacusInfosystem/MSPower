@@ -3,11 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MSPowerWebApp.Models
 {
     public class ImageUploadViewModel
     {
+
+        //Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+        public List<string> Images = new List<string>();
+
         public ImageUploadViewModel()
         {
             File_Name = new List<string>();
@@ -18,5 +24,6 @@ namespace MSPowerWebApp.Models
         public List<string> File_Name { get; set; }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
+
     }
 }
