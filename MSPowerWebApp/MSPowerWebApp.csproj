@@ -221,7 +221,6 @@
     <Compile Include="Models\ImageUploadViewModel.cs" />
     <Compile Include="Models\Job_ApplicationViewModel.cs" />
     <Compile Include="Models\Job_OpeningViewModel.cs" />
-    <Compile Include="Models\AjaxViewModel.cs" />
     <Compile Include="Models\LanguageViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NewsLetterViewModel.cs" />
