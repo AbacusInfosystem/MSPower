@@ -38,7 +38,6 @@ namespace MSPowerInfo
 
         Update_Product_Sp,
 
-        
 
         // Products_Detail Store Procedures
 
@@ -62,6 +61,7 @@ namespace MSPowerInfo
 
         Update_Product_Detail_Sp,
 
+
         // Services Store Procedures
 
         Get_Services_By_Id_Sp,
@@ -73,6 +73,7 @@ namespace MSPowerInfo
         Update_Services_Sp,
 
         Get_Services_Categories_Sp,
+
 
         // NewsLetter Store Procedures
 
@@ -96,6 +97,16 @@ namespace MSPowerInfo
         Update_ContactUs_Sp,
 
 
+        // Event Store Procedures
+
+        Get_Event_By_Id_Sp,
+
+        Get_Events_Sp,
+
+        Insert_Event_Sp,
+
+        Update_Event_Sp,
+
 
         // Job Opening Store Procedures
 
@@ -108,7 +119,6 @@ namespace MSPowerInfo
         Update_Job_Opening_Sp,
 
 
-
         // Enquiry Store Procedures
 
         Get_Enquiry_By_Id_Sp,
@@ -118,7 +128,7 @@ namespace MSPowerInfo
         Insert_Enquiry_Sp,
 
 
-         // Job_Application Store Procedures
+        // Job_Application Store Procedures
 
         Get_Job_Application_By_Id_Sp,
 
@@ -153,7 +163,7 @@ namespace MSPowerInfo
 
         Services = 2,
         
-        Appliction = 3,
+        Application = 3,
         
         NewsLetters = 4,
     }

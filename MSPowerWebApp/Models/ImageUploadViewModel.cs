@@ -10,10 +10,7 @@ namespace MSPowerWebApp.Models
     public class ImageUploadViewModel
     {
 
-        //Dictionary<string, string> dictionary = new Dictionary<string, string>();
-
-        public List<string> Images = new List<string>();
-
+      
         public ImageUploadViewModel()
         {
             File_Name = new List<string>();

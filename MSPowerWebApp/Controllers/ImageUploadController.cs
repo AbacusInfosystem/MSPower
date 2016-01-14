@@ -56,11 +56,13 @@ namespace MSPowerWebApp.Controllers
             return View("Index",iuViewModel);
         }
 
+
         public JsonResult GetImages()
         {
             ImageUploadViewModel imgViewModel = new ImageUploadViewModel();
 
             // Process the list of files found in the directory.
+
             string[] fileEntries = Directory.GetFiles(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath"]).ToString());
 
             foreach (string fileName in fileEntries)
@@ -82,3 +84,44 @@ namespace MSPowerWebApp.Controllers
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//public ActionResult uploadPartial(HttpPostedFileBase file)
+//{
+//    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath"]).ToString(), Path.GetFileName(file.FileName));
+
+//    var images = Directory.GetFiles(path).Select(x => new ImageUploadViewModel
+//    {
+//       // Url = Url.Content("/ImageUpload/GetImages" + Path.GetFileName(x))
+//    });
+
+//    return View(images);
+//}

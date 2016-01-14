@@ -127,6 +127,12 @@ function Bind_Product_Details(data) {
 
         htmlText += "</th>";
 
+        htmlText += "<th>";
+
+        htmlText += "Datasheet / Drawing";
+
+        htmlText += "</th>";
+
         htmlText += "</tr>";
     }
 

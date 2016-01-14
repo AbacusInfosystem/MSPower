@@ -43,12 +43,13 @@
                                     <button class="btn btn-default" type="button">Chinese</button>
                                 </div>*@
                                 <form id="frmLanguage">
+
                                     <div class="form-group">
 
-                                        <input type="radio" value="English" name="rdbLanguage" id="rEnglish">
+                                        <input type="radio" value="en" name="rdbLanguage" id="ren">
                                         English
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <input type="radio" value="Chinese" name="rdbLanguage" id="rChinese">
+                                        <input type="radio" value="ch" name="rdbLanguage" id="rch">
                                         Chinese
                                     </div>
 
@@ -89,13 +90,13 @@
 
     function SetLanguage() {
 
-        if ($("#hdfLanguage").val() == 'English') {
+        if ($("#hdfLanguage").val() == 'en') {
 
-            $("#rEnglish").prop("checked",true);
+            $("#ren").prop("checked",true);
         }
         else {
 
-            $("#rChinese").prop("checked",true);
+            $("#rch").prop("checked",true);
         }
     }
 

@@ -60,8 +60,8 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
                name: "menu-8",
-               url: "cms/gallery/search",
-               defaults: new { controller = "Gallery", action = "Search", id = UrlParameter.Optional }
+               url: "cms/event/search",
+               defaults: new { controller = "Event", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -317,6 +317,53 @@ namespace MSPowerWebApp
              url: "cms/contactus/delete-contactus",
              defaults: new { controller = "ContactUs", action = "Delete", id = UrlParameter.Optional }
          );
+
+            #endregion
+
+            #region Event
+
+            routes.MapRoute(
+               name: "event-1",
+               url: "cms/event",
+               defaults: new { controller = "Event", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "event-2",
+               url: "cms/event/search",
+               defaults: new { controller = "Event", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "event-3",
+               url: "cms/event/insert-event",
+               defaults: new { controller = "Event", action = "Insert", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "event-4",
+               url: "cms/event/update-event",
+               defaults: new { controller = "Event", action = "Update", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "event-5",
+               url: "cms/event/get-events",
+               defaults: new { controller = "Event", action = "Get_Events", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "event-6",
+              url: "cms/event/get-event-by-id",
+              defaults: new { controller = "Event", action = "Get_Event_By_Id", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+             name: "event-7",
+             url: "cms/event/delete-event",
+             defaults: new { controller = "Event", action = "Delete", id = UrlParameter.Optional }
+         );
+
 
             #endregion
 
@@ -644,6 +691,21 @@ namespace MSPowerWebApp
 
              //constraints: new { language = new LanguageRouteConstraint() }
          );
+
+            routes.MapRoute(
+             name: "website-19",
+             url: "{language}/event/",
+             defaults: new { controller = "WebSite", action = "Event", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
+            routes.MapRoute(
+              name: "website-20",
+              url: "{language}/event-listing/",
+              defaults: new { controller = "WebSite", action = "Event", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
 
             #endregion
 

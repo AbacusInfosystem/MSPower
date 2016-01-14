@@ -45,6 +45,7 @@
     <Compile Include="ContactUsInfo.cs" />
     <Compile Include="EnquiryInfo.cs" />
     <Compile Include="EnumCollection.cs" />
+    <Compile Include="EventInfo.cs" />
     <Compile Include="ImageUploadInfo.cs" />
     <Compile Include="Job_ApplicationInfo.cs" />
     <Compile Include="Job_OpeningInfo.cs" />
