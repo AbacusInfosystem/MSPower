@@ -40,7 +40,7 @@ namespace MSPowerWebApp.Controllers
 
             ViewBag.Title = "MS POWER ERP :: Create, Update";
 
-            pViewModel.Product.Ref_Type = RefType.Product.ToString();
+            pViewModel.Product.Ref_Type = MSPowerInfo.RefType.Product.ToString();
 
             return View(pViewModel);
         }

@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutUsManager.cs" />
-    <Compile Include="AjaxManager.cs" />
     <Compile Include="AuthenticateManager.cs" />
     <Compile Include="ContactUsManager.cs" />
     <Compile Include="EnquiryManager.cs" />

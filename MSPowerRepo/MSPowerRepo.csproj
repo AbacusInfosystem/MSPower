@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutUsRepo.cs" />
-    <Compile Include="AjaxRepo.cs" />
     <Compile Include="AuthenticateRepo.cs" />
     <Compile Include="ContactUsRepo.cs" />
     <Compile Include="EnquiryRepo.cs" />
