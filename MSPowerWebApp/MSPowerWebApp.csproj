@@ -1137,6 +1137,7 @@
     <Folder Include="Content\Documents\Services\" />
     <Folder Include="Content\Events\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Content\PDF\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

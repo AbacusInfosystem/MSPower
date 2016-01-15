@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using System.Configuration;
+using System.IO;
 using MSPowerInfo;
 using MSPowerWebApp.Common;
 using MSPowerWebApp.Models;
@@ -256,6 +258,41 @@ namespace MSPowerWebApp.Controllers
             return RedirectToAction("Index", pdViewModel);
 
         }
+
+
+        public ActionResult PdfUpload(HttpPostedFileBase file)
+        {
+            ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
+
+            if (file != null && file.ContentLength > 0)
+                try
+                {
+                    if ((Path.GetExtension(file.FileName) == ".pdf"))
+                    {
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadPath"]).ToString(), Path.GetFileName(file.FileName));
+
+                        file.SaveAs(path);
+
+                        pdViewModel.Friendly_Message.Add(MessageStore.Get("IU001"));
+
+                        ViewBag.Message = "File uploaded successfully";
+                    }
+                    else
+                    {
+                        pdViewModel.Friendly_Message.Add(MessageStore.Get("IU003"));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Debug(ex.StackTrace);
+                }
+            else
+            {
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("IU002"));
+            }
+            return View("Index", pdViewModel);
+        }
+
 
     }
 }

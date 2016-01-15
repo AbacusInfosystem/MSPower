@@ -34,6 +34,8 @@
 
     });
 
+   
+
     $('body').on('ifChanged', ".iradio-product-categories", function (event) {
 
         if ($(this).prop('checked')) {
@@ -61,6 +63,8 @@
         $("#hdn_Product_Category_Column_Mapping_Id").val($("#drpProduct_Volts option:selected").attr("data-product-category-mapping-id"));
 
         $("#hdn_Product_Column_Ref_Id").val($("#drpProduct_Volts option:selected").attr("data-col-ref"));
+
+        $("#hdnCurrentPage").val('0');
 
         Get_Product_Details();
 

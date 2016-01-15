@@ -300,6 +300,13 @@ function Bind_Product_Details(data) {
                 htmlText += "</td>";
             }
 
+          
+            htmlText += "<td>";
+
+            htmlText += "<img src='/Content/Images/pdf.png' style='width: 30%; height: auto; align: right' />";
+                       
+            htmlText += "</td>";
+
             htmlText += "</tr>";
         }
     }
