@@ -500,11 +500,11 @@ namespace MSPowerWebApp
          );
 
 
-            routes.MapRoute(
-              name: "Job_Application-1",
-              url: "cms/job_application/insert-job_application",
-              defaults: new { controller = "Job_Application", action = "Insert", id = UrlParameter.Optional }
-          );
+          //  routes.MapRoute(
+          //    name: "Job_Application-1",
+          //    url: "cms/job_application/insert-job_application",
+          //    defaults: new { controller = "Job_Application", action = "Insert", id = UrlParameter.Optional }
+          //);
 
 
             routes.MapRoute(
@@ -686,11 +686,10 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
              name: "website-18",
-             url: "{language}/aboutus-listing/",
-             defaults: new { controller = "WebSite", action = "AboutUsListing", language = UrlParameter.Optional }
-
-             //constraints: new { language = new LanguageRouteConstraint() }
+             url: "insert-job-application",
+             defaults: new { controller = "WebSite", action = "Insert_Job_Application", id = UrlParameter.Optional }
          );
+           
 
             routes.MapRoute(
              name: "website-19",

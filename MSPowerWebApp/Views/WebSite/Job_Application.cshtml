@@ -1,19 +1,60 @@
-﻿@@{
-    Layout = null;
+﻿@model MSPowerWebApp.Models.Job_ApplicationViewModel
+
+
+@{
+    ViewBag.Title = "Home";
 }
 
-<!DOCTYPE html>
+@*Job Application. @Session["Language"].ToString();*@
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    @{Html.RenderPartial("_Sidebar_Online");}
+<script src="~/Scripts/jquery.validate.js"></script>
 
-    <div>
-        Job_Application. @Session["Language"].ToString();
+<script src="~/Scripts/Job_Application/job_application_events.js"></script>
+
+<script src="~/Scripts/Job_Application/job_application_method.js"></script>
+
+<div class="content">
+    @{Html.RenderPartial("_ServerMessage");}
+    <div class="contact about-desc">
+        
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h3>Job Application</h3>
+                    <div class="contact_right">
+                        <div class="contact-form_grid">
+                            <form id="frmJob_Application">
+                                <input id="txtFirst_Name" name="Job_Application.First_Name" type="text" class="textbox" value="Enter First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter First Name';}">
+                                <input id="txtLast_Name" name="Job_Application.Last_Name" type="text" class="textbox" value="Enter Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Last Name';}">
+                                <input id="txtEmail" name="Job_Application.Email" type="text" class="textbox" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+                                <input id="txtReference" name="Job_Application.Reference" type="text" class="textbox" value="Enter Reference" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Reference';}">
+                                <textarea id="editor1" name="Job_Application.Additional_Information" onfocus="this.value = '';" onblur="if (this.value == '') {this.text = 'Additional Information';}">Additional Information</textarea>
+                                <input id="btnSave" type="button" value="Send" class="btn">
+                                <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Job_Application")" role="button">Cancel</a>
+                                <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
