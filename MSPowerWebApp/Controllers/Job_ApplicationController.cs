@@ -18,14 +18,14 @@ namespace MSPowerWebApp.Controllers
         //
         // GET: /Job_Application/
 
-        [Language]
+        //[Language]
 
-        public ActionResult Index(string language)
-        {
-            Job_ApplicationViewModel jaViewModel = new Job_ApplicationViewModel();
+        //public ActionResult Index(string language)
+        //{
+        //    Job_ApplicationViewModel jaViewModel = new Job_ApplicationViewModel();
 
-            return View(jaViewModel);
-        }
+        //    return View(jaViewModel);
+        //}
 
         // THIS IS THE FIRST ACTION METHOD WHICH GETS HIT WHEN PRODUCT LISTING PAGE IS CALLED.
 
@@ -44,46 +44,46 @@ namespace MSPowerWebApp.Controllers
 
         // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS CREATING A NEW RECORD, THEN THIS METHOD WOULD GET HIT.
 
-        public ActionResult Insert(Job_ApplicationViewModel jaViewModel)
-        {
-            try
-            {
-                if (Session["Language"].ToString() == Language.en.ToString())
-                {
-                    jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.en);
-                }
+        //public ActionResult Insert(Job_ApplicationViewModel jaViewModel)
+        //{
+        //    try
+        //    {
+        //        if (Session["Language"].ToString() == Language.en.ToString())
+        //        {
+        //            jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.en);
+        //        }
 
-                else
-                {
-                    jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.ch);
-                }
+        //        else
+        //        {
+        //            jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.ch);
+        //        }
 
-                jaViewModel.Job_Application.Created_On = DateTime.Now;
+        //        jaViewModel.Job_Application.Created_On = DateTime.Now;
 
-                Job_ApplicationManager jaMan = new Job_ApplicationManager();
+        //        Job_ApplicationManager jaMan = new Job_ApplicationManager();
 
-                //jaViewModel.Job_Application.Job_Application_Id = 1;
+        //        //jaViewModel.Job_Application.Job_Application_Id = 1;
 
-                jaViewModel.Job_Application.Job_Application_Id = jaMan.Insert_Job_Application(jaViewModel.Job_Application);
+        //        jaViewModel.Job_Application.Job_Application_Id = jaMan.Insert_Job_Application(jaViewModel.Job_Application);
 
-                jaViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
-            }
+        //        jaViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+        //    }
 
-            catch (Exception ex)
-            {
+        //    catch (Exception ex)
+        //    {
 
-                jaViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        //        jaViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Test Controller - Insert" + ex.ToString());
-            }
+        //        Logger.Error("Test Controller - Insert" + ex.ToString());
+        //    }
 
-            //TempData["jaViewModel"] = jaViewModel;
+        //    //TempData["jaViewModel"] = jaViewModel;
 
-            //return RedirectToAction("Search");
+        //    //return RedirectToAction("Search");
 
-            return View("Index", jaViewModel);
+        //    return View("Index", jaViewModel);
 
-        }
+        //}
 
         // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS UPDATING AN EXISTING RECORD, THEN THIS METHOD WOULD GET HIT.
 
