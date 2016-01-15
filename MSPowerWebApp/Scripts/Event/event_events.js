@@ -33,7 +33,7 @@
 
     $("#btnSubmit").click(function () {
 
-        alert("Heyyy")
+  
 
         $("#frmEventUpload").attr("action", "/Event/Upload");
 

@@ -44,7 +44,7 @@
 
                             <div class="col-md-12">
 
-                                <form id="frmProductDetail">
+                                <form id="frmProductDetail" method="POST" enctype="multipart/form-data">
 
                                     @*<input type="hidden" class="form-control input-sm" name="Product_Details_Header.Role_Id" id="hdnProductColumnRef_Id" value="@Model">*@
 
@@ -57,7 +57,7 @@
                                     <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">
 
                                     @{
-                                        
+
                                         //for (int i = 0; i < Model.Product_Details_Header.Count;i++ )
                                         //{
                                         if (Model.Product_Details_Header.Count >= 1)
@@ -195,16 +195,16 @@
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_15" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col15" name="Product_Detail.Col15">
                                             </div>
                                         }
-                                     
-                                        
-                                            @*<div class="form-group">
 
-                                            <label style="color: #333" for="txtProductDetail_@(i+1)">@Model.Product_Details_Header[i].Product_Column_Name</label>
 
-                                                <input type="text" class="form-control input-sm" id="txtProductDetail_@(i+1)" placeholder="Enter ProductDetail Column" value="@str" name="Product_Detail.Col@(i+1)">
-                                    
-                                            </div>*@
-                                        //}
+                                        @*<div class="form-group">
+
+                <label style="color: #333" for="txtProductDetail_@(i+1)">@Model.Product_Details_Header[i].Product_Column_Name</label>
+
+                    <input type="text" class="form-control input-sm" id="txtProductDetail_@(i+1)" placeholder="Enter ProductDetail Column" value="@str" name="Product_Detail.Col@(i+1)">
+
+                </div>*@
+    //}
                                     }
 
                                     <div class="form-group">
@@ -233,17 +233,43 @@
 
                                         <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "ProductDetail")" role="button">Cancel</a>
 
-                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+                                        @*<button type="button" class="btn btn-default btn-sm" id="btnPdfUpload">Upload PDF</button>*@
 
                                         <button type="button" class="btn btn-success btn-sm" id="btnAddNew" @*onclick="clearFields()" onclick="clearForm(this.form)"*@>Add New</button>
 
+                                        @*<input type="file" name="file" id="file" />
+                                        <input type="Button" value="Upload PDF" id="btnPdfUpload" />*@
+
                                         @*<a id="btnAddnew" class="btn btn-default btn-sm" href="@Url.Action("Index", "ProductDetail")" role="button">Add New</a>*@
 
-                                        <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">                     
+                                        <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">
+
+                                    </div>
+
+                                    <div id="form-group">
+
+                                    <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">
 
                                     </div>
 
                                 </form>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <form id="frmPDFUpload" method="POST" enctype="multipart/form-data">
+                                            <input type="file" name="file" id="file" />
+                                            <input type="Button" value="Upload PDF" id="btnPdfUpload" />
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+                                @*<form id="frmPDFUpload" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="file" />
+                                    <input type="Button" value="Upload PDF" id="btnPdfUpload" />
+                                </form>*@
+
                             </div>
 
                         </div>

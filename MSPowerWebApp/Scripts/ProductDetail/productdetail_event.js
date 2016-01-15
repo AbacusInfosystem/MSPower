@@ -38,6 +38,18 @@
          
     });
 
+    $("#btnPdfUpload").click(function () {
+
+
+        $("#frmPDFUpload").attr("action", "/ProductDetail/PdfUpload");
+
+        $("#frmPDFUpload").attr("method", "POST");
+
+        $("#frmPDFUpload").submit();
+
+    });
+
+
     $('#chkIsActive').on('ifChanged', function (event) {
 
         if ($(this).prop('checked')) {
@@ -51,13 +63,8 @@
         }
     });
 
-    if ($("#hdnProduct_Detail_Id").val() == 0) {
-
-        $('#btnUploadImage').hide();
-    }
-
+    ShowFileUpload();
 });
-
 
 
 
