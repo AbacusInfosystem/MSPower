@@ -55,6 +55,7 @@
     <Compile Include="AuthenticateManager.cs" />
     <Compile Include="ContactUsManager.cs" />
     <Compile Include="EnquiryManager.cs" />
+    <Compile Include="EventManager.cs" />
     <Compile Include="Job_ApplicationManager.cs" />
     <Compile Include="Job_OpeningManager.cs" />
     <Compile Include="NewsLetterManager.cs" />

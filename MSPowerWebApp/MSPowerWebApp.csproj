@@ -195,6 +195,7 @@
     <Compile Include="Controllers\AuthenticateController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\EnquiryController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Controllers\Job_ApplicationController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Models\AboutUsViewModel.cs" />
     <Compile Include="Models\ContactUsViewModel.cs" />
     <Compile Include="Models\EnquiryViewModel.cs" />
+    <Compile Include="Models\EventViewModel.cs" />
     <Compile Include="Models\ImageUploadViewModel.cs" />
     <Compile Include="Models\Job_ApplicationViewModel.cs" />
     <Compile Include="Models\Job_OpeningViewModel.cs" />
@@ -997,6 +999,10 @@
     <Content Include="Scripts\Enquiry\enquiry_method.js" />
     <Content Include="Scripts\Enquiry\enquiry_search_events.js" />
     <Content Include="Scripts\Enquiry\enquiry_search_method.js" />
+    <Content Include="Scripts\Event\event_events.js" />
+    <Content Include="Scripts\Event\event_method.js" />
+    <Content Include="Scripts\Event\event_search_events.js" />
+    <Content Include="Scripts\Event\event_search_method.js" />
     <Content Include="Scripts\generic.ajax.js" />
     <Content Include="Scripts\generic.custom.validation.js" />
     <Content Include="Scripts\generic.dragdrop.js" />
@@ -1087,7 +1093,7 @@
     <Content Include="Views\NewsLetter\Search.cshtml" />
     <Content Include="Views\ContactUs\Search.cshtml" />
     <Content Include="Views\Services\Search.cshtml" />
-    <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\WebSite\ProductListing.cshtml" />
     <Content Include="Views\WebSite\Product.cshtml" />
     <Content Include="Views\Shared\_Sidebar_Online.cshtml" />
@@ -1120,6 +1126,7 @@
     <Content Include="Views\ImageUpload\Index.cshtml" />
     <Content Include="Views\ImageUpload\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutOnline.cshtml" />
+    <Content Include="Views\Event\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1128,6 +1135,7 @@
     <Folder Include="Content\Documents\NewsLetter\" />
     <Folder Include="Content\Documents\Product\" />
     <Folder Include="Content\Documents\Services\" />
+    <Folder Include="Content\Events\" />
     <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>

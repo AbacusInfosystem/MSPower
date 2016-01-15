@@ -54,6 +54,7 @@
     <Compile Include="AuthenticateRepo.cs" />
     <Compile Include="ContactUsRepo.cs" />
     <Compile Include="EnquiryRepo.cs" />
+    <Compile Include="EventRepo.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Job_ApplicationRepo.cs" />
     <Compile Include="Job_OpeningRepo.cs" />

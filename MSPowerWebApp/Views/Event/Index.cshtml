@@ -1,0 +1,153 @@
+﻿@model MSPowerWebApp.Models.EventViewModel
+
+<script src="~/Scripts/Event/event_events.js"></script>
+
+<script src="~/Scripts/Event/event_method.js"></script>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+
+        <h1>
+            Event
+
+            <small>Create / Update Page</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
+            <li class="active">Event</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <form id="frmEvent">
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtEvent_Title">Event Title</label>
+
+                                        <input type="text" class="form-control input-sm" id="txtEvent_Title" placeholder="Enter Event Title" value="@Model.Event.Event_Title" name="Event.Event_Title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333" for="txtEventtName">Event Description</label>
+
+                                        <textarea id="editor1" class="form-control input-sm" rows="3" cols="250" name="Event.Event_Description">@Model.Event.Event_Description</textarea>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                            <label style="color: #333" for="fileUpload_Event_Image">Upload Event Images</label>
+
+                                            <input type="file" class="form-control input-sm" id="fileUpload_Event_Image" placeholder="Upload Event Image" name="">
+
+                                            <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                        </div>*@
+                                    <div id="form-group">
+
+                                        <input type="hidden" name="Event.Event_Id" id="hdnEvent_Id" value="@Model.Event.Event_Id">
+
+                                    </div>
+
+                                </form>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <form id="frmEventUpload" method="POST" enctype="multipart/form-data" >
+                                            <input type="file" name="file" id="file" />
+                                            <input type="submit" value="Upload Image" id="btnSubmit"/>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div id="divImageListing">
+                                   
+                                </div>
+
+                                <div class="btn-group">
+
+                                    <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
+
+                                    <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
+
+                                    <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Event")" role="button">Cancel</a>
+
+                                    @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
+
+                                    
+                                    
+                                    @*<input type="hidden" name="Event.EventId" id="hdnEventId" value="@Model.Event.EventId">*@
+
+
+                                    @*<input type="hidden" name="Event.Event_Id" id="hdfEvent_Id" value="@Model.Event.Event_Id">*@
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*action="/image-upload/upload"*@

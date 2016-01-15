@@ -21,6 +21,8 @@ namespace MSPowerWebApp.Models
 
         public Product_Filter Filter { get; set; }
 
+        public int Language_Id { get; set; }
+
         //public List<LookUpInfo> Product_Categories { get; set; }
 
         public ProductViewModel()
