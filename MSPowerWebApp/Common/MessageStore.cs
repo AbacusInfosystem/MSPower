@@ -74,6 +74,46 @@ namespace MSPowerWebApp.Common
 
             #endregion
 
+            #region About us
+
+            FriendlyMessageInfo A001 = new FriendlyMessageInfo("A001", MessageType.Success, "About us saved successfully.");
+            hash.Add("A001", A001);
+
+            FriendlyMessageInfo A002 = new FriendlyMessageInfo("A002", MessageType.Success, "About us updated successfully.");
+            hash.Add("A002", A002);
+
+            #endregion
+
+            #region Contact us
+
+            FriendlyMessageInfo C001 = new FriendlyMessageInfo("C001", MessageType.Success, "Contact us saved successfully.");
+            hash.Add("C001", C001);
+
+            FriendlyMessageInfo C002 = new FriendlyMessageInfo("C002", MessageType.Success, "Contact us updated successfully.");
+            hash.Add("C002", C002);
+
+            #endregion
+
+            #region Events
+
+            FriendlyMessageInfo E001 = new FriendlyMessageInfo("E001", MessageType.Success, "Events saved successfully.");
+            hash.Add("E001", E001);
+
+            FriendlyMessageInfo E002 = new FriendlyMessageInfo("E002", MessageType.Success, "Events updated successfully.");
+            hash.Add("E002", E002);
+
+            #endregion
+
+            #region Job Opening
+
+            FriendlyMessageInfo JB001 = new FriendlyMessageInfo("JB001", MessageType.Success, "Job opening saved successfully.");
+            hash.Add("JB001", JB001);
+
+            FriendlyMessageInfo JB002 = new FriendlyMessageInfo("JB002", MessageType.Success, "Job opening updated successfully.");
+            hash.Add("JB002", JB002);
+
+            #endregion
+
             #region Image Upload
 
             FriendlyMessageInfo IU001 = new FriendlyMessageInfo("IU001", MessageType.Success, "File was uploaded successfully.");

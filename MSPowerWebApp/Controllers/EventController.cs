@@ -143,7 +143,7 @@ namespace MSPowerWebApp.Controllers
 
                 eViewModel.Event.Event_Id = eMan.Insert_Event(eViewModel.Event);
 
-                eViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                eViewModel.Friendly_Message.Add(MessageStore.Get("E001"));
             }
             catch (Exception ex)
             {
@@ -184,7 +184,7 @@ namespace MSPowerWebApp.Controllers
 
                 eMan.Update_Event(eViewModel.Event);
 
-                eViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                eViewModel.Friendly_Message.Add(MessageStore.Get("E002"));
             }
             catch (Exception ex)
             {

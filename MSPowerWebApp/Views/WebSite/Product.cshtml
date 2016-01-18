@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MSPowerWebApp.Models.ProductDetailViewModel
+@{
     ViewBag.Title = "Home";
 }
 
@@ -10,109 +11,140 @@
         <!---->
         <div class="products">
 
-            <h2 style="color:#EE1C25">Phase Control Thyristors - Stud / Flat Base</h2>
-				<h4>with blocking voltages from 200 V up to 1600 V and average currents from 30A up to 500 A in Stud/ Flat base housings.</h4>
-				
-				<div class="table-responsive">
-					<table class="table table-striped table-bordered">
-						<thead>
-						<tr class="danger" colspan=13>upto 1800V</tr>
-							<tr class="info">
-								<th>Type</th>
-								<th>VDRM,VRRM [V] VDSM=VDRM VRSM=VRRM+100V</th>
-								<th>IDRM, IRRM [mA] Tjmax</th>
-								<th>@Html.Raw("ITAVM / TC [A / °C] @180° Sine") </th>
-								<th>@Html.Raw("ITSM [A] ,@ 10ms Tjmax")</th>
-								<th>@Html.Raw("ʃi2t [A2S] ,@ 10ms Tjmax")</th>
-								<th>VT / IT [ V / A ] Tjmax</th>
-								<th>@Html.Raw("V(TO) [V] @Tjmax")</th>
-								<th>@Html.Raw("rT [mΩ] @Tjmax")</th>
-								<th>Igt [mA]</th>
-								<th>@Html.Raw("RthJC [°C/W] @180° Sine")</th>
-								<th>@Html.Raw("Tjmax [ °C]")</th>
-								<th>Datasheet / Drawing</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>MSKP30S</td>
-								<td>200 --- 1600</td>
-								<td>10</td>
-								<td>30 / 85</td>
-								<td>500</td>
-								<td>1250</td>
-								<td>1.69 / 100</td>
-								<td>0.95</td>
-								<td>6.40</td>
-								<td>100</td>
-								<td>0.93</td>
-								<td>125</td>
-								<td></td>
-							</tr>
-							<tr class="danger">
-								<td>MSKP30S</td>
-								<td>200 --- 1600</td>
-								<td>10</td>
-								<td>30 / 85</td>
-								<td>500</td>
-								<td>1250</td>
-								<td>1.69 / 100</td>
-								<td>0.95</td>
-								<td>6.40</td>
-								<td>100</td>
-								<td>0.93</td>
-								<td>125</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>MSKP30S</td>
-								<td>200 --- 1600</td>
-								<td>10</td>
-								<td>30 / 85</td>
-								<td>500</td>
-								<td>1250</td>
-								<td>1.69 / 100</td>
-								<td>0.95</td>
-								<td>6.40</td>
-								<td>100</td>
-								<td>0.93</td>
-								<td>125</td>
-								<td></td>
-							</tr>
-							<tr class="danger">
-								<td>MSKP30S</td>
-								<td>200 --- 1600</td>
-								<td>10</td>
-								<td>30 / 85</td>
-								<td>500</td>
-								<td>1250</td>
-								<td>1.69 / 100</td>
-								<td>0.95</td>
-								<td>6.40</td>
-								<td>100</td>
-								<td>0.93</td>
-								<td>125</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>MSKP30S</td>
-								<td>200 --- 1600</td>
-								<td>10</td>
-								<td>30 / 85</td>
-								<td>500</td>
-								<td>1250</td>
-								<td>1.69 / 100</td>
-								<td>0.95</td>
-								<td>6.40</td>
-								<td>100</td>
-								<td>0.93</td>
-								<td>125</td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			
+            <h2 style="color:#EE1C25">@Model.Product_Category.Product_Category1</h2>
+            <h4>@Model.Product_Category.Product_Category_Description</h4>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr class="danger" colspan=13>upto @Model.Product_Category_Column_Mapping.Volts</tr>
+                        <tr class="info">
+                            @foreach (var item in Model.Product_Details_Header)
+                            {
+                                <th>@Html.Raw(item.Product_Column_Name)</th>
+                            }
+                            @*<th>Type</th>
+                                <th>VDRM,VRRM [V] VDSM=VDRM VRSM=VRRM+100V</th>
+                                <th>IDRM, IRRM [mA] Tjmax</th>
+                                <th>@Html.Raw("ITAVM / TC [A / °C] @180° Sine") </th>
+                                <th>@Html.Raw("ITSM [A] ,@ 10ms Tjmax")</th>
+                                <th>@Html.Raw("ʃi2t [A2S] ,@ 10ms Tjmax")</th>
+                                <th>VT / IT [ V / A ] Tjmax</th>
+                                <th>@Html.Raw("V(TO) [V] @Tjmax")</th>
+                                <th>@Html.Raw("rT [mΩ] @Tjmax")</th>
+                                <th>Igt [mA]</th>
+                                <th>@Html.Raw("RthJC [°C/W] @180° Sine")</th>
+                                <th>@Html.Raw("Tjmax [ °C]")</th>
+                                <th>Datasheet / Drawing</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int j = 1;
+
+                            foreach (var item in Model.Product_Details)
+                            {
+                                if (j % 2 == 0)
+                                {
+                                    @:<tr class="danger">
+                                }
+                                else
+                                {
+                                    @:<tr>
+                                }
+
+                                j++;
+                                if (Model.Product_Details_Header.Count >= 1)
+                                {
+                                    <td>@item.Col1</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 2)
+                                {
+                                    <td>@item.Col2</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 3)
+                                {
+                                    <td>@item.Col3</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 4)
+                                {
+                                    <td>@item.Col4</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 5)
+                                {
+                                    <td>@item.Col5</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 6)
+                                {
+                                    <td>@item.Col6</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 7)
+                                {
+                                    <td>@item.Col7</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 8)
+                                {
+                                    <td>@item.Col8</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 9)
+                                {
+                                    <td>@item.Col9</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 10)
+                                {
+                                    <td>@item.Col10</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 11)
+                                {
+                                    <td>@item.Col11</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 12)
+                                {
+                                    <td>@item.Col12</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 13)
+                                {
+                                    <td>@item.Col13</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 14)
+                                {
+                                    <td>@item.Col14</td>
+                                }
+
+                                if (Model.Product_Details_Header.Count >= 15)
+                                {
+                                    <td>@item.Col1</td>
+                                }
+
+
+                                if (j % 2 == 0)
+                                {
+                                    @:</tr>
+                                }
+                                else
+                                {
+                                    @:</tr>
+                                }
+
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>

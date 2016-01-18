@@ -30,6 +30,10 @@ namespace MSPowerWebApp.Models
             Product_Detail = new ProductDetailInfo();
 
             Filter = new Product_Detail_Filter();
+
+            Product_Category = new ProductCategoryInfo();
+
+            Product_Category_Column_Mapping = new ProductCategoryColumnMappingInfo();
         }
 
 
@@ -59,6 +63,12 @@ namespace MSPowerWebApp.Models
         public HttpPostedFileBase Upload_File { get; set; }
 
         public bool Is_PDF_Exists { get; set; }
+
+        public string Language { get; set; }
+
+        public ProductCategoryInfo Product_Category { get; set; }
+
+        public ProductCategoryColumnMappingInfo Product_Category_Column_Mapping { get; set; }
 
     }
 

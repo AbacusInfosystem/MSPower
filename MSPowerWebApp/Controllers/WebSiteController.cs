@@ -26,13 +26,68 @@ namespace MSPowerWebApp.Controllers
         [Language]
         public ActionResult ProductListing(string language)
         {
-            return View();
+            ProductDetailViewModel pViewModel = new ProductDetailViewModel();
+
+            ProductDetailManager _pMan = new ProductDetailManager();
+
+            int language_Id = 0;
+
+            
+
+            if(Language.en.ToString() == language)
+            {
+                language_Id = (int)Language.en;
+            }
+            else
+            {
+                language_Id = (int)Language.ch;
+            }
+
+            try
+            {
+                pViewModel.Product_Categories = _pMan.Get_Product_Categories_By_Lanugae_Id(language_Id);
+
+                pViewModel.Language = language;
+            }
+            catch(Exception ex)
+            {
+                pViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("WebSite Controller - ProductListing" + ex.ToString());
+            }
+
+            return View(pViewModel);
         }
 
         [Language]
-        public ActionResult Product(string language)
+        public ActionResult Product(string language, int product_Column_Ref_Id, int product_Category_Column_Mapping_Id)
         {
-            return View();
+            ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
+
+            ProductDetailManager pdMan = new ProductDetailManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
+            try
+            {
+                pdViewModel.Product_Category_Column_Mapping = pdMan.Get_Product_Category_Column_By_Id(product_Category_Column_Mapping_Id);
+
+                pdViewModel.Product_Category = pdMan.Get_Product_Category_By_Id(pdViewModel.Product_Category_Column_Mapping.Product_Category_Id);
+
+                pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(product_Column_Ref_Id);
+
+                pdViewModel.Product_Details = pdMan.Get_Product_Details(ref pager, product_Category_Column_Mapping_Id, product_Column_Ref_Id);
+            }
+            catch(Exception ex)
+            {
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("WebSite Controller - Product" + ex.ToString());
+            }
+
+            return View(pdViewModel);
         }
 
         [Language]

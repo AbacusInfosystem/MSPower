@@ -61,6 +61,14 @@ namespace MSPowerInfo
 
         Update_Product_Detail_Sp,
 
+        sp_Get_Product_Categories_By_Lanugae_Id, // Get all Product by language id
+
+        sp_Get_Product_Category_Column_By_Category_Id, // Get all Volts by product category
+
+        Get_Product_Category_Column_By_Id_sp,
+
+        Get_Product_Category_By_Id_sp,
+
 
         // Services Store Procedures
 

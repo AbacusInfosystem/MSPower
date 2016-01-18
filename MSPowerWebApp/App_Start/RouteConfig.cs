@@ -567,8 +567,8 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
                name: "website-1",
-               url: "{language}/product/",
-               defaults: new { controller = "WebSite", action = "Product", language = UrlParameter.Optional }
+               url: "{language}/product/{product_Column_Ref_Id}/{product_Category_Column_Mapping_Id}",
+               defaults: new { controller = "WebSite", action = "Product", language = UrlParameter.Optional, product_Column_Ref_Id = UrlParameter.Optional, product_Category_Column_Mapping_Id = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
            );
 

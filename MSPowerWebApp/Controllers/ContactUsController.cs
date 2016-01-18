@@ -73,7 +73,7 @@ namespace MSPowerWebApp.Controllers
 
                 cuViewModel.ContactUs.ContactUs_Id = cuMan.Insert_ContactUs(cuViewModel.ContactUs);
 
-                cuViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                cuViewModel.Friendly_Message.Add(MessageStore.Get("C001"));
             }
 
             catch (Exception ex)
@@ -115,7 +115,7 @@ namespace MSPowerWebApp.Controllers
 
                 cuMan.Update_ContactUs(cuViewModel.ContactUs);
 
-                cuViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                cuViewModel.Friendly_Message.Add(MessageStore.Get("C002"));
             }
             catch (Exception ex)
             {
