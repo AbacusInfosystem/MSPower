@@ -2,7 +2,9 @@
 
     $.ajax({
 
-        url: '/Event/GetImages'
+        url: '/Event/GetImages',
+
+        data: { event_Id: $('[name="Event.Event_Id"]').val() }
 
     }).success(function (data) {
 
@@ -24,7 +26,7 @@ function BindImages(data) {
 
         htmlText += "<div class='col-md-2' style='text-align:center; vertical-align:middle;'>";
 
-        htmlText += "<img src='/Content/Events/" + data.File_Name[i] + "' data-filename='"+data.File_Name[i]+"' style='width: 100%; height: auto;' />";
+        htmlText += "<img src='/Content/Events/" + $('[name="Event.Event_Id"]').val()+ "/" + data.File_Name[i] + "' data-filename='" + data.File_Name[i] + "' style='width: 100%; height: auto;' />";
 
         htmlText += "<input type='button' id='btn" + i + "' class='delete' value='Delete'/>";
 

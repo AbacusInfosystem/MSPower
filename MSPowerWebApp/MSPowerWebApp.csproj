@@ -1041,6 +1041,7 @@
     <Content Include="Scripts\NewsLetter\newsletter_method.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_events.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_method.js" />
+    <Content Include="Scripts\NewsLetter\newsletter_validation.js" />
     <Content Include="Scripts\ProductDetail\productdetail_event.js" />
     <Content Include="Scripts\ProductDetail\productdetail_method.js" />
     <Content Include="Scripts\ProductDetail\productdetail_validation.js" />
@@ -1139,6 +1140,7 @@
     <Folder Include="Content\Documents\Product\" />
     <Folder Include="Content\Documents\Services\" />
     <Folder Include="Content\Events\" />
+    <Folder Include="Content\PDF\News Letter\" />
     <Folder Include="Content\PDF\Product Details\" />
   </ItemGroup>
   <ItemGroup>

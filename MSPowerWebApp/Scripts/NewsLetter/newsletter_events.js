@@ -2,7 +2,6 @@
 
     $("#btnSave").click(function () {
 
-        alert("HIII");
 
         if ($("#frmNewsLetter").valid()) {
 
@@ -44,4 +43,16 @@
 
         $('#btnUploadImage').hide();
     }
+
+    $("#btnDownloadPDF").click(function () {
+
+        $("#frmNewsLetter").validate().cancelSubmit = true;
+
+        $("#frmNewsLetter").attr("action", "/cms/newsletter/download-pdf/" + $("#hdnNewsLetter_Id").val());
+
+        $("#frmNewsLetter").attr("method", "POST");
+
+        $("#frmNewsLetter").submit();
+    });
+
 });

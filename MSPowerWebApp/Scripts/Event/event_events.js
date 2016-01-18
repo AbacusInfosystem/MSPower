@@ -1,8 +1,15 @@
 ﻿$(function () {
 
-    $("#btnSave").click(function () {
+    if ($("#hdnEvent_Id").val() != "0")
+    {
+        $("#dvImages").show()
+    }
+    else
+    {
+        $("#dvImages").hide();
+    }
 
-        alert("HIII");
+    $("#btnSave").click(function () {
 
         if ($("#frmEvent").valid()) {
 
@@ -52,7 +59,7 @@
 
             url: '/Event/DeleteImage',
 
-            data: { imageName: "" + $(this).parents('.col-md-2').find('img').attr("data-filename") }
+            data: { imageName: "" + $(this).parents('.col-md-2').find('img').attr("data-filename"), event_Id: $('[name="Event.Event_Id"]').val() }
 
         }).success(function () {
 

@@ -278,6 +278,11 @@ namespace MSPowerWebApp
              defaults: new { controller = "NewsLetter", action = "Delete", id = UrlParameter.Optional }
          );
 
+            routes.MapRoute(
+            name: "newsletter-8",
+            url: "cms/newsletter/download-pdf/{newsLetter_Id}",
+            defaults: new { controller = "NewsLetter", action = "Download_Product_Details_PDF", newsLetter_Id = UrlParameter.Optional }
+        );
 
             #endregion
 
