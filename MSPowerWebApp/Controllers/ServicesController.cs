@@ -84,7 +84,7 @@ namespace MSPowerWebApp.Controllers
 
                 sViewModel.Service.Service_Id = sMan.Insert_Services(sViewModel.Service);
 
-                sViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                sViewModel.Friendly_Message.Add(MessageStore.Get("S001"));
             }
             catch (Exception ex)
             {
@@ -125,7 +125,7 @@ namespace MSPowerWebApp.Controllers
 
                 sMan.Update_Services(sViewModel.Service);
 
-                sViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                sViewModel.Friendly_Message.Add(MessageStore.Get("S002"));
             }
             catch (Exception ex)
             {

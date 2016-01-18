@@ -1,4 +1,6 @@
 ﻿$(function () {
+   
+    
 
     $("#btnSave").click(function () {
 
@@ -29,6 +31,8 @@
 
         
         $("#hdnProductDetail_Id").val("0");
+
+        $("#frmProductDetail").validate().cancelSubmit = true;
 
         $("#frmProductDetail").attr("action", "/cms/product-detail");
 
@@ -64,6 +68,20 @@
     });
 
     ShowFileUpload();
+
+    $("#btnDownloadPDF").click(function () {
+
+        $("#frmProductDetail").validate().cancelSubmit = true;
+
+        $("#frmProductDetail").attr("action", "/cms/product-detail/download-pdf/" + $("#hdnProductDetail_Id").val());
+
+        $("#frmProductDetail").attr("method", "POST");
+
+        $("#frmProductDetail").submit();
+    });
+
+   
+
 });
 
 

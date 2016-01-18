@@ -75,7 +75,7 @@ namespace MSPowerWebApp.Controllers
 
                 nlViewModel.NewsLetter.NewsLetter_Id = nlMan.Insert_NewsLetter(nlViewModel.NewsLetter);
 
-                nlViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                nlViewModel.Friendly_Message.Add(MessageStore.Get("N001"));
             }
             catch (Exception ex)
             {
@@ -118,7 +118,7 @@ namespace MSPowerWebApp.Controllers
 
                 nlMan.Update_NewsLetter(nlViewModel.NewsLetter);
 
-                nlViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                nlViewModel.Friendly_Message.Add(MessageStore.Get("N002"));
             }
             catch (Exception ex)
             {

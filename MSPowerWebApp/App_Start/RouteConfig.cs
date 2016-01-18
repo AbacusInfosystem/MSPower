@@ -178,6 +178,13 @@ namespace MSPowerWebApp
              url: "cms/product-detail/delete-product-detail",
              defaults: new { controller = "ProductDetail", action = "Delete", id = UrlParameter.Optional }
          );
+
+            routes.MapRoute(
+             name: "productdetail-8",
+             url: "cms/product-detail/download-pdf/{product_Details_Id}",
+             defaults: new { controller = "ProductDetail", action = "Download_Product_Details_PDF", product_Details_Id = UrlParameter.Optional }
+         );
+
             #endregion
 
             #region Services

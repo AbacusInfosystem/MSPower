@@ -34,6 +34,46 @@ namespace MSPowerWebApp.Common
 
             #endregion
 
+            #region Product Details
+
+            FriendlyMessageInfo PD001 = new FriendlyMessageInfo("PD001", MessageType.Success, "Product details saved successfully.");
+            hash.Add("PD001", PD001);
+
+            FriendlyMessageInfo PD002 = new FriendlyMessageInfo("PD002", MessageType.Success, "Product details updated successfully.");
+            hash.Add("PD002", PD002);
+
+            #endregion
+
+            #region Product 
+
+            FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Product saved successfully.");
+            hash.Add("P001", P001);
+
+            FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Product updated successfully.");
+            hash.Add("P002", P002);
+
+            #endregion
+
+            #region Service
+
+            FriendlyMessageInfo S001 = new FriendlyMessageInfo("S001", MessageType.Success, "Service saved successfully.");
+            hash.Add("S001", S001);
+
+            FriendlyMessageInfo S002 = new FriendlyMessageInfo("S002", MessageType.Success, "Service updated successfully.");
+            hash.Add("S002", S002);
+
+            #endregion
+
+            #region News Letter
+
+            FriendlyMessageInfo N001 = new FriendlyMessageInfo("N001", MessageType.Success, "News letter saved successfully.");
+            hash.Add("N001", N001);
+
+            FriendlyMessageInfo N002 = new FriendlyMessageInfo("N002", MessageType.Success, "News letter updated successfully.");
+            hash.Add("N002", N002);
+
+            #endregion
+
             #region Image Upload
 
             FriendlyMessageInfo IU001 = new FriendlyMessageInfo("IU001", MessageType.Success, "File was uploaded successfully.");

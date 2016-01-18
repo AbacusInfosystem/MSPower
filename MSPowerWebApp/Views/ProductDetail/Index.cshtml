@@ -1,6 +1,6 @@
 ﻿@model MSPowerWebApp.Models.ProductDetailViewModel
 
-
+<script src="~/Scripts/ProductDetail/productdetail_validation.js"></script>
 <script src="~/Scripts/ProductDetail/productdetail_event.js"></script>
 <script src="~/Scripts/ProductDetail/productdetail_method.js"></script>
 
@@ -12,6 +12,7 @@
 
 <div class="content-wrapper">
 
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
 
     <section class="content-header">
@@ -29,7 +30,7 @@
     </section>
 
     <!-- Main content -->
-    
+
     <section class="content">
 
         <div class="row">
@@ -55,6 +56,8 @@
                                     <input type="hidden" name="Filter.Product_Detail_Id" id="hdnProductDetail_Id" value="@Model.Filter.Product_Detail_Id">
 
                                     <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">
+
+                                    
 
                                     @{
 
@@ -199,11 +202,11 @@
 
                                         @*<div class="form-group">
 
-                <label style="color: #333" for="txtProductDetail_@(i+1)">@Model.Product_Details_Header[i].Product_Column_Name</label>
+                                            <label style="color: #333" for="txtProductDetail_@(i+1)">@Model.Product_Details_Header[i].Product_Column_Name</label>
 
-                    <input type="text" class="form-control input-sm" id="txtProductDetail_@(i+1)" placeholder="Enter ProductDetail Column" value="@str" name="Product_Detail.Col@(i+1)">
+                                                <input type="text" class="form-control input-sm" id="txtProductDetail_@(i+1)" placeholder="Enter ProductDetail Column" value="@str" name="Product_Detail.Col@(i+1)">
 
-                </div>*@
+                                            </div>*@
     //}
                                     }
 
@@ -225,6 +228,19 @@
 
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <input type="file" name="Upload_File" id="file" />
+                                    </div>
+
+                                    @if (Model.Is_PDF_Exists)
+                                    {
+                                        <div class="form-group">
+                                            <input type="button" id="btnDownloadPDF" class="btn btn-sm" value="Download PDF"/>
+                                    </div>
+                                    }
+
+
                                     <div class="btn-group">
 
                                         <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
@@ -238,7 +254,7 @@
                                         <button type="button" class="btn btn-success btn-sm" id="btnAddNew" @*onclick="clearFields()" onclick="clearForm(this.form)"*@>Add New</button>
 
                                         @*<input type="file" name="file" id="file" />
-                                        <input type="Button" value="Upload PDF" id="btnPdfUpload" />*@
+                                            <input type="Button" value="Upload PDF" id="btnPdfUpload" />*@
 
                                         @*<a id="btnAddnew" class="btn btn-default btn-sm" href="@Url.Action("Index", "ProductDetail")" role="button">Add New</a>*@
 
@@ -248,27 +264,27 @@
 
                                     <div id="form-group">
 
-                                    <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">
+                                        <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">
 
                                     </div>
 
                                 </form>
 
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <form id="frmPDFUpload" method="POST" enctype="multipart/form-data">
-                                            <input type="file" name="file" id="file" />
-                                            <input type="Button" value="Upload PDF" id="btnPdfUpload" />
-                                        </form>
-                                    </div>
-                                </div>
+                                @*<div class="row">
+                                        <div class="col-md-4">
+                                            <form id="frmPDFUpload" method="POST" enctype="multipart/form-data">
+                                                <input type="file" name="file" id="file" />
+                                                <input type="Button" value="Upload PDF" id="btnPdfUpload" />
+                                            </form>
+                                        </div>
+                                    </div>*@
 
 
 
                                 @*<form id="frmPDFUpload" method="POST" enctype="multipart/form-data">
-                                    <input type="file" name="file" id="file" />
-                                    <input type="Button" value="Upload PDF" id="btnPdfUpload" />
-                                </form>*@
+                                        <input type="file" name="file" id="file" />
+                                        <input type="Button" value="Upload PDF" id="btnPdfUpload" />
+                                    </form>*@
 
                             </div>
 
