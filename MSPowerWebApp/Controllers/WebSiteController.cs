@@ -72,11 +72,24 @@ namespace MSPowerWebApp.Controllers
 
             pager.IsPagingRequired = false;
 
+            int language_Id = 0;
+
+
+
+            if (Language.en.ToString() == language)
+            {
+                language_Id = (int)Language.en;
+            }
+            else
+            {
+                language_Id = (int)Language.ch;
+            }
+
             try
             {
                 pdViewModel.Product_Category_Column_Mapping = pdMan.Get_Product_Category_Column_By_Id(product_Category_Column_Mapping_Id);
 
-                pdViewModel.Product_Category = pdMan.Get_Product_Category_By_Id(pdViewModel.Product_Category_Column_Mapping.Product_Category_Id);
+                pdViewModel.Product_Category = pdMan.Get_Product_Category_By_Id(pdViewModel.Product_Category_Column_Mapping.Product_Category_Id, language_Id);
 
                 pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(product_Column_Ref_Id);
 
@@ -298,6 +311,19 @@ namespace MSPowerWebApp.Controllers
              }
 
              return PartialView("_Events_Images", eViewModel);
+         }
+
+         public ActionResult SetLanguage(string language)
+         {
+             try
+             {
+                 Session["Language"] = language;
+             }
+             catch(Exception ex)
+             {
+                 Logger.Error("Web Site Controller - Get_Events_Images" + ex.ToString());
+             }
+             return RedirectToAction("Index");
          }
 
     }

@@ -41,6 +41,37 @@
                 <a href="index.html">
                     <img alt="" class="img-responsive" src="../../../ContentOnline/images/mspower.png"></a>
             </div>
+
+            <div class="lang-toggles">
+                @if (Session["Language"].ToString() == "en")
+                {
+                    <a class="lang-toggle lang-en active" href="/en/set-language">
+                        <span>English</span>
+                    </a>
+                }
+                else
+                {
+                    <a class="lang-toggle lang-en" href="/en/set-language">
+                        <span>English</span>
+                    </a>
+                }
+
+                <span class="lang-toggle-divider">|</span>
+                @if (Session["Language"].ToString() == "ch")
+                {
+                    <a class="lang-toggle lang-sp active" href="/ch/set-language">
+                        <span>Chinese</span>
+                    </a>
+                }
+                else
+                {
+                    <a class="lang-toggle lang-sp" href="/ch/set-language">
+                        <span>Chinese</span>
+                    </a>
+                }
+
+            </div>
+
             <div class="header-right">
                 @{Html.RenderPartial("_Sidebar_Online");}
             </div>

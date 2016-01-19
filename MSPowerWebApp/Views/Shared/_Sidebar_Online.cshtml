@@ -7,18 +7,18 @@
         <li>
             <a href="@Url.Action("ProductListing", "WebSite", new { language = Session["Language"].ToString() })">Products</a>
         </li>
-        <li>
+        @*<li>
             <a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })">Product Detail</a>
-        </li>
+        </li>*@
         <li>
             <a href="@Url.Action("ServiceListing", "WebSite", new { language = Session["Language"].ToString() })">Applications</a>
         </li>
         <li>
             <a href="@Url.Action("NewsLetterListing", "WebSite", new { language = Session["Language"].ToString() })">News Letters</a>
         </li>
-        <li>
+        @*<li>
             <a href="@Url.Action("NewsLetter", "WebSite", new { language = Session["Language"].ToString() })">News Letter</a>
-        </li>
+        </li>*@
         <li>
             <a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })">Job Opening</a>
         </li>
@@ -36,9 +36,9 @@
             <a href="@Url.Action("Events", "WebSite", new { language = Session["Language"].ToString() })">Events</a>
         </li>
 
-        <li>
+        @*<li>
             <a href="@Url.Action("Index", "Authenticate")">CMS Login</a>
-        </li>
+        </li>*@
     </ul>
 </div>
 <!-- script for menu -->

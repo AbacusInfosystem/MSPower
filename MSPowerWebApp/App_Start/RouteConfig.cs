@@ -731,6 +731,13 @@ namespace MSPowerWebApp
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
+            routes.MapRoute(
+              name: "website-23",
+              url: "{language}/set-language",
+              defaults: new { controller = "WebSite", action = "SetLanguage", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
 
             #endregion
 
