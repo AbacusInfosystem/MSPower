@@ -5,10 +5,11 @@
 
 @*Product. @Session["Language"].ToString();*@
   
-
+<script src="~/Scripts/WebSite/product_events.js"></script>
 <div class="content">
     <div class="container">
         <!---->
+        <form id="frmProduct">
         <div class="products">
 
             <h2 style="color:#EE1C25">@Model.Product_Category.Product_Category1</h2>
@@ -23,6 +24,7 @@
                             {
                                 <th>@Html.Raw(item.Product_Column_Name)</th>
                             }
+                            <th>Download PDF</th>
                             @*<th>Type</th>
                                 <th>VDRM,VRRM [V] VDSM=VDRM VRSM=VRRM+100V</th>
                                 <th>IDRM, IRRM [mA] Tjmax</th>
@@ -128,7 +130,18 @@
                                 {
                                     <td>@item.Col1</td>
                                 }
-
+                                
+                                if(item.Is_PDF_Exists == true)
+                                { 
+                                <td>
+                                    <a href="#" class="download-pdf" name="@item.Product_Detail_Id">Download</a>
+                                </td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                        
 
                                 if (j % 2 == 0)
                                 {
@@ -146,5 +159,6 @@
             </div>
 
         </div>
+            </form>
     </div>
 </div>

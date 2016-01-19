@@ -45,11 +45,11 @@ namespace MSPowerWebApp.Controllers
 
                 if (System.IO.File.Exists(path))
                 {
-                    pdViewModel.Is_PDF_Exists = true;
+                    pdViewModel.Product_Detail.Is_PDF_Exists = true;
                 }
                 else
                 {
-                    pdViewModel.Is_PDF_Exists = false;
+                    pdViewModel.Product_Detail.Is_PDF_Exists = false;
                 }
             }
             
@@ -207,11 +207,11 @@ namespace MSPowerWebApp.Controllers
 
                 if (System.IO.File.Exists(path))
                 {
-                    pdViewModel.Is_PDF_Exists = true;
+                    pdViewModel.Product_Detail.Is_PDF_Exists = true;
                 }
                 else
                 {
-                    pdViewModel.Is_PDF_Exists = false;
+                    pdViewModel.Product_Detail.Is_PDF_Exists = false;
                 }
             }
 
@@ -333,7 +333,7 @@ namespace MSPowerWebApp.Controllers
                 Logger.Error("Product Details Controller - Download_Product_Details_PDF" + ex.ToString());
             }
 
-            return File(path, "application/pdf", "Product Details.pdf");
+            return File(path, "application/pdf", "Product Details.pdf"); 
         }
     }
 }

@@ -60,6 +60,8 @@ namespace MSPowerInfo
         public DateTime Updated_On { get; set; }
 
         public int Updated_By { get; set; }
+
+        public bool Is_PDF_Exists { get; set; }
     
     }
 }

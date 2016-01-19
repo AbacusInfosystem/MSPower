@@ -6,6 +6,8 @@ using MSPowerWebApp.Filters;
 using MSPowerWebApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -79,6 +81,20 @@ namespace MSPowerWebApp.Controllers
                 pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(product_Column_Ref_Id);
 
                 pdViewModel.Product_Details = pdMan.Get_Product_Details(ref pager, product_Category_Column_Mapping_Id, product_Column_Ref_Id);
+
+                foreach (var item in pdViewModel.Product_Details)
+                {
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), item.Product_Detail_Id + ".pdf");
+
+                    if (System.IO.File.Exists(path))
+                    {
+                        item.Is_PDF_Exists = true;
+                    }
+                    else
+                    {
+                        item.Is_PDF_Exists = false;
+                    }
+                }
             }
             catch(Exception ex)
             {
@@ -186,6 +202,40 @@ namespace MSPowerWebApp.Controllers
 
             return View("Job_Application", jaViewModel);
 
+        }
+
+        [Language]
+        public PartialViewResult Get_Product_Search(string language)
+        {
+            ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
+
+            ProductDetailManager _pMan = new ProductDetailManager();
+
+            int language_Id = 0;
+
+            if (Language.en.ToString() == language)
+            {
+                language_Id = (int)Language.en;
+            }
+            else
+            {
+                language_Id = (int)Language.ch;
+            }
+
+            try
+            {
+                pdViewModel.Product_Categories = _pMan.Get_Product_Categories_By_Lanugae_Id(language_Id);
+
+                pdViewModel.Language = language;
+            }
+            catch(Exception ex)
+            {
+                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Web Site Controller - Get_Product_Details" + ex.ToString());
+            }
+
+            return PartialView("_Product_Search", pdViewModel);
         }
 
     }
