@@ -1,19 +1,47 @@
-﻿@{
-    Layout = null;
+﻿@model MSPowerWebApp.Models.Job_OpeningViewModel
+
+@{
+    ViewBag.Title = "Home";
 }
 
-<!DOCTYPE html>
+@* News Letter @Session["Language"].ToString();*@
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    @{Html.RenderPartial("_Sidebar_Online");}
 
-    <div>
-        Job_Opening. @Session["Language"].ToString();
+<div class="content">
+    <div class="blog-section">
+        <div class="container">
+            <div class="col-md-12">
+                <h2 class="with-line">Job Opening</h2>
+
+               
+
+                <article class="clearfix attach">
+                    <header class="grid_8 alpha">
+                        <div class="head_element"><span class="el_1">@Model.Job_Opening.Updated_On.Day</span><span class="el_2">@Model.Job_Opening.Updated_On.ToString("MMM")</span></div>
+                        <div class="sub">
+                            <div class="readblog">@Model.Job_Opening.Job_Title</div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </header>
+
+                    <div class="grid_b4" style="width:100%;">
+
+                        <p>
+                            @if (Model.Job_Opening.Job_Description.Length > 1000)
+                            {
+                                @Model.Job_Opening.Job_Description.Substring(0, 1000).ToString()
+                                }
+                                else {
+                                @Html.Raw(Model.Job_Opening.Job_Description)
+                                }
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </article>
+
+            </div>
+
+
+        </div>
     </div>
-</body>
-</html>
+</div>

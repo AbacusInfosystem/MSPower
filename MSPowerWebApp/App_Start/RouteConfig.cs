@@ -602,8 +602,8 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
               name: "website-7",
-              url: "{language}/news-letter/",
-              defaults: new { controller = "WebSite", action = "NewsLetter", language = UrlParameter.Optional }
+              url: "{language}/news-letter/{NewsLetter_Id}",
+              defaults: new { controller = "WebSite", action = "Get_NewsLetter_By_Id", language = UrlParameter.Optional, NewsLetter_Id  = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
@@ -631,8 +631,8 @@ namespace MSPowerWebApp
 
              routes.MapRoute(
              name: "website-11",
-             url: "{language}/job_opening/",
-             defaults: new { controller = "WebSite", action = "Job_Opening", language = UrlParameter.Optional }
+             url: "{language}/job_opening/{Job_Opening_Id}",
+             defaults: new { controller = "WebSite", action = "Get_Job_Opening_By_Id", language = UrlParameter.Optional, Job_Opening_Id = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
 
            );
@@ -705,6 +705,14 @@ namespace MSPowerWebApp
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
+
+            routes.MapRoute(
+           name: "website-21",
+           url: "insert-enquiry",
+           defaults: new { controller = "WebSite", action = "Insert_Enquiry", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+         );
 
             #endregion
 

@@ -1,4 +1,10 @@
-﻿$(function () {
+﻿$(document).ready(function () {
+
+    $("#txtEnquiry_Date").datepicker({
+
+        autoclose: true,
+
+    });
 
     $("#btnSave").click(function () {
 
@@ -8,7 +14,7 @@
         {
             if ($("#hdnEnquiry_Id").val() == 0) {
 
-                $("#frmEnquiry").attr("action", "/cms/enquiry/insert-enquiry");
+                $("#frmEnquiry").attr("action", "/insert-enquiry");
 
                 $("#frmEnquiry").attr("method", "POST");
 
@@ -20,3 +26,16 @@
 
     alert("Hiii");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+//" + $("#hdnLanguage_Id").val() + "/enquiry/insert

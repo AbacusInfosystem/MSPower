@@ -58,11 +58,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label style="color: #333" for="fileUpload_Job_Opening_Image">Upload Job_Opening Images</label>
+                                        <label style="color: #333" for="txtJob_Opening_CTC">Job_Opening CTC</label>
 
-                                        <input type="file" class="form-control input-sm" id="fileUpload_Job_Opening_Image" placeholder="Upload Job_Opening Image" name="">
-
-                                        <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                        <input type="text" class="form-control input-sm" id="txtJob_CTC" placeholder="Enter Job Title" value="@Model.Job_Opening.CTC" name="Job_Opening.CTC">
                                     </div>
 
                                     <div class="form-group">
@@ -90,8 +88,6 @@
                                         <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
 
                                         <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Job_Opening")" role="button">Cancel</a>
-
-                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
 
                                         <input type="hidden" name="Job_Opening.Job_Opening_Id" id="hdnJob_Opening_Id" value="@Model.Job_Opening.Job_Opening_Id">
 

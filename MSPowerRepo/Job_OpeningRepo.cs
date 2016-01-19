@@ -179,5 +179,32 @@ namespace MSPowerRepo
             return param;
         }
 
+        //public Job_OpeningInfo Get_Job_Openings(int language_Id)
+        //{
+        //    Job_OpeningInfo jobopenings = new Job_OpeningInfo();
+
+        //    SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+        //    SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+        //    _con.Open();
+
+        //    List<SqlParameter> param = new List<SqlParameter>();
+
+        //    param.Add(new SqlParameter("@Language_Id", language_Id));
+
+        //    DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Job_Openings_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+        //    if (dt != null && dt.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            jobopenings = Get_Job_Opening_Values(dr);
+        //        }
+        //    }
+
+        //    return jobopenings;
+        //}
+
     }
 }

@@ -46,47 +46,46 @@ namespace MSPowerWebApp.Controllers
 
         // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS CREATING A NEW RECORD, THEN THIS METHOD WOULD GET HIT.
 
-        public ActionResult Insert(EnquiryViewModel eViewModel)
-        {
-            try
-            {
+        //public ActionResult Insert(EnquiryViewModel eViewModel)
+        //{
+        //    try
+        //    {
 
-                if (Session["Language"].ToString() == Language.en.ToString())
-                {
-                    eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.en);
-                }
-                else
-                {
-                    eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.ch);
-                }
+        //        if (Session["Language"].ToString() == Language.en.ToString())
+        //        {
+        //            eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.en);
+        //        }
+        //        else
+        //        {
+        //            eViewModel.Enquiry.Language_Id = Convert.ToInt32(Language.ch);
+        //        }
 
-                eViewModel.Enquiry.Created_On = DateTime.Now;
+        //        eViewModel.Enquiry.Created_On = DateTime.Now;
 
-                EnquiryManager eMan = new EnquiryManager();
+        //        EnquiryManager eMan = new EnquiryManager();
 
-                //eViewModel.Enquiry.Enquiry_Id = 1;
+        //        //eViewModel.Enquiry.Enquiry_Id = 1;
 
-                eViewModel.Enquiry.Enquiry_Id = eMan.Insert_Enquiry(eViewModel.Enquiry);
+        //        eViewModel.Enquiry.Enquiry_Id = eMan.Insert_Enquiry(eViewModel.Enquiry);
 
-                eViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
-            }
+        //        eViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+        //    }
 
-            catch (Exception ex)
-           
-            {
-               
-                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        //    catch (Exception ex)
+        //    {
 
-                Logger.Error("Test Controller - Insert" + ex.ToString());
-            }
+        //        eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-            //TempData["eViewModel"] = eViewModel;
+        //        Logger.Error("Test Controller - Insert" + ex.ToString());
+        //    }
 
-            //return RedirectToAction("Search");
+        //    //TempData["eViewModel"] = eViewModel;
 
-            return View("Index", eViewModel);
+        //    //return RedirectToAction("Search");
 
-        }
+        //    return View("Index", eViewModel);
+
+        //}
 
         // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS UPDATING AN EXISTING RECORD, THEN THIS METHOD WOULD GET HIT.
 

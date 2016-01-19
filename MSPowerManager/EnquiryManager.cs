@@ -33,7 +33,7 @@ namespace MSPowerManager
         public int Insert_Enquiry(EnquiryInfo enquiry)
         {
             return _eRepo.Insert_Enquiry(enquiry);
-        }
 
+        }
     }
 }

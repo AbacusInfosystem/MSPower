@@ -139,6 +139,8 @@ namespace MSPowerInfo
 
         // About Us Store Procedures
 
+        Get_AboutUs_Sp,
+
         Get_AboutUs_By_Id_Sp,
 
         Get_AboutUss_Sp,

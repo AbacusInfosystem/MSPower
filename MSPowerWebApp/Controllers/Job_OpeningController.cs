@@ -89,7 +89,7 @@ namespace MSPowerWebApp.Controllers
 
             //return RedirectToAction("Search");
 
-            return View("Index", joViewModel);
+            return View("Search", joViewModel);
 
         }
 
@@ -130,7 +130,7 @@ namespace MSPowerWebApp.Controllers
 
             //return RedirectToAction("Search");
 
-            return View("Index", joViewModel);
+            return View("Search", joViewModel);
 
         }
 
