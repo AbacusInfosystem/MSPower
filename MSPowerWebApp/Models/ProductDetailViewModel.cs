@@ -62,8 +62,6 @@ namespace MSPowerWebApp.Models
 
         public HttpPostedFileBase Upload_File { get; set; }
 
-        public bool Is_PDF_Exists { get; set; }
-
         public string Language { get; set; }
 
         public ProductCategoryInfo Product_Category { get; set; }

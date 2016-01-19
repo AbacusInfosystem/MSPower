@@ -717,6 +717,27 @@ namespace MSPowerWebApp
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
+            routes.MapRoute(
+              name: "website-21",
+              url: "{language}/get-product-search/",
+              defaults: new { controller = "WebSite", action = "Get_Product_Search", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-22",
+              url: "web-app/get-event-images/{event_Id}",
+              defaults: new { controller = "WebSite", action = "Get_Events_Images", event_Id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-23",
+              url: "{language}/set-language",
+              defaults: new { controller = "WebSite", action = "SetLanguage", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
 
             routes.MapRoute(
            name: "website-21",

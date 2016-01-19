@@ -9,6 +9,7 @@ using DataAccess.Sql;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace MSPowerRepo
 
@@ -589,7 +590,7 @@ namespace MSPowerRepo
             return product_Category_Column_Mapping;
         }
 
-        public ProductCategoryInfo Get_Product_Category_By_Id(int product_Category_Id)
+        public ProductCategoryInfo Get_Product_Category_By_Id(int product_Category_Id, int language_Id)
         {
             ProductCategoryInfo product_Category = new ProductCategoryInfo();
 
@@ -602,6 +603,8 @@ namespace MSPowerRepo
             List<SqlParameter> param = new List<SqlParameter>();
 
             param.Add(new SqlParameter("@product_Category_Id", product_Category_Id));
+
+            param.Add(new SqlParameter("@language_Id", language_Id));
 
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Category_By_Id_sp.ToString(), CommandType.StoredProcedure, _con);
 
