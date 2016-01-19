@@ -740,12 +740,39 @@ namespace MSPowerWebApp
 
 
             routes.MapRoute(
-           name: "website-21",
+           name: "website-24",
            url: "insert-enquiry",
            defaults: new { controller = "WebSite", action = "Insert_Enquiry", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
-
          );
+
+            routes.MapRoute(
+          name: "website-25",
+          url: "web-app/get-about-us",
+          defaults: new { controller = "WebSite", action = "Get_AboutUs", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
+
+            routes.MapRoute(
+          name: "website-26",
+          url: "web-app/get-news",
+          defaults: new { controller = "WebSite", action = "Get_NewsLetters", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
+
+            routes.MapRoute(
+          name: "website-27",
+          url: "web-app/get-hot-jobs",
+          defaults: new { controller = "WebSite", action = "Get_Hot_Jobs", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
+
+            routes.MapRoute(
+          name: "website-28",
+          url: "web-app/get-events",
+          defaults: new { controller = "WebSite", action = "Get_Events", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
 
             #endregion
 

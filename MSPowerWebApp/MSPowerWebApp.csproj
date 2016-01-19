@@ -1056,6 +1056,7 @@
     <Content Include="Scripts\Services\services_search_event.js" />
     <Content Include="Scripts\Services\services_search_method.js" />
     <Content Include="Scripts\WebSite\events_event.js" />
+    <Content Include="Scripts\WebSite\main_event.js" />
     <Content Include="Scripts\WebSite\product_events.js" />
     <Content Include="Scripts\WebSite\product_listing_events.js" />
     <Content Include="Scripts\WebSite\product_search_events.js" />

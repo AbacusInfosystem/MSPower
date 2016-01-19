@@ -188,8 +188,10 @@ namespace MSPowerWebApp.Controllers
 
         [Language]
 
-        public ActionResult NewsLetterListing(string language, NewsLetterViewModel nlViewModel)
+        public ActionResult NewsLetterListing(string language)
         {
+            NewsLetterViewModel nlViewModel = new NewsLetterViewModel();
+
             NewsLetterManager nlMan = new NewsLetterManager();
 
             PaginationInfo pager = new PaginationInfo();
@@ -202,7 +204,7 @@ namespace MSPowerWebApp.Controllers
                 if (Session["Language"].ToString() == Language.en.ToString())
                 {
                     language_Id = Convert.ToInt32(Language.en);
-        }
+                }
                 else
                 {
                     language_Id = Convert.ToInt32(Language.ch);
@@ -280,8 +282,9 @@ namespace MSPowerWebApp.Controllers
 
         [Language]
 
-        public ActionResult AboutUs(string language, AboutUsViewModel auViewModel)
+        public ActionResult AboutUs(string language)
         {
+            AboutUsViewModel auViewModel = new AboutUsViewModel();
 
             AboutUsManager auMan = new AboutUsManager();
 
@@ -319,8 +322,9 @@ namespace MSPowerWebApp.Controllers
 
         [Language]
 
-        public ActionResult Job_OpeningListing(string language, Job_OpeningViewModel joViewModel)
+        public ActionResult Job_OpeningListing(string language )
         {
+            Job_OpeningViewModel joViewModel = new Job_OpeningViewModel();
 
             Job_OpeningManager joMan = new Job_OpeningManager();
 
@@ -561,7 +565,6 @@ namespace MSPowerWebApp.Controllers
 
 
         [Language]
-
         public ActionResult Enquiry(string language)
         {
             EnquiryViewModel eViewModel = new EnquiryViewModel();
@@ -580,7 +583,6 @@ namespace MSPowerWebApp.Controllers
         }
 
         [Language]
-
         public ActionResult Insert_Enquiry(string language, EnquiryViewModel eViewModel)
         {
             try
@@ -614,6 +616,135 @@ namespace MSPowerWebApp.Controllers
 
             return View("Enquiry", eViewModel);
 
+        }
+
+        public JsonResult Get_AboutUs(string language)
+        {
+            AboutUsViewModel aViewModel = new AboutUsViewModel();
+
+            AboutUsManager auMan = new AboutUsManager();
+
+            try
+            {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
+                aViewModel.AboutUs = auMan.Get_AboutUs(language_Id);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("WebApp Controller - Get_AboutUs" + ex.ToString());
+            }
+
+            return Json(aViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_NewsLetters(string language)
+        {
+            NewsLetterManager nlMan = new NewsLetterManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            NewsLetterViewModel nlViewModel = new NewsLetterViewModel();
+
+            try
+            {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
+                pager = nlViewModel.Pager;
+
+                nlViewModel.NewsLetters = nlMan.Get_NewsLetters(ref pager, language_Id);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("WebApp Controller - Get_AboutUs" + ex.ToString());
+            }
+
+            return Json(nlViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Hot_Jobs(string language)
+        {
+            Job_OpeningViewModel joViewModel = new Job_OpeningViewModel();
+
+            Job_OpeningManager joMan = new Job_OpeningManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {
+                int language_Id = 0;
+
+                if (Session["Language"].ToString() == Language.en.ToString())
+                {
+                    language_Id = Convert.ToInt32(Language.en);
+                }
+                else
+                {
+                    language_Id = Convert.ToInt32(Language.ch);
+                }
+
+                pager = joViewModel.Pager;
+
+                joViewModel.Job_Openings = joMan.Get_Job_Openings(ref pager, language_Id);
+
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("WebApp Controller - Get_Hot_Jobs" + ex.ToString());
+            }
+
+            return Json(joViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Events(string language)
+        {
+            EventViewModel eViewModel = new EventViewModel();
+
+            EventManager _eMan = new EventManager();
+
+            int language_Id = 0;
+
+            if (Language.en.ToString() == language)
+            {
+                language_Id = (int)Language.en;
+            }
+            else
+            {
+                language_Id = (int)Language.ch;
+            }
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
+            try
+            {
+                eViewModel.Events = _eMan.Get_Events(ref pager, language_Id);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("WebApp Controller - Get_AboutUs" + ex.ToString());
+            }
+
+            return Json(eViewModel, JsonRequestBehavior.AllowGet);
         }
 
     }
