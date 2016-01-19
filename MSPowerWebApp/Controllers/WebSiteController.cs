@@ -238,5 +238,67 @@ namespace MSPowerWebApp.Controllers
             return PartialView("_Product_Search", pdViewModel);
         }
 
+         [Language]
+        public ActionResult Events(string language)
+        {
+            EventViewModel eViewModel = new EventViewModel();
+
+             EventManager _eMan = new EventManager();
+
+              int language_Id = 0;
+
+            if(Language.en.ToString() == language)
+            {
+                language_Id = (int)Language.en;
+            }
+            else
+            {
+                language_Id = (int)Language.ch;
+            }
+
+             PaginationInfo pager = new PaginationInfo();
+
+             pager.IsPagingRequired = false;
+
+            try
+            {
+                eViewModel.Events = _eMan.Get_Events(ref pager, language_Id);
+            }
+             catch(Exception ex)
+            {
+                Logger.Error("Web Site Controller - Events" + ex.ToString());
+            }
+
+            return View("Events", eViewModel);
+        }
+
+         public PartialViewResult Get_Events_Images(int event_Id)
+         {
+             EventViewModel eViewModel = new EventViewModel();
+
+             eViewModel.Event.Event_Id = event_Id;
+
+             try
+             {
+                 string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString(), event_Id.ToString());
+
+                 if (System.IO.Directory.Exists(path))
+                 {
+                     string[] fileEntries = Directory.GetFiles(path);
+
+                     foreach (string fileName in fileEntries)
+                     {
+                         eViewModel.File_Name.Add(Path.GetFileName(fileName));
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 Logger.Error("Web Site Controller - Get_Events_Images" + ex.ToString());
+             }
+
+             return PartialView("_Events_Images", eViewModel);
+         }
+
     }
 }

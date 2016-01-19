@@ -724,6 +724,13 @@ namespace MSPowerWebApp
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
+            routes.MapRoute(
+              name: "website-22",
+              url: "web-app/get-event-images/{event_Id}",
+              defaults: new { controller = "WebSite", action = "Get_Events_Images", event_Id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
 
             #endregion
 
