@@ -363,9 +363,9 @@ function PageMore(Id) {
 
     $('#hdnCurrentPage').val((parseInt(Id) - 1));
 
-    $("#hdn_Product_Category_Column_Mapping_Id").val($("#drpProduct_Volts option:selected").attr("data-product-category-mapping-id"));
+    //$("#hdn_Product_Category_Column_Mapping_Id").val($("#drpProduct_Volts option:selected").attr("data-product-category-mapping-id"));
 
-    $("#hdn_Product_Column_Ref_Id").val($("#drpProduct_Volts option:selected").attr("data-col-ref"));
+    //$("#hdn_Product_Column_Ref_Id").val($("#drpProduct_Volts option:selected").attr("data-col-ref"));
 
     Get_Product_Details();
 }
@@ -374,8 +374,6 @@ function PageMore(Id) {
 
 function Get_Product_Details()
 {
-
-    alert($('#drpProduct_Volts').val().split("_")[1]);
 
     var pdViewModel = {
 
@@ -409,7 +407,22 @@ function Get_Product_Details()
         
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/ProductDetail/Get_Product_Details", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Details, "", null);
+    if ($('#drpProduct_Volts').val() != '0') {
+
+        CallAjax("/ProductDetail/Get_Product_Details", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Details, "", null);
+    }
+    else
+    {
+        $("#tblProductDetail").find("tr:gt(0)").remove();
+
+        $('.pagination').html("");
+
+        $("#divSearchGridOverlay").hide();
+
+        $("#btnEdit").hide();
+
+        $("#btnDelete").hide();
+    }
 
 }
 
@@ -440,7 +453,7 @@ function Bind_Product_Volts(data)
 
     for (i = 0; i < data.Volts.length; i++) {
 
-        htmlText += "<option data-col-ref='"+data.Volts[i].Product_Column_Ref_Id +"' data-product-category-mapping-id='" + data.Volts[i].Product_Category_Column_Mapping_Id + "'>" + data.Volts[i].Volts + "</option>";
+        htmlText += "<option value='" + data.Volts[i].Product_Column_Ref_Id + "' data-col-ref='" + data.Volts[i].Product_Column_Ref_Id + "' data-product-category-mapping-id='" + data.Volts[i].Product_Category_Column_Mapping_Id + "'>" + data.Volts[i].Volts + "</option>";
     }
 
     $("#drpProduct_Volts").html(htmlText);

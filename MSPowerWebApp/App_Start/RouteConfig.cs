@@ -178,6 +178,13 @@ namespace MSPowerWebApp
              url: "cms/product-detail/delete-product-detail",
              defaults: new { controller = "ProductDetail", action = "Delete", id = UrlParameter.Optional }
          );
+
+            routes.MapRoute(
+             name: "productdetail-8",
+             url: "cms/product-detail/download-pdf/{product_Details_Id}",
+             defaults: new { controller = "ProductDetail", action = "Download_Product_Details_PDF", product_Details_Id = UrlParameter.Optional }
+         );
+
             #endregion
 
             #region Services
@@ -271,6 +278,11 @@ namespace MSPowerWebApp
              defaults: new { controller = "NewsLetter", action = "Delete", id = UrlParameter.Optional }
          );
 
+            routes.MapRoute(
+            name: "newsletter-8",
+            url: "cms/newsletter/download-pdf/{newsLetter_Id}",
+            defaults: new { controller = "NewsLetter", action = "Download_Product_Details_PDF", newsLetter_Id = UrlParameter.Optional }
+        );
 
             #endregion
 
@@ -560,8 +572,8 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
                name: "website-1",
-               url: "{language}/product/",
-               defaults: new { controller = "WebSite", action = "Product", language = UrlParameter.Optional }
+               url: "{language}/product/{product_Column_Ref_Id}/{product_Category_Column_Mapping_Id}",
+               defaults: new { controller = "WebSite", action = "Product", language = UrlParameter.Optional, product_Column_Ref_Id = UrlParameter.Optional, product_Category_Column_Mapping_Id = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
            );
 

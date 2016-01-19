@@ -10,7 +10,6 @@ using MSPowerRepo;
 namespace MSPowerManager
 {
     public class ServicesManager
-    
     {
 
         public ServicesRepo _sRepo = null;
@@ -45,5 +44,14 @@ namespace MSPowerManager
             return _sRepo.Get_Services_Categories(language_Id);
         }
 
+        public List<ServiceCategoryInfo> Get_Service_Categories_By_Language_Id(int language_Id)
+        {
+            return _sRepo.Get_Service_Categories_By_Language_Id(language_Id);
+        }
+
+        public ServiceCategoryInfo Get_Services_Categories_By_Id(int Service_Category_Id, int language_Id)
+        {
+            return _sRepo.Get_Services_Categories_By_Id(Service_Category_Id, language_Id);
+        }
     }
 }

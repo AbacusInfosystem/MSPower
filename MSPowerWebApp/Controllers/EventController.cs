@@ -36,18 +36,25 @@ namespace MSPowerWebApp.Controllers
 
         [HttpPost]
 
-        public ActionResult Upload(HttpPostedFileBase file)
+        public ActionResult Upload(EventViewModel eViewModel)
         {
-            EventViewModel eViewModel = new EventViewModel();
 
-            if (file != null && file.ContentLength > 0)
+
+            if (eViewModel.Upload_File != null && eViewModel.Upload_File.ContentLength > 0)
                 try
                 {
-                    if ((Path.GetExtension(file.FileName) == ".jpeg") || (Path.GetExtension(file.FileName) == ".jpg") || (Path.GetExtension(file.FileName) == ".png"))
+                    if ((Path.GetExtension(eViewModel.Upload_File.FileName) == ".jpeg") || (Path.GetExtension(eViewModel.Upload_File.FileName) == ".jpg") || (Path.GetExtension(eViewModel.Upload_File.FileName) == ".png"))
                     {
-                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString(), Path.GetFileName(file.FileName));
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString(), eViewModel.Event.Event_Id.ToString());
 
-                        file.SaveAs(path);
+                        if (!System.IO.Directory.Exists(path))
+                        {
+                            System.IO.Directory.CreateDirectory(path);
+                        }
+
+                       path = Path.Combine(path, Path.GetFileName(eViewModel.Upload_File.FileName));
+
+                        eViewModel.Upload_File.SaveAs(path);
 
                         eViewModel.Friendly_Message.Add(MessageStore.Get("IU001"));
 
@@ -66,33 +73,43 @@ namespace MSPowerWebApp.Controllers
             {
                 eViewModel.Friendly_Message.Add(MessageStore.Get("IU002"));
             }
-            return View("Index", eViewModel);
+
+            TempData["Event_Id"] = eViewModel.Event.Event_Id;
+
+            return RedirectToAction("Get_Event_By_Id");
         }
 
 
-        public JsonResult GetImages()
+        public JsonResult GetImages(int event_Id)
         {
             EventViewModel eViewModel = new EventViewModel();
 
             // Process the list of files found in the directory.
 
-            string[] fileEntries = Directory.GetFiles(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString());
+            string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString(), event_Id.ToString());
 
-            foreach (string fileName in fileEntries)
+            if (System.IO.Directory.Exists(path))
             {
-                eViewModel.File_Name.Add(Path.GetFileName(fileName));
+                string[] fileEntries = Directory.GetFiles(path);
+
+                foreach (string fileName in fileEntries)
+                {
+                    eViewModel.File_Name.Add(Path.GetFileName(fileName));
+                }
             }
 
             return Json(eViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public void DeleteImage(string imageName)
+        public void DeleteImage(string imageName, int event_Id)
         {
             EventViewModel eViewModel = new EventViewModel();
 
-            if (System.IO.File.Exists(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"].ToString() + "//" + imageName)))
+            string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString(), event_Id.ToString(), imageName);
+
+            if (System.IO.File.Exists(path))
             {
-                System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"].ToString() + "//" + imageName));
+                System.IO.File.Delete(path);
             }
         }
 
@@ -143,7 +160,7 @@ namespace MSPowerWebApp.Controllers
 
                 eViewModel.Event.Event_Id = eMan.Insert_Event(eViewModel.Event);
 
-                eViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                eViewModel.Friendly_Message.Add(MessageStore.Get("E001"));
             }
             catch (Exception ex)
             {
@@ -184,7 +201,7 @@ namespace MSPowerWebApp.Controllers
 
                 eMan.Update_Event(eViewModel.Event);
 
-                eViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                eViewModel.Friendly_Message.Add(MessageStore.Get("E002"));
             }
             catch (Exception ex)
             {
@@ -248,6 +265,10 @@ namespace MSPowerWebApp.Controllers
         {
             try
             {
+                if(TempData["Event_Id"]  != null)
+                {
+                    eViewModel.Filter.Event_Id = (int)TempData["Event_Id"];
+                }
 
                 int language_Id = 0;
 

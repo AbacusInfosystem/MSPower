@@ -59,6 +59,7 @@
     <Compile Include="ProductCategoryColumnMappingInfo.cs" />
     <Compile Include="ProductColumnInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceCategoryInfo.cs" />
     <Compile Include="ServicesInfo.cs" />
     <Compile Include="SliderImageInfo.cs" />
     <Compile Include="UserInfo.cs" />

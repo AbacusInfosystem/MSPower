@@ -23,6 +23,8 @@ namespace MSPowerWebApp.Models
 
         public Event_Filter Filter { get; set; }
 
+        public HttpPostedFileBase Upload_File { get; set; }
+
         public EventViewModel()
         {
 
@@ -35,6 +37,8 @@ namespace MSPowerWebApp.Models
             File_Name = new List<string>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
+            Filter = new Event_Filter();
         }
 
     }

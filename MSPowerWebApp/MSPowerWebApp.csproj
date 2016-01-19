@@ -834,6 +834,8 @@
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\print.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Images\Product Categories\2.jpg" />
+    <Content Include="Content\Images\Service Category\2.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -1040,8 +1042,10 @@
     <Content Include="Scripts\NewsLetter\newsletter_method.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_events.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_method.js" />
+    <Content Include="Scripts\NewsLetter\newsletter_validation.js" />
     <Content Include="Scripts\ProductDetail\productdetail_event.js" />
     <Content Include="Scripts\ProductDetail\productdetail_method.js" />
+    <Content Include="Scripts\ProductDetail\productdetail_validation.js" />
     <Content Include="Scripts\Product\product_event.js" />
     <Content Include="Scripts\Product\product_method.js" />
     <Content Include="Scripts\Product\product_search_event.js" />
@@ -1051,6 +1055,7 @@
     <Content Include="Scripts\Services\services_events.js" />
     <Content Include="Scripts\Services\services_search_event.js" />
     <Content Include="Scripts\Services\services_search_method.js" />
+    <Content Include="Scripts\WebSite\product_listing_events.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1136,8 +1141,8 @@
     <Folder Include="Content\Documents\Product\" />
     <Folder Include="Content\Documents\Services\" />
     <Folder Include="Content\Events\" />
-    <Folder Include="Content\Images\" />
-    <Folder Include="Content\PDF\" />
+    <Folder Include="Content\PDF\News Letter\" />
+    <Folder Include="Content\PDF\Product Details\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

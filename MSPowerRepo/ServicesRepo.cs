@@ -211,6 +211,112 @@ namespace MSPowerRepo
 
             return services_categories;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ServiceCategoryInfo Get_Services_Category_Values(DataRow dr)
+        {
+            ServiceCategoryInfo retVal = new ServiceCategoryInfo();
+
+            retVal.Service_Category_Id = Convert.ToInt32(dr["Service_Category_Id"]);
+
+            retVal.Service_Category = Convert.ToString(dr["Service_Category"]);
+
+            retVal.Language_Id = Convert.ToInt32(dr["Language_Id"]);
+
+            retVal.Description = Convert.ToString(dr["Description"]);
+
+            retVal.Title = Convert.ToString(dr["Title"]);
+
+            return retVal;
+        }
+
+        public List<ServiceCategoryInfo> Get_Service_Categories_By_Language_Id(int language_Id)
+        {
+            List<ServiceCategoryInfo> ServiceCategories = new List<ServiceCategoryInfo>();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Service_Categories_By_Language_Id.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                    ServiceCategoryInfo retVal = new ServiceCategoryInfo();
+
+                    retVal.Service_Category_Id = Convert.ToInt32(dr["Service_Category_Id"]);
+
+                    retVal.Language_Id = Convert.ToInt32(dr["Language_Id"]);
+
+                    retVal.Service_Category = Convert.ToString(dr["Service_Category"]);
+
+                    retVal.Service_Category_Img = Convert.ToString(dr["Service_Category_Img"]);
+
+                    ServiceCategories.Add(retVal);
+
+                }
+            }
+
+            return ServiceCategories;
+        }
+
+        public ServiceCategoryInfo Get_Services_Categories_By_Id(int Service_Category_Id, int language_Id)
+        {
+            ServiceCategoryInfo Service_Category = new ServiceCategoryInfo();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Service_Category_Id", Service_Category_Id));
+
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Services_Categories_By_Id_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Service_Category = Get_Services_Category_Values(dr);
+                }
+            }
+
+            return Service_Category;
+        }
     
     }
 }

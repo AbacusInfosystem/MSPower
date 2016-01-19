@@ -21,6 +21,12 @@ namespace MSPowerWebApp.Models
 
         public List<LookUpInfo> Service_Categories { get; set; }
 
+        public List<ServiceCategoryInfo> ServiceCategories { get; set; }
+
+        public ServiceCategoryInfo Service_Category { get; set; }
+
+        public string Language { get; set; }
+
         public ServicesViewModel()
         {
             Service = new ServicesInfo();
@@ -32,6 +38,9 @@ namespace MSPowerWebApp.Models
             Friendly_Message = new List<FriendlyMessageInfo>();
 
             Service_Categories = new List<LookUpInfo>();
+
+            Service_Category = new ServiceCategoryInfo();
+
         }
     }
 

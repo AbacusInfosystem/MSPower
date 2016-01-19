@@ -34,6 +34,86 @@ namespace MSPowerWebApp.Common
 
             #endregion
 
+            #region Product Details
+
+            FriendlyMessageInfo PD001 = new FriendlyMessageInfo("PD001", MessageType.Success, "Product details saved successfully.");
+            hash.Add("PD001", PD001);
+
+            FriendlyMessageInfo PD002 = new FriendlyMessageInfo("PD002", MessageType.Success, "Product details updated successfully.");
+            hash.Add("PD002", PD002);
+
+            #endregion
+
+            #region Product 
+
+            FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Product saved successfully.");
+            hash.Add("P001", P001);
+
+            FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Product updated successfully.");
+            hash.Add("P002", P002);
+
+            #endregion
+
+            #region Service
+
+            FriendlyMessageInfo S001 = new FriendlyMessageInfo("S001", MessageType.Success, "Service saved successfully.");
+            hash.Add("S001", S001);
+
+            FriendlyMessageInfo S002 = new FriendlyMessageInfo("S002", MessageType.Success, "Service updated successfully.");
+            hash.Add("S002", S002);
+
+            #endregion
+
+            #region News Letter
+
+            FriendlyMessageInfo N001 = new FriendlyMessageInfo("N001", MessageType.Success, "News letter saved successfully.");
+            hash.Add("N001", N001);
+
+            FriendlyMessageInfo N002 = new FriendlyMessageInfo("N002", MessageType.Success, "News letter updated successfully.");
+            hash.Add("N002", N002);
+
+            #endregion
+
+            #region About us
+
+            FriendlyMessageInfo A001 = new FriendlyMessageInfo("A001", MessageType.Success, "About us saved successfully.");
+            hash.Add("A001", A001);
+
+            FriendlyMessageInfo A002 = new FriendlyMessageInfo("A002", MessageType.Success, "About us updated successfully.");
+            hash.Add("A002", A002);
+
+            #endregion
+
+            #region Contact us
+
+            FriendlyMessageInfo C001 = new FriendlyMessageInfo("C001", MessageType.Success, "Contact us saved successfully.");
+            hash.Add("C001", C001);
+
+            FriendlyMessageInfo C002 = new FriendlyMessageInfo("C002", MessageType.Success, "Contact us updated successfully.");
+            hash.Add("C002", C002);
+
+            #endregion
+
+            #region Events
+
+            FriendlyMessageInfo E001 = new FriendlyMessageInfo("E001", MessageType.Success, "Events saved successfully.");
+            hash.Add("E001", E001);
+
+            FriendlyMessageInfo E002 = new FriendlyMessageInfo("E002", MessageType.Success, "Events updated successfully.");
+            hash.Add("E002", E002);
+
+            #endregion
+
+            #region Job Opening
+
+            FriendlyMessageInfo JB001 = new FriendlyMessageInfo("JB001", MessageType.Success, "Job opening saved successfully.");
+            hash.Add("JB001", JB001);
+
+            FriendlyMessageInfo JB002 = new FriendlyMessageInfo("JB002", MessageType.Success, "Job opening updated successfully.");
+            hash.Add("JB002", JB002);
+
+            #endregion
+
             #region Image Upload
 
             FriendlyMessageInfo IU001 = new FriendlyMessageInfo("IU001", MessageType.Success, "File was uploaded successfully.");

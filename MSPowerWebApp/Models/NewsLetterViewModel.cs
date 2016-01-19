@@ -20,6 +20,10 @@ namespace MSPowerWebApp.Models
 
         public NewsLetter_Filter Filter { get; set; }
 
+        public HttpPostedFileBase Upload_File { get; set; }
+
+        public bool Is_PDF_Exists { get; set; }
+
         public NewsLetterViewModel()
         {
             NewsLetter = new NewsLetterInfo();

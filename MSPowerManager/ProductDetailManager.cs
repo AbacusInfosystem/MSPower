@@ -54,5 +54,20 @@ namespace MSPowerManager
             _pdRepo.Update_Product_Detail(productcolumn);
         }
 
+        public List<ProductCategoryInfo> Get_Product_Categories_By_Lanugae_Id(int language_Id)
+        {
+            return _pdRepo.Get_Product_Categories_By_Lanugae_Id(language_Id);
+        }
+
+        public ProductCategoryColumnMappingInfo Get_Product_Category_Column_By_Id(int product_Category_Column_Id)
+        {
+            return _pdRepo.Get_Product_Category_Column_By_Id(product_Category_Column_Id);
+        }
+
+        public ProductCategoryInfo Get_Product_Category_By_Id(int product_Category_Id)
+        {
+            return _pdRepo.Get_Product_Category_By_Id(product_Category_Id);
+        }
+
     }
 }
