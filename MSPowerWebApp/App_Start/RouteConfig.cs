@@ -772,6 +772,14 @@ namespace MSPowerWebApp
           url: "web-app/get-events",
           defaults: new { controller = "WebSite", action = "Get_Events", id = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
+            routes.MapRoute(
+          name: "website-29",
+          url: "{language}/service",
+          defaults: new { controller = "WebSite", action = "Service", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
         );
 
             #endregion

@@ -183,7 +183,7 @@ namespace MSPowerWebApp.Controllers
                 Logger.Error("Test Controller-Get_Test_By_Id" + ex.ToString());
             }
 
-            return View("Services", sViewModel);
+            return View("Service", sViewModel);
         }
 
         [Language]

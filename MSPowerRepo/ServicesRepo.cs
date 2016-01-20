@@ -212,23 +212,6 @@ namespace MSPowerRepo
             return services_categories;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public ServiceCategoryInfo Get_Services_Category_Values(DataRow dr)
         {
             ServiceCategoryInfo retVal = new ServiceCategoryInfo();
@@ -242,6 +225,8 @@ namespace MSPowerRepo
             retVal.Description = Convert.ToString(dr["Description"]);
 
             retVal.Title = Convert.ToString(dr["Title"]);
+
+            retVal.Service_Category_Img = Convert.ToString(dr["Service_Category_Img"]);
 
             return retVal;
         }
