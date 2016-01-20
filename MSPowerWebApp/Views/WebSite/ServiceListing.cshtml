@@ -17,11 +17,11 @@
 
             <input type="hidden" id="hdfLanguage" value="@Model.Service.Language_Id">
 
-            <div class="Services">
+            <div class="products">
 
                 <h2 class="heading text-center">Our Applications</h2>
 
-                <div class="services-bottom">
+                <div class="products-bottom">
 
                     @{
 
@@ -36,80 +36,90 @@
                                 @:<div class="row">
                             }
 
-                <div class="col-md-4 services-grid">
+                            <div class="col-md-4 products-grid">
 
-                <a class="example-image-link" href="../Content/Images/Service Category/@item.Service_Category_Img" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                    
-                <img class="example-image" src="../Content/Images/Service Category/@item.Service_Category_Img" alt="" />
-                
-                </a>
+                                <a class="example-image-link" href="../Content/Images/Service Category/@item.Service_Category_Img" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
 
-                <div class="services-info">
+                                    <img class="example-image" src="../Content/Images/Service Category/@item.Service_Category_Img" alt="" />
 
-                    <a href="#">@item.Service_Category</a>
+                                </a>
 
-                    <button class="btn-service-details btn btn-sm" type="button">Service Details</button>
+                                <div class="services-info">
 
-                </div>
+                                    <a href="#">@item.Service_Category</a>
 
-            </div>
-                            
-            if (i % 3 == 0)
-            {
-            @:</div>
+                                    @*<button class="btn-service-details btn btn-sm" type="button">Service Details</button>*@
+
+                                    @if (@item.Language_Id == 1)
+                                    {
+                                        <a href="/en/service?Service_Category_Id=@item.Service_Category_Id" class="btn btn-1 btn-1c">Service Details</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/ch/service?Service_Category_Id=@item.Service_Category_Id" class="btn btn-1 btn-1c">Service Details</a>
+                                    }
+
+
+                                </div>
+
+                            </div>
+
+                            if (i % 3 == 0)
+                            {
+                                @:</div>
             }
-                i++;
+                            i++;
                         }
-            }
+                    }
 
                     @*<div class="col-md-4 products-grid">
-                <a class="example-image-link" href="images/product-1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                    <img class="example-image" src="../ContentOnline/images/product-1.jpg" alt="" /></a>
-                <div class="products-info">
-                    <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                    <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                    <a class="example-image-link" href="images/product-1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="../ContentOnline/images/product-1.jpg" alt="" /></a>
+                    <div class="products-info">
+                        <a href="single.html">Phasellus scipiw scipitilifen. </a>
+                        <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 products-grid">
-                <a class="example-image-link" href="images/product-2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                    <img class="example-image" src="../ContentOnline/images/product-2.jpg" alt="" /></a>
-                <div class="products-info">
-                    <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                    <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                <div class="col-md-4 products-grid">
+                    <a class="example-image-link" href="images/product-2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="../ContentOnline/images/product-2.jpg" alt="" /></a>
+                    <div class="products-info">
+                        <a href="single.html">Phasellus scipiw scipitilifen. </a>
+                        <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 products-grid">
-                <a class="example-image-link" href="images/product-3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                    <img class="example-image" src="../ContentOnline/images/product-3.jpg" alt="" /></a>
-                <div class="products-info">
-                    <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                    <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                <div class="col-md-4 products-grid">
+                    <a class="example-image-link" href="images/product-3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="../ContentOnline/images/product-3.jpg" alt="" /></a>
+                    <div class="products-info">
+                        <a href="single.html">Phasellus scipiw scipitilifen. </a>
+                        <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 products-grid">
-                <a class="example-image-link" href="images/product-4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                    <img class="example-image" src="../ContentOnline/images/product-4.jpg" alt="" /></a>
-                <div class="products-info">
-                    <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                    <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                <div class="col-md-4 products-grid">
+                    <a class="example-image-link" href="images/product-4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="../ContentOnline/images/product-4.jpg" alt="" /></a>
+                    <div class="products-info">
+                        <a href="single.html">Phasellus scipiw scipitilifen. </a>
+                        <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 products-grid">
-                <a class="example-image-link" href="images/product-5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                    <img class="example-image" src="../ContentOnline/images/product-5.jpg" alt="" /></a>
-                <div class="products-info">
-                    <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                    <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                <div class="col-md-4 products-grid">
+                    <a class="example-image-link" href="images/product-5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="../ContentOnline/images/product-5.jpg" alt="" /></a>
+                    <div class="products-info">
+                        <a href="single.html">Phasellus scipiw scipitilifen. </a>
+                        <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 products-grid">
-                <a class="example-image-link" href="images/product-6.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                    <img class="example-image" src="../ContentOnline/images/product-6.jpg" alt="" /></a>
-                <div class="products-info">
-                    <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                    <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-                </div>
-            </div>*@
+                <div class="col-md-4 products-grid">
+                    <a class="example-image-link" href="images/product-6.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="../ContentOnline/images/product-6.jpg" alt="" /></a>
+                    <div class="products-info">
+                        <a href="single.html">Phasellus scipiw scipitilifen. </a>
+                        <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
+                    </div>
+                </div>*@
 
 
                     <div class="clearfix"></div>

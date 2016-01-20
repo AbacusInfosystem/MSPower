@@ -1,19 +1,67 @@
-﻿@{
-    Layout = null;
+﻿@model MSPowerWebApp.Models.ServicesViewModel
+
+
+@{
+    ViewBag.Title = "Home";
 }
 
-<!DOCTYPE html>
+<div class="content text-center">
+    <div class="who_we_are">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-      @{Html.RenderPartial("_Sidebar_Online");}
+        <div class="container">
 
-    <div>
-        Service. @Session["Language"].ToString();
+            <div class="grid_12">
+
+                <header>
+                    <h3>Service</h3>
+                </header>
+                <br />
+                <img src="../Content/Images/Service Category/@Model.Service_Category.Service_Category_Img" alt="">
+            </div>
+
+
+            <div class="grid_12">
+                <header>
+                    <h3>@Model.Service_Category.Service_Category</h3>
+
+                    <h4>@Model.Service_Category.Title</h4>
+
+                </header>
+
+                <br />
+
+
+                <p>@Model.Service_Category.Description</p>
+
+                @*<p>Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Phasellus porta. Fusce suscipit varius mi.</p>
+                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio, gravida at, cursus nec, luctus a, lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. </p>*@
+
+
+                @*<article class="clearfix attach">
+                        <header class="grid_8 alpha">
+                            <div class="sub">
+                                <div class="readblog">@Model.Service_Category.Title</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </header>
+
+                        <div class="grid_b4" style="width:100%;">
+
+                            <p>
+                                @if (Model.Service_Category.Description.Length > 1000)
+                                {
+                                    @Model.Service_Category.Description.Substring(0, 1000).ToString()
+                                }
+                                else
+                                {
+                                    @Html.Raw(Model.Service_Category.Description)
+                                }
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </article>*@
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+

@@ -740,12 +740,20 @@ namespace MSPowerWebApp
 
 
             routes.MapRoute(
-           name: "website-21",
+           name: "website-24",
            url: "insert-enquiry",
            defaults: new { controller = "WebSite", action = "Insert_Enquiry", language = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
 
          );
+
+            routes.MapRoute(
+          name: "website-25",
+          url: "{language}/service",
+          defaults: new { controller = "WebSite", action = "Service", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+        );
 
             #endregion
 
