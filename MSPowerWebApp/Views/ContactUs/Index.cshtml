@@ -55,13 +55,13 @@
                                         <textarea id="editor1" rows="10" cols="80" name="ContactUs.ContactUs_Address">@Model.ContactUs.ContactUs_Address</textarea>
                                     </div>
 
-                                    <div class="form-group">
+                                    @*<div class="form-group">
                                         <label style="color: #333" for="fileUpload_ContactUs_Image">Upload ContactUs Images</label>
 
                                         <input type="file" class="form-control input-sm" id="fileUpload_ContactUs_Image" placeholder="Upload ContactUs Image" name="">
 
                                         <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
-                                    </div>
+                                    </div>*@
 
                                     <div class="form-group">
 
@@ -89,7 +89,7 @@
 
                                         <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "ContactUs")" role="button">Cancel</a>
 
-                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+                                        @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
 
                                         <input type="hidden" name="ContactUs.ContactUs_Id" id="hdnContactUs_Id" value="@Model.ContactUs.ContactUs_Id">
 

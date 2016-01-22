@@ -15,9 +15,15 @@ namespace MSPowerWebApp.Models
 
         public PaginationInfo Pager { get; set; }
 
+        public List<string> File_Name { get; set; }
+
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
         public ServiceCategory_Filter Filter { get; set; }
+
+        public HttpPostedFileBase Upload_File { get; set; }
+
+        public bool Is_Image_Exists { get; set; }
 
         public string Language { get; set; }
 
@@ -29,9 +35,13 @@ namespace MSPowerWebApp.Models
 
             Pager = new PaginationInfo();
 
+            File_Name = new List<string>();
+
             ServiceCategories = new List<ServiceCategoryInfo>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
+            Filter = new ServiceCategory_Filter();
 
         }
     }

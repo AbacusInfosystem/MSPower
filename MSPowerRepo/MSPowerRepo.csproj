@@ -62,7 +62,7 @@
     <Compile Include="ProductRepo.cs" />
     <Compile Include="ProductDetailRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServicesRepo.cs" />
+    <Compile Include="ServiceCategoryRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MSPowerInfo\MSPowerInfo.csproj">

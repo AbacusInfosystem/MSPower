@@ -27,7 +27,7 @@
 
         if ($(this).prop('checked')) {
 
-            $("#hdnServices_Id").val(this.id.replace("s1_", "")); // keep this in mind to fix.
+            $("#hdnServices_Id").val(this.id.replace("sc1_", "")); // keep this in mind to fix.
 
             $("#btnEdit").show();
 

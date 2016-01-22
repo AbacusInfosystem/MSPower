@@ -11,14 +11,13 @@
 
  <!-- daterangepicker -->
 
-<script src="/Content/AdminLTE/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-
+@*<script src="/Content/AdminLTE/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>*@
+<!-- Date Picker -->
+<link href="~/Content/AdminLTE/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" media="all" />
 <!-- datepicker -->
 
 <script src="/Content/AdminLTE/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 
-  <!-- Date Picker -->
-<link href="~/Content/AdminLTE/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" media="all" />
 
 @{
     ViewBag.Title = "Home";
@@ -61,7 +60,7 @@
 
                                 @*Date control*@
 
-                                <input type="text" class="textbox" id="txtEnquiry_Date" name="Enquiry.Enquiry_Date" placeholder="Enquiry Date" value="@(Model.Enquiry.Enquiry_Date == DateTime.MinValue ? "" : Model.Enquiry.Enquiry_Date.ToShortDateString())" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Enquiry Date'; }">
+                                <input type="text" class="textbox" id="txtEnquiry_Date" name="Enquiry.Enquiry_Date" placeholder="Enquiry Date" value="@(DateTime.Now.ToShortDateString())">
 
                                 @*Date control*@
 
@@ -77,7 +76,7 @@
 
                                 <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
 
-                                <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Enquiry")" role="button">Cancel</a>
+                                <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Index", "Home")" role="button">Cancel</a>
 
                                 <input type="hidden" name="Enquiry.Enquiry_Id" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id">
 

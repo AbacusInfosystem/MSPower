@@ -10,6 +10,12 @@ namespace MSPowerInfo
     public class ServiceCategoryInfo
     {
 
+        public ServiceCategoryInfo()
+        
+          {
+          
+          }
+
         public int Service_Category_Id { get; set; }
 
         public int Language_Id { get; set; }
@@ -18,11 +24,11 @@ namespace MSPowerInfo
 
         public string Service_Category_Img { get; set; }
 
-        public string Title { get; set; }
-
-        public string Description { get; set; }
+        public string Service_Category_Title { get; set; }
 
         [AllowHtml]
+
+        public string Service_Category_Description { get; set; }
 
         public bool Is_Active { get; set; }
 

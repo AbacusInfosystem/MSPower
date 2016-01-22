@@ -36,7 +36,7 @@ namespace MSPowerWebApp
             routes.MapRoute(
                 name: "menu-4",
                 url: "cms/services/search",
-                defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
+                defaults: new { controller = "ServiceCategory", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -190,47 +190,96 @@ namespace MSPowerWebApp
             #region Services
 
            
+         //   routes.MapRoute(
+         //      name: "services-2",
+         //      url: "cms/services/search",
+         //      defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //      name: "services-3",
+         //      url: "cms/services/insert-services",
+         //      defaults: new { controller = "Services", action = "Insert", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //      name: "services-4",
+         //      url: "cms/services/update-services",
+         //      defaults: new { controller = "Services", action = "Update", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //      name: "services-5",
+         //      url: "cms/services/get-services",
+         //      defaults: new { controller = "Services", action = "Get_Services", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //     name: "services-6",
+         //     url: "cms/services/get-services-by-id",
+         //     defaults: new { controller = "Services", action = "Get_Services_By_Id", id = UrlParameter.Optional }
+         // );
+
+         //   routes.MapRoute(
+         //    name: "services-7",
+         //    url: "cms/services/delete-services",
+         //    defaults: new { controller = "Services", action = "Delete", id = UrlParameter.Optional }
+         //);
+
+         //   routes.MapRoute(
+         //     name: "services-1",
+         //     url: "cms/services",
+         //     defaults: new { controller = "Services", action = "Index", id = UrlParameter.Optional }
+         // );
+
+           #endregion
+
+            #region ServiceCategory
+
+
+           // routes.MapRoute(
+           //    name: "services-2",
+           //    url: "cms/services/search",
+           //    defaults: new { controller = "ServiceCategory", action = "Search", id = UrlParameter.Optional }
+           //);
+
             routes.MapRoute(
-               name: "services-2",
-               url: "cms/services/search",
-               defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
-           );
+             name: "services-1",
+             url: "cms/services",
+             defaults: new { controller = "ServiceCategory", action = "Index", id = UrlParameter.Optional }
+         );
 
             routes.MapRoute(
                name: "services-3",
                url: "cms/services/insert-services",
-               defaults: new { controller = "Services", action = "Insert", id = UrlParameter.Optional }
+               defaults: new { controller = "ServiceCategory", action = "Insert", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "services-4",
                url: "cms/services/update-services",
-               defaults: new { controller = "Services", action = "Update", id = UrlParameter.Optional }
+               defaults: new { controller = "ServiceCategory", action = "Update", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "services-5",
                url: "cms/services/get-services",
-               defaults: new { controller = "Services", action = "Get_Services", id = UrlParameter.Optional }
+               defaults: new { controller = "ServiceCategory", action = "Get_Services_Categories", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
               name: "services-6",
               url: "cms/services/get-services-by-id",
-              defaults: new { controller = "Services", action = "Get_Services_By_Id", id = UrlParameter.Optional }
+              defaults: new { controller = "ServiceCategory", action = "Get_Service_Category_By_Id", id = UrlParameter.Optional }
           );
 
             routes.MapRoute(
              name: "services-7",
              url: "cms/services/delete-services",
-             defaults: new { controller = "Services", action = "Delete", id = UrlParameter.Optional }
+             defaults: new { controller = "ServiceCategory", action = "Delete", id = UrlParameter.Optional }
          );
 
-            routes.MapRoute(
-              name: "services-1",
-              url: "cms/services",
-              defaults: new { controller = "Services", action = "Index", id = UrlParameter.Optional }
-          );
+           
 
             #endregion
 

@@ -1,26 +1,26 @@
-﻿function Bind_Services(data) {
+﻿function Bind_ServiceCategory(data) {
 
     var htmlText = "";
 
-    if (data.Services.length > 0) {
+    if (data.ServiceCategories.length > 0) {
 
-        for (i = 0; i < data.Services.length; i++) {
+        for (i = 0; i < data.ServiceCategories.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='s1' id='s1_" + data.Services[i].Service_Id + "' class='iradio-list'/>";
+            htmlText += "<input type='radio' name='sc1' id='sc1_" + data.ServiceCategories[i].Service_Category_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Services[i].Service_Title;
+            htmlText += data.ServiceCategories[i].Service_Category_Title;
 
             htmlText += "</td>";
 
-            if (data.Services[i].Is_Active == true) {
+            if (data.ServiceCategories[i].Is_Active == true) {
 
                 htmlText += "<td>";
 
@@ -63,7 +63,7 @@
         increaseArea: '20%' // optional
     });
 
-    if (data.Services.length > 0) {
+    if (data.ServiceCategories.length > 0) {
 
         $('#hdnCurrentPage').val(data.Pager.CurrentPage);
 
@@ -95,11 +95,11 @@ function PageMore(Id) {
 
 function Get_All_Services() {
 
-    var sViewModel = {
+    var scViewModel = {
 
         Filter: {
 
-            Service_Id: ""
+            Service_Category_Id: ""
         },
 
         Pager: {
@@ -110,6 +110,6 @@ function Get_All_Services() {
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/services/get_services", "json", JSON.stringify(sViewModel), "POST", "application/json", false, Bind_Services, "", null);
+    CallAjax("/ServiceCategory/Get_Services_Categories", "json", JSON.stringify(scViewModel), "POST", "application/json", false, Bind_ServiceCategory, "", null);
 
 }
