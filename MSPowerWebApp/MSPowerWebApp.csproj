@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\ServiceCategoryController.cs" />
     <Compile Include="Controllers\WebSiteController.cs" />
     <Compile Include="Filters\LanguageAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,7 +225,6 @@
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
     <Compile Include="Models\ServiceCategoryViewModel.cs" />
-    <Compile Include="Models\ServicesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1060,9 +1060,11 @@
     <Content Include="Scripts\Product\product_search_method.js" />
     <Content Include="Scripts\ProductDetail\productdetail_search_events.js" />
     <Content Include="Scripts\ProductDetail\productdetail_search_method.js" />
-    <Content Include="Scripts\Services\services_events.js" />
-    <Content Include="Scripts\Services\services_search_event.js" />
-    <Content Include="Scripts\Services\services_search_method.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_events.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_methods.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_search_event.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_search_method.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_validation.js" />
     <Content Include="Scripts\WebSite\events_event.js" />
     <Content Include="Scripts\WebSite\main_event.js" />
     <Content Include="Scripts\WebSite\product_events.js" />
@@ -1103,13 +1105,13 @@
     <Content Include="Views\ContactUs\Index.cshtml" />
     <Content Include="Views\NewsLetter\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\ServiceCategory\Index.cshtml" />
     <Content Include="Views\WebSite\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
     <Content Include="Views\NewsLetter\Search.cshtml" />
     <Content Include="Views\ContactUs\Search.cshtml" />
-    <Content Include="Views\Services\Search.cshtml" />
+    <Content Include="Views\ServiceCategory\Search.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\WebSite\ProductListing.cshtml" />
     <Content Include="Views\WebSite\Product.cshtml" />
@@ -1159,6 +1161,7 @@
     <Folder Include="Content\Events\" />
     <Folder Include="Content\PDF\News Letter\" />
     <Folder Include="Content\PDF\Product Details\" />
+    <Folder Include="Content\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

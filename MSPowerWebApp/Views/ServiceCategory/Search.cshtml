@@ -2,9 +2,8 @@
     ViewBag.Title = "Index";
 }
 
-
-<script src="~/Scripts/Services/services_search_event.js"></script>
-<script src="~/Scripts/Services/services_search_method.js"></script>
+<script src="~/Scripts/ServiceCategory/servicecategory_search_event.js"></script>
+<script src="~/Scripts/ServiceCategory/servicecategory_search_method.js"></script>
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -19,7 +18,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>CMS</a></li>
-            <li class="active">Services Listing</li>
+            <li class="active">Service Category Listing</li>
         </ol>
     </section>
 
@@ -40,7 +39,7 @@
 
                                     <div class="btn-group">
 
-                                        <a id="btnCreate" class="btn btn-default btn-sm" href="@Url.Action("Index", "Services")" role="button">Create</a>
+                                        <a id="btnCreate" class="btn btn-default btn-sm" href="@Url.Action("Index", "ServiceCategory")" role="button">Create</a>
 
                                     </div>
 
@@ -50,7 +49,7 @@
 
                                         <button type="button" class="btn btn-warning btn-sm" id="btnDelete">Delete</button>
 
-                                        <input type="hidden" id="hdnServices_Id" name="Filter.Services_Id" />
+                                        <input type="hidden" id="hdnServices_Id" name="Filter.Service_Category_Id" />
 
                                         <input type="hidden" id="hdnCurrentPage" name="Page.CurrentPage" />
 

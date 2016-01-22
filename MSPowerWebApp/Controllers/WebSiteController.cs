@@ -5,6 +5,7 @@ using MSPowerWebApp.Common;
 using MSPowerWebApp.Filters;
 using MSPowerWebApp.Models;
 using System;
+
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -20,12 +21,14 @@ namespace MSPowerWebApp.Controllers
         // GET: /WebSite/
 
         [Language]
+
         public ActionResult Index(string language)
         {
             return View();
         }
 
         [Language]
+
         public ActionResult ProductListing(string language)
         {
             ProductDetailViewModel pViewModel = new ProductDetailViewModel();
@@ -58,6 +61,7 @@ namespace MSPowerWebApp.Controllers
         }
 
         [Language]
+
         public ActionResult Product(string language, int product_Column_Ref_Id, int product_Category_Column_Mapping_Id)
         {
             ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
@@ -69,8 +73,6 @@ namespace MSPowerWebApp.Controllers
             pager.IsPagingRequired = false;
 
             int language_Id = 0;
-
-
 
             if (Language.en.ToString() == language)
             {
@@ -119,9 +121,9 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult ServiceListing(string language)
         {
-            ServicesViewModel sViewModel = new ServicesViewModel();
+            ServiceCategoryViewModel scViewModel = new ServiceCategoryViewModel();
 
-            ServicesManager _sMan = new ServicesManager();
+            ServiceCategoryManager _scMan = new ServiceCategoryManager();
 
             int language_Id = 0;
 
@@ -136,25 +138,25 @@ namespace MSPowerWebApp.Controllers
 
             try
         {
-                sViewModel.ServiceCategories = _sMan.Get_Service_Categories_By_Language_Id(language_Id);
+            scViewModel.ServiceCategories = _scMan.Get_Service_Categories_By_Language_Id(language_Id);
 
-                sViewModel.Language = language;
+            scViewModel.Language = language;
         }
             catch (Exception ex)
             {
-                sViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                scViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("WebSite Controller - ProductListing" + ex.ToString());
             }
 
-            return View(sViewModel);
+            return View(scViewModel);
         }
 
         [Language]
 
         public ActionResult Service(string language, int Service_Category_Id)
         {
-            ServicesViewModel sViewModel = new ServicesViewModel();
+            ServiceCategoryViewModel scViewModel = new ServiceCategoryViewModel();
 
             try
             {
@@ -169,19 +171,19 @@ namespace MSPowerWebApp.Controllers
                     language_Id = Convert.ToInt32(Language.ch);
                 }
 
-                ServicesManager _sMan = new ServicesManager();
+                ServiceCategoryManager _scMan = new ServiceCategoryManager();
 
-                sViewModel.Service_Category = _sMan.Get_Services_Categories_By_Id(Service_Category_Id, language_Id);
+                scViewModel.ServiceCategory = _scMan.Get_Services_Categories_By_Id(Service_Category_Id, language_Id);
             }
 
             catch (Exception ex)
             {
-                sViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                scViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("Test Controller-Get_Test_By_Id" + ex.ToString());
             }
 
-            return View("Service", sViewModel);
+            return View("Service", scViewModel);
         }
 
         [Language]
@@ -266,6 +268,7 @@ namespace MSPowerWebApp.Controllers
         }
 
         [Language]
+
         public ActionResult ContactUsListing(string language)
         {
             return View();
@@ -431,7 +434,7 @@ namespace MSPowerWebApp.Controllers
 
                 //jaViewModel.Job_Application.Job_Application_Id = 1;
 
-                jaViewModel.Job_Application.Job_Application_Id = jaMan.Insert_Job_Application(jaViewModel.Job_Application);
+                jaMan.Insert_Job_Application(jaViewModel.Job_Application);
 
                 //jaViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
             }
@@ -453,6 +456,7 @@ namespace MSPowerWebApp.Controllers
         }
 
         [Language]
+
         public PartialViewResult Get_Product_Search(string language)
         {
             ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
@@ -486,7 +490,8 @@ namespace MSPowerWebApp.Controllers
             return PartialView("_Product_Search", pdViewModel);
         }
 
-         [Language]
+        [Language]
+
         public ActionResult Events(string language)
         {
             EventViewModel eViewModel = new EventViewModel();
@@ -520,7 +525,7 @@ namespace MSPowerWebApp.Controllers
             return View("Events", eViewModel);
         }
 
-         public PartialViewResult Get_Events_Images(int event_Id)
+        public PartialViewResult Get_Events_Images(int event_Id)
          {
              EventViewModel eViewModel = new EventViewModel();
 
@@ -548,7 +553,7 @@ namespace MSPowerWebApp.Controllers
              return PartialView("_Events_Images", eViewModel);
          }
 
-         public ActionResult SetLanguage(string language)
+        public ActionResult SetLanguage(string language)
          {
              try
              {
@@ -561,8 +566,8 @@ namespace MSPowerWebApp.Controllers
              return RedirectToAction("Index");
         }
 
-
         [Language]
+
         public ActionResult Enquiry(string language)
         {
             EnquiryViewModel eViewModel = new EnquiryViewModel();
@@ -581,6 +586,7 @@ namespace MSPowerWebApp.Controllers
         }
 
         [Language]
+
         public ActionResult Insert_Enquiry(string language, EnquiryViewModel eViewModel)
         {
             try
@@ -599,7 +605,7 @@ namespace MSPowerWebApp.Controllers
 
                 EnquiryManager eMan = new EnquiryManager();
 
-                eViewModel.Enquiry.Enquiry_Id = eMan.Insert_Enquiry(eViewModel.Enquiry);
+                eMan.Insert_Enquiry(eViewModel.Enquiry);
 
                 //eViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
             }
