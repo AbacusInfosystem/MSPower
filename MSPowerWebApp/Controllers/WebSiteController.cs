@@ -30,8 +30,6 @@ namespace MSPowerWebApp.Controllers
         {
             ProductDetailViewModel pViewModel = new ProductDetailViewModel();
 
-            ProductDetailManager _pMan = new ProductDetailManager();
-
             int language_Id = 0;
 
             if(Language.en.ToString() == language)
@@ -45,9 +43,9 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
-                pViewModel.Product_Categories = _pMan.Get_Product_Categories_By_Lanugae_Id(language_Id);
+                //pViewModel.Product_Categories = _pMan.Get_Product_Categories_By_Lanugae_Id(language_Id);
 
-                pViewModel.Language = language;
+                pViewModel.Language_Id = language_Id;
             }
             catch(Exception ex)
             {
@@ -745,6 +743,24 @@ namespace MSPowerWebApp.Controllers
             }
 
             return Json(eViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Genrated_Html_Product_Categories(int language_Id,int parent_Category_Id)
+        {
+            string html = "";
+
+            ProductDetailsManager _pMan = new ProductDetailsManager();
+
+            try
+            {
+                html = _pMan.Genrate_Html_For_Product_Categories(language_Id, parent_Category_Id);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("WebApp Controller - Get_Genrated_Html_Product_Categories" + ex.ToString());
+            }
+
+            return Json(html, JsonRequestBehavior.AllowGet);
         }
 
     }

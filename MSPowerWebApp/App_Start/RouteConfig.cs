@@ -140,49 +140,49 @@ namespace MSPowerWebApp
             routes.MapRoute(
                name: "productdetail-1",
                url: "cms/product-detail",
-               defaults: new { controller = "ProductDetail", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Index", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-2",
                url: "cms/product-detail/search",
-               defaults: new { controller = "ProductDetail", action = "Search", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Search", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-3",
                url: "cms/product-detail/insert",
-               defaults: new { controller = "ProductDetail", action = "Insert", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Insert", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-4",
                url: "cms/product-detail/update",
-               defaults: new { controller = "ProductDetail", action = "Update", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Update", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-5",
                url: "cms/product-detail/get-product-details",
-               defaults: new { controller = "ProductDetail", action = "Get_ProductDetails", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Get_ProductDetails", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
               name: "productdetail-6",
               url: "cms/product-detail/get-product-detail-by-id",
-              defaults: new { controller = "ProductDetail", action = "Get_Product_Detail_By_Id", id = UrlParameter.Optional }
+              defaults: new { controller = "ProductDetails", action = "Get_Product_Detail_By_Id", id = UrlParameter.Optional }
           );
 
             routes.MapRoute(
              name: "productdetail-7",
              url: "cms/product-detail/delete-product-detail",
-             defaults: new { controller = "ProductDetail", action = "Delete", id = UrlParameter.Optional }
+             defaults: new { controller = "ProductDetails", action = "Delete", id = UrlParameter.Optional }
          );
 
             routes.MapRoute(
              name: "productdetail-8",
              url: "cms/product-detail/download-pdf/{product_Details_Id}",
-             defaults: new { controller = "ProductDetail", action = "Download_Product_Details_PDF", product_Details_Id = UrlParameter.Optional }
+             defaults: new { controller = "ProductDetails", action = "Download_Product_Details_PDF", product_Details_Id = UrlParameter.Optional }
          );
 
             #endregion

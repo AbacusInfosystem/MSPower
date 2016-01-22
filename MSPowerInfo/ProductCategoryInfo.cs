@@ -18,6 +18,10 @@ namespace MSPowerInfo
 
         public int Language_Id { get; set; }
 
+        public string Product_Category { get; set; }
+
+        public int Parent_Category_Id { get; set; }
+
         public string Product_Category1 { get; set; }
 
         public string Product_Category2 { get; set; }

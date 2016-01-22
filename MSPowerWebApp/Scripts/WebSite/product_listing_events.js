@@ -15,4 +15,25 @@ $(function () {
 
     });
 
+    //Get_Product_Categories(0);
+
 });
+
+function Get_Product_Categories(parent_Category_Id)
+{
+    $.ajax({
+
+        url: "/WebSite/Get_Genrated_Html_Product_Categories",
+
+        data: { language_Id: $("#hdfLanguage").val(), parent_Category_Id: parent_Category_Id },
+
+        success:function(data){
+        
+            if(data != null)
+            {
+                $("#frmProduct_Listing").append(data);
+            }
+        }
+
+    });
+}

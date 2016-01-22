@@ -204,6 +204,7 @@
     <Compile Include="Controllers\NewsLetterController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductDetailController.cs" />
+    <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\WebSiteController.cs" />
     <Compile Include="Filters\LanguageAttribute.cs" />
@@ -989,6 +990,7 @@
     <Content Include="Content\fonts\ionicons.woff" />
     <Content Include="ContentOnline\fonts\Roboto-Bold.ttf" />
     <Content Include="ContentOnline\fonts\Roboto-Regular.ttf" />
+    <None Include="Properties\PublishProfiles\MSPower.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\AboutUs\aboutus_events.js" />
     <Content Include="Scripts\AboutUs\aboutus_method.js" />
@@ -1044,6 +1046,11 @@
     <Content Include="Scripts\NewsLetter\newsletter_search_events.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_method.js" />
     <Content Include="Scripts\NewsLetter\newsletter_validation.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_event.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_method.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_search_events.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_search_method.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_validation.js" />
     <Content Include="Scripts\ProductDetail\productdetail_event.js" />
     <Content Include="Scripts\ProductDetail\productdetail_method.js" />
     <Content Include="Scripts\ProductDetail\productdetail_validation.js" />
@@ -1134,12 +1141,13 @@
     <Content Include="Views\ProductDetail\Index.cshtml" />
     <Content Include="Views\ProductDetail\Search.cshtml" />
     <Content Include="Views\ImageUpload\Index.cshtml" />
-    <Content Include="Views\ImageUpload\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutOnline.cshtml" />
     <Content Include="Views\Event\Search.cshtml" />
     <Content Include="Views\WebSite\_Product_Search.cshtml" />
     <Content Include="Views\WebSite\Events.cshtml" />
     <Content Include="Views\WebSite\_Events_Images.cshtml" />
+    <Content Include="Views\ProductDetails\Index.cshtml" />
+    <Content Include="Views\ProductDetails\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
