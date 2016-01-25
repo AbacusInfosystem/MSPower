@@ -10,7 +10,7 @@
 
 
 <style>
-    li {
+    .prod-li {
         list-style-type: none;
         padding-left: 12px;
     }
@@ -18,168 +18,193 @@
 
 <div class="content">
 
-    
+
 
     <div class="container">
-    
-            <!---->
+
+        <!---->
         <br><br>
         <form id="frmProduct_Listing">
 
             <input type="hidden" id="hdfLanguage" value="@Model.Language_Id">
 
+            <input type="hidden" id="hdfProduct_Category_Id" value="@Model.Product_Category.Product_Category_Id">
+
             <div class="box-body">
 
                 <header class="text-center">
-                    <h2> High Power Thyristors & Diodes</h2>
+                    @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category))
+                    {
+                        <h2> High Power Thyristors & Diodes</h2>
+                    }
+                    else
+                    {
+                        <h2> @Model.Product_Category.Product_Category</h2>
+                    }
 
                 </header>
                 <br><br>
-                <p class="text-center">
-                    Discover our broad range of thyristor and diode devices. PowerBLOCK modules are available for a voltage range from 1600V to 4400V and a current range from 60A up to 1100A. Press pack disc housings include parts for a voltage range from 200 V to 9500 V and a current range from 56 A to 8400 A.
+                @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category_Description))
+                {
+                    <p class="text-center">
 
-                </p>
+                        Discover our broad range of thyristor and diode devices. PowerBLOCK modules are available for a voltage range from 1600V to 4400V and a current range from 60A up to 1100A. Press pack disc housings include parts for a voltage range from 200 V to 9500 V and a current range from 56 A to 8400 A.
+
+
+                    </p>
+                }
+                else
+                {
+                    <p class="text-center">
+                        @Model.Product_Category.Product_Category_Description
+                    </p>
+                }
                 <br><br>
-                <div class="row">
 
-                    <div class="col-md-4">
-
-                        <ul>
-                            <li>
-                                <h4>
-                                    <a href="#">
-                                        <i class="fa fa-chevron-right"></i>
-                                        Discrete Thyristors
-                                    </a>
-                                </h4>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right"></i>
-                                            Phase Control Thyristor
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right">
-                                            </i>Fast Switching Thyristor
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-md-4">
-                        <ul>
-                            <li>
-                                <h4>
-                                    <a href="#">
-                                        <i class="fa fa-chevron-right"></i>
-                                        Discrete Diodes
-                                    </a>
-                                </h4>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right">
-                                            </i>Rectifier Diodes
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right"></i>
-                                            Welding Diodes
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right"></i>
-                                            Fast Recovery/Soft Recovery Diodes
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-md-4">
-                        <ul>
-                            <li>
-                                <h4>
-                                    <a href="#">
-                                        <i class="fa fa-chevron-right"></i>
-                                        Power Modules
-                                    </a>
-                                </h4>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right"></i>
-                                            Rectifier Diode Modules
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right"></i>Thyristor Modules for Phase control
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right"></i>
-                                            Thyristor/Diode Modules for Phase control
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-chevron-right"></i>Thyristor Modules-Non isolated type
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <div id="dvProduct_Listing">
 
                 </div>
 
-                <div class="row">
+                    @*<div class="row">
 
-                    <div class="col-md-4">
-                        <ul>
-                            <li>
-                                <h4>
+                <div class="col-md-4">
+
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Discrete Thyristors
+                                </a>
+                            </h4>
+                            <ul>
+                                <li>
                                     <a href="#">
                                         <i class="fa fa-chevron-right"></i>
-                                        Power Bridges
+                                        Phase Control Thyristor
                                     </a>
-                                </h4>
-                                <ul></ul>
-                            </li>
-                        </ul>
-                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right">
+                                        </i>Fast Switching Thyristor
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                    <div class="col-md-4">
-                        <ul>
-                            <li>
-                                <h4>
-                                    <a href="#"><i class="fa fa-chevron-right"></i>Power Stack</a>
-                                </h4>
-                                <ul></ul>
-                            </li>
-                        </ul>
-                    </div>
+                </div>
 
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Discrete Diodes
+                                </a>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right">
+                                        </i>Rectifier Diodes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Welding Diodes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Fast Recovery/Soft Recovery Diodes
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Power Modules
+                                </a>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Rectifier Diode Modules
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>Thyristor Modules for Phase control
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Thyristor/Diode Modules for Phase control
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>Thyristor Modules-Non isolated type
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
 
             </div>
 
-            </form>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Power Bridges
+                                </a>
+                            </h4>
+                            <ul></ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#"><i class="fa fa-chevron-right"></i>Power Stack</a>
+                            </h4>
+                            <ul></ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>*@
+
+                </div>
+
+        </form>
 
         <br><br>
-       
 
-</div>
+
+    </div>
 
 </div>

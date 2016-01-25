@@ -6,50 +6,57 @@
 
 @* News Letter Listing @Session["Language"].ToString();*@
 
-
-
-<div class="content">
-    <div class="blog-section">
-        <div class="container">
-            <div class="col-md-12">
-                <h2 class="with-line">News Letters</h2>
-
-                @foreach (var item in Model.NewsLetters)
-                 {
-               <article class="clearfix">
-                        <header class="grid_8 alpha">
-                            <div class="head_element"><span class="el_1">@item.Updated_On.Day</span><span class="el_2">@item.Updated_On.ToString("MMM")</span></div>
-                            <div class="sub">
-                                <div class="readblog">@item.NewsLetter_Title</div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </header>
-                        <div class="grid_b4">
-                            <p>
-                                @if (@item.NewsLetter_Description.Length > 1000)
-                                {
-                                    @item.NewsLetter_Description.Substring(0, 1000).ToString()
-                                }
-                                else { 
-                                        @Html.Raw(@item.NewsLetter_Description)
-                                }
-
-
-                            </p>
-                            @if (@item.Language_Id == 1)
-                            {
-                            <a href="/en/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn btn-1 btn-1c">Read More</a>
-                            }
-                            else
-                            {
-                            <a href="/ch/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn btn-1 btn-1c">Read More</a>
-                            }
-
-                        </div>
-                    </article>
+<div class="grid_4">
+    <div class="container">
+        <h1 class="blog_head">News Letters</h1>
+        @{
+            
+                int i= 1;
+            foreach (var item in Model.NewsLetters)
+            {
+                if(i==1 || i%2 ==0)
+                {
+                    @:<div class="blog_grid span2">
                 }
+                    <div class="col-md-6">
+                        <h3><a href="#">@item.NewsLetter_Title</a></h3>
+                    <div class="links">
+                         <ul>
+                             <li><i class="fa blog-icon fa-calendar"> </i><span>@item.Updated_On.ToShortDateString()</span></li>
+                        </ul>
+                    </div>
+                <p>
+                    @if (item.NewsLetter_Description.Length > 1000)
+                    {
+                        @item.NewsLetter_Description.Substring(0, 1000).ToString()
+                    }
+                    else
+                    {
+                        @Html.Raw(item.NewsLetter_Description)
+                    }
+                </p>
+                @if (item.Language_Id == 1)
+{
+    <a href="/en/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn btn-1 btn-1c">Read More</a>
+
+                                    
+}
+                else
+                {
+                     <a href="/ch/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn1 btn-8 btn-8c">Read More</a>
+                }
+               
             </div>
-        </div>
+
+            if( i%2 ==0)
+            {
+            @:<div class="clearfix"> </div>
+        @:</div>
+        }
+            i++;            
+        }
+        
+        }
+       
     </div>
 </div>

@@ -4,41 +4,39 @@
     ViewBag.Title = "Home";
 }
 
-@* News Letter @Session["Language"].ToString();*@
 
+<div class="grid_4">
+    <div class="container">
+        <h1 class="blog_head">News Letters</h1>
 
-<div class="content">
-		<div class="blog-section">
-			<div class="container">
-					<div class="col-md-12">
-							<h2 class="with-line">News Letter</h2>
+           <div class="blog_grid span2">
+                
+                <div class="col-md-12">
+                    <h3><a href="#">@Model.NewsLetter.NewsLetter_Title</a></h3>
+                    <div class="links">
+                        <ul>
+                            <li><i class="fa blog-icon fa-calendar"> </i><span>@Model.NewsLetter.Updated_On.ToShortDateString()</span></li>
+                        </ul>
+                    </div>
+                    <p>
+                        @if (Model.NewsLetter.NewsLetter_Description.Length > 1000)
+                        {
+                           @Model.NewsLetter.NewsLetter_Description.Substring(0, 1000).ToString()
+                        }
+                        else
+                        {
+                            @Html.Raw(Model.NewsLetter.NewsLetter_Description)
+                        }
+                    </p>
+                    
 
-                        <article class="clearfix attach">
-                            <header class="grid_8 alpha">
-                                <div class="head_element"><span class="el_1">@Model.NewsLetter.Updated_On.Day</span><span class="el_2">@Model.NewsLetter.Updated_On.ToString("MMM")</span></div>
-                                <div class="sub">
-                                    <div class="readblog">@Model.NewsLetter.NewsLetter_Title</div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </header>
+                </div>
 
-                            <div class="grid_b4" style="width:100%;">
+               
+                    <div class="clearfix"> </div>
+                    
+                </div>
+      
 
-                                <p>
-                                    @if (Model.NewsLetter.NewsLetter_Description.Length > 1000)
-                                    {
-                                        @Model.NewsLetter.NewsLetter_Description.Substring(0, 1000).ToString()
-                                    }
-                                    else
-                                    {
-                                        @Html.Raw(Model.NewsLetter.NewsLetter_Description)
-                                    }
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </article>
-						
-					</div>
-			</div>
-	</div>
+    </div>
 </div>

@@ -54,7 +54,12 @@ namespace MSPowerManager
 
         public string Genrate_Html_For_Product_Categories(int language_Id, int parent_Category_Id)
         {
-           return _pdRepo.Genrate_Html_For_Product_Categories(_pdRepo.Get_Product_Categories_By_Language(language_Id),parent_Category_Id);
+            return _pdRepo.Genrate_Html_For_Product_Categories(_pdRepo.Get_Product_Categories_By_Language(language_Id), parent_Category_Id, language_Id);
+        }
+
+        public ProductCategoryInfo Get_Product_Category_By_Id(int product_Category_Id, int language_Id)
+        {
+            return _pdRepo.Get_Product_Category_By_Id(product_Category_Id, language_Id);
         }
     }
 }

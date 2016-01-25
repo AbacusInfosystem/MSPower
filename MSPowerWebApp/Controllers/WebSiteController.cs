@@ -28,49 +28,11 @@ namespace MSPowerWebApp.Controllers
         }
 
         [Language]
-
-        public ActionResult ProductListing(string language)
+        public ActionResult ProductListing(string language, int product_Category_Id)
         {
             ProductDetailViewModel pViewModel = new ProductDetailViewModel();
 
-            int language_Id = 0;
-
-            if(Language.en.ToString() == language)
-            {
-                language_Id = (int)Language.en;
-            }
-            else
-            {
-                language_Id = (int)Language.ch;
-            }
-
-            try
-            {
-                //pViewModel.Product_Categories = _pMan.Get_Product_Categories_By_Lanugae_Id(language_Id);
-
-                pViewModel.Language_Id = language_Id;
-            }
-            catch(Exception ex)
-            {
-                pViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
-
-                Logger.Error("WebSite Controller - ProductListing" + ex.ToString());
-            }
-
-            return View(pViewModel);
-        }
-
-        [Language]
-
-        public ActionResult Product(string language, int product_Column_Ref_Id, int product_Category_Column_Mapping_Id)
-        {
-            ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
-
-            ProductDetailManager pdMan = new ProductDetailManager();
-
-            PaginationInfo pager = new PaginationInfo();
-
-            pager.IsPagingRequired = false;
+            ProductDetailsManager _pMan = new ProductDetailsManager();
 
             int language_Id = 0;
 
@@ -85,29 +47,82 @@ namespace MSPowerWebApp.Controllers
 
             try
             {
-                pdViewModel.Product_Category_Column_Mapping = pdMan.Get_Product_Category_Column_By_Id(product_Category_Column_Mapping_Id);
+                //pViewModel.Product_Categories = _pMan.Get_Product_Categories_By_Lanugae_Id(language_Id);
 
-                pdViewModel.Product_Category = pdMan.Get_Product_Category_By_Id(pdViewModel.Product_Category_Column_Mapping.Product_Category_Id, language_Id);
+                pViewModel.Language_Id = language_Id;
 
-                pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(product_Column_Ref_Id);
-
-                pdViewModel.Product_Details = pdMan.Get_Product_Details(ref pager, product_Category_Column_Mapping_Id, product_Column_Ref_Id);
-
-                foreach (var item in pdViewModel.Product_Details)
+                if (product_Category_Id != 0)
                 {
-                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), item.Product_Detail_Id + ".pdf");
+                    pViewModel.Product_Category = _pMan.Get_Product_Category_By_Id(product_Category_Id, language_Id);
 
-                    if (System.IO.File.Exists(path))
-                    {
-                        item.Is_PDF_Exists = true;
+                    pViewModel.Volts = _pMan.Get_Product_Volts(product_Category_Id);
+                }
             }
-                    else
+            catch (Exception ex)
+            {
+                pViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("WebSite Controller - ProductListing" + ex.ToString());
+            }
+
+            if (pViewModel.Volts.Count == 0)
+            {
+                return View(pViewModel);
+            }
+            else
+            {
+                return RedirectToAction("Product", new System.Web.Routing.RouteValueDictionary { { "language", language }, { "product_Category_Id", product_Category_Id } });
+            }
+        }
+
+
+        public ActionResult Product(string language, int product_Category_Id)
+        {
+            ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
+
+            ProductDetailsManager pdMan = new ProductDetailsManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            if (Language.en.ToString() == language)
+            {
+                pdViewModel.Language_Id = (int)Language.en;
+            }
+            else
+            {
+                pdViewModel.Language_Id = (int)Language.ch;
+            }
+
+            pager.IsPagingRequired = false;
+
+            try
+            {
+                pdViewModel.Product_Category = pdMan.Get_Product_Category_By_Id(product_Category_Id, pdViewModel.Language_Id);
+
+                pdViewModel.Volts = pdMan.Get_Product_Volts(pdViewModel.Product_Category.Product_Category_Id);
+
+                foreach (var item in pdViewModel.Volts)
+                {
+                    item.Product_Details_Header = pdMan.Get_Product_Details_Header(item.Product_Column_Ref_Id);
+
+                    item.Product_Details = pdMan.Get_Product_Details(ref pager, item.Product_Category_Column_Mapping_Id, item.Product_Column_Ref_Id);
+
+                    foreach (var itm in pdViewModel.Product_Details)
                     {
-                        item.Is_PDF_Exists = false;
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+
+                        if (System.IO.File.Exists(path))
+                        {
+                            itm.Is_PDF_Exists = true;
+                        }
+                        else
+                        {
+                            itm.Is_PDF_Exists = false;
+                        }
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
@@ -130,18 +145,18 @@ namespace MSPowerWebApp.Controllers
             if (Language.en.ToString() == language)
             {
                 language_Id = (int)Language.en;
-        }
+            }
             else
             {
                 language_Id = (int)Language.ch;
             }
 
             try
-        {
-            scViewModel.ServiceCategories = _scMan.Get_Service_Categories_By_Language_Id(language_Id);
+            {
+                scViewModel.ServiceCategories = _scMan.Get_Service_Categories_By_Language_Id(language_Id);
 
-            scViewModel.Language = language;
-        }
+                scViewModel.Language = language;
+            }
             catch (Exception ex)
             {
                 scViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
@@ -165,7 +180,7 @@ namespace MSPowerWebApp.Controllers
                 if (Session["Language"].ToString() == Language.en.ToString())
                 {
                     language_Id = Convert.ToInt32(Language.en);
-        }
+                }
                 else
                 {
                     language_Id = Convert.ToInt32(Language.ch);
@@ -239,7 +254,6 @@ namespace MSPowerWebApp.Controllers
             NewsLetterViewModel nlViewModel = new NewsLetterViewModel();
 
             try
-
             {
                 int language_Id = 0;
 
@@ -313,8 +327,8 @@ namespace MSPowerWebApp.Controllers
                 Logger.Error("Test Controller - Get_Tests" + ex.ToString());
             }
             finally
-        {
-              
+            {
+
             }
 
             return View(auViewModel);
@@ -323,7 +337,7 @@ namespace MSPowerWebApp.Controllers
 
         [Language]
 
-        public ActionResult Job_OpeningListing(string language )
+        public ActionResult Job_OpeningListing(string language)
         {
             Job_OpeningViewModel joViewModel = new Job_OpeningViewModel();
 
@@ -394,7 +408,7 @@ namespace MSPowerWebApp.Controllers
             }
 
             catch (Exception ex)
-        {
+            {
                 joViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("Test Controller-Get_Test_By_Id" + ex.ToString());
@@ -480,7 +494,7 @@ namespace MSPowerWebApp.Controllers
 
                 pdViewModel.Language = language;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
@@ -496,11 +510,11 @@ namespace MSPowerWebApp.Controllers
         {
             EventViewModel eViewModel = new EventViewModel();
 
-             EventManager _eMan = new EventManager();
+            EventManager _eMan = new EventManager();
 
-              int language_Id = 0;
+            int language_Id = 0;
 
-            if(Language.en.ToString() == language)
+            if (Language.en.ToString() == language)
             {
                 language_Id = (int)Language.en;
             }
@@ -509,15 +523,15 @@ namespace MSPowerWebApp.Controllers
                 language_Id = (int)Language.ch;
             }
 
-             PaginationInfo pager = new PaginationInfo();
+            PaginationInfo pager = new PaginationInfo();
 
-             pager.IsPagingRequired = false;
+            pager.IsPagingRequired = false;
 
             try
             {
                 eViewModel.Events = _eMan.Get_Events(ref pager, language_Id);
             }
-             catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error("Web Site Controller - Events" + ex.ToString());
             }
@@ -526,44 +540,44 @@ namespace MSPowerWebApp.Controllers
         }
 
         public PartialViewResult Get_Events_Images(int event_Id)
-         {
-             EventViewModel eViewModel = new EventViewModel();
+        {
+            EventViewModel eViewModel = new EventViewModel();
 
-             eViewModel.Event.Event_Id = event_Id;
+            eViewModel.Event.Event_Id = event_Id;
 
-             try
-             {
-                 string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString(), event_Id.ToString());
+            try
+            {
+                string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageUploadPath1"]).ToString(), event_Id.ToString());
 
-                 if (System.IO.Directory.Exists(path))
-                 {
-                     string[] fileEntries = Directory.GetFiles(path);
+                if (System.IO.Directory.Exists(path))
+                {
+                    string[] fileEntries = Directory.GetFiles(path);
 
-                     foreach (string fileName in fileEntries)
-                     {
-                         eViewModel.File_Name.Add(Path.GetFileName(fileName));
-                     }
-                 }
-             }
-             catch (Exception ex)
-             {
-                 Logger.Error("Web Site Controller - Get_Events_Images" + ex.ToString());
-             }
+                    foreach (string fileName in fileEntries)
+                    {
+                        eViewModel.File_Name.Add(Path.GetFileName(fileName));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Web Site Controller - Get_Events_Images" + ex.ToString());
+            }
 
-             return PartialView("_Events_Images", eViewModel);
-         }
+            return PartialView("_Events_Images", eViewModel);
+        }
 
         public ActionResult SetLanguage(string language)
-         {
-             try
-             {
-                 Session["Language"] = language;
-             }
-             catch(Exception ex)
-             {
-                 Logger.Error("Web Site Controller - Get_Events_Images" + ex.ToString());
-             }
-             return RedirectToAction("Index");
+        {
+            try
+            {
+                Session["Language"] = language;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Web Site Controller - Get_Events_Images" + ex.ToString());
+            }
+            return RedirectToAction("Index");
         }
 
         [Language]
@@ -643,7 +657,7 @@ namespace MSPowerWebApp.Controllers
 
                 aViewModel.AboutUs = auMan.Get_AboutUs(language_Id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error("WebApp Controller - Get_AboutUs" + ex.ToString());
             }
@@ -676,7 +690,7 @@ namespace MSPowerWebApp.Controllers
 
                 nlViewModel.NewsLetters = nlMan.Get_NewsLetters(ref pager, language_Id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error("WebApp Controller - Get_AboutUs" + ex.ToString());
             }
@@ -710,7 +724,7 @@ namespace MSPowerWebApp.Controllers
                 joViewModel.Job_Openings = joMan.Get_Job_Openings(ref pager, language_Id);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error("WebApp Controller - Get_Hot_Jobs" + ex.ToString());
             }
@@ -743,7 +757,7 @@ namespace MSPowerWebApp.Controllers
             {
                 eViewModel.Events = _eMan.Get_Events(ref pager, language_Id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error("WebApp Controller - Get_AboutUs" + ex.ToString());
             }
@@ -751,7 +765,7 @@ namespace MSPowerWebApp.Controllers
             return Json(eViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Genrated_Html_Product_Categories(int language_Id,int parent_Category_Id)
+        public JsonResult Get_Genrated_Html_Product_Categories(int language_Id, int parent_Category_Id)
         {
             string html = "";
 
@@ -761,13 +775,38 @@ namespace MSPowerWebApp.Controllers
             {
                 html = _pMan.Genrate_Html_For_Product_Categories(language_Id, parent_Category_Id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error("WebApp Controller - Get_Genrated_Html_Product_Categories" + ex.ToString());
             }
 
             return Json(html, JsonRequestBehavior.AllowGet);
         }
+
+        //public ActionResult Get_Product_By_Product_Category_Id(int language_Id, int product_Category_Id)
+        //{
+        //    ProductDetailsManager _pMan = new ProductDetailsManager();
+
+        //    ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
+
+        //    try
+        //    {
+        //       pdViewModel.Volts = _pMan.Get_Product_Volts(product_Category_Id);
+
+        //        if(pdViewModel.Volts.Count == 0)
+        //        {
+        //            pdViewModel.Product_Category.Product_Category_Id = product_Category_Id;
+        //        }
+
+        //        pdViewModel.Language_Id = language_Id;
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Logger.Error("WebApp Controller - Get_Product_By_Product_Category_Id" + ex.ToString());
+        //    }
+
+        //    return View();
+        //}
 
     }
 }

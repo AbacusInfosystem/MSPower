@@ -119,6 +119,8 @@ namespace MSPowerRepo
 
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Volts_Sp.ToString(), CommandType.StoredProcedure, _con);
 
+            _con.Close();
+
             if (dt != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow dr in dt.Rows)
@@ -207,6 +209,8 @@ namespace MSPowerRepo
             param.Add(new SqlParameter("@Product_Column_Ref_Id", product_column_ref_Id));
 
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_Headers_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
 
             int headerCount = 0;
 
@@ -330,6 +334,8 @@ namespace MSPowerRepo
 
             DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_Headers_Sp.ToString(), CommandType.StoredProcedure, _con);
 
+            _con.Close();
+
             int headerCount = 0;
 
             if (dt != null)
@@ -434,17 +440,28 @@ namespace MSPowerRepo
 
         }
 
-        public string Genrate_Html_For_Product_Categories(List<ProductCategoryInfo> product_Categories, int parent_Category_Id)
+        public string Genrate_Html_For_Product_Categories(List<ProductCategoryInfo> product_Categories, int parent_Category_Id, int language_Id)
         {
             string html = "";
 
+            html += "<div class='row'>";
+
             foreach (var item in product_Categories.Where(a => a.Parent_Category_Id == parent_Category_Id))
             {
+                html += "<div class='col-md-4'>";
+
                 html += "<ul>";
 
-                html += "<li>";
+                html += "<li class='prod-li'>";
 
-                html += "<h4><a href='#'><i class='fa fa-chevron-right'></i>";
+                if (language_Id == 1)
+                {
+                    html += "<h4><a href='/en/product-listing?product_Category_Id=" + item.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                }
+                else
+                {
+                    html += "<h4><a href='/ch/product-listing?product_Category_Id=" + item.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                }
 
                 html += item.Product_Category;
 
@@ -454,8 +471,14 @@ namespace MSPowerRepo
 
                 foreach (var itm in product_Categories.Where(x => x.Parent_Category_Id == item.Product_Category_Id))
                 {
-
-                    html += "<li> <a href='#'><i class='fa fa-chevron-right'></i>";
+                    if (language_Id == 1)
+                    {
+                        html += "<li class='prod-li'> <a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                    }
+                    else
+                    {
+                        html += "<li class='prod-li'> <a href='/ch/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                    }
 
                     html += itm.Product_Category;
 
@@ -467,9 +490,53 @@ namespace MSPowerRepo
                 html += "</li>";
 
                 html += "</ul>";
+
+                html += "</div>";
             }
 
+            html += "</div>";
+
             return html;
+        }
+
+        public ProductCategoryInfo Get_Product_Category_By_Id(int product_Category_Id, int language_Id)
+        {
+            ProductCategoryInfo product_Category = new ProductCategoryInfo();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@product_Category_Id", product_Category_Id));
+
+            param.Add(new SqlParameter("@language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Category_By_Id_sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    product_Category.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
+
+                    product_Category.Language_Id = Convert.ToInt32(dr["Language_Id"]);
+
+                    product_Category.Product_Category = Convert.ToString(dr["Product_Category"]);
+
+                    product_Category.Product_Category_Image = Convert.ToString(dr["Product_Category_Img"]);
+
+                    product_Category.Product_Category_Description = Convert.ToString(dr["Product_Category_Description"]);
+
+                }
+            }
+
+            return product_Category;
         }
     }
 }

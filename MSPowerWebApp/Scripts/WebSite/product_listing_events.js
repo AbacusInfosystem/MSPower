@@ -15,7 +15,7 @@ $(function () {
 
     });
 
-    //Get_Product_Categories(0);
+    Get_Product_Categories($("#hdfProduct_Category_Id").val());
 
 });
 
@@ -31,7 +31,7 @@ function Get_Product_Categories(parent_Category_Id)
         
             if(data != null)
             {
-                $("#frmProduct_Listing").append(data);
+                $("#dvProduct_Listing").append(data);
             }
         }
 

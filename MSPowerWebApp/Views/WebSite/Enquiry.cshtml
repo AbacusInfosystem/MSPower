@@ -17,76 +17,202 @@
 <!-- datepicker -->
 
 <script src="/Content/AdminLTE/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<style>
+    .black-background {
+        background-color: #000000;
+    }
 
+    .white {
+        color: #ffffff;
+    }
+</style>
 
 @{
     ViewBag.Title = "Home";
 }
 
-<div class="content">
+
+
+<div class="grid_4">
     @{Html.RenderPartial("_ServerMessage");}
+    <div class="container">
+        <h1 class="blog_head">Enquiry</h1>
 
-    <div class="contact about-desc">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-md-7">
-
-                    <h3>Enquiry</h3>
-
-                    <div class="contact_right">
-
-                        <div class="contact-form_grid">
-
-                            <form id="frmEnquiry">
-
-                                <input id="txtCustomer_Name" name="Enquiry.Customer_Name" type="text" class="textbox" value="Enter Customer Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Customer Name'; }">
-
-                                <textarea id="editor1" name="Enquiry.Customer_Address" onfocus="this.value = '';" onblur="    if (this.value == '') { this.text = 'Customer Address'; }">Customer Address</textarea>
-
-                                <input id="txtTel_No" name="Enquiry.Tel_No" type="text" class="textbox" value="Enter Telephone Number" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Telephone Number'; }">
-                                
-                                <input id="txtEmail" name="Enquiry.Email" type="text" class="textbox" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
-                                
-                                <input id="txtContact_Person" name="Enquiry.Contact_Person" type="text" class="textbox" value="Enter Contact Person" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person'; }">
-
-                                <input id="txtContact_Person_Tel_No" name="Enquiry.Contact_Person_Tel_No" type="text" class="textbox" value="Enter Contact Person Tel No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Tel No'; }">
-                                
-                                <input id="txtContact_Person_Mobile_No" name="Enquiry.Contact_Person_Mobile_No" type="text" class="textbox" value="Enter Contact Person Mobile No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Mobile No'; }">
-
-                                <input id="txtEnquiry_No" name="Enquiry.Enquiry_No" type="text" class="textbox" value="Enter Enquiry No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Enquiry No'; }">
-
-                                @*Date control*@
-
-                                <input type="text" class="textbox" id="txtEnquiry_Date" name="Enquiry.Enquiry_Date" placeholder="Enquiry Date" value="@(DateTime.Now.ToShortDateString())">
-
-                                @*Date control*@
-
-                                <input id="txtProduct_Name" name="Enquiry.Product_Name" type="text" class="textbox" value="Enter Product Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Product Name'; }">
-
-                                <input id="txtQuantity" name="Enquiry.Quantity" type="text" class="textbox" value="Enter Quantity" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Quantity'; }">
-
-                                <input id="txtDelivery" name="Enquiry.Delivery" type="text" class="textbox" value="Enter Delivery" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Delivery'; }">
-
-                                @*<input id="txtCreated_On" name="Enquiry.Created_On" type="text" class="textbox" value="Created On" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Created On'; }">*@
-
-                                <input id="btnSave" type="button" value="Send" class="btn">
-
-                                <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
-
-                                <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Index", "Home")" role="button">Cancel</a>
-
-                                <input type="hidden" name="Enquiry.Enquiry_Id" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id">
-
-                                <input type="hidden" name="Enquiry.Language_Id" id="hdnLanguage_Id" value="@Model.Enquiry.Language_Id">
-
-                            </form>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <br>
+                <form id="frmEnquiry">
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Customer Name :</p>
                         </div>
+                        <div class="col-md-8">
+                            <input id="txtCustomer_Name" name="Enquiry.Customer_Name" type="text" class="form-control" value="Enter Customer Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Customer Name'; }">
+                        </div>
+                        <div class="col-md-1"></div>
                     </div>
-                </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Customer Address :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea id="editor1" name="Enquiry.Customer_Address" class="form-control" onfocus="this.value = '';" onblur="    if (this.value == '') { this.text = 'Customer Address'; }">Customer Address</textarea>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Telephone Number :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtTel_No" name="Enquiry.Tel_No" type="text" class="form-control" value="Enter Telephone Number" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Telephone Number'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Email :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtEmail" name="Enquiry.Email" type="text" class="form-control" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Contact Person :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtContact_Person" name="Enquiry.Contact_Person" type="text" class="form-control" value="Enter Contact Person" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <br>
+
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Contact Person Tel No :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtContact_Person_Tel_No" name="Enquiry.Contact_Person_Tel_No" type="text" class="form-control" value="Enter Contact Person Tel No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Tel No'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Contact Person Mobile No :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtContact_Person_Mobile_No" name="Enquiry.Contact_Person_Mobile_No" type="text" class="form-control" value="Enter Contact Person Mobile No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Mobile No'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <br>
+
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Enquiry No :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtEnquiry_No" name="Enquiry.Enquiry_No" type="text" class="form-control" value="Enter Enquiry No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Enquiry No'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Enquiry Date :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="txtEnquiry_Date" name="Enquiry.Enquiry_Date" placeholder="Enquiry Date" value="@(DateTime.Now.ToShortDateString())">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Product Name :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtProduct_Name" name="Enquiry.Product_Name" type="text" class="form-control" value="Enter Product Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Product Name'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Quantity :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtQuantity" name="Enquiry.Quantity" type="text" class="form-control" value="Enter Quantity" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Quantity'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <br>
+
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <p>Delivery :</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="txtDelivery" name="Enquiry.Delivery" type="text" class="form-control" value="Enter Delivery" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Delivery'; }">
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <br>
+
+                    <br>
+                    <div class="row" style="font-size:120%">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8 carrer-submit">
+                          
+                            <input id="btnSave" type="button" class="btn btn-lg black-background white" value="Send">
+                          
+
+                           
+                            <input type="button" id="btnReset" class="btn  btn-lg black-background white" value="Reset">
+                           
+                            
+                            <a id="btnCancel" class="btn  btn-lg black-background white" href="@Url.Action("Index", "Home")" role="button">Cancel</a>
+                            
+                        </div>
+                        <div class="col-md-1"></div>
+
+
+                    </div>
+
+                    <input type="hidden" name="Enquiry.Enquiry_Id" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id">
+
+                    <input type="hidden" name="Enquiry.Language_Id" id="hdnLanguage_Id" value="@Model.Enquiry.Language_Id">
+
+                </form>
             </div>
+            <div class="col-md-2"></div>
         </div>
+
+
     </div>
 </div>
