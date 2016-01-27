@@ -6,57 +6,70 @@
 
 @* News Letter Listing @Session["Language"].ToString();*@
 
-<div class="grid_4">
-    <div class="container">
-        <h1 class="blog_head">News Letters</h1>
-        @{
-            
+
+<div class="content">
+    <div class="grid_4">
+        <div class="container">
+            <h1 class="blog_head">News Letters</h1>
+            @{
+
                 int i= 1;
             foreach (var item in Model.NewsLetters)
             {
                 if(i==1 || i%2 ==0)
                 {
-                    @:<div class="blog_grid span2">
+        @:<div class="blog_grid span2">
                 }
-                    <div class="col-md-6">
-                        <h3><a href="#">@item.NewsLetter_Title</a></h3>
-                    <div class="links">
-                         <ul>
-                             <li><i class="fa blog-icon fa-calendar"> </i><span>@item.Updated_On.ToShortDateString()</span></li>
-                        </ul>
-                    </div>
-                <p>
-                    @if (item.NewsLetter_Description.Length > 1000)
+        <div class="col-md-6">
+            <h3><a href="#">@item.NewsLetter_Title</a></h3>
+            <div class="links">
+                <ul>
+                    <li><i class="fa blog-icon fa-calendar"> </i><span>@item.Updated_On.ToShortDateString()</span></li>
+                </ul>
+            </div>
+            <p>
+                @if (item.NewsLetter_Description.Length > 1000)
                     {
-                        @item.NewsLetter_Description.Substring(0, 1000).ToString()
+                    @item.NewsLetter_Description.Substring(0, 1000).ToString()
                     }
                     else
                     {
-                        @Html.Raw(item.NewsLetter_Description)
+                    @Html.Raw(item.NewsLetter_Description)
                     }
-                </p>
-                @if (item.Language_Id == 1)
+            </p>
+            @if (item.Language_Id == 1)
 {
-    <a href="/en/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn btn-1 btn-1c">Read More</a>
+                        <a href="/en/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn btn-1 btn-1c">Read More</a>
 
-                                    
+
 }
-                else
-                {
-                     <a href="/ch/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn1 btn-8 btn-8c">Read More</a>
-                }
-               
-            </div>
+            else
+            {
+                <a href="/ch/news-letter?NewsLetter_Id=@item.NewsLetter_Id" class="btn btn-1 btn-1c">Read More</a>
+            }
+
+        </div>
 
             if( i%2 ==0)
             {
-            @:<div class="clearfix"> </div>
+        @:<div class="clearfix"> </div>
         @:</div>
         }
-            i++;            
+            i++;
         }
-        
-        }
-       
+
+            }
+
+        </div>
     </div>
 </div>
+
+    <script>
+        $(function () {
+
+            $(".top-menu").find("li").removeClass();
+
+            $("#liNewsLetter").addClass("active");
+
+        });
+    </script>

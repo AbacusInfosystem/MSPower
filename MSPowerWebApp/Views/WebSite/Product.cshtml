@@ -9,9 +9,15 @@
 <div class="content">
     <div class="container">
         <!---->
-        <div class="products">
-            <form id="frmProduct">
-                @foreach (var item in Model.Volts)
+        <br><br>
+        <div class="box-body">
+            <header class="text-center">
+                <h2> @Model.Product_Category.Product_Category</h2>
+            </header>
+            <br><br>
+            <div class="products">
+                <form id="frmProduct">
+                    @foreach (var item in Model.Volts)
                 {
 
 
@@ -25,22 +31,22 @@
                                 <tr class="info">
                                     @foreach (var itm in item.Product_Details_Header)
                                     {
-                                        <th>@Html.Raw(itm.Product_Column_Name)</th>
+                                <th>@Html.Raw(itm.Product_Column_Name)</th>
                                     }
                                     <th>Download PDF</th>
                                     @*<th>Type</th>
-                                <th>VDRM,VRRM [V] VDSM=VDRM VRSM=VRRM+100V</th>
-                                <th>IDRM, IRRM [mA] Tjmax</th>
-                                <th>@Html.Raw("ITAVM / TC [A / °C] @180° Sine") </th>
-                                <th>@Html.Raw("ITSM [A] ,@ 10ms Tjmax")</th>
-                                <th>@Html.Raw("ʃi2t [A2S] ,@ 10ms Tjmax")</th>
-                                <th>VT / IT [ V / A ] Tjmax</th>
-                                <th>@Html.Raw("V(TO) [V] @Tjmax")</th>
-                                <th>@Html.Raw("rT [mΩ] @Tjmax")</th>
-                                <th>Igt [mA]</th>
-                                <th>@Html.Raw("RthJC [°C/W] @180° Sine")</th>
-                                <th>@Html.Raw("Tjmax [ °C]")</th>
-                                <th>Datasheet / Drawing</th>*@
+                                        <th>VDRM,VRRM [V] VDSM=VDRM VRSM=VRRM+100V</th>
+                                        <th>IDRM, IRRM [mA] Tjmax</th>
+                                        <th>@Html.Raw("ITAVM / TC [A / °C] @180° Sine") </th>
+                                        <th>@Html.Raw("ITSM [A] ,@ 10ms Tjmax")</th>
+                                        <th>@Html.Raw("ʃi2t [A2S] ,@ 10ms Tjmax")</th>
+                                        <th>VT / IT [ V / A ] Tjmax</th>
+                                        <th>@Html.Raw("V(TO) [V] @Tjmax")</th>
+                                        <th>@Html.Raw("rT [mΩ] @Tjmax")</th>
+                                        <th>Igt [mA]</th>
+                                        <th>@Html.Raw("RthJC [°C/W] @180° Sine")</th>
+                                        <th>@Html.Raw("Tjmax [ °C]")</th>
+                                        <th>Datasheet / Drawing</th>*@
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,108 +57,108 @@
                                     {
                                         if (j % 2 == 0)
                                         {
-                                            @:<tr class="danger">
+                            @:<tr class="danger">
                                 }
-                                        else
-                                        {
-                                            @:<tr>
+                                else
+                                {
+                                @:<tr>
                                 }
 
-                                        j++;
-                                        if (item.Product_Details_Header.Count >= 1)
-                                        {
-                                            <td>@itm.Col1</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 2)
-                                        {
-                                            <td>@itm.Col2</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 3)
-                                        {
-                                            <td>@itm.Col3</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 4)
-                                        {
-                                            <td>@itm.Col4</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 5)
-                                        {
-                                            <td>@itm.Col5</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 6)
-                                        {
-                                            <td>@itm.Col6</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 7)
-                                        {
-                                            <td>@itm.Col7</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 8)
-                                        {
-                                            <td>@itm.Col8</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 9)
-                                        {
-                                            <td>@itm.Col9</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 10)
-                                        {
-                                            <td>@itm.Col10</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 11)
-                                        {
-                                            <td>@itm.Col11</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 12)
-                                        {
-                                            <td>@itm.Col12</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 13)
-                                        {
-                                            <td>@itm.Col13</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 14)
-                                        {
-                                            <td>@itm.Col14</td>
-                                        }
-
-                                        if (item.Product_Details_Header.Count >= 15)
-                                        {
-                                            <td>@itm.Col15</td>
-                                        }
-
-                                        if (itm.Is_PDF_Exists == true)
-                                        {
-                                            <td>
-                                                <a href="#" class="download-pdf" name="@itm.Product_Detail_Id">Download</a>
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            <td></td>
-                                        }
-
-
-                                        if (j % 2 == 0)
-                                        {
-                                            @:</tr>
+                                j++;
+                                if (item.Product_Details_Header.Count >= 1)
+                                {
+                                <td>@itm.Col1</td>
                                 }
-                                        else
-                                        {
-                                            @:</tr>
+
+                                if (item.Product_Details_Header.Count >= 2)
+                                {
+                                <td>@itm.Col2</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 3)
+                                {
+                                <td>@itm.Col3</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 4)
+                                {
+                                <td>@itm.Col4</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 5)
+                                {
+                                <td>@itm.Col5</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 6)
+                                {
+                                <td>@itm.Col6</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 7)
+                                {
+                                <td>@itm.Col7</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 8)
+                                {
+                                <td>@itm.Col8</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 9)
+                                {
+                                <td>@itm.Col9</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 10)
+                                {
+                                <td>@itm.Col10</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 11)
+                                {
+                                <td>@itm.Col11</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 12)
+                                {
+                                <td>@itm.Col12</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 13)
+                                {
+                                <td>@itm.Col13</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 14)
+                                {
+                                <td>@itm.Col14</td>
+                                }
+
+                                if (item.Product_Details_Header.Count >= 15)
+                                {
+                                <td>@itm.Col15</td>
+                                }
+
+                                if (itm.Is_PDF_Exists == true)
+                                {
+                                <td>
+                                    <a href="#" class="download-pdf" name="@itm.Product_Detail_Id">Download</a>
+                                </td>
+                                }
+                                else
+                                {
+                                <td></td>
+                                }
+
+
+                                if (j % 2 == 0)
+                                {
+                                @:</tr>
+                            }
+                            else
+                            {
+                            @:</tr>
                                 }
 
                                     }
@@ -163,8 +169,23 @@
 
 
                 }
-            </form>
+                </form>
             </div>
-            
+
+        </div>
     </div>
 </div>
+
+<br><br>
+
+
+
+<script>
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liProduct").addClass("active");
+
+    });
+</script>

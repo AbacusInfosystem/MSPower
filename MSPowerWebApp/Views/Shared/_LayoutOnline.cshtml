@@ -107,9 +107,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             @{Html.RenderPartial("_Sidebar_Online");}
 
 
-            <div id="credit" class="top-nav1">
+            @*<div id="credit" class="top-nav1">
                 <ul>
                     <li><a href="#" id="searchtoggl"><i class="fa fa-search fa-2x" id="btnModalProductSearch" style="cursor: pointer;"></i></a></li>
+                </ul>
+            </div>*@
+
+            <div class="top-nav1" id="credit">
+                <ul>
+                    <li><a id="searchtoggl" href="#"><i class="fa fa-lg fa-search" id="btnModalProductSearch"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -121,19 +127,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <input type="hidden" id="hdfsessionLanguage" value="@Session["Language"].ToString()">
 
-    <div class="modal fade" id="div_Parent_Modal_Fade" role="dialog" aria-hidden="true">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                <div class="modal-header" id="div_Parent_Modal_Header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">&nbsp;</h4>
-                </div>
-                <div class="modal-body" id="div_Parent_Modal_Body">
+          <div class="modal fade" id="div_Parent_Modal_Fade" role="dialog" aria-hidden="true" style="z-index:10000">
+              <div class="modal-dialog ">
+                  <div class="modal-content">
+                      <div class="modal-header" id="div_Parent_Modal_Header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">&nbsp;</h4>
+                      </div>
+                      <div class="modal-body" id="div_Parent_Modal_Body">
 
-                </div>
-            </div>
-        </div>
-    </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
 
 
@@ -217,5 +223,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $("#div_Parent_Modal_Fade").modal("show");
             });
         });
+
+
+
+
+       
     });
 </script>
