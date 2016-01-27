@@ -1,5 +1,8 @@
 ﻿@model MSPowerWebApp.Models.Job_ApplicationViewModel
+@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;
 
+ 
 
 @{
     ViewBag.Title = "Home";
@@ -13,31 +16,75 @@
 
 <script src="~/Scripts/Job_Application/job_application_method.js"></script>
 
+<script src="~/Scripts/Job_Application/job_application_validation.js"></script>
+
 <div class="content">
     @{Html.RenderPartial("_ServerMessage");}
     <div class="contact about-desc">
         
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <h3>Job Application</h3>
-                    <div class="contact_right">
-                        <div class="contact-form_grid">
-                            <form id="frmJob_Application">
-                                <input id="txtFirst_Name" name="Job_Application.First_Name" type="text" class="textbox" value="Enter First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter First Name';}">
-                                <input id="txtLast_Name" name="Job_Application.Last_Name" type="text" class="textbox" value="Enter Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Last Name';}">
-                                <input id="txtEmail" name="Job_Application.Email" type="text" class="textbox" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
-                                <input id="txtReference" name="Job_Application.Reference" type="text" class="textbox" value="Enter Reference" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Reference';}">
-                                <textarea id="editor1" name="Job_Application.Additional_Information" onfocus="this.value = '';" onblur="if (this.value == '') {this.text = 'Additional Information';}">Additional Information</textarea>
+            <form id="frmJob_Application" method="post" enctype="multipart/form-data">
+                <div class=" row">
+                    <div class="col-md-7">
+                        <h3>Job Application</h3>
+                        <div class="contact_right">
+                            <div class="contact-form_grid">
+
+                                <label style="text-align:left;"> Enter First Name</label>
+                                <input id="txtFirst_Name" name="Job_Application.First_Name" type="text" class="textbox" value="@Model.Job_Application.First_Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter First Name';}">
+                                <br />
+                                <br />
+                                <label style="text-align:left;"> Enter Last Name</label>
+                                <input id="txtLast_Name" name="Job_Application.Last_Name" type="text" class="textbox" value="@Model.Job_Application.Last_Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Last Name';}">
+                                <br />
+                                <br />
+                                <label style="text-align:left;"> Enter Email</label>
+                                <input id="txtEmail" name="Job_Application.Email" type="text" class="textbox" value="@Model.Job_Application.Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+                                <br />
+                                <br />
+                                <label style="text-align:left;"> Enter Reference </label>
+                                <input id="txtReference" name="Job_Application.Reference" type="text" class="textbox" value="@Model.Job_Application.Reference" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Reference';}">
+                                <br />
+                                <br />
+                                <label style="text-align:left;"> Enter Additional Information</label>
+                                <textarea id="editor1" name="Job_Application.Additional_Information" onfocus="this.value = '';" onblur="if (this.value == '') {this.text = 'Additional Information';}">@Model.Job_Application.Additional_Information</textarea>
+                                <br />
+                                <br />
+                                @Html.Captcha(4)
+                                <br />
+                                <p class="Error">  @ViewBag.ErrMessage </p>
+
+                                @*<p>
+                                <input type="submit" value="captcha" />
+                                </p>*@
+
+                                <div class="form-group">
+
+                                    <input type="file" name="Upload_File" id="file" />
+
+                                </div>
+
+                                @if (Model.Is_DOCX_Exists)
+                                {
+                                    <div class="form-group">
+
+                                        <input type="button" id="btnDownloadDOCX" class="btn btn-sm" value="Download DOCX" />
+
+                                    </div>
+                                }
+
                                 <input id="btnSave" type="button" value="Send" class="btn">
+
                                 <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Index", "Home")" role="button">Cancel</a>
+
                                 <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
-                            </form>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -882,7 +882,7 @@ a.btn1:after {
 /*-- contact-page-starts-here --*/
 
 .contact-form_grid {
-	text-align: center;
+	/*text-align: center;*/
 }
 .contact-form_grid input[type="text"],.contact-form_grid textarea {
 	display: block;

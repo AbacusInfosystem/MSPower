@@ -10,6 +10,7 @@ using MSPowerInfo;
 using MSPowerWebApp.Common;
 using MSPowerManager;
 using ExceptionManagement.Logger;
+using CaptchaMvc.HtmlHelpers;
 
 namespace MSPowerWebApp.Controllers
 {
@@ -26,6 +27,27 @@ namespace MSPowerWebApp.Controllers
 
         //    return View(jaViewModel);
         //}
+
+
+        //[HttpPost]
+
+        //public ActionResult Index(string empty)
+        //{
+        //    // Code for validating the CAPTCHA 
+ 
+        //    if (this.IsCaptchaValid("Captcha is not valid"))
+        //    {
+
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    ViewBag.ErrMessage = "Error: captcha is not valid.";
+
+        //    Job_ApplicationViewModel jaViewModel = new Job_ApplicationViewModel();
+
+        //    return View(jaViewModel);
+        //}  
+
 
         // THIS IS THE FIRST ACTION METHOD WHICH GETS HIT WHEN PRODUCT LISTING PAGE IS CALLED.
 

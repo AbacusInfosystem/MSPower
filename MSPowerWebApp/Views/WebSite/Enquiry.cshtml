@@ -1,13 +1,17 @@
 ﻿@model MSPowerWebApp.Models.EnquiryViewModel
+@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;
 
 
 @*<script src="~/Content/AdminLTE/plugins/jQuery/jQuery-2.1.3.min.js"></script>*@
 
-
-
 <script src="~/Scripts/jquery.validate.js"></script>
 
 <script src="~/Scripts/Enquiry/enquiry_events.js"></script>
+
+<script src="~/Scripts/Enquiry/enquiry_validation.js"></script>
+
+
 
  <!-- daterangepicker -->
 
@@ -42,35 +46,63 @@
 
                             <form id="frmEnquiry">
 
-                                <input id="txtCustomer_Name" name="Enquiry.Customer_Name" type="text" class="textbox" value="Enter Customer Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Customer Name'; }">
+                                <label style="text-align:left;"> Enter Customer Name</label>
 
-                                <textarea id="editor1" name="Enquiry.Customer_Address" onfocus="this.value = '';" onblur="    if (this.value == '') { this.text = 'Customer Address'; }">Customer Address</textarea>
+                                <input id="txtCustomer_Name" name="Enquiry.Customer_Name" type="text" class="textbox" value="@Model.Enquiry.Customer_Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Customer Name'; }">
+                                <br />
+                                <label style="text-align:left;"> Enter Customer Address</label>
 
-                                <input id="txtTel_No" name="Enquiry.Tel_No" type="text" class="textbox" value="Enter Telephone Number" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Telephone Number'; }">
-                                
-                                <input id="txtEmail" name="Enquiry.Email" type="text" class="textbox" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
-                                
-                                <input id="txtContact_Person" name="Enquiry.Contact_Person" type="text" class="textbox" value="Enter Contact Person" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person'; }">
+                                <textarea id="editor1" name="Enquiry.Customer_Address" onfocus="this.value = '';" onblur="    if (this.value == '') { this.text = 'Customer Address'; }">@Model.Enquiry.Customer_Address</textarea>
+                                <br />
+                                <label style="text-align:left;"> Enter Telephone Number</label>
 
-                                <input id="txtContact_Person_Tel_No" name="Enquiry.Contact_Person_Tel_No" type="text" class="textbox" value="Enter Contact Person Tel No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Tel No'; }">
-                                
-                                <input id="txtContact_Person_Mobile_No" name="Enquiry.Contact_Person_Mobile_No" type="text" class="textbox" value="Enter Contact Person Mobile No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Mobile No'; }">
+                                <input id="txtTel_No" name="Enquiry.Tel_No" type="text" class="textbox" value="@Model.Enquiry.Tel_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Telephone Number'; }">
+                                <br />
+                                <label style="text-align:left;"> Enter Email</label>
 
-                                <input id="txtEnquiry_No" name="Enquiry.Enquiry_No" type="text" class="textbox" value="Enter Enquiry No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Enquiry No'; }">
+                                <input id="txtEmail" name="Enquiry.Email" type="text" class="textbox" value="@Model.Enquiry.Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+                                <br />
+                                <label style="text-align:left;"> Enter Contact Person</label>
 
+                                <input id="txtContact_Person" name="Enquiry.Contact_Person" type="text" class="textbox" value="@Model.Enquiry.Contact_Person" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person'; }">
+                                <br />
+                                <label style="text-align:left;"> Enter Contact Person Tel No</label>
+
+                                <input id="txtContact_Person_Tel_No" name="Enquiry.Contact_Person_Tel_No" type="text" class="textbox" value="@Model.Enquiry.Contact_Person_Tel_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Tel No'; }">
+                                <br />
+                                <label style="text-align:left;"> Enter Contact Person Mobile No</label>
+
+                                <input id="txtContact_Person_Mobile_No" name="Enquiry.Contact_Person_Mobile_No" type="text" class="textbox" value="@Model.Enquiry.Contact_Person_Mobile_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Mobile No'; }">
+                                <br />
+                                <label style="text-align:left;"> Enter Enquiry No</label>
+
+                                <input id="txtEnquiry_No" name="Enquiry.Enquiry_No" type="text" class="textbox" value="@Model.Enquiry.Enquiry_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Enquiry No'; }">
+                                <br />
                                 @*Date control*@
+
+                                <label style="text-align:left;"> Enter Enquiry Date</label>
 
                                 <input type="text" class="textbox" id="txtEnquiry_Date" name="Enquiry.Enquiry_Date" placeholder="Enquiry Date" value="@(DateTime.Now.ToShortDateString())">
-
+                                <br />
                                 @*Date control*@
 
-                                <input id="txtProduct_Name" name="Enquiry.Product_Name" type="text" class="textbox" value="Enter Product Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Product Name'; }">
+                                <label style="text-align:left;"> Enter Product Name</label>
 
-                                <input id="txtQuantity" name="Enquiry.Quantity" type="text" class="textbox" value="Enter Quantity" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Quantity'; }">
+                                <input id="txtProduct_Name" name="Enquiry.Product_Name" type="text" class="textbox" value="@Model.Enquiry.Product_Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Product Name'; }">
+                                <br />
+                                <label style="text-align:left;"> Enter Enquiry Quantity</label>
+                                
+                                <input id="txtQuantity" name="Enquiry.Quantity" type="text" class="textbox" value="@Model.Enquiry.Quantity" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Quantity'; }">
+                                <br />
+                                <label style="text-align:left;"> Enter Enquiry Delivery</label>
 
-                                <input id="txtDelivery" name="Enquiry.Delivery" type="text" class="textbox" value="Enter Delivery" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Delivery'; }">
-
+                                <input id="txtDelivery" name="Enquiry.Delivery" type="text" class="textbox" value="@Model.Enquiry.Delivery" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Delivery'; }">
+                                <br />
                                 @*<input id="txtCreated_On" name="Enquiry.Created_On" type="text" class="textbox" value="Created On" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Created On'; }">*@
+
+                                @Html.Captcha(4)
+                                <br />
+                                <p class="Error">  @ViewBag.ErrMessage </p>
 
                                 <input id="btnSave" type="button" value="Send" class="btn">
 

@@ -5,6 +5,8 @@ using System.Web;
 
 using MSPowerInfo;
 using MSPowerWebApp.Common;
+using System.ComponentModel.DataAnnotations;
+using CaptchaMvc;
 
 
 namespace MSPowerWebApp.Models
@@ -20,6 +22,10 @@ namespace MSPowerWebApp.Models
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
         public Job_Application_Filter Filter { get; set; }
+
+        public HttpPostedFileBase Upload_File { get; set; }
+
+        public bool Is_DOCX_Exists { get; set; }
 
         public Job_ApplicationViewModel()
         
@@ -39,6 +45,16 @@ namespace MSPowerWebApp.Models
     {
         public int Job_Application_Id { get; set; }
  
-
     }
 }
+
+
+
+ 
+
+
+
+
+
+
+

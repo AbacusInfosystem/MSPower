@@ -14,5 +14,17 @@
             //}
         }
 
+        $("#btnDownloadDOC").click(function () {
+
+            $("#frmJob_Application").validate().cancelSubmit = true;
+
+            $("#frmJob_Application").attr("action", "/job_application/download-doc/" + $("#hdnJob_Application_Id").val());
+
+            $("#frmJob_Application").attr("method", "POST");
+
+            $("#frmJob_Application").submit();
+        });
+
+
     });
 });
