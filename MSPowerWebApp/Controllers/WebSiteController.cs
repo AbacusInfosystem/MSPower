@@ -425,6 +425,16 @@ namespace MSPowerWebApp.Controllers
         {
             Job_ApplicationViewModel jaViewModel = new Job_ApplicationViewModel();
 
+            if (Session["Language"].ToString() == Language.en.ToString())
+            {
+                jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.en);
+            }
+
+            else
+            {
+                jaViewModel.Job_Application.Language_Id = Convert.ToInt32(Language.ch);
+            }
+
             return View(jaViewModel);
 
         }
@@ -464,7 +474,7 @@ namespace MSPowerWebApp.Controllers
 
                     //return RedirectToAction("Job_Application");
 
-                    return RedirectToAction("Job_Application", new { language = "language" });
+                    return RedirectToAction("Job_Application", new { language = Session["Language"].ToString() });
                 }
 
                     ViewBag.ErrMessage = "Error: captcha is not valid.";
@@ -483,7 +493,7 @@ namespace MSPowerWebApp.Controllers
 
                 //return RedirectToAction("Search");
 
-                TempData["jaViewModel"] = jaViewModel;
+               
 
                 string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), jaViewModel.Job_Application.Job_Application_Id + ".docx");
 
@@ -498,6 +508,8 @@ namespace MSPowerWebApp.Controllers
                         jaViewModel.Is_DOCX_Exists = false;
                     }
                 }
+
+                TempData["jaViewModel"] = jaViewModel;
 
                 return View("Job_Application", jaViewModel);
 
@@ -704,7 +716,7 @@ namespace MSPowerWebApp.Controllers
 
                 //return RedirectToAction("Enquiry","WebSite", new System.Web.Routing.RouteValueDictionary { { "language", language }});
 
-                return RedirectToAction("Enquiry", new { language = "language" });
+                return RedirectToAction("Enquiry", new { language = Session["Language"].ToString() });
 
                 }
 

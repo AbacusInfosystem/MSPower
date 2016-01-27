@@ -841,6 +841,15 @@
     <Content Include="Content\css\print.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\Product Categories\2.jpg" />
+    <Content Include="Content\Images\Product Categories\Fast recovery diodes.png" />
+    <Content Include="Content\Images\Product Categories\Fast Switching Thyristor .png" />
+    <Content Include="Content\Images\Product Categories\Phase controlThyristor  - disc hockey puk.png" />
+    <Content Include="Content\Images\Product Categories\power bridges.JPG" />
+    <Content Include="Content\Images\Product Categories\Rectifier diode modules.jpg" />
+    <Content Include="Content\Images\Product Categories\Rectifier Diodes_Disc hockey puk.png" />
+    <Content Include="Content\Images\Product Categories\Thyristor modues non isolated base.JPG" />
+    <Content Include="Content\Images\Product Categories\thyristor modules for phase control.png" />
+    <Content Include="Content\Images\Product Categories\thyristor-diode modules for phase control .png" />
     <Content Include="Content\Images\Service Category\2.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

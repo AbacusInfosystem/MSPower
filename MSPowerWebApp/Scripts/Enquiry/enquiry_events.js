@@ -8,7 +8,7 @@
 
     $("#btnSave").click(function () {
 
-        alert("Hiii");
+        //alert("Hiii");
 
         if($("#frmEnquiry").valid())
         {
@@ -24,7 +24,7 @@
 
     });
 
-    alert("Hiii");
+    //alert("Hiii");
 });
 
 
