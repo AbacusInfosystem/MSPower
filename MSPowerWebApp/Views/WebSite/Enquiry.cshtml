@@ -1,5 +1,6 @@
 ﻿@model MSPowerWebApp.Models.EnquiryViewModel
-
+@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;
 
 @*<script src="~/Content/AdminLTE/plugins/jQuery/jQuery-2.1.3.min.js"></script>*@
 
@@ -8,6 +9,8 @@
 <script src="~/Scripts/jquery.validate.js"></script>
 
 <script src="~/Scripts/Enquiry/enquiry_events.js"></script>
+
+<script src="~/Scripts/Enquiry/enquiry_validation.js"></script>
 
  <!-- daterangepicker -->
 
@@ -49,7 +52,7 @@
                             <p>Customer Name :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtCustomer_Name" name="Enquiry.Customer_Name" type="text" class="form-control" value="Enter Customer Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Customer Name'; }">
+                            <input id="txtCustomer_Name" name="Enquiry.Customer_Name" type="text" class="form-control" value="@Model.Enquiry.Customer_Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Customer Name'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -60,7 +63,7 @@
                             <p>Customer Address :</p>
                         </div>
                         <div class="col-md-8">
-                            <textarea id="editor1" name="Enquiry.Customer_Address" class="form-control" onfocus="this.value = '';" onblur="    if (this.value == '') { this.text = 'Customer Address'; }">Customer Address</textarea>
+                            <textarea id="editor1" name="Enquiry.Customer_Address" class="form-control" onfocus="this.value = '';" onblur="    if (this.value == '') { this.text = 'Customer Address'; }">@Model.Enquiry.Customer_Address</textarea>
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -71,7 +74,7 @@
                             <p>Telephone Number :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtTel_No" name="Enquiry.Tel_No" type="text" class="form-control" value="Enter Telephone Number" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Telephone Number'; }">
+                            <input id="txtTel_No" name="Enquiry.Tel_No" type="text" class="form-control" value="@Model.Enquiry.Tel_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Telephone Number'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -82,7 +85,7 @@
                             <p>Email :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtEmail" name="Enquiry.Email" type="text" class="form-control" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+                            <input id="txtEmail" name="Enquiry.Email" type="text" class="form-control" value="@Model.Enquiry.Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -93,7 +96,7 @@
                             <p>Contact Person :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtContact_Person" name="Enquiry.Contact_Person" type="text" class="form-control" value="Enter Contact Person" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person'; }">
+                            <input id="txtContact_Person" name="Enquiry.Contact_Person" type="text" class="form-control" value="@Model.Enquiry.Contact_Person" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -106,7 +109,7 @@
                             <p>Contact Person Tel No :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtContact_Person_Tel_No" name="Enquiry.Contact_Person_Tel_No" type="text" class="form-control" value="Enter Contact Person Tel No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Tel No'; }">
+                            <input id="txtContact_Person_Tel_No" name="Enquiry.Contact_Person_Tel_No" type="text" class="form-control" value="@Model.Enquiry.Contact_Person_Tel_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Tel No'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -117,7 +120,7 @@
                             <p>Contact Person Mobile No :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtContact_Person_Mobile_No" name="Enquiry.Contact_Person_Mobile_No" type="text" class="form-control" value="Enter Contact Person Mobile No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Mobile No'; }">
+                            <input id="txtContact_Person_Mobile_No" name="Enquiry.Contact_Person_Mobile_No" type="text" class="form-control" value="@Model.Enquiry.Contact_Person_Mobile_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Contact Person Mobile No'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -130,7 +133,7 @@
                             <p>Enquiry No :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtEnquiry_No" name="Enquiry.Enquiry_No" type="text" class="form-control" value="Enter Enquiry No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Enquiry No'; }">
+                            <input id="txtEnquiry_No" name="Enquiry.Enquiry_No" type="text" class="form-control" value="@Model.Enquiry.Enquiry_No" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Enquiry No'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -152,7 +155,7 @@
                             <p>Product Name :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtProduct_Name" name="Enquiry.Product_Name" type="text" class="form-control" value="Enter Product Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Product Name'; }">
+                            <input id="txtProduct_Name" name="Enquiry.Product_Name" type="text" class="form-control" value="@Model.Enquiry.Product_Name" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Product Name'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -163,7 +166,7 @@
                             <p>Quantity :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtQuantity" name="Enquiry.Quantity" type="text" class="form-control" value="Enter Quantity" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Quantity'; }">
+                            <input id="txtQuantity" name="Enquiry.Quantity" type="text" class="form-control" value="@Model.Enquiry.Quantity" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Quantity'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -176,39 +179,49 @@
                             <p>Delivery :</p>
                         </div>
                         <div class="col-md-8">
-                            <input id="txtDelivery" name="Enquiry.Delivery" type="text" class="form-control" value="Enter Delivery" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Delivery'; }">
+                            <input id="txtDelivery" name="Enquiry.Delivery" type="text" class="form-control" value="@Model.Enquiry.Delivery" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Enter Delivery'; }">
                         </div>
                         <div class="col-md-1"></div>
                     </div>
 
                     <br>
 
-                    <br>
                     <div class="row" style="font-size:120%">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8 carrer-submit">
-                          
-                            <input id="btnSave" type="button" class="btn btn-lg black-background white" value="Send">
-                          
-
-                           
-                            <input type="button" id="btnReset" class="btn  btn-lg black-background white" value="Reset">
-                           
-                            
-                            <a id="btnCancel" class="btn  btn-lg black-background white" href="@Url.Action("Index", "Home")" role="button">Cancel</a>
-                            
+                        <div class="col-md-3"></div>
+                        <div class="col-md-8">
+                            @Html.Captcha(4)
+                            <br />
+                            <p class="Error">  @ViewBag.ErrMessage </p>
                         </div>
-                        <div class="col-md-1"></div>
+                          
+                        </div>
+
+                        <br>
+                        <div class="row" style="font-size:120%">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 carrer-submit">
+
+                                <input id="btnSave" type="button" class="btn btn-lg black-background white" value="Send">
 
 
-                    </div>
 
-                    <input type="hidden" name="Enquiry.Enquiry_Id" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id">
+                                <input type="button" id="btnReset" class="btn  btn-lg black-background white" value="Reset">
 
-                    <input type="hidden" name="Enquiry.Language_Id" id="hdnLanguage_Id" value="@Model.Enquiry.Language_Id">
 
-                </form>
+                                <a id="btnCancel" class="btn  btn-lg black-background white" href="@Url.Action("Index", "Home")" role="button">Cancel</a>
+
+                            </div>
+                            <div class="col-md-1"></div>
+
+
+                        </div>
+
+                        <input type="hidden" name="Enquiry.Enquiry_Id" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id">
+
+                        <input type="hidden" name="Enquiry.Language_Id" id="hdnLanguage_Id" value="@Model.Enquiry.Language_Id">
+
+</form>
             </div>
             <div class="col-md-2"></div>
         </div>

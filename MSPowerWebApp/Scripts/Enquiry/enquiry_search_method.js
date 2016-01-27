@@ -37,15 +37,15 @@
     }
     else {
 
-        htmlText += "<tr>";
+            htmlText += "<tr>";
 
-        htmlText += "<td colspan='3'>";
+            htmlText += "<td colspan='3'>";
 
-        htmlText += "No record found.";
+            htmlText += "No record found.";
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "</tr>";
+            htmlText += "</tr>";
     }
 
     $("#tblEnquiry").find("tr:gt(0)").remove();
