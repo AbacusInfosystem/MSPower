@@ -68,6 +68,8 @@ namespace MSPowerWebApp.Models
 
         public ProductCategoryColumnMappingInfo Product_Category_Column_Mapping { get; set; }
 
+        public int Language_Id { get; set; }
+
     }
 
     public class Product_Detail_Filter

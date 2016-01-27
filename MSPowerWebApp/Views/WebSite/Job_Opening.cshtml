@@ -7,41 +7,50 @@
 @* News Letter @Session["Language"].ToString();*@
 
 
-<div class="content">
-    <div class="blog-section">
-        <div class="container">
+
+
+<div class="grid_4">
+    <div class="container">
+        <h1 class="blog_head">Job Opening</h1>
+
+        <div class="blog_grid span2">
+
             <div class="col-md-12">
-                <h2 class="with-line">Job Opening</h2>
+                <h3><a href="#">@Model.Job_Opening.Job_Title</a></h3>
+                <div class="links">
+                    <ul>
+                        <li><i class="fa blog-icon fa-calendar"> </i><span>@Model.Job_Opening.Updated_On.ToShortDateString()</span></li>
+                    </ul>
+                </div>
+                <p>
+                    @Html.Raw(Model.Job_Opening.Job_Description)
+                </p>
 
-               
-
-                <article class="clearfix attach">
-                    <header class="grid_8 alpha">
-                        <div class="head_element"><span class="el_1">@Model.Job_Opening.Updated_On.Day</span><span class="el_2">@Model.Job_Opening.Updated_On.ToString("MMM")</span></div>
-                        <div class="sub">
-                            <div class="readblog">@Model.Job_Opening.Job_Title</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </header>
-
-                    <div class="grid_b4" style="width:100%;">
-
-                        <p>
-                            @if (Model.Job_Opening.Job_Description.Length > 1000)
-                            {
-                                @Model.Job_Opening.Job_Description.Substring(0, 1000).ToString()
-                                }
-                                else {
-                                @Html.Raw(Model.Job_Opening.Job_Description)
-                                }
-                        </p>
-                    </div>
-                    <div class="clearfix"></div>
-                </article>
 
             </div>
 
 
+            <div class="clearfix"> </div>
+
         </div>
+
+
     </div>
 </div>
+
+<script>
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liJobOpening").addClass("active");
+
+    });
+</script>
+
+
+
+
+
+
+

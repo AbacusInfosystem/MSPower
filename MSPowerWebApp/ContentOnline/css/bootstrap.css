@@ -2018,8 +2018,9 @@ select[multiple].input-lg {
 }
 .btn:hover,
 .btn:focus {
-  color: #333;
+  color: #fff;
   text-decoration: none;
+  background-color:#EE1C25;
 }
 .btn:active,
 .btn.active {

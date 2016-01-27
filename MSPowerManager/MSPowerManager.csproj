@@ -63,6 +63,7 @@
     <Compile Include="Job_OpeningManager.cs" />
     <Compile Include="NewsLetterManager.cs" />
     <Compile Include="ProductDetailManager.cs" />
+    <Compile Include="ProductDetailsManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCategoryManager.cs" />

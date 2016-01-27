@@ -128,7 +128,7 @@ namespace MSPowerRepo
 
             retVal.Service_Category_Description = Convert.ToString(dr["Service_Category_Description"]);
 
-            //retVal.Service_Category_Img = Convert.ToString(dr["Service_Category_Img"]);
+            retVal.Service_Category_Img = Convert.ToString(dr["Service_Category_Img"]);
 
             retVal.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
@@ -213,6 +213,8 @@ namespace MSPowerRepo
                     retVal.Service_Category = Convert.ToString(dr["Service_Category"]);
 
                     retVal.Service_Category_Img = Convert.ToString(dr["Service_Category_Img"]);
+
+                    retVal.Service_Category_Description = Convert.ToString(dr["Service_Category_Description"]);
 
                     ServiceCategories.Add(retVal);
 

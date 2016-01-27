@@ -168,7 +168,13 @@ namespace MSPowerInfo
 
         Insert_AboutUs_Sp,
 
-        Update_AboutUs_Sp
+        Update_AboutUs_Sp,
+
+        // Product Category New 
+
+        Get_Product_Categories_By_Language_Parent_sp,
+
+        Get_Product_Categories_By_Lanugae_Id_sp,
 
 
     }

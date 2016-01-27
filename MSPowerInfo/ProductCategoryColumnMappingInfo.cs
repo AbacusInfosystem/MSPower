@@ -11,8 +11,9 @@ namespace MSPowerInfo
 
         public ProductCategoryColumnMappingInfo()
         {
+            Product_Details_Header = new List<ProductDetailHeaderInfo>();
 
-
+            Product_Details = new List<ProductDetailInfo>();
         }
 
         public int Product_Category_Id { get; set; }
@@ -22,5 +23,9 @@ namespace MSPowerInfo
         public int Volts { get; set; }
 
         public int Product_Column_Ref_Id { get; set; }
+
+        public List<ProductDetailHeaderInfo> Product_Details_Header { get; set; }
+
+        public List<ProductDetailInfo> Product_Details { get; set; }
     }
 }

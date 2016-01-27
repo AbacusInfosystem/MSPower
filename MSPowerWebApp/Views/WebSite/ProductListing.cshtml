@@ -8,119 +8,213 @@
   
 <script src="~/Scripts/WebSite/product_listing_events.js"></script>
 
+
+<style>
+    .prod-li {
+        list-style-type: none;
+        padding-left: 12px;
+    }
+</style>
+
 <div class="content">
 
+
+
     <div class="container">
-    
-            <!---->
-        
+
+        <!---->
+        <br><br>
         <form id="frmProduct_Listing">
-        
-                <input type="hidden" id="hdfLanguage" value="@Model.Language">
-            
-            <div class="products">
-            
-                    <h2 class="heading text-center">Our Products</h2>
-                
-                <div class="products-bottom">
-                
-                    @{
-                        
-                    int i = 1;
-                    
-                    foreach (var item in Model.Product_Categories)
-                        
+
+            <input type="hidden" id="hdfLanguage" value="@Model.Language_Id">
+
+            <input type="hidden" id="hdfProduct_Category_Id" value="@Model.Product_Category.Product_Category_Id">
+
+            <div class="box-body">
+
+                <header class="text-center">
+                    @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category))
                     {
-                        
-                        if (i % 3 == 0 || i == 1)
-                            
+                        <h2> High Power Thyristors & Diodes</h2>
+                    }
+                    else
                     {
-                           
-                        @:<div class="row">
-        }
-                        <div class="col-md-4 products-grid">
+                        <h2> @Model.Product_Category.Product_Category</h2>
+                    }
 
-                        <a class="example-image-link" href="../Content/Images/Product Categories/@item.Product_Category_Image" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-               
-                        <img class="example-image" src="../Content/Images/Product Categories/@item.Product_Category_Image" alt="" />
-            
-                        </a>
-
-                        <div class="products-info">
-
-                        <a href="#">@item.Product_Category1</a>
-
-                @if (item.Product_Category_Column_Mappings.Count > 0)
-                    
+                </header>
+                <br><br>
+                @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category_Description))
                 {
-                    <select class="product-volts form-group form-control input-sm">
+                    <p class="text-center">
 
-                        @foreach (var itm in item.Product_Category_Column_Mappings)
-                    {
-                            <option value="@itm.Volts" data-column-ref="@itm.Product_Column_Ref_Id" data-column-mapping-id="@itm.Product_Category_Column_Mapping_Id">@itm.Volts</option>
-                    }
-                    </select>
+                        Discover our broad range of thyristor and diode devices. PowerBLOCK modules are available for a voltage range from 1600V to 4400V and a current range from 60A up to 1100A. Press pack disc housings include parts for a voltage range from 200 V to 9500 V and a current range from 56 A to 8400 A.
 
-                    <button class="btn-product-details btn btn-sm" type="button">Product Details</button>
+
+                    </p>
                 }
+                else
+                {
+                    <p class="text-center">
+                        @Model.Product_Category.Product_Category_Description
+                    </p>
+                }
+                <br><br>
 
-            </div>
-        </div>
-                        if (i % 3 == 0 )
-                        {
-                @:</div>
-                        }
-                        i++;
-                    }
-                    }
+                <div id="dvProduct_Listing">
 
+                </div>
 
-                    @*<div class="col-md-4 products-grid">
-                        <a class="example-image-link" href="../Content/Product Categories/2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../Content/Product Categories/2.jpg" alt="" /></a>
-                        <div class="products-info">
-                            <a href="single.html">Phase Control Thyristor - Stud / Flat Base </a>
-                            <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 products-grid">
-                        <a class="example-image-link" href="../ContentOnline/images/product-2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-2.jpg" alt=""/></a>
-                        <div class="products-info">
-                            <a href="single.html">Phase Control Thyristor - Disc / Hockey Puk </a>
-                            @*<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 products-grid">
-                        <a class="example-image-link" href="../ContentOnline/images/product-3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-3.jpg" alt=""/></a>
-                        <div class="products-info">
-                            <a href="single.html">Fast Switching Thyristor </a>
-                            @*<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 products-grid">
-                        <a class="example-image-link" href="../ContentOnline/images/product-4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-4.jpg" alt=""/></a>
-                        <div class="products-info">
-                            <a href="single.html">Rectifier Diodes - Stud / Flat Base</a>
-                            <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 products-grid">
-                        <a class="example-image-link" href="../ContentOnline/images/product-5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-5.jpg" alt=""/></a>
-                        <div class="products-info">
-                            <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                            <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 products-grid">
-                        <a class="example-image-link" href="../ContentOnline/images/product-6.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-6.jpg" alt=""/></a>
-                        <div class="products-info">
-                            <a href="single.html">Phasellus scipiw scipitilifen. </a>
-                            <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-                        </div>
-                    </div>*@
-                    <div class="clearfix"></div>
+                    @*<div class="row">
+
+                <div class="col-md-4">
+
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Discrete Thyristors
+                                </a>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Phase Control Thyristor
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right">
+                                        </i>Fast Switching Thyristor
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Discrete Diodes
+                                </a>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right">
+                                        </i>Rectifier Diodes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Welding Diodes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Fast Recovery/Soft Recovery Diodes
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Power Modules
+                                </a>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Rectifier Diode Modules
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>Thyristor Modules for Phase control
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Thyristor/Diode Modules for Phase control
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-chevron-right"></i>Thyristor Modules-Non isolated type
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
 
             </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                    Power Bridges
+                                </a>
+                            </h4>
+                            <ul></ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <h4>
+                                <a href="#"><i class="fa fa-chevron-right"></i>Power Stack</a>
+                            </h4>
+                            <ul></ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>*@
+
+                </div>
+
         </form>
+
+        <br><br>
+
+
     </div>
+
 </div>
+
+<script>
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liProduct").addClass("active");
+
+    });
+</script>
