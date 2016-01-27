@@ -6,12 +6,14 @@ using MSPowerWebApp.Filters;
 using MSPowerWebApp.Models;
 using System;
 
+using System.Drawing;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CaptchaMvc.HtmlHelpers;
 
 namespace MSPowerWebApp.Controllers
 {
@@ -424,9 +426,12 @@ namespace MSPowerWebApp.Controllers
             Job_ApplicationViewModel jaViewModel = new Job_ApplicationViewModel();
 
             return View(jaViewModel);
+
         }
 
         [Language]
+
+        [HttpPost]
 
         public ActionResult Insert_Job_Application(Job_ApplicationViewModel jaViewModel)
         {
@@ -444,32 +449,101 @@ namespace MSPowerWebApp.Controllers
 
                 jaViewModel.Job_Application.Created_On = DateTime.Now;
 
-                Job_ApplicationManager jaMan = new Job_ApplicationManager();
+                if (this.IsCaptchaValid("Captcha is not valid"))
+                {
 
-                //jaViewModel.Job_Application.Job_Application_Id = 1;
+                    Job_ApplicationManager jaMan = new Job_ApplicationManager();
 
-                jaMan.Insert_Job_Application(jaViewModel.Job_Application);
+                    //jaViewModel.Job_Application.Job_Application_Id = 1;
 
-                //jaViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                    jaViewModel.Job_Application.Job_Application_Id = jaMan.Insert_Job_Application(jaViewModel.Job_Application);
+
+                    DocxUpload(jaViewModel.Upload_File, jaViewModel.Job_Application.Job_Application_Id.ToString());
+
+                    jaViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+
+                    //return RedirectToAction("Job_Application");
+
+                    return RedirectToAction("Job_Application", new { language = "language" });
+                }
+
+                    ViewBag.ErrMessage = "Error: captcha is not valid.";
+
             }
 
-            catch (Exception ex)
-            {
+                catch (Exception ex)
 
-                jaViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                {
+                    jaViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Test Controller - Insert" + ex.ToString());
+                    Logger.Error("Test Controller - Insert" + ex.ToString());
+                }
+
+                //TempData["jaViewModel"] = jaViewModel;
+
+                //return RedirectToAction("Search");
+
+                TempData["jaViewModel"] = jaViewModel;
+
+                string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), jaViewModel.Job_Application.Job_Application_Id + ".docx");
+
+                if (jaViewModel.Job_Application.Job_Application_Id != 0)
+                {
+                    if (System.IO.File.Exists(path))
+                    {
+                        jaViewModel.Is_DOCX_Exists = true;
+                    }
+                    else
+                    {
+                        jaViewModel.Is_DOCX_Exists = false;
+                    }
+                }
+
+                return View("Job_Application", jaViewModel);
+
             }
-
-            //TempData["jaViewModel"] = jaViewModel;
-
-            //return RedirectToAction("Search");
-
-            return View("Job_Application", jaViewModel);
-
-        }
 
         [Language]
+
+        public void DocxUpload(HttpPostedFileBase file, string id)
+        {
+            Job_ApplicationViewModel jaViewModel = new Job_ApplicationViewModel();
+
+            if (file != null && file.ContentLength > 0)
+                try
+                {
+                    if ((Path.GetExtension(file.FileName) == ".docx"))
+                    {
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), id + ".docx");
+
+                        System.IO.File.Delete(path);
+
+                        file.SaveAs(path);
+
+                        ViewBag.Message = "File uploaded successfully";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Debug(ex.StackTrace);
+                }
+        }
+
+        public FileResult Download_Job_Application_Details_DOCX(int job_application_Id)
+        {
+            string path = "";
+
+            try
+            {
+                path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), job_application_Id + ".docx");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Job Application Details Controller - Download_Job_Application_Details_DOCX" + ex.ToString());
+            }
+
+            return File(path, "application/docx", "Job Application Details.docx");
+        }
 
         public PartialViewResult Get_Product_Search(string language)
         {
@@ -601,6 +675,8 @@ namespace MSPowerWebApp.Controllers
 
         [Language]
 
+        [HttpPost]
+
         public ActionResult Insert_Enquiry(string language, EnquiryViewModel eViewModel)
         {
             try
@@ -617,11 +693,22 @@ namespace MSPowerWebApp.Controllers
 
                 eViewModel.Enquiry.Created_On = DateTime.Now;
 
+                if (this.IsCaptchaValid("Captcha is not valid"))
+                {
+
                 EnquiryManager eMan = new EnquiryManager();
 
                 eMan.Insert_Enquiry(eViewModel.Enquiry);
 
                 //eViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+
+                //return RedirectToAction("Enquiry","WebSite", new System.Web.Routing.RouteValueDictionary { { "language", language }});
+
+                return RedirectToAction("Enquiry", new { language = "language" });
+
+                }
+
+                 ViewBag.ErrMessage = "Error: captcha is not valid.";
             }
 
             catch (Exception ex)

@@ -5,6 +5,8 @@ using System.Web;
 
 using MSPowerInfo;
 using MSPowerWebApp.Common;
+using CaptchaMvc;
+
 
 namespace MSPowerWebApp.Models
 {

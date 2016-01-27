@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CaptchaMvc">
+      <HintPath>..\packages\CaptchaMvc.Mvc4.1.5.0\lib\net40-full\CaptchaMvc.dll</HintPath>
+    </Reference>
     <Reference Include="ExceptionManagement">
       <HintPath>..\Libraries\ExceptionManagement\ExceptionManagement.dll</HintPath>
     </Reference>
@@ -1008,6 +1011,7 @@
     <Content Include="Scripts\Enquiry\enquiry_method.js" />
     <Content Include="Scripts\Enquiry\enquiry_search_events.js" />
     <Content Include="Scripts\Enquiry\enquiry_search_method.js" />
+    <Content Include="Scripts\Enquiry\enquiry_validation.js" />
     <Content Include="Scripts\Event\event_events.js" />
     <Content Include="Scripts\Event\event_method.js" />
     <Content Include="Scripts\Event\event_search_events.js" />
@@ -1026,6 +1030,7 @@
     <Content Include="Scripts\Job_Application\job_application_method.js" />
     <Content Include="Scripts\Job_Application\job_application_search_events.js" />
     <Content Include="Scripts\Job_Application\job_application_search_method.js" />
+    <Content Include="Scripts\Job_Application\job_application_validation.js" />
     <Content Include="Scripts\Job_Opening\job_opening_events.js" />
     <Content Include="Scripts\Job_Opening\job_opening_method.js" />
     <Content Include="Scripts\Job_Opening\job_opening_search_events.js" />
@@ -1165,6 +1170,7 @@
     <Folder Include="Content\Documents\Product\" />
     <Folder Include="Content\Documents\Services\" />
     <Folder Include="Content\Events\" />
+    <Folder Include="Content\Job Application\" />
     <Folder Include="Content\PDF\News Letter\" />
     <Folder Include="Content\PDF\Product Details\" />
     <Folder Include="Content\Services\" />
@@ -1181,6 +1187,9 @@
       <Project>{1d660812-a713-499c-95c8-eb1eeec5dd68}</Project>
       <Name>MSPowerManager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

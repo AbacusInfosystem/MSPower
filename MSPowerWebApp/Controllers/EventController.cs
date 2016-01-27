@@ -39,7 +39,6 @@ namespace MSPowerWebApp.Controllers
         public ActionResult Upload(EventViewModel eViewModel)
         {
 
-
             if (eViewModel.Upload_File != null && eViewModel.Upload_File.ContentLength > 0)
                 try
                 {
