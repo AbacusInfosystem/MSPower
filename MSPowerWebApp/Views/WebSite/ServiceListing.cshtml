@@ -34,7 +34,14 @@
                                     <div class="col-md-8">
                                         <h3>@item.Service_Category</h3>
                                         <p>
-                                            @(Html.Raw(item.Service_Category_Description))
+                                            @if(item.Service_Category_Description.Length > 200)
+                                            { 
+                                                @(Html.Raw(item.Service_Category_Description.Substring(0,200) + "..."))
+                                            }
+                                            else
+                                            {
+                                                @(Html.Raw(item.Service_Category_Description))
+                                            }
 
                                             @if (item.Language_Id == 1)
                                             {
@@ -65,7 +72,14 @@
                                     <div class="col-md-8">
                                         <h3>@item.Service_Category</h3>
                                         <p>
+                                          @if (item.Service_Category_Description.Length > 200)
+                                        {
+                                            @(Html.Raw(item.Service_Category_Description.Substring(0, 200) + "..."))
+                                        }
+                                        else
+                                        {
                                             @(Html.Raw(item.Service_Category_Description))
+                                        }
 
                                             @if (item.Language_Id == 1)
                                             {
