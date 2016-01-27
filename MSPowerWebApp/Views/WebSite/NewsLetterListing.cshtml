@@ -28,9 +28,9 @@
                 </ul>
             </div>
             <p>
-                @if (item.NewsLetter_Description.Length > 1000)
+                @if (item.NewsLetter_Description.Length > 300)
                     {
-                    @item.NewsLetter_Description.Substring(0, 1000).ToString()
+                    @Html.Raw(item.NewsLetter_Description.Substring(0, 300)+ "...")
                     }
                     else
                     {

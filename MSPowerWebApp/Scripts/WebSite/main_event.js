@@ -6,7 +6,6 @@
         data: { language: $("#hdfsessionLanguage").val() }
 
     }).done(function (data) {
-        
         $("#pAboutUs").html(data.AboutUs.About_Us_Description);
     });
 
@@ -24,8 +23,19 @@
             for(var i=0;i<data.NewsLetters.length; i++ )
             {
                  html += "<li>";
-                 html += "<p style='color: #EE1C25'><strong>"+data.NewsLetters[i].NewsLetter_Title+"</strong></p>";
-                 html += "<p>"+data.NewsLetters[i].NewsLetter_Description+"</p>";
+                 html += "<p style='color: #EE1C25'><strong>" + data.NewsLetters[i].NewsLetter_Title + "</strong></p>";
+
+                 if (data.NewsLetters[i].NewsLetter_Description.length > 100) {
+                     html += "<p>" + data.NewsLetters[i].NewsLetter_Description.substring(0, 100) + "...</p>";
+
+                     html += "<a class='btn btn-1 btn-1c' href='/en/news-letter?NewsLetter_Id=" + data.NewsLetters[i].NewsLetter_Id + "'>Read More</a>";
+                 }
+                 else
+                 {
+                     html += "<p>" + data.NewsLetters[i].NewsLetter_Description + "</p>";
+
+                     html += "<a class='btn btn-1 btn-1c' href='/en/news-letter?NewsLetter_Id=" + data.NewsLetters[i].NewsLetter_Id + "'>Read More</a>";
+                 }
                  html += "</li>";
             }
         }
@@ -46,7 +56,19 @@
             for (var i = 0; i < data.Job_Openings.length; i++) {
                 html += "<li>";
                 html += "<p style='color: #EE1C25'><strong>" + data.Job_Openings[i].Job_Title + "</strong></p>";
-                html += "<p>" + data.Job_Openings[i].Job_Description + "</p>";
+                if (data.Job_Openings[i].Job_Description.length > 100)
+                {
+                    html += "<p>" + data.Job_Openings[i].Job_Description.substring(0, 100) + "...</p>";
+
+                    html += "<a class='btn btn-1 btn-1c' href='/en/job_opening?Job_Opening_Id=" + data.Job_Openings[i].Job_Opening_Id + "'>Read More</a>";
+                }
+                else
+                {
+                    html += "<p>" + data.Job_Openings[i].Job_Description + "</p>";
+
+                    html += "<a class='btn btn-1 btn-1c' href='/en/job_opening?Job_Opening_Id=" + data.Job_Openings[i].Job_Opening_Id + "'>Read More</a>";
+                }
+                
                 html += "</li>";
             }
         }
@@ -69,7 +91,7 @@
             for (var i = 0; i < data.Events.length; i++) {
                 html += "<li>";
                 html += "<p style='color: #EE1C25'><strong>" + data.Events[i].Event_Title + "</strong></p>";
-                html += "<p>" + data.Events[i].Event_Description + "</p>";
+                html += "<p>" + data.Events[i].Event_Description.substring(0, 100) + "</p>";
                 html += "</li>";
             }
         }

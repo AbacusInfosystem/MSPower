@@ -113,11 +113,80 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>*@
 
-            <div class="top-nav1" id="credit">
+            <div id="credit" class="top-nav1">
                 <ul>
-                    <li><a id="searchtoggl" href="#"><i class="fa fa-lg fa-search" id="btnModalProductSearch"></i></a></li>
+                    <li><a href="#" id="searchtoggl"><i class="fa fa-search fa-lg"></i></a></li>
                 </ul>
             </div>
+
+            <div id="searchbar" class="clearfix">
+                <div class="form-group">
+                    <form id="searchform" >
+                        <button type="submit" id="searchsubmit" class="fa fa-search fa-2x" style="color:white"></button>
+                        <div class="row">
+                            @*<div class="col-md-1" id="or">
+                                <h3>Search :</h3>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="usr">Search by Products:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
+                            </div>
+                            <div class="col-md-1" id="or">
+                                <h3>- OR -</h3>
+                            </div>*@
+                            <div class="col-md-5">
+
+                            </div>
+
+                            @*<div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="sel1">Select list:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="sel1">Select list:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="sel1">Select list:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>*@
+
+                            <div id="dvProductCategory">
+
+                            </div>
+
+                        </div>
+
+                        <input type="hidden" id="hdfSearchProductCategoryId" value="0">
+                    </form>
+                </div>
+            </div>
+
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -127,34 +196,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <input type="hidden" id="hdfsessionLanguage" value="@Session["Language"].ToString()">
 
-          <div class="modal fade" id="div_Parent_Modal_Fade" role="dialog" aria-hidden="true" style="z-index:10000">
-              <div class="modal-dialog ">
-                  <div class="modal-content">
-                      <div class="modal-header" id="div_Parent_Modal_Header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">&nbsp;</h4>
-                      </div>
-                      <div class="modal-body" id="div_Parent_Modal_Body">
-
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-
-
-    @*<div class="footer text-center">
-        <div class="social-icons">
-            <a href="#"><i class="facebook"></i></a>
-            <a href="#"><i class="twitter"></i></a>
-            <a href="#"><i class="googlepluse"></i></a>
-            <a href="#"><i class="youtube"></i></a>
-            <a href="#"><i class="linkedin"></i></a>
-        </div>
-        <div class="copyright">
-            <p>Copyright &copy; 2015. All rights reserved | Abacus Infosystem</p>
-        </div>
-    </div>*@
 
     <div class="footer wow fadeInRight" data-wow-delay="0.4s">
         <div class="container">
@@ -210,23 +251,115 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </body>
 </html>
 
-<script>
 
+<script type="text/javascript">
     $(function () {
+        var $searchlink = $('#searchtoggl i');
+        var $searchbar = $('#searchbar');
 
-        $("#btnModalProductSearch").click(function () {
+        $('#credit ul li a').on('click', function (e) {
+            e.preventDefault();
 
-            $("#div_Parent_Modal_Fade").find(".modal-title").html("Product Search")
+            if ($(this).attr('id') == 'searchtoggl') {
+                if (!$searchbar.is(":visible")) {
+                    // if invisible we switch the icon to appear collapsable
+                    $searchlink.removeClass('fa-search').addClass('fa-search-minus');
+                } else {
+                    // if visible we switch the icon to appear as a toggle
+                    $searchlink.removeClass('fa-search-minus').addClass('fa-search');
+                }
 
-            $("#div_Parent_Modal_Body").load("/" + $("#hdfsessionLanguage").val() + "/get-product-search/", null, function () {
+                $searchbar.slideToggle(300, function () {
+                    // callback after search bar animation
+                });
+            }
+        });
 
-                $("#div_Parent_Modal_Fade").modal("show");
-            });
+        //$('#searchform').submit(function (e) {
+        //    e.preventDefault(); // stop form submission
+        //});
+
+
+        $("#searchsubmit").click(function () {
+
+            $("#searchform").attr("action", "/" + $("#hdfsessionLanguage").val() + "/product-listing?product_Category_Id=" + $("#hdfSearchProductCategoryId").val());
+
+            $("#searchform").attr("method", "POST");
+
+            $("#searchform").submit();
         });
 
 
+        $("body").on("change", ".drp-product-category", function () {
+
+            $(this).parents(".row-product-cat").nextAll().remove();
+
+            $("#hdfSearchProductCategoryId").val($(this).val());
+
+            Get_Product_Category_By_Parent($(this).val());
+        });
 
 
-       
+        Get_Product_Category_By_Parent(0);
+
+
     });
+
+    function Get_Product_Category_By_Parent(parent_Id) {
+        $.ajax({
+
+            url: "/ProductDetails/Get_Product_Categories_By_Language_Parent",
+
+            data: { parent_Product_Category_Id: parent_Id },
+
+            method: "GET",
+
+            success: function (data) {
+                if (data != null) {
+                    if (data.length > 0) {
+                        var html = Callback_Parent_Category(data);
+
+                        $("#dvProductCategory").append(html);
+                    }
+                }
+            }
+        });
+    }
+
+    function Callback_Parent_Category(data) {
+        var html = "";
+
+        
+
+        html += "<div class='col-md-2 row-product-cat'>";
+
+        html += "<label> Category :</label>";
+
+        html += "<div class='form-group'>";
+
+        html += "<select class='drp-product-category form-control input-sm' >"
+
+        html += "<option value=''>-Select Category-</option>";
+
+        if (data.length > 0) {
+
+            for (var i = 0; i < data.length; i++) {
+
+                html += "<option value='" + data[i].Product_Category_Id + "'>" + data[i].Product_Category + "</option>";
+            }
+        }
+
+        html += "</select>";
+
+        html += "</div>";
+
+        html += "</div>";
+
+
+
+        return html;
+
+
+
+    }
 </script>

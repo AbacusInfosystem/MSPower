@@ -611,7 +611,7 @@ namespace MSPowerWebApp.Controllers
 
             PaginationInfo pager = new PaginationInfo();
 
-            pager.IsPagingRequired = false;
+            pager.IsPagingRequired = true;
 
             try
             {
@@ -849,8 +849,6 @@ namespace MSPowerWebApp.Controllers
             }
 
             PaginationInfo pager = new PaginationInfo();
-
-            pager.IsPagingRequired = false;
 
             try
             {

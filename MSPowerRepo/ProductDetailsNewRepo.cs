@@ -456,11 +456,11 @@ namespace MSPowerRepo
 
                 if (language_Id == 1)
                 {
-                    html += "<h4><a href='/en/product-listing?product_Category_Id=" + item.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                    html += "<h4><a href='/en/product-listing?product_Category_Id=" + item.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>&nbsp;&nbsp;&nbsp;";
                 }
                 else
                 {
-                    html += "<h4><a href='/ch/product-listing?product_Category_Id=" + item.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                    html += "<h4><a href='/ch/product-listing?product_Category_Id=" + item.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>&nbsp;&nbsp;&nbsp;";
                 }
 
                 html += item.Product_Category;
@@ -473,11 +473,11 @@ namespace MSPowerRepo
                 {
                     if (language_Id == 1)
                     {
-                        html += "<li class='prod-li'> <a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                        html += "<li class='prod-li'> <a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>&nbsp;&nbsp;&nbsp;";
                     }
                     else
                     {
-                        html += "<li class='prod-li'> <a href='/ch/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>";
+                        html += "<li class='prod-li'> <a href='/ch/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'><i class='fa fa-chevron-right'></i>&nbsp;&nbsp;&nbsp;";
                     }
 
                     html += itm.Product_Category;
