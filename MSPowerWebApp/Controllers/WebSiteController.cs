@@ -30,6 +30,7 @@ namespace MSPowerWebApp.Controllers
         }
 
         [Language]
+
         public ActionResult ProductListing(string language, int product_Category_Id)
         {
             ProductDetailViewModel pViewModel = new ProductDetailViewModel();
@@ -109,7 +110,7 @@ namespace MSPowerWebApp.Controllers
 
                     item.Product_Details = pdMan.Get_Product_Details(ref pager, item.Product_Category_Column_Mapping_Id, item.Product_Column_Ref_Id);
 
-                    foreach (var itm in pdViewModel.Product_Details)
+                    foreach (var itm in item.Product_Details)
                     {
                         string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
 
@@ -122,6 +123,7 @@ namespace MSPowerWebApp.Controllers
                             itm.Is_PDF_Exists = false;
                         }
                     }
+
                 }
             }
             catch (Exception ex)
@@ -561,7 +563,7 @@ namespace MSPowerWebApp.Controllers
         {
             ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
 
-            ProductDetailManager _pMan = new ProductDetailManager();
+            ProductDetailsManager _pMan = new ProductDetailsManager();
 
             int language_Id = 0;
 

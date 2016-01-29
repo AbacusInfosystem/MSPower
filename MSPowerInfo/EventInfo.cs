@@ -22,6 +22,8 @@ namespace MSPowerInfo
 
         public string Event_Description { get; set; }
 
+        public bool Is_Active { get; set; }
+
         public DateTime Created_On { get; set; }
 
         public int Created_By { get; set; }

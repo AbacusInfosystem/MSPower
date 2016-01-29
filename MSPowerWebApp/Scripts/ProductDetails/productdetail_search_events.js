@@ -71,5 +71,18 @@
         }
     });
 
+    $('body').on('click', '.download-pdf', function (event) {
+
+        $("#frmSearch_ProductDetail").validate().cancelSubmit = true;
+
+        $("#frmSearch_ProductDetail").attr("action", "/cms/product-detail/download-pdf/" + $(this).closest('tr').find('.product-detail-id').val());
+
+        $("#frmSearch_ProductDetail").attr("method", "POST");
+
+        $("#frmSearch_ProductDetail").submit();
+
+    });
+
+
     //Get_Product_Categories();
 });

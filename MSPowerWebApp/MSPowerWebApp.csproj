@@ -206,7 +206,6 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\NewsLetterController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ServiceCategoryController.cs" />
     <Compile Include="Controllers\WebSiteController.cs" />
@@ -832,6 +831,7 @@
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\Common Images\Word-Logo.jpg" />
     <Content Include="Content\css\bluimp\jquery.fileupload-ui-noscript.css" />
     <Content Include="Content\css\bluimp\jquery.fileupload-ui.css" />
     <Content Include="Content\css\bluimp\style.css" />
@@ -1035,6 +1035,8 @@
     <Content Include="Scripts\genric.authorize.js" />
     <Content Include="Scripts\ImageUpload\image_upload_method.js" />
     <Content Include="Scripts\ImageUpload\image_upload_events.js" />
+    <Content Include="Scripts\Job_Application\job_application_details_events.js" />
+    <Content Include="Scripts\Job_Application\job_application_details_method.js" />
     <Content Include="Scripts\Job_Application\job_application_events.js" />
     <Content Include="Scripts\Job_Application\job_application_method.js" />
     <Content Include="Scripts\Job_Application\job_application_search_events.js" />
@@ -1069,15 +1071,10 @@
     <Content Include="Scripts\ProductDetails\productdetail_search_events.js" />
     <Content Include="Scripts\ProductDetails\productdetail_search_method.js" />
     <Content Include="Scripts\ProductDetails\productdetail_validation.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_event.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_method.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_validation.js" />
     <Content Include="Scripts\Product\product_event.js" />
     <Content Include="Scripts\Product\product_method.js" />
     <Content Include="Scripts\Product\product_search_event.js" />
     <Content Include="Scripts\Product\product_search_method.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_search_events.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_search_method.js" />
     <Content Include="Scripts\ServiceCategory\servicecategory_events.js" />
     <Content Include="Scripts\ServiceCategory\servicecategory_methods.js" />
     <Content Include="Scripts\ServiceCategory\servicecategory_search_event.js" />

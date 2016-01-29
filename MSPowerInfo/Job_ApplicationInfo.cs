@@ -34,5 +34,7 @@ namespace MSPowerInfo
 
         public DateTime Created_On { get; set; }
 
+        public bool Is_DOCX_Exists { get; set; }
+
     }
 }

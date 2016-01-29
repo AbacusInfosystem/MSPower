@@ -12,6 +12,8 @@
 
             htmlText += "<input type='radio' name='ja1' id='ja1_" + data.Job_Applications[i].Job_Application_Id + "' class='iradio-list'/>";
 
+            htmlText += "<input type='hidden' class='job-application-id' value='" + data.Job_Applications[i].Job_Application_Id + "' />";
+
             htmlText += "</td>";
 
             htmlText += "<td>";
@@ -37,6 +39,15 @@
             htmlText += data.Job_Applications[i].Reference;
 
             htmlText += "</td>";
+
+            htmlText += "<td>"
+
+            if (data.Job_Applications[i].Is_DOCX_Exists == true) {
+
+                htmlText += "<img src='/Content/Common Images/Word-Logo.jpg' alt='Resume' class='download-resume' style='width: 5%; height: 10'></img>";
+            }
+
+            htmlText += "</td>"
 
             htmlText += "</tr>";
         }
