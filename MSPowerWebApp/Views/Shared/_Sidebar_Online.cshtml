@@ -6,6 +6,9 @@
             <li class="active" id="liHome">
                 <a href="@Url.Action("Index", "WebSite", new { language = Session["Language"].ToString() })">Home</a>
             </li>
+            <li id="liAboutUs">
+                <a href="@Url.Action("AboutUs", "WebSite", new { language = Session["Language"].ToString() })">About Us</a>
+            </li>
             <li id="liProduct">
                 <a href="@Url.Action("ProductListing", "WebSite", new { language = Session["Language"].ToString(), product_Category_Id = 0})">Products</a>
             </li>
@@ -18,25 +21,27 @@
             <li id="liNewsLetter">
                 <a href="@Url.Action("NewsLetterListing", "WebSite", new { language = Session["Language"].ToString() })">News Letters</a>
             </li>
+            <li id="liEvents">
+                <a href="@Url.Action("Events", "WebSite", new { language = Session["Language"].ToString() })">Events</a>
+            </li>
             @*<li>
                     <a href="@Url.Action("NewsLetter", "WebSite", new { language = Session["Language"].ToString() })">News Letter</a>
                 </li>*@
             <li id="liJobOpening">
                 <a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })">Job Opening</a>
             </li>
+
+           
+
             <li id="liJobApplication">
                 <a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })">Job Application</a>
             </li>
-            <li id="liAboutUs">
-                <a href="@Url.Action("AboutUs", "WebSite", new { language = Session["Language"].ToString() })">About Us</a>
-            </li>
+            
             <li id="liEnquiry">
                 <a href="@Url.Action("Enquiry", "Website", new { language = Session["Language"].ToString() })">Enquiry</a>
             </li>
 
-            <li id="liEvents">
-                <a href="@Url.Action("Events", "WebSite", new { language = Session["Language"].ToString() })">Events</a>
-            </li>
+            
 
             @*<li>
                     <a href="@Url.Action("Index", "Authenticate")">CMS Login</a>

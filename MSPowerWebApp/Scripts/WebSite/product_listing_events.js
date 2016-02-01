@@ -17,6 +17,8 @@ $(function () {
 
     Get_Product_Categories($("#hdfProduct_Category_Id").val());
 
+    Get_Product_Categories_Images($("#hdfProduct_Category_Id").val());
+
 });
 
 function Get_Product_Categories(parent_Category_Id)
@@ -32,6 +34,23 @@ function Get_Product_Categories(parent_Category_Id)
             if(data != null)
             {
                 $("#dvProduct_Listing").append(data);
+            }
+        }
+
+    });
+}
+
+function Get_Product_Categories_Images(parent_Category_Id) {
+    $.ajax({
+
+        url: "/WebSite/Get_Genrated_Html_Product_Categories_Images",
+
+        data: { language_Id: $("#hdfLanguage").val(), parent_Category_Id: parent_Category_Id },
+
+        success: function (data) {
+
+            if (data != null) {
+                $("#dvProduct_Listing_Images").append(data);
             }
         }
 
