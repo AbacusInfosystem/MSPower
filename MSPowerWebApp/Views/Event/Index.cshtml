@@ -59,6 +59,27 @@
                                         <textarea id="editor1" class="form-control input-sm" rows="3" cols="250" name="Event.Event_Description">@Model.Event.Event_Description</textarea>
                                     </div>
 
+
+
+                                    <div class="form-group">
+
+                                        <label style="color: #333">
+
+                                            @if (Model.Event.Is_Active == true)
+                                            {
+                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+                                            else
+                                            {
+                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
+                                                }
+
+                                            <input type="hidden" id="hdnEvent_Status" name="Event.Is_Active" value="@Model.Event.Is_Active">
+
+                                        </label>
+
+                                    </div>
+
                                     @*<div class="form-group">
                                             <label style="color: #333" for="fileUpload_Event_Image">Upload Event Images</label>
 
@@ -66,6 +87,8 @@
 
                                             <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
                                         </div>*@
+
+
                                     <div id="form-group">
 
                                         <input type="hidden" name="Event.Event_Id" id="hdnEvent_Id" value="@Model.Event.Event_Id">
@@ -125,7 +148,18 @@
     </section>
 </div>
 
+<script src="http://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
 
+<script>
+
+    $(document).ready(function () {
+        $('.iradio-list').iCheck({
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+    });
+
+</script>
 
 
 

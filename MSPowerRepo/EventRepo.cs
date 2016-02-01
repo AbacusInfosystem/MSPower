@@ -54,7 +54,9 @@ namespace MSPowerRepo
         }
 
         //private List<EventInfo> Seed_Event()
+
         //{
+
         //    List<EventInfo> retVal = new List<EventInfo>();
 
         //    retVal.Add(new EventInfo() { Event_Id = 1, Event_Title = "ABC", Event_Description="<b>Hello World</b>", Language_Id = 1, Is_Active = true, CreatedBy = 1, CreatedOn = DateTime.Now, UpdatedBy = 1, UpdatedOn = DateTime.Now });
@@ -228,6 +230,8 @@ namespace MSPowerRepo
 
             retVal.Event_Description = Convert.ToString(dr["Event_Description"]);
 
+            retVal.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+
             retVal.Created_On = Convert.ToDateTime(dr["Created_On"]);
 
             retVal.Created_By = Convert.ToInt32(dr["Created_By"]);
@@ -250,6 +254,8 @@ namespace MSPowerRepo
             param.Add(new SqlParameter("@Event_Title", events.Event_Title));
 
             param.Add(new SqlParameter("@Event_Description", events.Event_Description));
+
+            param.Add(new SqlParameter("@Is_Active", events.Is_Active));
 
             param.Add(new SqlParameter("@Updated_On", events.Updated_On));
 

@@ -55,7 +55,6 @@ namespace MSPowerWebApp.Controllers
                 }
             }
 
-
             ProductDetailsManager pdMan = new ProductDetailsManager();
 
             pdViewModel.Product_Details_Header = pdMan.Get_Product_Details_Header(pdViewModel.Filter.Product_Column_Ref_Id);
@@ -63,9 +62,6 @@ namespace MSPowerWebApp.Controllers
             //pdViewModel.Product_Detail = pdMan.Get_Product_Detail_By_Id(pdViewModel.Filter.Product_Detail_Id);
 
             //pdViewModel.Product_Detail = pdMan.Get_Product_Detail_By_Id(product_detail_Id);
-
-
-
 
             return View("Index", pdViewModel);
 
@@ -158,7 +154,6 @@ namespace MSPowerWebApp.Controllers
         public JsonResult Get_Product_Details(ProductDetailViewModel pdViewModel)
         {
 
-
             ProductDetailsManager pdMan = new ProductDetailsManager();
 
             //ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
@@ -176,20 +171,47 @@ namespace MSPowerWebApp.Controllers
                 pdViewModel.Pager = pager;
 
                 pdViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", pdViewModel.Pager.TotalRecords, pdViewModel.Pager.CurrentPage + 1, pdViewModel.Pager.PageSize, 10, true);
-            }
-            catch (Exception ex)
-            {
-                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Test Controller - Get_Tests" + ex.ToString());
+                for (int i = 0; i < pdViewModel.Product_Details.Count; i++)
+                {
+                    // check for pdf
+
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), pdViewModel.Product_Details[i].Product_Detail_Id + ".pdf");
+
+                    if (CheckPathExists(path))
+                    {
+                        pdViewModel.Product_Details[i].Is_PDF_Exists = true;
+                    }
+                }
+
             }
-            finally
-            {
-                pager = null;
-            }
-            return Json(pdViewModel);
+                catch (Exception ex)
+                {
+                    pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                    Logger.Error("Test Controller - Get_Tests" + ex.ToString());
+                }
+                finally
+                {
+                    pager = null;
+                }
+                return Json(pdViewModel);
 
         }
+
+        // Check if the Pdf file exist
+
+        private bool CheckPathExists(string path)
+                {
+                    if (System.IO.File.Exists(path))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
 
         // WHEN USER CLICKS ON EDIT BUTTON FROM PRODUCT LISTING PAGE, THIS METHOD WOULD GET HIT.
 
@@ -245,20 +267,20 @@ namespace MSPowerWebApp.Controllers
 
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("PD001"));
             }
-            catch (Exception ex)
-            {
-                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                catch (Exception ex)
+                {
+                    pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Test Controller - Insert" + ex.ToString());
-            }
+                    Logger.Error("Test Controller - Insert" + ex.ToString());
+                }
 
-            //TempData["pdViewModel"] = pdViewModel;
+                //TempData["pdViewModel"] = pdViewModel;
 
-            //return RedirectToAction("Search");
+                //return RedirectToAction("Search");
 
-            TempData["Product_Detail_View_Model"] = pdViewModel;
+                TempData["Product_Detail_View_Model"] = pdViewModel;
 
-            return RedirectToAction("Index", pdViewModel);
+                return RedirectToAction("Index", pdViewModel);
 
         }
 
@@ -283,19 +305,19 @@ namespace MSPowerWebApp.Controllers
 
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("PD002"));
             }
-            catch (Exception ex)
-            {
-                pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Test Controller - Update" + ex.ToString());
-            }
+                catch (Exception ex)
+                {
+                    pdViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-            TempData["Product_Detail_View_Model"] = pdViewModel;
+                    Logger.Error("Test Controller - Update" + ex.ToString());
+                }
 
-            return RedirectToAction("Index", pdViewModel);
+                TempData["Product_Detail_View_Model"] = pdViewModel;
+
+                return RedirectToAction("Index", pdViewModel);
 
         }
-
 
         public void PdfUpload(HttpPostedFileBase file, string id)
         {

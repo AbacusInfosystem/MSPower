@@ -61,5 +61,10 @@ namespace MSPowerManager
         {
             return _pdRepo.Get_Product_Category_By_Id(product_Category_Id, language_Id);
         }
+
+        public List<ProductCategoryInfo> Get_Product_Categories_By_Lanugae_Id(int language_Id)
+        {
+            return _pdRepo.Get_Product_Categories_By_Lanugae_Id(language_Id);
+        }
     }
 }

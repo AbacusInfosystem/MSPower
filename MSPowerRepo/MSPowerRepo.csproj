@@ -64,7 +64,6 @@
     <Compile Include="NewsLetterRepo.cs" />
     <Compile Include="ProductDetailsNewRepo.cs" />
     <Compile Include="ProductRepo.cs" />
-    <Compile Include="ProductDetailRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCategoryRepo.cs" />
   </ItemGroup>

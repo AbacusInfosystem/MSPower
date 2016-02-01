@@ -19,7 +19,7 @@
 
     $("#btnSave").click(function () {
 
-        alert("I am an alert!");
+        //alert("I am an alert!");
 
         if ($("#frmServices").valid()) {
 
@@ -63,7 +63,7 @@
 
     $("#btnSubmit").click(function () {
 
-        alert("hiii");
+        //alert("hiii");
 
         $("#frmServicesUpload").attr("action", "/ServiceCategory/Upload");
 

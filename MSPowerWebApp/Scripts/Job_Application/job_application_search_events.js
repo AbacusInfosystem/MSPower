@@ -22,6 +22,7 @@
 
     //});
 
+
     $('body').on('ifChanged', ".iradio-list", function (event) {
 
         if ($(this).prop('checked')) {
@@ -32,6 +33,18 @@
 
             $("#btnDelete").show();
         }
+    });
+    
+    $('body').on('click', '.download-resume', function (event) {
+
+        $("#frmSearch_Job_Application").validate().cancelSubmit = true;
+
+        $("#frmSearch_Job_Application").attr("action", "/cms/job_application/download-docx/" + $(this).closest('tr').find('.job-application-id').val());
+
+        $("#frmSearch_Job_Application").attr("method", "POST");
+
+        $("#frmSearch_Job_Application").submit();
+
     });
 
     Get_All_Job_Applications();

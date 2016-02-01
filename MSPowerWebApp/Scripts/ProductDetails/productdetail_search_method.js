@@ -95,7 +95,7 @@ function Get_Product_Categories() {
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/ProductDetail/Get_Product_Categories", "json", JSON.stringify(""), "POST", "application/json", false, Bind_Product_Categories, "", null);
+    CallAjax("/ProductDetails/Get_Product_Categories", "json", JSON.stringify(""), "POST", "application/json", false, Bind_Product_Categories, "", null);
 
 }
 
@@ -146,6 +146,8 @@ function Bind_Product_Details(data) {
             htmlText += "<td>";
 
             htmlText += "<input type='radio' name='rdbProductDetails' id='rdb_Product_Detail_" + data.Product_Details[i].Product_Detail_Id + "' value ='" + data.Product_Details[i].Product_Detail_Id + "' class='iradio-product-details'/>";
+
+            htmlText += "<input type='hidden' class='product-detail-id' value='" + data.Product_Details[i].Product_Detail_Id + "' />";
 
             htmlText += "</td>";
 
@@ -300,12 +302,16 @@ function Bind_Product_Details(data) {
                 htmlText += "</td>";
             }
 
-          
-            htmlText += "<td>";
+            if (data.Product_Details[i].Is_PDF_Exists == true) {
 
-            htmlText += "<img src='/Content/Images/pdf.png' style='width: 30%; height: auto; align: right' />";
-                       
-            htmlText += "</td>";
+                htmlText += "<td>";
+
+                htmlText += "<img src='/Content/Common Images/pdf.jpg' alt='Product Detail' class='download-pdf' style='width: 30%; height: auto; align: center' />";
+
+                htmlText += "</td>";
+            }
+
+            
 
             htmlText += "</tr>";
         }
@@ -411,7 +417,7 @@ function Get_Product_Details()
 
     if ($('#drpProduct_Volts').val() != '0') {
 
-        CallAjax("/ProductDetail/Get_Product_Details", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Details, "", null);
+        CallAjax("/ProductDetails/Get_Product_Details", "json", JSON.stringify(pdViewModel), "POST", "application/json", false, Bind_Product_Details, "", null);
     }
     else
     {
@@ -436,7 +442,7 @@ function Get_Product_Volts(product_category_id)
 {
     $.ajax({
 
-        url: "/ProductDetail/Get_Product_Volts",
+        url: "/ProductDetails/Get_Product_Volts",
 
         data: { productCategoryId: product_category_id }
       

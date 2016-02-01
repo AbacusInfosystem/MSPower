@@ -581,6 +581,11 @@ namespace MSPowerWebApp
              defaults: new { controller = "Job_Application", action = "Get_Job_Application_By_Id", id = UrlParameter.Optional }
          );
 
+            routes.MapRoute(
+             name: "Job_Application-5",
+             url: "cms/job_application/download-docx/{job_application_Id}",
+             defaults: new { controller = "Job_Application", action = "Download_Job_Application_Details_DOCX", job_application_Id = UrlParameter.Optional }
+         );
 
             #endregion
 

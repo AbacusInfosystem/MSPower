@@ -440,6 +440,91 @@ namespace MSPowerRepo
 
         }
 
+        public List<ProductCategoryInfo> Get_Product_Categories_By_Lanugae_Id(int language_Id)
+        {
+            List<ProductCategoryInfo> product_Categories = new List<ProductCategoryInfo>();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.sp_Get_Product_Categories_By_Lanugae_Id.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                    ProductCategoryInfo retVal = new ProductCategoryInfo();
+
+                    retVal.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
+
+                    retVal.Language_Id = Convert.ToInt32(dr["Language_Id"]);
+
+                    retVal.Product_Category1 = Convert.ToString(dr["Product_Category"]);
+
+                    retVal.Product_Category_Image = Convert.ToString(dr["Product_Category_Img"]);
+
+                    retVal.Product_Category_Description = Convert.ToString(dr["Product_Category_Description"]);
+
+                    retVal.Product_Category_Column_Mappings = Get_Product_Category_Column_By_Category_Id(retVal.Product_Category_Id);
+
+                    product_Categories.Add(retVal);
+
+                }
+            }
+
+            return product_Categories;
+        }
+
+        public List<ProductCategoryColumnMappingInfo> Get_Product_Category_Column_By_Category_Id(int product_Category_Id)
+        {
+            List<ProductCategoryColumnMappingInfo> product_Category_Column_Mappings = new List<ProductCategoryColumnMappingInfo>();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Product_Category_Id", product_Category_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.sp_Get_Product_Category_Column_By_Category_Id.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ProductCategoryColumnMappingInfo retval = new ProductCategoryColumnMappingInfo();
+
+                    retval.Product_Category_Column_Mapping_Id = Convert.ToInt32(dr["Product_Category_Column_Mapping_Id"]);
+
+                    retval.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
+
+                    retval.Volts = Convert.ToInt32(dr["Volts"]);
+
+                    retval.Product_Column_Ref_Id = Convert.ToInt32(dr["Product_Column_Ref_Id"]);
+
+                    product_Category_Column_Mappings.Add(retval);
+
+                }
+            }
+
+            return product_Category_Column_Mappings;
+        }
+
         public string Genrate_Html_For_Product_Categories(List<ProductCategoryInfo> product_Categories, int parent_Category_Id, int language_Id)
         {
             string html = "";

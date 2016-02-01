@@ -25,6 +25,22 @@
             htmlText += data.Events[i].Event_Description;
 
             htmlText += "</td>";
+
+            if (data.Events[i].Is_Active == true) {
+
+                htmlText += "<td>";
+
+                htmlText += "Active";
+
+                htmlText += "</td>";
+            }
+            else {
+                htmlText += "<td>";
+
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
            
             htmlText += "</tr>";
         }

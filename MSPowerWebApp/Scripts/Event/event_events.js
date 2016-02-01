@@ -38,6 +38,19 @@
     GetImages();
 
 
+    $('#chkIsActive').on('ifChanged', function (event) {
+
+        if ($(this).prop('checked')) {
+
+            $(this).parent().addClass("checked");
+
+            $("#hdnEvent_Status").val(true);
+        }
+        else {
+            $("#hdnEvent_Status").val(false);
+        }
+    });
+
     $("#btnSubmit").click(function () {
 
   
