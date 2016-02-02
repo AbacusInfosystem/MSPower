@@ -437,7 +437,7 @@ function Bind_Product_Details(data) {
 
                 htmlText += "<td>";
 
-                htmlText += "<img src='/Content/Common Images/pdf.jpg' alt='Product Detail' class='download-pdf' style='width: 30%; height: auto; align: center' />";
+                htmlText += "<img src='/Content/Common Images/pdf.jpg' alt='Product Detail' class='download-pdf' style='width: auto; height: 35px; align: center' />";
 
                 htmlText += "</td>";
             }

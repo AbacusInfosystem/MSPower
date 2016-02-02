@@ -7,6 +7,28 @@
 @* News Letter Listing @Session["Language"].ToString();*@
 
 
+<div class="lang-toggles">
+    <select style="border:0px; outline:0px;" id="drpMainlang">
+        @if (Session["Language"].ToString() == "en")
+        {
+            <option value="en" selected>English</option>
+        }
+        else
+        {
+            <option value="en">English</option>
+        }
+
+        @if (Session["Language"].ToString() == "ch")
+        {
+            <option value="ch" selected>Chinese</option>
+        }
+        else
+        {
+            <option value="ch">Chinese</option>
+        }
+    </select>
+</div>
+
 <div class="content">
     <div class="grid_4">
         <div class="container">

@@ -2,7 +2,7 @@
 
 $(function () {
 
-    $(".download-pdf").click(function () {
+    $(document).on("click",".download-pdf",function () {
         $("#frmProduct").attr("action", "/cms/product-detail/download-pdf/" + $(this).prop("name"));
 
         $("#frmProduct").attr("method", "POST");

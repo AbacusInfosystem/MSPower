@@ -109,7 +109,7 @@ namespace MSPowerWebApp.Controllers
                 {
                     item.Product_Details_Header = pdMan.Get_Product_Details_Header(item.Product_Column_Ref_Id);
 
-                    item.Product_Details = pdMan.Get_Product_Details(ref pager, item.Product_Category_Column_Mapping_Id, item.Product_Column_Ref_Id);
+                    item.Product_Details = pdMan.Get_Product_Details_By_Col(ref pager, item.Product_Category_Column_Mapping_Id, item.Product_Column_Ref_Id,item.Col_Filter);
                     
                     foreach (var itm in item.Product_Details)
                     {
@@ -939,6 +939,20 @@ namespace MSPowerWebApp.Controllers
                 pdViewModel.Volt.Product_Details_Header = pdMan.Get_Product_Details_Header(pdViewModel.Volt.Product_Column_Ref_Id);
 
                 pdViewModel.Volt.Product_Details = pdMan.Get_Product_Details_By_Col(ref pager, pdViewModel.Volt.Product_Category_Column_Mapping_Id, pdViewModel.Volt.Product_Column_Ref_Id, pdViewModel.Volt.Col_Filter);
+
+                foreach (var itm in pdViewModel.Volt.Product_Details)
+                {
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+
+                    if (System.IO.File.Exists(path))
+                    {
+                        itm.Is_PDF_Exists = true;
+                    }
+                    else
+                    {
+                        itm.Is_PDF_Exists = false;
+                    }
+                }
             }
             catch(Exception ex)
             {
