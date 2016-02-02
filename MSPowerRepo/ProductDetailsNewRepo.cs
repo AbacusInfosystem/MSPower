@@ -251,6 +251,26 @@ namespace MSPowerRepo
 
             retval.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
+            retval.Semikron = Convert.ToString(dr["Semikron"]);
+
+            retval.Vishay = Convert.ToString(dr["Vishay"]);
+
+            retval.IR = Convert.ToString(dr["IR"]);
+
+            retval.Hirect = Convert.ToString(dr["Hirect"]);
+
+            retval.Infenion = Convert.ToString(dr["Infenion"]);
+
+            retval.Powrex = Convert.ToString(dr["Powrex"]);
+
+            retval.IXYS_Westcode = Convert.ToString(dr["IXYS_Westcode"]);
+
+            retval.Ansaldo = Convert.ToString(dr["Ansaldo"]);
+
+            retval.Dynex = Convert.ToString(dr["Dynex"]);
+
+            retval.Usha = Convert.ToString(dr["Usha"]);
+
             if (headerCount >= 1)
             {
                 retval.Col1 = Convert.ToString(dr["Col1"]);
@@ -433,6 +453,26 @@ namespace MSPowerRepo
             param.Add(new SqlParameter("@Col14", productDetail.Col14));
 
             param.Add(new SqlParameter("@Col15", productDetail.Col15));
+
+            param.Add(new SqlParameter("@Semikron", productDetail.Semikron));
+
+            param.Add(new SqlParameter("@Vishay", productDetail.Vishay));
+
+            param.Add(new SqlParameter("@IR", productDetail.IR));
+
+            param.Add(new SqlParameter("@Hirect", productDetail.Hirect));
+
+            param.Add(new SqlParameter("@Infenion", productDetail.Infenion));
+
+            param.Add(new SqlParameter("@Powrex", productDetail.Powrex));
+
+            param.Add(new SqlParameter("@IXYS_Westcode", productDetail.IXYS_Westcode));
+
+            param.Add(new SqlParameter("@Ansaldo", productDetail.Ansaldo));
+
+            param.Add(new SqlParameter("@Dynex", productDetail.Dynex));
+
+            param.Add(new SqlParameter("@Usha", productDetail.Usha));
 
             param.Add(new SqlParameter("@Is_Active", productDetail.Is_Active));
 
