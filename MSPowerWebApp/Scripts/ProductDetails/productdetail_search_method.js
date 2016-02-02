@@ -123,6 +123,66 @@ function Bind_Product_Details(data) {
 
         htmlText += "<th>";
 
+        htmlText += "Semikron";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "Vishay";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "IR";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "Hirect";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "Infenion";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "Powrex";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "IXYS_Westcode";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "Ansaldo";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "Dynex";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
+        htmlText += "Usha";
+
+        htmlText += "</th>";
+
+        htmlText += "<th>";
+
         htmlText += "Status";
 
         htmlText += "</th>";
@@ -286,6 +346,76 @@ function Bind_Product_Details(data) {
                 htmlText += "</td>";
             }
 
+          
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Semikron;
+
+                htmlText += "</td>"
+            
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Vishay;
+
+                htmlText += "</td>"
+          
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].IR;
+
+                htmlText += "</td>"
+
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Hirect;
+
+                htmlText += "</td>"
+
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Infenion;
+
+                htmlText += "</td>"
+
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Powrex;
+
+                htmlText += "</td>"
+
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].IXYS_Westcode;
+
+                htmlText += "</td>"
+
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Ansaldo;
+
+                htmlText += "</td>"
+
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Dynex;
+
+                htmlText += "</td>"
+
+
+                htmlText += "<td>";
+
+                htmlText += data.Product_Details[i].Usha;
+
+                htmlText += "</td>"
+
             if (data.Product_Details[i].Is_Active == true) {
 
                 htmlText += "<td>";
@@ -294,7 +424,8 @@ function Bind_Product_Details(data) {
 
                 htmlText += "</td>";
             }
-            else {
+            else
+            {
                 htmlText += "<td>";
 
                 htmlText += "Inactive";
