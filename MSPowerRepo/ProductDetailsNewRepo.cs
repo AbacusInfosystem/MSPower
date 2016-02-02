@@ -20,7 +20,7 @@ namespace MSPowerRepo
         public ProductDetailsNewRepo()
         {
             _sqlDataAccess = new SqlDataAccess();
-            
+
             _con = _sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
         }
 
@@ -622,6 +622,105 @@ namespace MSPowerRepo
             }
 
             return product_Category;
+        }
+
+        public string Genrate_Html_For_Product_Categories_Images(List<ProductCategoryInfo> product_Categories, int parent_Category_Id, int language_Id)
+        {
+            string html = "";
+
+
+            int i = 0;
+
+            foreach (var item in product_Categories.Where(a => a.Parent_Category_Id == parent_Category_Id))
+            {
+                if (!string.IsNullOrEmpty(item.Product_Category_Image))
+                {
+                    if (i % 3 == 0 || i == 0)
+                    {
+                        html += "<div class='about-grids service_box'>";
+                    }
+
+                    html += "<div class='col-sm-4 about-grid'>";
+
+                    html += "<a href='/en/product-listing?product_Category_Id=" + item.Product_Category_Id + "' title='name' rel='" + item.Product_Category + "'>";
+
+                    html += "<div class='view view-first'>";
+
+                    html += "<img src='/Content/Images/Product%20Categories/" + item.Product_Category_Image.Replace(" ", "%20") + "' class='img-responsive' alt='" + item.Product_Category_Image + "' />";
+
+                    html += "</div>";
+
+                    html += "</a>";
+
+                    // html += "<h3><a href='#'>" + item.Product_Category + "</a></h3>";
+
+                    if (language_Id == 1)
+                    {
+                        html += "<h3> <a href='/en/product-listing?product_Category_Id=" + item.Product_Category_Id + "'>" + item.Product_Category + "</h3>";
+                    }
+                    else
+                    {
+                        html += "<h3> <a href='/ch/product-listing?product_Category_Id=" + item.Product_Category_Id + "'>" + item.Product_Category + "</h3>";
+                    }
+
+                    html += "</div>";
+
+                    i++;
+
+                    if (i % 3 == 0 )
+                    {
+                        html += "<div class='clearfix'> </div>";
+
+                        html += "</div>";
+                    }
+
+                    foreach (var itm in product_Categories.Where(x => x.Parent_Category_Id == item.Product_Category_Id))
+                    {
+                        if (i % 3 == 0 || i == 0)
+                        {
+                            html += "<div class='about-grids service_box'>";
+                        }
+
+                        html += "<div class='col-sm-4 about-grid'>";
+
+                        html += "<a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "' title='name' rel='" + itm.Product_Category + "'>";
+
+                        html += "<div class='view view-first'>";
+
+                        html += "<img src='/Content/Images/Product%20Categories/" + itm.Product_Category_Image.Replace(" ", "%20") + "' class='img-responsive' alt='" + itm.Product_Category_Image + "' />";
+
+                        html += "</div>";
+
+                        html += "</a>";
+
+                        // html += "<h3><a href='#'>" + item.Product_Category + "</a></h3>";
+
+                        if (language_Id == 1)
+                        {
+                            html += "<h3> <a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'>" + itm.Product_Category + "</h3>";
+                        }
+                        else
+                        {
+                            html += "<h3> <a href='/ch/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'>" + itm.Product_Category + "</h3>";
+                        }
+
+                        html += "</div>";
+
+                        i++;
+
+                        if (i % 3 == 0)
+                        {
+                            html += "<div class='clearfix'> </div>";
+
+                            html += "</div>";
+                        }
+                    }
+                }
+            }
+
+          
+
+            return html;
         }
     }
 }

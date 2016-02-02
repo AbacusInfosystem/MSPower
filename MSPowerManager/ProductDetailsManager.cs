@@ -66,5 +66,10 @@ namespace MSPowerManager
         {
             return _pdRepo.Get_Product_Categories_By_Lanugae_Id(language_Id);
         }
+
+        public string Genrate_Html_For_Product_Categories_Images(int language_Id, int parent_Category_Id)
+        {
+            return _pdRepo.Genrate_Html_For_Product_Categories_Images(_pdRepo.Get_Product_Categories_By_Language(language_Id), parent_Category_Id, language_Id);
+        }
     }
 }

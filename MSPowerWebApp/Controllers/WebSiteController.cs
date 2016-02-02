@@ -882,6 +882,24 @@ namespace MSPowerWebApp.Controllers
             return Json(html, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Get_Genrated_Html_Product_Categories_Images(int language_Id, int parent_Category_Id)
+        {
+            string html = "";
+
+            ProductDetailsManager _pMan = new ProductDetailsManager();
+
+            try
+            {
+                html = _pMan.Genrate_Html_For_Product_Categories_Images(language_Id, parent_Category_Id);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("WebApp Controller - Get_Genrated_Html_Product_Categories_Images" + ex.ToString());
+            }
+
+            return Json(html, JsonRequestBehavior.AllowGet);
+        }
+
         //public ActionResult Get_Product_By_Product_Category_Id(int language_Id, int product_Category_Id)
         //{
         //    ProductDetailsManager _pMan = new ProductDetailsManager();
