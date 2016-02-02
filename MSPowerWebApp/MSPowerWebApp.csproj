@@ -287,15 +287,10 @@
     <Content Include="ContentOnline\js\jquery-1.11.1.min.js" />
     <Content Include="ContentOnline\js\jquery.chocolat.js" />
     <Content Include="ContentOnline\js\wow.min.js" />
-    <Content Include="ContentOnline\Slider Images\Power industry.jpg" />
     <Content Include="ContentOnline\Slider Images\powerindustry1496x581.jpg" />
-    <Content Include="ContentOnline\Slider Images\Rail industry.jpg" />
     <Content Include="ContentOnline\Slider Images\railindustry1496x581.jpg" />
-    <Content Include="ContentOnline\Slider Images\Steel industry.jpg" />
     <Content Include="ContentOnline\Slider Images\steelindustry1496x581.jpg" />
-    <Content Include="ContentOnline\Slider Images\welding industry.jpg" />
     <Content Include="ContentOnline\Slider Images\weldingindustry1496x581.jpg" />
-    <Content Include="ContentOnline\Slider Images\wind industry.jpg" />
     <Content Include="ContentOnline\Slider Images\windindustry.jpg" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap.css" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap.min.css" />
@@ -841,6 +836,7 @@
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\Common Images\pdf.jpg" />
     <Content Include="Content\Common Images\Word-Logo.jpg" />
     <Content Include="Content\css\bluimp\jquery.fileupload-ui-noscript.css" />
     <Content Include="Content\css\bluimp\jquery.fileupload-ui.css" />
