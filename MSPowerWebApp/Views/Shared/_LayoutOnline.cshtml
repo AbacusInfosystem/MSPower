@@ -71,7 +71,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     @if (Context.Request.Url.ToString() == "http://localhost:61034/en" || Context.Request.Url.ToString() == "http://localhost:61034/ch" ||
 
-Context.Request.Url.ToString() == "http://localhost:61034/")
+    Context.Request.Url.ToString() == "http://localhost:61034/")
+    
     {
 
         @:<div class="box-body">
@@ -118,7 +119,6 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
                 </div>
             </div>
 
-
             </div>
             <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control">
                 <span class="fa fa-angle-left"></span>
@@ -127,11 +127,16 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
                 <span class="fa fa-angle-right"></span>
             </a>
         </div>
+    }
+    
+        else
+
+        {
+        
+            @:<div class="content"></div> 
         }
-    else
-    {
-        @:<div class="header_about">
-        }
+
+
     <div class="container">
         <div class="lang-toggles">
             @if (Session["Language"].ToString() == "en")
@@ -267,6 +272,7 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
                     </div>
 
                     <input type="hidden" id="hdfSearchProductCategoryId" value="0">
+
                 </form>
             </div>
         </div>
@@ -277,9 +283,7 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
 @RenderBody()
 
-
 <input type="hidden" id="hdfsessionLanguage" value="@Session["Language"].ToString()">
-
 
 <div class="footer wow fadeInRight" data-wow-delay="0.4s">
     <div class="container">
@@ -337,20 +341,29 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
 
 <script type="text/javascript">
+
     $(function () {
+
         var $searchlink = $('#searchtoggl i');
+
         var $searchbar = $('#searchbar');
 
         $('#credit ul li a').on('click', function (e) {
+
             e.preventDefault();
 
             if ($(this).attr('id') == 'searchtoggl') {
+
                 if (!$searchbar.is(":visible")) {
+
                     // if invisible we switch the icon to appear collapsable
                     $searchlink.removeClass('fa-search').addClass('fa-search-minus');
+
                 } else {
+
                     // if visible we switch the icon to appear as a toggle
                     $searchlink.removeClass('fa-search-minus').addClass('fa-search');
+
                 }
 
                 $searchbar.slideToggle(300, function () {
@@ -368,7 +381,7 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
             $("#searchform").attr("action", "/" + $("#hdfsessionLanguage").val() + "/product-listing?product_Category_Id=" +
 
-$("#hdfSearchProductCategoryId").val());
+            $("#hdfSearchProductCategoryId").val());
 
             $("#searchform").attr("method", "POST");
 
@@ -392,6 +405,7 @@ $("#hdfSearchProductCategoryId").val());
     });
 
     function Get_Product_Category_By_Parent(parent_Id) {
+
         $.ajax({
 
             url: "/ProductDetails/Get_Product_Categories_By_Language_Parent",
@@ -401,8 +415,11 @@ $("#hdfSearchProductCategoryId").val());
             method: "GET",
 
             success: function (data) {
+
                 if (data != null) {
+
                     if (data.length > 0) {
+
                         var html = Callback_Parent_Category(data);
 
                         $("#dvProductCategory").append(html);
@@ -413,9 +430,8 @@ $("#hdfSearchProductCategoryId").val());
     }
 
     function Callback_Parent_Category(data) {
+
         var html = "";
-
-
 
         html += "<div class='col-md-2 row-product-cat'>";
 
@@ -444,8 +460,6 @@ $("#hdfSearchProductCategoryId").val());
 
 
         return html;
-
-
-
     }
+
 </script>
