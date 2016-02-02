@@ -1,0 +1,445 @@
+﻿@model MSPowerInfo.ProductCategoryColumnMappingInfo
+
+<input type="hidden" class="product-column-ref-id" value="@Model.Product_Column_Ref_Id">
+<input type="hidden" class="product-category-column-mapping-id" value="@Model.Product_Category_Column_Mapping_Id">
+<input type="hidden" class="product-volts" value="@Model.Volts">
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="danger">
+            <th>
+                <input type="button" value="Reset" class="reset-col btn btn-default">
+            </th>
+            <th colspan=13 style="text-align:center;"> @Model.Volts &nbsp; Volts</th></tr>
+            <tr class="info">
+                @foreach (var itm in Model.Product_Details_Header)
+                {
+                    <th>@Html.Raw(itm.Product_Column_Name)</th>
+                }
+                <th>Download PDF</th>
+                @*<th>Type</th>
+                    <th>VDRM,VRRM [V] VDSM=VDRM VRSM=VRRM+100V</th>
+                    <th>IDRM, IRRM [mA] Tjmax</th>
+                    <th>@Html.Raw("ITAVM / TC [A / °C] @180° Sine") </th>
+                    <th>@Html.Raw("ITSM [A] ,@ 10ms Tjmax")</th>
+                    <th>@Html.Raw("ʃi2t [A2S] ,@ 10ms Tjmax")</th>
+                    <th>VT / IT [ V / A ] Tjmax</th>
+                    <th>@Html.Raw("V(TO) [V] @Tjmax")</th>
+                    <th>@Html.Raw("rT [mΩ] @Tjmax")</th>
+                    <th>Igt [mA]</th>
+                    <th>@Html.Raw("RthJC [°C/W] @180° Sine")</th>
+                    <th>@Html.Raw("Tjmax [ °C]")</th>
+                    <th>Datasheet / Drawing</th>*@
+            </tr>
+
+            <tr class="filter">
+                @{
+                    if (Model.Product_Details_Header.Count >= 1)
+                    {
+                        <td>
+                            <select id="drpCol1" name="Col1" multiple class="col-1 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col1).Distinct())
+                                {
+                                    if (Model.Col_Filter.Col1.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 2)
+                    {
+                        <td>
+                            <select id="drpCol2" name="Col2" multiple class="col-2 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col2).Distinct())
+                                {
+                                    if (Model.Col_Filter.Col2.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 3)
+                    {
+                        <td>
+                            <select id="drpCol3" name="Col3" multiple class="col-3 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col3).Distinct())
+                                {
+                                    if (Model.Col_Filter.Col3.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 4)
+                    {
+                        <td>
+                            <select id="drpCol4" name="Col4" multiple class="col-4 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col4).Distinct())
+                                {
+                                    if (Model.Col_Filter.Col4.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 5)
+                    {
+                        <td>
+                            <select id="drpCol5" name="Col5" multiple class="col-5 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col5).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col5.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 6)
+                    {
+                        <td>
+                            <select id="drpCol6" name="Col6" multiple class="col-6 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col6).Distinct())
+                                {
+                                    if (Model.Col_Filter.Col6.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 7)
+                    {
+                        <td>
+                            <select id="drpCol7" name="Col7" multiple class="col-7 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col7).Distinct())
+                                {
+                                    if (Model.Col_Filter.Col7.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 8)
+                    {
+                        <td>
+                            <select id="drpCol8" name="Col8" multiple class="col-8 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col8).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col8.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 9)
+                    {
+                        <td>
+                            <select id="drpCol9" name="Col9" multiple class="col-9 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col9).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col9.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 10)
+                    {
+                        <td>
+                            <select id="drpCol10" name="Col10" multiple class="col-10 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col10).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col10.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 11)
+                    {
+                        <td>
+                            <select id="drpCol11" name="Col11" multiple class="col-11 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col11).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col11.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 12)
+                    {
+                        <td>
+                            <select id="drpCol12" name="Col12" multiple class="col-12 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col12).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col12.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 13)
+                    {
+                        <td>
+                            <select id="drpCol13" name="Col13" multiple class="col-13 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col13).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col13.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 14)
+                    {
+                        <td>
+                            <select id="drpCol14" name="Col14" multiple class="col-14 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col14).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col14.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 15)
+                    {
+                        <td>
+                            <select id="drpCol15" name="Col15" multiple class="col-15 filter-col">
+                                @foreach (var it in Model.Product_Details.Select(a => a.Col15).Distinct())
+                                {
+                                     if (Model.Col_Filter.Col15.Contains(it))
+                                    { 
+                                        <option value="@it" selected="selected">@it</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@it" >@it</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    }
+                }
+            </tr>
+
+        </thead>
+        <tbody>
+            @{
+                int j = 1;
+
+                foreach (var itm in Model.Product_Details)
+                {
+                    if (j % 2 == 0)
+                    {
+                        @:<tr class="danger">
+                                }
+                    else
+                    {
+                        @:<tr>
+                                }
+
+                    j++;
+                    if (Model.Product_Details_Header.Count >= 1)
+                    {
+                        <td>@itm.Col1</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 2)
+                    {
+                        <td>@itm.Col2</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 3)
+                    {
+                        <td>@itm.Col3</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 4)
+                    {
+                        <td>@itm.Col4</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 5)
+                    {
+                        <td>@itm.Col5</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 6)
+                    {
+                        <td>@itm.Col6</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 7)
+                    {
+                        <td>@itm.Col7</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 8)
+                    {
+                        <td>@itm.Col8</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 9)
+                    {
+                        <td>@itm.Col9</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 10)
+                    {
+                        <td>@itm.Col10</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 11)
+                    {
+                        <td>@itm.Col11</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 12)
+                    {
+                        <td>@itm.Col12</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 13)
+                    {
+                        <td>@itm.Col13</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 14)
+                    {
+                        <td>@itm.Col14</td>
+                    }
+
+                    if (Model.Product_Details_Header.Count >= 15)
+                    {
+                        <td>@itm.Col15</td>
+                    }
+
+                    if (itm.Is_PDF_Exists == true)
+                    {
+                        <td>
+                            <a href="#" class="download-pdf" name="@itm.Product_Detail_Id">Download</a>
+
+                            @*<img  src="/Content/Common Images/pdf.jpg" alt="Product Detail" class="download-pdf" style="width: 30%; height: auto" />*@
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+
+
+                    if (j % 2 == 0)
+                    {
+                        @:</tr>
+                            }
+                    else
+                    {
+                        @:</tr>
+                                }
+
+                }
+            }
+        </tbody>
+    </table>
+</div>

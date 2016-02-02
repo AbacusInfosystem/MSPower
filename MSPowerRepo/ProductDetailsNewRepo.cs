@@ -722,5 +722,85 @@ namespace MSPowerRepo
 
             return html;
         }
+
+        public List<ProductDetailInfo> Get_Product_Details_By_Col(ref PaginationInfo pager, int product_category_column_mapping_Id, int product_column_ref_Id, Product_Details_Col_Filter col_Filter)
+        {
+            List<ProductDetailInfo> productDetails = new List<ProductDetailInfo>();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            // Product Detail Headers
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Product_Column_Ref_Id", product_column_ref_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_Headers_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            int headerCount = 0;
+
+            if (dt != null)
+            {
+                headerCount = dt.Rows.Count;
+            }
+
+            // Product Detail Values
+
+            param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Product_Category_Column_Mapping_Id", product_category_column_mapping_Id));
+
+            param.Add(new SqlParameter("@Col1", string.IsNullOrEmpty(col_Filter.Col1) || col_Filter.Col1 == "null" ? ""  : col_Filter.Col1));
+
+            string abc = string.IsNullOrEmpty(col_Filter.Col2) || col_Filter.Col2 =="null" ? "" : col_Filter.Col2;
+
+            param.Add(new SqlParameter("@Col2", string.IsNullOrEmpty(col_Filter.Col2)|| col_Filter.Col2 =="null" ? "" : col_Filter.Col2));
+
+            param.Add(new SqlParameter("@Col3", string.IsNullOrEmpty(col_Filter.Col3) || col_Filter.Col3 == "null" ? "" : col_Filter.Col3));
+
+            param.Add(new SqlParameter("@Col4", string.IsNullOrEmpty(col_Filter.Col4) || col_Filter.Col4 == "null" ? "" : col_Filter.Col4));
+
+            param.Add(new SqlParameter("@Col5", string.IsNullOrEmpty(col_Filter.Col5) || col_Filter.Col5 == "null" ? "" : col_Filter.Col5));
+
+            param.Add(new SqlParameter("@Col6", string.IsNullOrEmpty(col_Filter.Col6) || col_Filter.Col6 == "null" ? "" : col_Filter.Col6));
+
+            param.Add(new SqlParameter("@Col7", string.IsNullOrEmpty(col_Filter.Col7) || col_Filter.Col7 == "null" ? "" : col_Filter.Col7));
+
+            param.Add(new SqlParameter("@Col8", string.IsNullOrEmpty(col_Filter.Col8) || col_Filter.Col8 == "null" ? "" : col_Filter.Col8));
+
+            param.Add(new SqlParameter("@Col9", string.IsNullOrEmpty(col_Filter.Col9) || col_Filter.Col9 == "null" ? "" : col_Filter.Col9));
+
+            param.Add(new SqlParameter("@Col10", string.IsNullOrEmpty(col_Filter.Col10) || col_Filter.Col10 == "null" ? "" : col_Filter.Col10));
+
+            param.Add(new SqlParameter("@Col11", string.IsNullOrEmpty(col_Filter.Col11) || col_Filter.Col11 == "null" ? "" : col_Filter.Col11));
+
+            param.Add(new SqlParameter("@Col12", string.IsNullOrEmpty(col_Filter.Col12) || col_Filter.Col12 == "null" ? "" : col_Filter.Col12));
+
+            param.Add(new SqlParameter("@Col13", string.IsNullOrEmpty(col_Filter.Col13) || col_Filter.Col13 == "null" ? "" : col_Filter.Col13));
+
+            param.Add(new SqlParameter("@Col14", string.IsNullOrEmpty(col_Filter.Col14) || col_Filter.Col14 == "null" ? "" : col_Filter.Col14));
+
+            param.Add(new SqlParameter("@Col15", string.IsNullOrEmpty(col_Filter.Col15) || col_Filter.Col15 == "null" ? "" : col_Filter.Col15));
+
+            dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_By_Col.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in Helper.GetRows(dt, ref pager))
+                {
+                    productDetails.Add(Get_Product_Details_Values(dr, headerCount));
+                }
+            }
+
+            return productDetails;
+        }
     }
 }

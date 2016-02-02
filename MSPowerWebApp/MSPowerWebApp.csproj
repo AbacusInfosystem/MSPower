@@ -1172,6 +1172,7 @@
     <Content Include="Views\WebSite\_Events_Images.cshtml" />
     <Content Include="Views\ProductDetails\Index.cshtml" />
     <Content Include="Views\ProductDetails\Search.cshtml" />
+    <Content Include="Views\WebSite\_Product_Volts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
