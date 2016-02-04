@@ -23,7 +23,7 @@ $(function () {
 
 function Get_Product_Categories(parent_Category_Id)
 {
-    $.ajax({
+        $.ajax({
 
         url: "/WebSite/Get_Genrated_Html_Product_Categories",
 
@@ -41,7 +41,8 @@ function Get_Product_Categories(parent_Category_Id)
 }
 
 function Get_Product_Categories_Images(parent_Category_Id) {
-    $.ajax({
+
+        $.ajax({
 
         url: "/WebSite/Get_Genrated_Html_Product_Categories_Images",
 
@@ -49,7 +50,8 @@ function Get_Product_Categories_Images(parent_Category_Id) {
 
         success: function (data) {
 
-            if (data != null) {
+            if (data != null)
+            {
                 $("#dvProduct_Listing_Images").append(data);
             }
         }

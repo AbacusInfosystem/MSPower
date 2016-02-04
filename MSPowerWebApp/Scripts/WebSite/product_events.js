@@ -72,7 +72,7 @@ $(function () {
         });
        
     });
-});
+    });
 
 function Genrate_View_Model(obj)
 {
@@ -91,7 +91,7 @@ function Genrate_View_Model(obj)
     $(obj).parents(".div-volts").find(".filter-col").each(function () {
 
         view_Model += "\"" + $(this).prop("name") + "\":\"" + $(this).val() + "\",";
-    });
+});
 
     view_Model = view_Model.substr(0, view_Model.length - 1);
 

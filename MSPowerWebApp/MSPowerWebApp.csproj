@@ -225,6 +225,7 @@
     <Compile Include="Models\NewsLetterViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\ServiceCategoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -846,6 +847,7 @@
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\print.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Images\Product Categories\Discrete thyristor.jpg" />
     <Content Include="Content\Images\Product Categories\2.jpg" />
     <Content Include="Content\Images\Product Categories\Discrete thyristor.jpg" />
     <Content Include="Content\Images\Product Categories\Discrete_diode[1].jpg" />

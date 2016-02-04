@@ -2,13 +2,18 @@
 $(function () {
 
     $("#drpProduct_Search").change(function () {
+
         Get_Product_Volts($(this).val());
+
     });
 
     if ($("#drpProduct_Search").val() != "") {
+
         Get_Product_Volts($("#drpProduct_Search").val())
+
     }
     else {
+
         $("#drpProduct_Volts").hide();
 
         $("#btnSearchProduct").hide();
@@ -20,6 +25,10 @@ $(function () {
 
         var column_mapping = $("#drpProduct_Volts :selected").attr("data-column-mapping-id");
 
+        //var usr1 = $("#usr1").val();
+
+        //var usr2 = $("#usr2").val();
+      
         $("#frmSearchProduct_Details").attr("action", "/" + $("#hdfLanguage").val() + "/product/" + column_ref + "/" + column_mapping);
 
         $("#frmSearchProduct_Details").attr("method", "POST");
@@ -32,17 +41,22 @@ $(function () {
 
 
 function Get_Product_Volts(product_category_id) {
-    $.ajax({
+
+        $.ajax({
 
         url: "/ProductDetail/Get_Product_Volts",
 
         data: { productCategoryId: product_category_id }
 
-    }).done(function (data) {
-        if (data.Volts.length > 0) {
+        }).done(function (data) {
+
+            if (data.Volts.length > 0) {
+
             Bind_Product_Volts(data);
+
         }
-        else
+            else
+
         {
             $("#drpProduct_Volts").hide();
 
@@ -53,6 +67,7 @@ function Get_Product_Volts(product_category_id) {
 }
 
 function Bind_Product_Volts(data) {
+
     var htmlText = "";
 
     //htmlText += "<option value ='0' > Select Volts </option>";
@@ -67,4 +82,5 @@ function Bind_Product_Volts(data) {
     $("#drpProduct_Volts").show();
 
     $("#btnSearchProduct").show();
+
 }
