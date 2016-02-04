@@ -664,6 +664,8 @@ namespace MSPowerRepo
             return product_Category;
         }
 
+       
+
         public string Genrate_Html_For_Product_Categories_Images(List<ProductCategoryInfo> product_Categories, int parent_Category_Id, int language_Id)
         {
             string html = "";

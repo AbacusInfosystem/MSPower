@@ -845,13 +845,17 @@
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\print.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Images\Product Categories\Discrete thyristor.jpg" />
     <Content Include="Content\Images\Product Categories\2.jpg" />
+    <Content Include="Content\Images\Product Categories\Discrete_diode[1].jpg" />
     <Content Include="Content\Images\Product Categories\Fast recovery diodes.png" />
     <Content Include="Content\Images\Product Categories\Fast Switching Thyristor .png" />
+    <Content Include="Content\Images\Product Categories\Phase control thyristor_stud flat base.jpg" />
     <Content Include="Content\Images\Product Categories\Phase controlThyristor  - disc hockey puk.png" />
     <Content Include="Content\Images\Product Categories\power bridges.JPG" />
     <Content Include="Content\Images\Product Categories\Rectifier diode modules.jpg" />
     <Content Include="Content\Images\Product Categories\Rectifier Diodes_Disc hockey puk.png" />
+    <Content Include="Content\Images\Product Categories\Rectifier diodes_Stud flat base.jpg" />
     <Content Include="Content\Images\Product Categories\Thyristor modues non isolated base.JPG" />
     <Content Include="Content\Images\Product Categories\thyristor modules for phase control.png" />
     <Content Include="Content\Images\Product Categories\thyristor-diode modules for phase control .png" />

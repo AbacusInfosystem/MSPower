@@ -70,6 +70,8 @@ namespace MSPowerInfo
 
         Get_Product_Category_By_Id_sp,
 
+        Get_Product_Details_Name_Sp,
+
 
         // Services Store Procedures
 
