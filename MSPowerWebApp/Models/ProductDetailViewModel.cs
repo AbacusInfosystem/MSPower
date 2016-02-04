@@ -33,7 +33,8 @@ namespace MSPowerWebApp.Models
 
             Product_Category = new ProductCategoryInfo();
 
-            Product_Category_Column_Mapping = new ProductCategoryColumnMappingInfo();
+            Volt = new ProductCategoryColumnMappingInfo();
+
         }
 
 
@@ -66,7 +67,7 @@ namespace MSPowerWebApp.Models
 
         public ProductCategoryInfo Product_Category { get; set; }
 
-        public ProductCategoryColumnMappingInfo Product_Category_Column_Mapping { get; set; }
+        public ProductCategoryColumnMappingInfo Volt { get; set; }
 
         public int Language_Id { get; set; }
 
@@ -86,4 +87,6 @@ namespace MSPowerWebApp.Models
         public string Product_Volts { get; set; }
 
     }
+
+    
 }

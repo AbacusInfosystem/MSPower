@@ -73,56 +73,82 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 
+    
+
     @if (Context.Request.Url.ToString() == "http://localhost:61034/en" || Context.Request.Url.ToString() == "http://localhost:61034/ch" ||
 
     Context.Request.Url.ToString() == "http://localhost:61034/")
     
     {
 
-        @:<div class="box-body">
+        @*@:<div class="box-body">*@
+
+        <div class="lang-toggles">
+            <select style="border:0px; outline:0px;"  id="drpMainlang">
+                @if (Session["Language"].ToString() == "en")
+                {
+                    <option value="en" selected>English</option>
+                }
+                else
+                {
+                    <option value="en">English</option>
+                }
+
+                @if (Session["Language"].ToString() == "ch")
+                {
+                    <option value="ch" selected>Chinese</option>
+                }
+                else
+                {
+                    <option value="ch">Chinese</option>
+                }
+            </select>
+    </div>
 
         <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
-        <ol class="carousel-indicators">
+        @*<ol class="carousel-indicators">
             <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
             <li class="" data-slide-to="1" data-target="#carousel-example-generic"></li>
             <li class="" data-slide-to="2" data-target="#carousel-example-generic"></li>
             <li class="" data-slide-to="3" data-target="#carousel-example-generic"></li>
             <li class="" data-slide-to="4" data-target="#carousel-example-generic"></li>
-        </ol>
+        </ol>*@
         <div class="carousel-inner">
-            <div class="item active">
-                <img alt="Power industry.jpg" src="/ContentOnline/Slider%20Images/Power%20industry.jpg" style="width:100%">
+            <div class="active item">
+                <img src="/ContentOnline/Slider%20Images/powerindustry1496x581.jpg" alt="Power Industry" style="width:100%">
                 <div class="carousel-caption">
-                    Power industry
+                    <h3>Power Industry</h3>
                 </div>
             </div>
+           
+
             <div class="item">
-                <img alt="Rail industry.jpg" src="~/ContentOnline/Slider%20Images/Rail%20industry.jpg" style="width:100%" />
+                <img src="/ContentOnline/Slider%20Images/railindustry1496x581.jpg" alt="Rail Industry" style="width:100%">
                 <div class="carousel-caption">
-                    Rail industry
-                </div>
-            </div>
-            <div class="item">
-                <img alt="Steel industry.jpg" src="~/ContentOnline/Slider%20Images/Steel%20industry.jpg" style="width:100%" />
-                <div class="carousel-caption">
-                    Steel industry
+                    <h3>Rail Industry</h3>
                 </div>
             </div>
 
             <div class="item">
-                <img alt="welding industry.jpg" src="~/ContentOnline/Slider%20Images/welding%20industry.jpg" style="width:100%" />
+                <img src="/ContentOnline/Slider%20Images/steelindustry1496x581.jpg" alt="Steel Industry" style="width:100%">
                 <div class="carousel-caption">
-                    welding industry
+                    <h3>Steel Industry</h3>
                 </div>
             </div>
 
             <div class="item">
-                <img alt="wind industry.jpg" src="~/ContentOnline/Slider%20Images/wind%20industry.jpg" style="width:100%" />
+                <img src="/ContentOnline/Slider%20Images/weldingindustry1496x581.jpg" alt="Welding Industry" style="width:100%">
                 <div class="carousel-caption">
-                    wind industry
+                    <h3>Welding Industry</h3>
                 </div>
             </div>
 
+            <div class="item">
+                <img src="/ContentOnline/Slider%20Images/windindustry.jpg" alt="Wind Industry" style="width:100%">
+                <div class="carousel-caption">
+                    <h3>Wind Industry</h3>
+                </div>
+            </div>
             </div>
             <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control">
                 <span class="fa fa-angle-left"></span>
@@ -141,8 +167,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
 
 
-    <div class="container">
-        <div class="lang-toggles">
+    @*<div class="container">*@
+        @*<div class="lang-toggles">
             @if (Session["Language"].ToString() == "en")
             {
                 <a class="lang-toggle lang-en active" href="/en/set-language">
@@ -171,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </a>
             }
 
-        </div>
+        </div>*@
         @if (Context.Request.Url.ToString() == "http://localhost:61034/en" || Context.Request.Url.ToString() == "http://localhost:61034/ch" ||
 
 Context.Request.Url.ToString() == "http://localhost:61034/")
@@ -186,8 +212,8 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
                 </h2>
             </div>*@
         }
-    </div>
-</div>
+    @*</div>*@
+@*</div>*@
 
 <div class="header-home">
     <div class="fixed-header">
@@ -222,7 +248,7 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
                     <button type="submit" id="searchsubmit" class="fa fa-search fa-2x" style="color:white"></button>
 
                     <div class="row">
-
+                            
                             <div class="col-md-1" id="or">
                                 <h3>Search :</h3>
                             </div>
@@ -243,7 +269,9 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
                             <div class="col-md-1" id="or">
                                 <h3>- OR -</h3>
-                            </div>
+                            </div>*@
+
+                        <div class="col-md-4"></div>
                         
 
                         @*<div class="col-md-2">
@@ -419,6 +447,14 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
         Get_Product_Category_By_Parent(0);
 
+        $("#drpMainlang").change(function () {
+
+            $("#searchform").attr("action", "/" + $(this).val() + "/set-language");
+
+            $("#searchform").attr("method", "POST");
+
+            $("#searchform").submit();
+        });
 
     });
 

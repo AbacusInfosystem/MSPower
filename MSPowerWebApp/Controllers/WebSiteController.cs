@@ -109,8 +109,8 @@ namespace MSPowerWebApp.Controllers
                 {
                     item.Product_Details_Header = pdMan.Get_Product_Details_Header(item.Product_Column_Ref_Id);
 
-                    item.Product_Details = pdMan.Get_Product_Details(ref pager, item.Product_Category_Column_Mapping_Id, item.Product_Column_Ref_Id);
-
+                    item.Product_Details = pdMan.Get_Product_Details_By_Col(ref pager, item.Product_Category_Column_Mapping_Id, item.Product_Column_Ref_Id,item.Col_Filter);
+                    
                     foreach (var itm in item.Product_Details)
                     {
                         string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
@@ -926,5 +926,56 @@ namespace MSPowerWebApp.Controllers
         //    return View();
         //}
 
+        public JsonResult Get_Product_Volts(ProductDetailViewModel pdViewModel)
+        {
+            ProductDetailsManager pdMan = new ProductDetailsManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false; 
+
+            try
+            {
+                pdViewModel.Volt.Product_Details_Header = pdMan.Get_Product_Details_Header(pdViewModel.Volt.Product_Column_Ref_Id);
+
+                pdViewModel.Volt.Product_Details = pdMan.Get_Product_Details_By_Col(ref pager, pdViewModel.Volt.Product_Category_Column_Mapping_Id, pdViewModel.Volt.Product_Column_Ref_Id, pdViewModel.Volt.Col_Filter);
+
+                foreach (var itm in pdViewModel.Volt.Product_Details)
+                {
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+
+                    if (System.IO.File.Exists(path))
+                    {
+                        itm.Is_PDF_Exists = true;
+                    }
+                    else
+                    {
+                        itm.Is_PDF_Exists = false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("WebApp Controller - Get_Product_Volts" + ex.ToString());
+            }
+
+            //return PartialView("_Product_Volts",pdViewModel.Volt);
+
+            return Json(RenderPartialViewToString("_Product_Volts", pdViewModel.Volt));
+        }
+
+        public string RenderPartialViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+
+            using (StringWriter sw = new StringWriter())
+            {
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+
+                return sw.GetStringBuilder().ToString();
+            }
+        }
     }
 }

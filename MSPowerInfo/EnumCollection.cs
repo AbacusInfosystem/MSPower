@@ -178,6 +178,8 @@ namespace MSPowerInfo
 
         Get_Product_Categories_By_Lanugae_Id_sp,
 
+        Get_Product_Details_By_Col,
+
 
     }
     

@@ -77,5 +77,10 @@ namespace MSPowerManager
         {
             return _pdRepo.Genrate_Html_For_Product_Categories_Images(_pdRepo.Get_Product_Categories_By_Language(language_Id), parent_Category_Id, language_Id);
         }
+
+        public List<ProductDetailInfo> Get_Product_Details_By_Col(ref PaginationInfo pager, int product_category_column_mapping_Id, int product_column_ref_Id, Product_Details_Col_Filter col_Filter)
+        {
+            return _pdRepo.Get_Product_Details_By_Col(ref pager, product_category_column_mapping_Id, product_column_ref_Id, col_Filter);
+        }
     }
 }
