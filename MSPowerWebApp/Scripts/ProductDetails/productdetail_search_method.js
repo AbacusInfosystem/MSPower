@@ -441,6 +441,14 @@ function Bind_Product_Details(data) {
 
                 htmlText += "</td>";
             }
+            else {
+                htmlText += "<td>";
+
+                htmlText += "";
+
+                htmlText += "</td>";
+            }
+
 
             
 

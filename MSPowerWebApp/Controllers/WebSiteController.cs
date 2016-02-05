@@ -281,6 +281,7 @@ namespace MSPowerWebApp.Controllers
 
         }
 
+
         public ActionResult Get_NewsLetter_By_Id(int NewsLetter_Id)
         {
 
@@ -414,6 +415,7 @@ namespace MSPowerWebApp.Controllers
             return View(joViewModel);
 
         }
+
 
         public ActionResult Get_Job_Opening_By_Id(int Job_Opening_Id)
         {
@@ -572,6 +574,7 @@ namespace MSPowerWebApp.Controllers
                 }
         }
 
+
         public FileResult Download_Job_Application_Details_DOCX(int job_application_Id)
         {
             string path = "";
@@ -587,6 +590,7 @@ namespace MSPowerWebApp.Controllers
 
             return File(path, "application/docx", "Job Application Details.docx");
         }
+
 
         public PartialViewResult Get_Product_Search(string language)
         {
