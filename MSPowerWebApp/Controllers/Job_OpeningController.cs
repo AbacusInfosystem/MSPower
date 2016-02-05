@@ -76,7 +76,7 @@ namespace MSPowerWebApp.Controllers
 
                 joViewModel.Job_Opening.Job_Opening_Id = joMan.Insert_Job_Opening(joViewModel.Job_Opening);
 
-                joViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                joViewModel.Friendly_Message.Add(MessageStore.Get("JB001"));
             }
             catch (Exception ex)
             {
@@ -89,7 +89,7 @@ namespace MSPowerWebApp.Controllers
 
             //return RedirectToAction("Search");
 
-            return View("Index", joViewModel);
+            return View("Search", joViewModel);
 
         }
 
@@ -117,7 +117,7 @@ namespace MSPowerWebApp.Controllers
 
                 joMan.Update_Job_Opening(joViewModel.Job_Opening);
 
-                joViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                joViewModel.Friendly_Message.Add(MessageStore.Get("JB002"));
             }
             catch (Exception ex)
             {
@@ -130,7 +130,7 @@ namespace MSPowerWebApp.Controllers
 
             //return RedirectToAction("Search");
 
-            return View("Index", joViewModel);
+            return View("Search", joViewModel);
 
         }
 

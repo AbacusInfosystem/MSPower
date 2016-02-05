@@ -1,6 +1,6 @@
 ﻿@model MSPowerWebApp.Models.ProductDetailViewModel
 
-
+<script src="~/Scripts/ProductDetail/productdetail_validation.js"></script>
 <script src="~/Scripts/ProductDetail/productdetail_event.js"></script>
 <script src="~/Scripts/ProductDetail/productdetail_method.js"></script>
 
@@ -12,6 +12,7 @@
 
 <div class="content-wrapper">
 
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
 
     <section class="content-header">
@@ -29,7 +30,7 @@
     </section>
 
     <!-- Main content -->
-    
+
     <section class="content">
 
         <div class="row">
@@ -44,7 +45,7 @@
 
                             <div class="col-md-12">
 
-                                <form id="frmProductDetail">
+                                <form id="frmProductDetail" method="POST" enctype="multipart/form-data">
 
                                     @*<input type="hidden" class="form-control input-sm" name="Product_Details_Header.Role_Id" id="hdnProductColumnRef_Id" value="@Model">*@
 
@@ -56,8 +57,10 @@
 
                                     <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">
 
+                                    
+
                                     @{
-                                        
+
                                         //for (int i = 0; i < Model.Product_Details_Header.Count;i++ )
                                         //{
                                         if (Model.Product_Details_Header.Count >= 1)
@@ -195,16 +198,105 @@
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_15" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col15" name="Product_Detail.Col15">
                                             </div>
                                         }
-                                     
+
                                         
-                                            @*<div class="form-group">
+                                         <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_16">@Model.Product_Detail.Semikron</label>
+
+                                             <input type="text" class="form-control input-sm" id="txtProductDetail_16" placeholder="Enter Semikron Value" value="@Model.Product_Detail.Semikron" name="Product_Detail.Semikron">
+                                            
+                                         </div>
+
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_17">@Model.Product_Detail.Vishay</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_17" placeholder="Enter Vishay Value" value="@Model.Product_Detail.Vishay" name="Product_Detail.Vishay">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_18">@Model.Product_Detail.IR</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_18" placeholder="Enter IR Value" value="@Model.Product_Detail.IR" name="Product_Detail.IR">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_19">@Model.Product_Detail.Hirect</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_19" placeholder="Enter Hirect Value" value="@Model.Product_Detail.Hirect" name="Product_Detail.Hirect">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_20">@Model.Product_Detail.Infenion</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_20" placeholder="Enter Infenion Value" value="@Model.Product_Detail.Infenion" name="Product_Detail.Infenion">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_21">@Model.Product_Detail.Powrex</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_21" placeholder="Enter Powrex Value" value="@Model.Product_Detail.Powrex" name="Product_Detail.Powrex">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_22">@Model.Product_Detail.IXYS_Westcode</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_22" placeholder="Enter IXYS_Westcode Value" value="@Model.Product_Detail.IXYS_Westcode" name="Product_Detail.IXYS_Westcode">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_23">@Model.Product_Detail.Ansaldo</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_23" placeholder="Enter Ansaldo Value" value="@Model.Product_Detail.Ansaldo" name="Product_Detail.Ansaldo">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_24">@Model.Product_Detail.Dynex</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_24" placeholder="Enter Dynex Value" value="@Model.Product_Detail.Dynex" name="Product_Detail.Dynex">
+                                            
+                                         </div>
+
+                                        
+                                        <div class="form-group">
+
+                                                <label style="color: #333" for="txtProductDetail_25">@Model.Product_Detail.Usha</label>
+
+                                            <input type="text" class="form-control input-sm" id="txtProductDetail_25" placeholder="Enter Usha Value" value="@Model.Product_Detail.Usha" name="Product_Detail.Usha">
+                                            
+                                         </div>
+
+                                        
+                                        @*<div class="form-group">
 
                                             <label style="color: #333" for="txtProductDetail_@(i+1)">@Model.Product_Details_Header[i].Product_Column_Name</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_@(i+1)" placeholder="Enter ProductDetail Column" value="@str" name="Product_Detail.Col@(i+1)">
-                                    
+
                                             </div>*@
-                                        //}
+    //}
                                     }
 
                                     <div class="form-group">
@@ -225,6 +317,19 @@
 
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <input type="file" name="Upload_File" id="file" />
+                                    </div>
+
+                                    @if (Model.Product_Detail.Is_PDF_Exists)
+                                    {
+                                        <div class="form-group">
+                                            <input type="button" id="btnDownloadPDF" class="btn btn-sm" value="Download PDF"/>
+                                    </div>
+                                    }
+
+
                                     <div class="btn-group">
 
                                         <button type="button" class="btn btn-success btn-sm" id="btnSave">Save</button>
@@ -233,17 +338,43 @@
 
                                         <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "ProductDetail")" role="button">Cancel</a>
 
-                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+                                        @*<button type="button" class="btn btn-default btn-sm" id="btnPdfUpload">Upload PDF</button>*@
 
                                         <button type="button" class="btn btn-success btn-sm" id="btnAddNew" @*onclick="clearFields()" onclick="clearForm(this.form)"*@>Add New</button>
 
+                                        @*<input type="file" name="file" id="file" />
+                                            <input type="Button" value="Upload PDF" id="btnPdfUpload" />*@
+
                                         @*<a id="btnAddnew" class="btn btn-default btn-sm" href="@Url.Action("Index", "ProductDetail")" role="button">Add New</a>*@
 
-                                        <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">                     
+                                        <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">
+
+                                    </div>
+
+                                    <div id="form-group">
+
+                                        <input type="hidden" name="ProductDetail.ProductDetail_Id" id="hdnProductDetail_Id" value="@Model.Product_Detail.Product_Category_Column_Mapping_Id">
 
                                     </div>
 
                                 </form>
+
+                                @*<div class="row">
+                                        <div class="col-md-4">
+                                            <form id="frmPDFUpload" method="POST" enctype="multipart/form-data">
+                                                <input type="file" name="file" id="file" />
+                                                <input type="Button" value="Upload PDF" id="btnPdfUpload" />
+                                            </form>
+                                        </div>
+                                    </div>*@
+
+
+
+                                @*<form id="frmPDFUpload" method="POST" enctype="multipart/form-data">
+                                        <input type="file" name="file" id="file" />
+                                        <input type="Button" value="Upload PDF" id="btnPdfUpload" />
+                                    </form>*@
+
                             </div>
 
                         </div>

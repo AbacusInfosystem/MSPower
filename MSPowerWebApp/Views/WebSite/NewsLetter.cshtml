@@ -1,35 +1,73 @@
-﻿@{
+﻿@model MSPowerWebApp.Models.NewsLetterViewModel
+
+@{
     ViewBag.Title = "Home";
 }
 
-@* News Letter @Session["Language"].ToString();*@
+<div class="lang-toggles">
+    <select style="border:0px; outline:0px;" id="drpMainlang">
+        @if (Session["Language"].ToString() == "en")
+        {
+            <option value="en" selected>English</option>
+        }
+        else
+        {
+            <option value="en">English</option>
+        }
 
+        @if (Session["Language"].ToString() == "ch")
+        {
+            <option value="ch" selected>Chinese</option>
+        }
+        else
+        {
+            <option value="ch">Chinese</option>
+        }
+    </select>
+</div>
 
-<div class="content">
-		<div class="blog-section">
-			<div class="container">
-					<div class="col-md-12">
-							<h2 class="with-line">News Letter</h2>
-						<article class="clearfix attach">
-							<header class="grid_8 alpha">
-								<div class="head_element"><span class="el_1">07</span><span class="el_2">May</span></div>
-								<div class="sub">
-								<h3>Lorem ipsum dolor sit amet</h3>
-								<p class="sub_head">Posted by <a href="#">Admin</a> with <a href="#">3 comment(s)</a></p>
-								</div>
-								<div class="clearfix"></div>
-							</header>
-							
-							<div class="grid_b4" style="width:100%;">
-								
-								<p>Lorem Ipsum is simply dummy text of the printing Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna.  Donec gravida, felis eu venenatis ultricies, Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Ut ut molestie turpis. Curabitur tortor, vel mollis nunc vestibulum gravida. </p>
-							</div>
-							<div class="clearfix"></div>
-						</article>
-						
-					</div>
-					
+<div class="grid_4">
+    <div class="container">
+        <h1 class="blog_head">News Letters</h1>
 
-			</div>
-		</div>
-		</div>
+           <div class="blog_grid span2">
+                
+                <div class="col-md-12">
+                    <h3><a href="#">@Model.NewsLetter.NewsLetter_Title</a></h3>
+                    <div class="links">
+                        <ul>
+                            <li><i class="fa blog-icon fa-calendar"> </i><span>@Model.NewsLetter.Updated_On.ToShortDateString()</span></li>
+                        </ul>
+                    </div>
+                    <p>
+                        @if (Model.NewsLetter.NewsLetter_Description.Length > 1000)
+                        {
+                           @Model.NewsLetter.NewsLetter_Description.Substring(0, 1000).ToString()
+                        }
+                        else
+                        {
+                            @Html.Raw(Model.NewsLetter.NewsLetter_Description)
+                        }
+                    </p>
+                    
+
+                </div>
+
+               
+                    <div class="clearfix"> </div>
+                    
+                </div>
+      
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liNewsLetter").addClass("active");
+
+    });
+</script>

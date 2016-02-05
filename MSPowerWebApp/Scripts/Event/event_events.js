@@ -1,8 +1,15 @@
 ﻿$(function () {
 
-    $("#btnSave").click(function () {
+    if ($("#hdnEvent_Id").val() != "0")
+    {
+        $("#dvImages").show()
+    }
+    else
+    {
+        $("#dvImages").hide();
+    }
 
-        alert("HIII");
+    $("#btnSave").click(function () {
 
         if ($("#frmEvent").valid()) {
 
@@ -31,9 +38,22 @@
     GetImages();
 
 
+    $('#chkIsActive').on('ifChanged', function (event) {
+
+        if ($(this).prop('checked')) {
+
+            $(this).parent().addClass("checked");
+
+            $("#hdnEvent_Status").val(true);
+        }
+        else {
+            $("#hdnEvent_Status").val(false);
+        }
+    });
+
     $("#btnSubmit").click(function () {
 
-        alert("Heyyy")
+  
 
         $("#frmEventUpload").attr("action", "/Event/Upload");
 
@@ -52,7 +72,7 @@
 
             url: '/Event/DeleteImage',
 
-            data: { imageName: "" + $(this).parents('.col-md-2').find('img').attr("data-filename") }
+            data: { imageName: "" + $(this).parents('.col-md-2').find('img').attr("data-filename"), event_Id: $('[name="Event.Event_Id"]').val() }
 
         }).success(function () {
 

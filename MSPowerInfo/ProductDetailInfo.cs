@@ -51,6 +51,26 @@ namespace MSPowerInfo
 
         public string Col15 { get; set; }
 
+        public string Semikron { get; set; }
+
+        public string Vishay { get; set; }
+
+        public string IR { get; set; }
+
+        public string Hirect { get; set; }
+
+        public string Infenion { get; set; }
+
+        public string Powrex { get; set; }
+
+        public string IXYS_Westcode { get; set; }
+
+        public string Ansaldo { get; set; }
+
+        public string Dynex { get; set; }
+
+        public string Usha { get; set; }
+
         public bool Is_Active { get; set; }
 
         public DateTime Created_On { get; set; }
@@ -60,6 +80,8 @@ namespace MSPowerInfo
         public DateTime Updated_On { get; set; }
 
         public int Updated_By { get; set; }
+
+        public bool Is_PDF_Exists { get; set; }
     
     }
 }

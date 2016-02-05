@@ -10,6 +10,9 @@ using MSPowerInfo;
 using MSPowerWebApp.Common;
 using MSPowerManager;
 using ExceptionManagement.Logger;
+using CaptchaMvc.HtmlHelpers;
+using System.Configuration;
+using System.IO;
 
 namespace MSPowerWebApp.Controllers
 {
@@ -27,6 +30,27 @@ namespace MSPowerWebApp.Controllers
         //    return View(jaViewModel);
         //}
 
+
+        //[HttpPost]
+
+        //public ActionResult Index(string empty)
+        //{
+        //    // Code for validating the CAPTCHA 
+ 
+        //    if (this.IsCaptchaValid("Captcha is not valid"))
+        //    {
+
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    ViewBag.ErrMessage = "Error: captcha is not valid.";
+
+        //    Job_ApplicationViewModel jaViewModel = new Job_ApplicationViewModel();
+
+        //    return View(jaViewModel);
+        //}  
+
+
         // THIS IS THE FIRST ACTION METHOD WHICH GETS HIT WHEN PRODUCT LISTING PAGE IS CALLED.
 
         public ActionResult Search(Job_ApplicationViewModel jaViewModel)
@@ -40,7 +64,6 @@ namespace MSPowerWebApp.Controllers
 
             return View("Search", jaViewModel);
         }
-
 
         // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS CREATING A NEW RECORD, THEN THIS METHOD WOULD GET HIT.
 
@@ -154,7 +177,7 @@ namespace MSPowerWebApp.Controllers
 
         }
 
-        // WHEN USER CLICKS ON EDIT BUTTON FROM PRODUCT LISTING PAGE, THIS METHOD WOULD GET HIT.
+        // WHEN USER CLICKS ON EDIT BUTTON FROM PRODUCT LISTING PAGE, THIS METHOD WOULD GET HIT..
 
         public ActionResult Get_Job_Application_By_Id(Job_ApplicationViewModel jaViewModel)
         {
@@ -175,6 +198,20 @@ namespace MSPowerWebApp.Controllers
                 Job_ApplicationManager jaMan = new Job_ApplicationManager();
 
                 jaViewModel.Job_Application = jaMan.Get_Job_Application_By_Id(jaViewModel.Filter.Job_Application_Id, language_Id);
+
+                string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), jaViewModel.Job_Application.Job_Application_Id + ".docx");
+
+                if (jaViewModel.Job_Application.Job_Application_Id != 0)
+                {
+                    if (System.IO.File.Exists(path))
+                    {
+                        jaViewModel.Job_Application.Is_DOCX_Exists = true;
+                    }
+                    else
+                    {
+                        jaViewModel.Job_Application.Is_DOCX_Exists = false;
+                    }
+                }
             }
 
             catch (Exception ex)
@@ -199,7 +236,7 @@ namespace MSPowerWebApp.Controllers
             {
                 int language_Id = 0;
 
-                if(Session["Language"].ToString() == Language.en.ToString())
+                if (Session["Language"].ToString() == Language.en.ToString())
                 {
                     language_Id = Convert.ToInt32(Language.en);
                 }
@@ -215,21 +252,74 @@ namespace MSPowerWebApp.Controllers
                 jaViewModel.Pager = pager;
 
                 jaViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", jaViewModel.Pager.TotalRecords, jaViewModel.Pager.CurrentPage + 1, jaViewModel.Pager.PageSize, 10, true);
+
+                for (int i = 0; i < jaViewModel.Job_Applications.Count; i++)
+                {
+                    // check for docx
+
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), jaViewModel.Job_Applications[i].Job_Application_Id + ".docx");
+
+                    if (CheckPathExists(path))
+                    {
+                        jaViewModel.Job_Applications[i].Is_DOCX_Exists = true;
+                    }
+
+                    // check for doc
+
+                    if (jaViewModel.Job_Applications[i].Is_DOCX_Exists != true)
+                    {
+                        path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), jaViewModel.Job_Applications[i].Job_Application_Id + ".doc");
+
+                        jaViewModel.Job_Applications[i].Is_DOCX_Exists = CheckPathExists(path);
+                    }
+                }
+
+                
+                    }
+                    catch (Exception ex)
+                    {
+                        jaViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                        Logger.Error("Test Controller - Get_Tests" + ex.ToString());
+                    }
+
+                    finally
+                    {
+                        pager = null;
+                    }
+
+                    return Json(jaViewModel, JsonRequestBehavior.AllowGet);
+
+                }
+
+        // Check if the Docx file exist
+
+        private bool CheckPathExists(string path)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public FileResult Download_Job_Application_Details_DOCX(int job_application_Id)
+        {
+            string path = "";
+
+            try
+            {
+                path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ResumeUploadPath"]).ToString(), job_application_Id + ".docx");
             }
             catch (Exception ex)
             {
-                jaViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
-
-                Logger.Error("Test Controller - Get_Tests" + ex.ToString());
+                Logger.Error("Job Application Details Controller - Download_Job_Application_Details_DOCX" + ex.ToString());
             }
 
-            finally
-            {
-                pager = null;
-            }
-
-            return Json(jaViewModel, JsonRequestBehavior.AllowGet);
-
+            return File(path, "application/docx", "Job Application Details.docx");
         }
 
 

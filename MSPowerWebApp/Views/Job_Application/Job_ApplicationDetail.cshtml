@@ -1,9 +1,15 @@
 ﻿@model MSPowerWebApp.Models.Job_ApplicationViewModel
 
 
-<script src="~/Scripts/Job_Application/job_application_search_events.js"></script>
+@*<script src="~/Scripts/Job_Application/job_application_search_events.js"></script>
 
-<script src="~/Scripts/Job_Application/job_application_search_method.js"></script>
+<script src="~/Scripts/Job_Application/job_application_search_method.js"></script>*@
+
+@*<script src="~/Scripts/Job_Application/job_application_events.js"></script>
+
+<script src="~/Scripts/Job_Application/job_application_validation.js"></script>*@
+
+<script src="~/Scripts/Job_Application/job_application_details_events.js"></script>
 
 @{
     ViewBag.Title = "Job_Application";
@@ -43,96 +49,198 @@
 
                             <form id="frmJob_Application">
 
-                                <div class="form-group">
+                                <table border="1" style="width:100%">
 
-                                    <label style="color: #333" for="txtFirst_Name">First Name : @Model.Job_Application.First_Name</label>
+                                    <tr>
 
-                                </div>
+                                        <th style="padding: 5px; text-align: left; width:15%">First Name :  </th>
 
-                                <div></div>
+                                        <td style="padding: 10px; text-align: left; width:85%">
 
-                                <div class="form-group">
+                                            @*<div class="form-group">*@
 
-                                    <label style="color: #333" for="txtLast_Name">Last Name : @Model.Job_Application.Last_Name</label>
+                                            <label style="color: #333" for="txtFirst_Name">@Model.Job_Application.First_Name</label>
 
-                                </div>
+                                            @*</div>*@
 
-                                <div></div>
+                                        </td>
 
-                              
-                                <div class="form-group">
-
-                                    <label style="color: #333" for="txtEmail">Email : @Model.Job_Application.Email</label>
-
-                                </div>
-
-                                <div></div>
-
-                                <div class="form-group">
-
-                                    <label style="color: #333" for="txtReference">Reference : @Model.Job_Application.Reference</label>
-
-                                </div>
-
-                                <div></div>
-
-                                <div class="form-group">
-
-                                    <label style="color: #333" for="txtAdditional_Information">Additional Information : @Model.Job_Application.Additional_Information</label>
-
-                                </div>
-
-                                <div></div>
-
-                                <div class="form-group">
-                                    <label style="color: #333" for="txtCreated_On">Created On : @Model.Job_Application.Created_On</label>
-
-                                </div>
+                                    </tr>
 
 
-                                @*<div class="form-group">
-                                        <label style="color: #333" for="fileUpload_Job_Application_Image">Upload Job_Application Images</label>
+                                    <tr>
 
-                                        <input type="file" class="form-control input-sm" id="fileUpload_Job_Application_Image" placeholder="Upload Job_Application Image" name="">
+                                        <th style="padding: 5px; text-align: left; width:15%">Last Name : </th>
 
-                                        <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
+                                        <td style="padding: 10px; text-align: left; width:85%">
+
+                                            @*<div class="form-group">*@
+
+                                            <label style="color: #333" for="txtLast_Name"> @Model.Job_Application.Last_Name</label>
+
+                                            @*</div>*@
+
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th style="padding: 5px; text-align: left; width:15%">Email : </th>
+
+                                        <td style="padding: 10px; text-align: left; width:85%">
+
+                                            @*<div class="form-group">*@
+
+                                            <label style="color: #333" for="txtEmail"> @Model.Job_Application.Email</label>
+
+                                            @*</div>*@
+
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th style="padding: 5px; text-align: left; width:15%">Reference : </th>
+
+                                        <td style="padding: 10px; text-align: left; width:85%">
+
+                                            @*<div class="form-group">*@
+
+                                            <label style="color: #333" for="txtReference"> @Model.Job_Application.Reference</label>
+
+                                            @*</div>*@
+
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th style="padding: 5px; text-align: left; width:15%">Additional Information : </th>
+
+                                        <td style="padding: 10px; text-align: left; width:85%">
+
+                                            @*<div class="form-group">*@
+
+                                            <label style="color: #333" for="txtAdditional_Information"> @Model.Job_Application.Additional_Information</label>
+
+
+                                            @*</div>*@
+
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th style="padding: 5px; text-align: left; width:15%">Created On : </th>
+
+                                        <td style="padding: 10px; text-align: left; width:85%">
+
+                                            @*<div class="form-group">*@
+
+                                            <label style="color: #333" for="txtCreated_On"> @Model.Job_Application.Created_On</label>
+
+
+                                            @*</div>*@
+
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th style="padding: 5px; text-align: left; width:15%">Download : </th>
+
+                                        <td style="padding: 10px; text-align: left; width:85%">
+
+                                            @if (Model.Job_Application.Is_DOCX_Exists)
+                                            {
+                                                <div class="form-group">
+
+                                                    <input type="button" id="btnDownloadDOCX" class="btn btn-sm" value="Download DOCX" />
+
+                                                </div>
+                                            }
+
+                                        </td>
+
+                                    </tr>
+
+                                    </table>
+
+
+
+                                    @*<div class="form-group">
+
+                                        <label style="color: #333" for="txtFirst_Name">First Name : @Model.Job_Application.First_Name</label>
+
                                     </div>
+
+                                    <div></div>
 
                                     <div class="form-group">
 
-                                        <label style="color: #333">
+                                        <label style="color: #333" for="txtLast_Name">Last Name : @Model.Job_Application.Last_Name</label>
 
-                                            @if (Model.Job_Application.Is_Active == true)
-                                            {
-                                                <input type="checkbox" id="chkIsActive" checked />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
-                                                }
-                                            else
-                                            {
-                                                <input type="checkbox" id="chkIsActive" />@:&nbsp;&nbsp;&nbsp;&nbsp; Status
-                                                }
+                                    </div>
 
-                                            <input type="hidden" id="hdnJob_Application_Status" name="Job_Application.Is_Active" value="@Model.Job_Application.Is_Active">
-                                        </label>
+                                    <div></div>
 
-                                    </div>*@
 
-                                <div class="btn-group">
+                                    <div class="form-group">
 
-                                    @*<button type="button" class="btn btn-default btn-sm" id="btnSave">Save</button>
+                                        <label style="color: #333" for="txtEmail">Email : @Model.Job_Application.Email</label>
 
-                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>*@
+                                    </div>
 
-                                    @*<a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Job_Application")" role="button">Cancel</a>*@
+                                    <div></div>
 
-                                    @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
+                                    <div class="form-group">
 
-                                    <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
+                                        <label style="color: #333" for="txtReference">Reference : @Model.Job_Application.Reference</label>
 
-                                    @*<input type="hidden" name="Job_Application.Job_Application_Id" id="hdfJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">*@
+                                    </div>
 
-                                </div>
+                                    <div></div>
 
-                            </form>
+                                    <div class="form-group">
+
+                                        <label style="color: #333" for="txtAdditional_Information">Additional Information : @Model.Job_Application.Additional_Information</label>
+
+                                    </div>
+
+                                    <div></div>
+
+                                    <div class="form-group">
+
+                                        <label style="color: #333" for="txtCreated_On">Created On : @Model.Job_Application.Created_On</label>
+
+                                    </div>
+
+                                    @if (Model.Job_Application.Is_DOCX_Exists)
+                                    {
+                                        <div class="form-group">
+
+                                            <input type="button" id="btnDownloadDOCX" class="btn btn-sm" value="Download DOCX" />
+
+                                        </div>
+                                    }*@
+
+
+
+                                    <div class="btn-group">
+
+                                        <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
+
+                                        @*<input type="hidden" name="Job_Application.Job_Application_Id" id="hdfJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">*@
+
+                                    </div>
+
+                        </form>
+
                         </div>
 
                     </div>

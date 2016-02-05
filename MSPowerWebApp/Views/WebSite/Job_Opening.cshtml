@@ -1,19 +1,76 @@
-﻿@{
-    Layout = null;
+﻿@model MSPowerWebApp.Models.Job_OpeningViewModel
+
+@{
+    ViewBag.Title = "Home";
 }
 
-<!DOCTYPE html>
+@* News Letter @Session["Language"].ToString();*@
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    @{Html.RenderPartial("_Sidebar_Online");}
 
-    <div>
-        Job_Opening. @Session["Language"].ToString();
+<div class="lang-toggles">
+    <select style="border:0px; outline:0px;" id="drpMainlang">
+        @if (Session["Language"].ToString() == "en")
+        {
+            <option value="en" selected>English</option>
+        }
+        else
+        {
+            <option value="en">English</option>
+        }
+
+        @if (Session["Language"].ToString() == "ch")
+        {
+            <option value="ch" selected>Chinese</option>
+        }
+        else
+        {
+            <option value="ch">Chinese</option>
+        }
+    </select>
+</div>
+
+<div class="grid_4">
+    <div class="container">
+        <h1 class="blog_head">Job Opening</h1>
+
+        <div class="blog_grid span2">
+
+            <div class="col-md-12">
+                <h3><a href="#">@Model.Job_Opening.Job_Title</a></h3>
+                <div class="links">
+                    <ul>
+                        <li><i class="fa blog-icon fa-calendar"> </i><span>@Model.Job_Opening.Updated_On.ToShortDateString()</span></li>
+                    </ul>
+                </div>
+                <p>
+                    @Html.Raw(Model.Job_Opening.Job_Description)
+                </p>
+
+
+            </div>
+
+
+            <div class="clearfix"> </div>
+
+        </div>
+
+
     </div>
-</body>
-</html>
+</div>
+
+<script>
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liJobOpening").addClass("active");
+
+    });
+</script>
+
+
+
+
+
+
+

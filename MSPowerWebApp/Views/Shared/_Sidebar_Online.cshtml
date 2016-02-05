@@ -1,114 +1,62 @@
-﻿<span class="menu"></span>
-<div class="top-menu">
-    <ul>
-        <li>
-            <a href="@Url.Action("Index", "WebSite", new { language = Session["Language"].ToString() })">Home</a>
-        </li>
-        <li>
-            <a href="@Url.Action("ProductListing", "WebSite", new { language = Session["Language"].ToString() })">Products</a>
-        </li>
-        <li>
-            <a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })">Product Detail</a>
-        </li>
-        <li>
-            <a href="@Url.Action("ServiceListing", "WebSite", new { language = Session["Language"].ToString() })">Applications</a>
-        </li>
-        <li>
-            <a href="@Url.Action("NewsLetterListing", "WebSite", new { language = Session["Language"].ToString() })">News Letters</a>
-        </li>
-        <li>
-            <a href="@Url.Action("NewsLetter", "WebSite", new { language = Session["Language"].ToString() })">News Letter</a>
-        </li>
-        <li>
-            <a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })">Job Opening</a>
-        </li>
-        <li>
-            <a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })">Job Application</a>
-        </li>
-        <li>
-            <a href="@Url.Action("AboutUs", "WebSite", new { language = Session["Language"].ToString() })">About Us</a>
-        </li>
-        <li>
-            <a href="@Url.Action("Index", "Enquiry", new { language = Session["Language"].ToString() })">Enquiry</a>
-        </li>
-        <li>
-            <a href="@Url.Action("Index", "Authenticate")">CMS Login</a>
-        </li>
-    </ul>
-</div>
-<!-- script for menu -->
-<script>
-    $("span.menu").click(function () {
-        $(".top-menu").slideToggle("slow", function () {
-            // Animation complete.
+﻿
+<div class="top-nav">
+    <span class="menu"></span>
+    <div class="top-menu">
+        <ul>
+            <li class="active" id="liHome">
+                <a href="@Url.Action("Index", "WebSite", new { language = Session["Language"].ToString() })">Home</a>
+            </li>
+            <li id="liAboutUs">
+                <a href="@Url.Action("AboutUs", "WebSite", new { language = Session["Language"].ToString() })">About Us</a>
+            </li>
+            <li id="liProduct">
+                <a href="@Url.Action("ProductListing", "WebSite", new { language = Session["Language"].ToString(), product_Category_Id = 0})">Products</a>
+            </li>
+            @*<li>
+                    <a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })">Product Detail</a>
+                </li>*@
+            <li id="liApplications">
+                <a href="@Url.Action("ServiceListing", "WebSite", new { language = Session["Language"].ToString() })">Applications</a>
+            </li>
+            <li id="liNewsLetter">
+                <a href="@Url.Action("NewsLetterListing", "WebSite", new { language = Session["Language"].ToString() })">News Letters</a>
+            </li>
+            <li id="liEvents">
+                <a href="@Url.Action("Events", "WebSite", new { language = Session["Language"].ToString() })">Events</a>
+            </li>
+            @*<li>
+                    <a href="@Url.Action("NewsLetter", "WebSite", new { language = Session["Language"].ToString() })">News Letter</a>
+                </li>*@
+            <li id="liJobOpening">
+                <a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })">Job Opening</a>
+            </li>
+
+           
+
+            <li id="liJobApplication">
+                <a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })">Job Application</a>
+            </li>
+            
+            <li id="liEnquiry">
+                <a href="@Url.Action("Enquiry", "Website", new { language = Session["Language"].ToString() })">Enquiry</a>
+            </li>
+
+            
+
+            @*<li>
+                    <a href="@Url.Action("Index", "Authenticate")">CMS Login</a>
+                </li>*@
+        </ul>
+    </div>
+    <!-- script for menu -->
+    <script>
+        $("span.menu").click(function () {
+            $(".top-nav ul").slideToggle(500, function () {
+            });
         });
-    });
-</script>
-<!-- script for menu -->
+    </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- sidebar menu: : style can be found in sidebar.less -->
-@*<ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
-
-    <li class="active"><a href="@Url.Action("Product", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Product</a></li>
-    <li><a href="@Url.Action("ProductListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Product Listing</a></li>
-
-    <li class="active"><a href="@Url.Action("ProductDetail", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Product_Detail</a></li>
-    <li><a href="@Url.Action("ProductDetailListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Product_Detail Listing</a></li>
-
-    <li class="active"><a href="@Url.Action("Service", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Service</a></li>
-    <li><a href="@Url.Action("ServiceListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Service Listing</a></li>
-
-
-
-    <li class="active"><a href="@Url.Action("NewsLetter", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>News Letter</a></li>
-    <li><a href="@Url.Action("NewsLetterListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>News Letter Listing</a></li>
-            <li class="active"><a href="@Url.Action("Event", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Event </a></li>
-            <li><a href="@Url.Action("EventListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Event Listing</a></li>
-
-            <li class="active"><a href="@Url.Action("Job_Opening", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Opening</a></li>
-            <li><a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i> Job Opening Listing</a></li>
-
-    <li class="active"><a href="@Url.Action("ContactUs", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Contact Us</a></li>
-    <li><a href="@Url.Action("ContactUsListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Contact Us Listing</a></li>
-
-    <li class="active"><a href="@Url.Action("Job_Opening", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Job Opening</a></li>
-    <li><a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Job Opening Listing</a></li>
-
-    <li><a href="@Url.Action("Index", "Enquiry", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Enquiry</a></li>
-
-    <li class="active"><a href="@Url.Action("Enquiry", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Enquiry</a></li>
-    <li><a href="@Url.Action("EnquiryListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Enquiry Listing</a></li>
-
-
-    <li><a href="@Url.Action("Index", "Job_Application", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Job Application</a></li>
-
-    <li class="active"><a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Job Application</a></li>
-    <li><a href="@Url.Action("Job_ApplicationListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>Job Application Listing</a></li>
-
-    <li class="active"><a href="@Url.Action("AboutUs", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>AboutUs</a></li>
-    <li><a href="@Url.Action("AboutUsListing", "WebSite", new { language = Session["Language"].ToString() })"><i class="fa fa-dashboard"></i>AboutUs Listing</a></li>
-
-    <li class="active"><a href="@Url.Action("Index", "Authenticate")"><i class="fa fa-dashboard"></i>CMS Login</a></li>
-</ul>*@
+</div>
+    <!-- script for menu -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+  

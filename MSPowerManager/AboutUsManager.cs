@@ -39,5 +39,10 @@ namespace MSPowerManager
             _auRepo.Update_AboutUs(aboutus);
         }
 
+        public AboutUsInfo Get_AboutUs(int language_Id)
+        {
+            return _auRepo.Get_AboutUs(language_Id);
+        }
+
     }
 }

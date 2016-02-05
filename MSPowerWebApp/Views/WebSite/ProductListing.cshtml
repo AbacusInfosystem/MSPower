@@ -1,60 +1,135 @@
-﻿@{
+﻿@model MSPowerWebApp.Models.ProductDetailViewModel
+
+@{
     ViewBag.Title = "Home";
 }
 
 @*Product Listing. @Session["Language"].ToString();*@
   
+<script src="~/Scripts/WebSite/product_listing_events.js"></script>
+
+
+<div class="lang-toggles">
+    <select style="border:0px; outline:0px;" id="drpMainlang">
+        @if (Session["Language"].ToString() == "en")
+        {
+            <option value="en" selected>English</option>
+        }
+        else
+        {
+            <option value="en">English</option>
+        }
+
+        @if (Session["Language"].ToString() == "ch")
+        {
+            <option value="ch" selected>Chinese</option>
+        }
+        else
+        {
+            <option value="ch">Chinese</option>
+        }
+    </select>
+</div>
+
+<style>
+    .prod-li {
+        list-style-type: none;
+        padding-left: 12px;
+        
+    }
+
+    /*.fa-chevron-right:after {
+        content: "\00a0";
+    }*/
+</style>
+
 <div class="content">
-		<div class="container">
-			<!----> 
-			<div class="products">
-<h2 class="heading text-center">Our Products</h2>
-				<div class="products-bottom">
-					<div class="col-md-4 products-grid">
-						<a class="example-image-link" href="../ContentOnline/images/product-1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-1.jpg" alt=""/></a>
-						<div class="products-info">
-							<a href="single.html">Phasellus scipiw scipitilifen. </a>
-							<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-						</div>
-					</div>
-					<div class="col-md-4 products-grid">
-						<a class="example-image-link" href="../ContentOnline/images/product-2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-2.jpg" alt=""/></a>
-						<div class="products-info">
-							<a href="single.html">Phasellus scipiw scipitilifen. </a>
-							<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-						</div>
-					</div>
-					<div class="col-md-4 products-grid">
-						<a class="example-image-link" href="../ContentOnline/images/product-3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-3.jpg" alt=""/></a>
-						<div class="products-info">
-							<a href="single.html">Phasellus scipiw scipitilifen. </a>
-							<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-						</div>
-					</div>
-					<div class="col-md-4 products-grid">
-						<a class="example-image-link" href="../ContentOnline/images/product-4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-4.jpg" alt=""/></a>
-						<div class="products-info">
-							<a href="single.html">Phasellus scipiw scipitilifen. </a>
-							<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-						</div>
-					</div>
-					<div class="col-md-4 products-grid">
-						<a class="example-image-link" href="../ContentOnline/images/product-5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-5.jpg" alt=""/></a>
-						<div class="products-info">
-							<a href="single.html">Phasellus scipiw scipitilifen. </a>
-							<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-						</div>
-					</div>
-					<div class="col-md-4 products-grid">
-						<a class="example-image-link" href="../ContentOnline/images/product-6.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="../ContentOnline/images/product-6.jpg" alt=""/></a>
-						<div class="products-info">
-							<a href="single.html">Phasellus scipiw scipitilifen. </a>
-							<p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu fringilla estero libero orciwe.</p>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
+
+
+
+    <div class="container">
+
+        <!---->
+        <br><br>
+
+        <form id="frmProduct_Listing">
+
+            <input type="hidden" id="hdfLanguage" value="@Model.Language_Id">
+
+            <input type="hidden" id="hdfProduct_Category_Id" value="@Model.Product_Category.Product_Category_Id">
+
+            @*<input type="hidden" name="Filter.Product_Detail_Id" id="hdnProductDetail_Id" value="@Model.Filter.Product_Detail_Id">
+
+            <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">*@
+
+            <div class="box-body">
+
+                <header class="text-center">
+
+                    @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category))
+                    {
+                        <h2> High Power Thyristors & Diodes</h2>
+                    }
+                    
+                    else
+                    {
+                        <h2> @Model.Product_Category.Product_Category</h2>
+                    }
+
+                </header>
+
+                <br><br>
+
+                @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category_Description))
+                {
+                    
+                    <p class="text-center">
+
+                        Discover our broad range of thyristor and diode devices. PowerBLOCK modules are available for a voltage range from 1600V to 4400V and a current range from 60A up to 1100A. Press pack disc housings include parts for a voltage range from 200 V to 9500 V and a current range from 56 A to 8400 A.
+
+                    </p>
+                }
+                else
+                
+                {
+                    <p class="text-center">
+
+                        @Model.Product_Category.Product_Category_Description
+
+                    </p>
+                }
+
+                <br><br>
+
+                <div id="dvProduct_Listing">
 
                 </div>
             </div>
+
+            <div class="grid_4">
+
+                <div class="container" id="dvProduct_Listing_Images">
+                   
+                </div>
+
+            </div>
+
+        </form>
+
+        <br><br>
+
     </div>
+
+</div>
+
+<script>
+
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liProduct").addClass("active");
+
+    });
+
+</script>

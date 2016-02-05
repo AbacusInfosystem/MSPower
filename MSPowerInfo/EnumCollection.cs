@@ -62,6 +62,19 @@ namespace MSPowerInfo
         Update_Product_Detail_Sp,
 
 
+        sp_Get_Product_Categories_By_Lanugae_Id, // Get all Product by language id
+
+        sp_Get_Product_Category_Column_By_Category_Id, // Get all Volts by product category
+
+        Get_Product_Category_Column_By_Id_sp,
+
+        Get_Product_Category_By_Id_sp,
+
+        Get_Product_Details_Name_Sp,
+
+        Get_Product_Details_By_Competitors_Name_Sp,
+
+
         // Services Store Procedures
 
         Get_Services_By_Id_Sp,
@@ -72,7 +85,19 @@ namespace MSPowerInfo
 
         Update_Services_Sp,
 
+ 
+        // Service Category Store Procedures
+
+
+        Insert_Service_Category_Sp,
+
         Get_Services_Categories_Sp,
+
+        Get_Services_Categories_By_Id_Sp,
+
+        Update_Service_Category_Sp,
+
+        Get_Service_Categories_By_Language_Id, // Get all Services by language id
 
 
         // NewsLetter Store Procedures
@@ -139,13 +164,23 @@ namespace MSPowerInfo
 
         // About Us Store Procedures
 
+        Get_AboutUs_Sp,
+
         Get_AboutUs_By_Id_Sp,
 
         Get_AboutUss_Sp,
 
         Insert_AboutUs_Sp,
 
-        Update_AboutUs_Sp
+        Update_AboutUs_Sp,
+
+        // Product Category New 
+
+        Get_Product_Categories_By_Language_Parent_sp,
+
+        Get_Product_Categories_By_Lanugae_Id_sp,
+
+        Get_Product_Details_By_Col,
 
 
     }

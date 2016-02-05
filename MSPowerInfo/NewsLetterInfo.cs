@@ -11,6 +11,12 @@ namespace MSPowerInfo
 
     {
 
+        public NewsLetterInfo()
+        
+          {
+          
+          }
+
         public int NewsLetter_Id { get; set; }
 
         public int Language_Id { get; set; }

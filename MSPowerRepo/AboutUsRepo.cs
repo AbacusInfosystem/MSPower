@@ -164,5 +164,34 @@ namespace MSPowerRepo
             return param;
         }
 
+
+        public AboutUsInfo Get_AboutUs( int language_Id)
+        {
+            AboutUsInfo aboutus = new AboutUsInfo();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_AboutUs_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    aboutus = Get_AboutUs_Values(dr);
+                }
+            }
+
+            return aboutus;
+        }
+
+
     }
 }

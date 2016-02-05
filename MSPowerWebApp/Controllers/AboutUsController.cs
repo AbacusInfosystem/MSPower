@@ -72,7 +72,7 @@ namespace MSPowerWebApp.Controllers
 
                 auViewModel.AboutUs.About_Us_Id = auMan.Insert_AboutUs(auViewModel.AboutUs);
 
-                auViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                auViewModel.Friendly_Message.Add(MessageStore.Get("A001"));
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace MSPowerWebApp.Controllers
 
                 auMan.Update_AboutUs(auViewModel.AboutUs);
 
-                auViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                auViewModel.Friendly_Message.Add(MessageStore.Get("A002"));
             }
             catch (Exception ex)
             {

@@ -1,0 +1,64 @@
+﻿@model MSPowerWebApp.Models.EventViewModel
+<script src="~/Scripts/WebSite/events_event.js"></script>
+
+<div class="lang-toggles">
+    <select style="border:0px; outline:0px;" id="drpMainlang">
+        @if (Session["Language"].ToString() == "en")
+        {
+            <option value="en" selected>English</option>
+        }
+        else
+        {
+            <option value="en">English</option>
+        }
+
+        @if (Session["Language"].ToString() == "ch")
+        {
+            <option value="ch" selected>Chinese</option>
+        }
+        else
+        {
+            <option value="ch">Chinese</option>
+        }
+    </select>
+</div>
+
+<div class="grid_1">
+    <div class="blog-section">
+        <div class="container">
+            <div class="col-md-8 left_column">
+                <h2 class="with-line">Gallery</h2>
+
+                <div id="dvbindimages"></div>
+            </div>
+            <div class="col-md-4 right_column">
+                <div class="item">
+                    <header>
+                        <h2 class="with-line">Events</h2>
+                    </header>
+                    <ul>
+                        @foreach (var item in Model.Events)
+                        {
+                            <li><a href="#" data-event-id="@item.Event_Id" class="ms-event">@item.Event_Title</a></li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liEvents").addClass("active");
+
+    });
+</script>
+
+
+

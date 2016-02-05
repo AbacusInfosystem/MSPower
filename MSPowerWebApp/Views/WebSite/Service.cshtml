@@ -1,19 +1,66 @@
-﻿@{
-    Layout = null;
+﻿@model MSPowerWebApp.Models.ServiceCategoryViewModel
+
+
+@{
+    ViewBag.Title = "Home";
 }
 
-<!DOCTYPE html>
+<div class="lang-toggles">
+    <select style="border:0px; outline:0px;" id="drpMainlang">
+        @if (Session["Language"].ToString() == "en")
+        {
+            <option value="en" selected>English</option>
+        }
+        else
+        {
+            <option value="en">English</option>
+        }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-      @{Html.RenderPartial("_Sidebar_Online");}
+        @if (Session["Language"].ToString() == "ch")
+        {
+            <option value="ch" selected>Chinese</option>
+        }
+        else
+        {
+            <option value="ch">Chinese</option>
+        }
+    </select>
+</div>
 
-    <div>
-        Service. @Session["Language"].ToString();
+    <div class="grid_4">
+        <div class="container">
+            <h1 class="blog_head">@Model.ServiceCategory.Service_Category</h1>
+
+
+            <div class="blog_grid">
+                <div class="blog_box">
+                    <a href="#" class="mask">
+                    <img src="../Content/Images/Service Category/@Model.ServiceCategory.Service_Category_Img" alt="image" style="width:100%" class="img-responsive zoom-img" alt="" /></a>
+                    <h3><a href="#">@Model.ServiceCategory.Service_Category_Title</a></h3>
+                    @*<div class="links">
+                            <ul>
+                                <li><i class="fa blog-icon fa-calendar"> </i><span>june 14, 2013</span></li>
+                                <li><i class="fa blog-icon fa-user"> </i><span>admin</span></li>
+                                <li><i class="fa blog-icon fa-comment"> </i><a href="#"><span>No comments</span></a></li>
+                            </ul>
+                        </div>*@
+                    <p>@(Html.Raw(Model.ServiceCategory.Service_Category_Description))</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-</body>
-</html>
+
+<script>
+    $(function () {
+
+        $(".top-menu").find("li").removeClass();
+
+        $("#liApplications").addClass("active");
+
+    });
+</script>
+
+
+
+

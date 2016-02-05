@@ -36,7 +36,7 @@ namespace MSPowerWebApp
             routes.MapRoute(
                 name: "menu-4",
                 url: "cms/services/search",
-                defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
+                defaults: new { controller = "ServiceCategory", action = "Search", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -140,90 +140,146 @@ namespace MSPowerWebApp
             routes.MapRoute(
                name: "productdetail-1",
                url: "cms/product-detail",
-               defaults: new { controller = "ProductDetail", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Index", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-2",
                url: "cms/product-detail/search",
-               defaults: new { controller = "ProductDetail", action = "Search", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Search", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-3",
                url: "cms/product-detail/insert",
-               defaults: new { controller = "ProductDetail", action = "Insert", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Insert", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-4",
                url: "cms/product-detail/update",
-               defaults: new { controller = "ProductDetail", action = "Update", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Update", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "productdetail-5",
                url: "cms/product-detail/get-product-details",
-               defaults: new { controller = "ProductDetail", action = "Get_ProductDetails", id = UrlParameter.Optional }
+               defaults: new { controller = "ProductDetails", action = "Get_ProductDetails", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
               name: "productdetail-6",
               url: "cms/product-detail/get-product-detail-by-id",
-              defaults: new { controller = "ProductDetail", action = "Get_Product_Detail_By_Id", id = UrlParameter.Optional }
+              defaults: new { controller = "ProductDetails", action = "Get_Product_Detail_By_Id", id = UrlParameter.Optional }
           );
 
             routes.MapRoute(
              name: "productdetail-7",
              url: "cms/product-detail/delete-product-detail",
-             defaults: new { controller = "ProductDetail", action = "Delete", id = UrlParameter.Optional }
+             defaults: new { controller = "ProductDetails", action = "Delete", id = UrlParameter.Optional }
          );
+
+            routes.MapRoute(
+             name: "productdetail-8",
+             url: "cms/product-detail/download-pdf/{product_Details_Id}",
+             defaults: new { controller = "ProductDetails", action = "Download_Product_Details_PDF", product_Details_Id = UrlParameter.Optional }
+         );
+
             #endregion
 
             #region Services
 
            
+         //   routes.MapRoute(
+         //      name: "services-2",
+         //      url: "cms/services/search",
+         //      defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //      name: "services-3",
+         //      url: "cms/services/insert-services",
+         //      defaults: new { controller = "Services", action = "Insert", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //      name: "services-4",
+         //      url: "cms/services/update-services",
+         //      defaults: new { controller = "Services", action = "Update", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //      name: "services-5",
+         //      url: "cms/services/get-services",
+         //      defaults: new { controller = "Services", action = "Get_Services", id = UrlParameter.Optional }
+         //  );
+
+         //   routes.MapRoute(
+         //     name: "services-6",
+         //     url: "cms/services/get-services-by-id",
+         //     defaults: new { controller = "Services", action = "Get_Services_By_Id", id = UrlParameter.Optional }
+         // );
+
+         //   routes.MapRoute(
+         //    name: "services-7",
+         //    url: "cms/services/delete-services",
+         //    defaults: new { controller = "Services", action = "Delete", id = UrlParameter.Optional }
+         //);
+
+         //   routes.MapRoute(
+         //     name: "services-1",
+         //     url: "cms/services",
+         //     defaults: new { controller = "Services", action = "Index", id = UrlParameter.Optional }
+         // );
+
+           #endregion
+
+            #region ServiceCategory
+
+
+           // routes.MapRoute(
+           //    name: "services-2",
+           //    url: "cms/services/search",
+           //    defaults: new { controller = "ServiceCategory", action = "Search", id = UrlParameter.Optional }
+           //);
+
             routes.MapRoute(
-               name: "services-2",
-               url: "cms/services/search",
-               defaults: new { controller = "Services", action = "Search", id = UrlParameter.Optional }
-           );
+             name: "services-1",
+             url: "cms/services",
+             defaults: new { controller = "ServiceCategory", action = "Index", id = UrlParameter.Optional }
+         );
 
             routes.MapRoute(
                name: "services-3",
                url: "cms/services/insert-services",
-               defaults: new { controller = "Services", action = "Insert", id = UrlParameter.Optional }
+               defaults: new { controller = "ServiceCategory", action = "Insert", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "services-4",
                url: "cms/services/update-services",
-               defaults: new { controller = "Services", action = "Update", id = UrlParameter.Optional }
+               defaults: new { controller = "ServiceCategory", action = "Update", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "services-5",
                url: "cms/services/get-services",
-               defaults: new { controller = "Services", action = "Get_Services", id = UrlParameter.Optional }
+               defaults: new { controller = "ServiceCategory", action = "Get_Services_Categories", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
               name: "services-6",
               url: "cms/services/get-services-by-id",
-              defaults: new { controller = "Services", action = "Get_Services_By_Id", id = UrlParameter.Optional }
+              defaults: new { controller = "ServiceCategory", action = "Get_Service_Category_By_Id", id = UrlParameter.Optional }
           );
 
             routes.MapRoute(
              name: "services-7",
              url: "cms/services/delete-services",
-             defaults: new { controller = "Services", action = "Delete", id = UrlParameter.Optional }
+             defaults: new { controller = "ServiceCategory", action = "Delete", id = UrlParameter.Optional }
          );
 
-            routes.MapRoute(
-              name: "services-1",
-              url: "cms/services",
-              defaults: new { controller = "Services", action = "Index", id = UrlParameter.Optional }
-          );
+           
 
             #endregion
 
@@ -271,6 +327,11 @@ namespace MSPowerWebApp
              defaults: new { controller = "NewsLetter", action = "Delete", id = UrlParameter.Optional }
          );
 
+            routes.MapRoute(
+            name: "newsletter-8",
+            url: "cms/newsletter/download-pdf/{newsLetter_Id}",
+            defaults: new { controller = "NewsLetter", action = "Download_Product_Details_PDF", newsLetter_Id = UrlParameter.Optional }
+        );
 
             #endregion
 
@@ -520,6 +581,11 @@ namespace MSPowerWebApp
              defaults: new { controller = "Job_Application", action = "Get_Job_Application_By_Id", id = UrlParameter.Optional }
          );
 
+            routes.MapRoute(
+             name: "Job_Application-5",
+             url: "cms/job_application/download-docx/{job_application_Id}",
+             defaults: new { controller = "Job_Application", action = "Download_Job_Application_Details_DOCX", job_application_Id = UrlParameter.Optional }
+         );
 
             #endregion
 
@@ -560,17 +626,28 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
                name: "website-1",
-               url: "{language}/product/",
-               defaults: new { controller = "WebSite", action = "Product", language = UrlParameter.Optional }
+               url: "{language}/product/{product_Category_Id}",
+               defaults: new { controller = "WebSite", action = "Product", language = UrlParameter.Optional, product_Category_Id = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
            );
 
             routes.MapRoute(
+            name: "website-2-1",
+            url: "{language}/product-listing/{product_Category_Id}",
+            defaults: new { controller = "WebSite", action = "ProductListing", language = UrlParameter.Optional, product_Category_Id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
+
+
+            routes.MapRoute(
               name: "website-2",
-              url: "{language}/product-listing/",
-              defaults: new { controller = "WebSite", action = "ProductListing", language = UrlParameter.Optional }
+              url: "{language}/product-listing/{product_Category_Id}/{keyword}/{competitor}",
+              defaults: new { controller = "WebSite", action = "ProductListing", language = UrlParameter.Optional, product_Category_Id = UrlParameter.Optional, keyword = UrlParameter.Optional, competitor = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
+
+          
+
 
             routes.MapRoute(
               name: "website-3",
@@ -602,8 +679,8 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
               name: "website-7",
-              url: "{language}/news-letter/",
-              defaults: new { controller = "WebSite", action = "NewsLetter", language = UrlParameter.Optional }
+              url: "{language}/news-letter/{NewsLetter_Id}",
+              defaults: new { controller = "WebSite", action = "Get_NewsLetter_By_Id", language = UrlParameter.Optional, NewsLetter_Id  = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
@@ -631,8 +708,8 @@ namespace MSPowerWebApp
 
              routes.MapRoute(
              name: "website-11",
-             url: "{language}/job_opening/",
-             defaults: new { controller = "WebSite", action = "Job_Opening", language = UrlParameter.Optional }
+             url: "{language}/job_opening/{Job_Opening_Id}",
+             defaults: new { controller = "WebSite", action = "Get_Job_Opening_By_Id", language = UrlParameter.Optional, Job_Opening_Id = UrlParameter.Optional }
                 //constraints: new { language = new LanguageRouteConstraint() }
 
            );
@@ -705,8 +782,288 @@ namespace MSPowerWebApp
                 //constraints: new { language = new LanguageRouteConstraint() }
           );
 
+            routes.MapRoute(
+              name: "website-21",
+              url: "{language}/get-product-search/",
+              defaults: new { controller = "WebSite", action = "Get_Product_Search", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-22",
+              url: "web-app/get-event-images/{event_Id}",
+              defaults: new { controller = "WebSite", action = "Get_Events_Images", event_Id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+            routes.MapRoute(
+              name: "website-23",
+              url: "{language}/set-language",
+              defaults: new { controller = "WebSite", action = "SetLanguage", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+          );
+
+
+            routes.MapRoute(
+           name: "website-24",
+           url: "insert-enquiry",
+           defaults: new { controller = "WebSite", action = "Insert_Enquiry", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
+            routes.MapRoute(
+          name: "website-25",
+          url: "web-app/get-about-us",
+          defaults: new { controller = "WebSite", action = "Get_AboutUs", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
+
+            routes.MapRoute(
+          name: "website-26",
+          url: "web-app/get-news",
+          defaults: new { controller = "WebSite", action = "Get_NewsLetters", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
+
+            routes.MapRoute(
+          name: "website-27",
+          url: "web-app/get-hot-jobs",
+          defaults: new { controller = "WebSite", action = "Get_Hot_Jobs", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+        );
+
+            routes.MapRoute(
+          name: "website-28",
+          url: "web-app/get-events",
+          defaults: new { controller = "WebSite", action = "Get_Events", id = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+         );
+
+            routes.MapRoute(
+          name: "website-29",
+          url: "{language}/service",
+          defaults: new { controller = "WebSite", action = "Service", language = UrlParameter.Optional }
+                //constraints: new { language = new LanguageRouteConstraint() }
+
+        );
 
             #endregion
+
+        //    #region Website1
+
+        //    routes.MapRoute(
+        //       name: "website1-1",
+        //       url: "{language}/product/{product_Category_Id}",
+        //       defaults: new { controller = "Website1", action = "Product", language = UrlParameter.Optional, product_Category_Id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //   );
+
+        //    routes.MapRoute(
+        //      name: "website-2",
+        //      url: "{language}/product-listing/{product_Category_Id}",
+        //      defaults: new { controller = "Website1", action = "ProductListing", language = UrlParameter.Optional, product_Category_Id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-3",
+        //      url: "{language}/productdetail/",
+        //      defaults: new { controller = "Website1", action = "ProductDetail", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-4",
+        //      url: "{language}/productdetail-listing/",
+        //      defaults: new { controller = "Website1", action = "ProductDetailListing", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-5",
+        //      url: "{language}/services/",
+        //      defaults: new { controller = "Website1", action = "Service", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-6",
+        //      url: "{language}/service-listing/",
+        //      defaults: new { controller = "Website1", action = "ServiceListing", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-7",
+        //      url: "{language}/news-letter/{NewsLetter_Id}",
+        //      defaults: new { controller = "Website1", action = "Get_NewsLetter_By_Id", language = UrlParameter.Optional, NewsLetter_Id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-8",
+        //      url: "{language}/news-letter-listing/",
+        //      defaults: new { controller = "Website1", action = "NewsLetterListing", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //     name: "website-9",
+        //     url: "{language}/contact-us/",
+        //     defaults: new { controller = "Website1", action = "ContactUs", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        // );
+
+        //    routes.MapRoute(
+        //      name: "website-10",
+        //      url: "{language}/contact-us-listing/",
+        //      defaults: new { controller = "Website1", action = "ContactUsListing", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+
+        //    routes.MapRoute(
+        //    name: "website-11",
+        //    url: "{language}/job_opening/{Job_Opening_Id}",
+        //    defaults: new { controller = "Website1", action = "Get_Job_Opening_By_Id", language = UrlParameter.Optional, Job_Opening_Id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+
+        //  );
+
+        //    routes.MapRoute(
+        //     name: "website-12",
+        //     url: "{language}/job_opening-listing/",
+        //     defaults: new { controller = "Website1", action = "Job_OpeningListing", language = UrlParameter.Optional }
+
+        //    );
+
+        //    routes.MapRoute(
+        //   name: "website-13",
+        //   url: "{language}/enquiry/",
+        //   defaults: new { controller = "Website1", action = "Enquiry", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+
+        // );
+
+        //    routes.MapRoute(
+        //     name: "website-14",
+        //     url: "{language}/enquiry-listing/",
+        //     defaults: new { controller = "Website1", action = "EnquiryListing", language = UrlParameter.Optional }
+
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        // );
+
+        //    routes.MapRoute(
+        //   name: "website-15",
+        //   url: "{language}/job_application/",
+        //   defaults: new { controller = "Website1", action = "Job_Application", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+
+        // );
+
+        //    routes.MapRoute(
+        //     name: "website-16",
+        //     url: "{language}/job_application-listing/",
+        //     defaults: new { controller = "Website1", action = "Job_ApplicationListing", language = UrlParameter.Optional }
+
+        //     //constraints: new { language = new LanguageRouteConstraint() }
+        // );
+
+        //    routes.MapRoute(
+        //     name: "website-17",
+        //     url: "{language}/aboutus/",
+        //     defaults: new { controller = "Website1", action = "AboutUs", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+
+        //   );
+
+        //    routes.MapRoute(
+        //     name: "website-18",
+        //     url: "insert-job-application",
+        //     defaults: new { controller = "Website1", action = "Insert_Job_Application", id = UrlParameter.Optional }
+        // );
+
+
+        //    routes.MapRoute(
+        //     name: "website-19",
+        //     url: "{language}/event/",
+        //     defaults: new { controller = "Website1", action = "Event", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        // );
+
+        //    routes.MapRoute(
+        //      name: "website-20",
+        //      url: "{language}/event-listing/",
+        //      defaults: new { controller = "Website1", action = "Event", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-21",
+        //      url: "{language}/get-product-search/",
+        //      defaults: new { controller = "Website1", action = "Get_Product_Search", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-22",
+        //      url: "web-app/get-event-images/{event_Id}",
+        //      defaults: new { controller = "Website1", action = "Get_Events_Images", event_Id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+        //    routes.MapRoute(
+        //      name: "website-23",
+        //      url: "{language}/set-language",
+        //      defaults: new { controller = "Website1", action = "SetLanguage", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //  );
+
+
+        //    routes.MapRoute(
+        //   name: "website-24",
+        //   url: "insert-enquiry",
+        //   defaults: new { controller = "WebSite", action = "Insert_Enquiry", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        // );
+
+        //    routes.MapRoute(
+        //  name: "website-25",
+        //  url: "web-app/get-about-us",
+        //  defaults: new { controller = "WebSite", action = "Get_AboutUs", id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //);
+
+        //    routes.MapRoute(
+        //  name: "website-26",
+        //  url: "web-app/get-news",
+        //  defaults: new { controller = "WebSite", action = "Get_NewsLetters", id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //);
+
+        //    routes.MapRoute(
+        //  name: "website-27",
+        //  url: "web-app/get-hot-jobs",
+        //  defaults: new { controller = "WebSite", action = "Get_Hot_Jobs", id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        //);
+
+        //    routes.MapRoute(
+        //  name: "website-28",
+        //  url: "web-app/get-events",
+        //  defaults: new { controller = "WebSite", action = "Get_Events", id = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+        // );
+
+        //    routes.MapRoute(
+        //  name: "website-29",
+        //  url: "{language}/service",
+        //  defaults: new { controller = "WebSite", action = "Service", language = UrlParameter.Optional }
+        //        //constraints: new { language = new LanguageRouteConstraint() }
+
+        //);
+
+        //    #endregion
 
             #region Attachment
 

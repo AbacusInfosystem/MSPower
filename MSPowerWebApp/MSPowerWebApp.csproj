@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CaptchaMvc">
+      <HintPath>..\packages\CaptchaMvc.Mvc4.1.5.0\lib\net40-full\CaptchaMvc.dll</HintPath>
+    </Reference>
     <Reference Include="ExceptionManagement">
       <HintPath>..\Libraries\ExceptionManagement\ExceptionManagement.dll</HintPath>
     </Reference>
@@ -203,8 +206,8 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\NewsLetterController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductDetailController.cs" />
-    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\ProductDetailsController.cs" />
+    <Compile Include="Controllers\ServiceCategoryController.cs" />
     <Compile Include="Controllers\WebSiteController.cs" />
     <Compile Include="Filters\LanguageAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,15 +225,17 @@
     <Compile Include="Models\NewsLetterViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
-    <Compile Include="Models\ServicesViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
+    <Compile Include="Models\ServiceCategoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ContentOnline\css\animate.css" />
     <Content Include="ContentOnline\css\bootstrap.css" />
-    <Content Include="ContentOnline\css\lightbox.css" />
-    <Content Include="ContentOnline\css\owl.carousel.css" />
+    <Content Include="ContentOnline\css\chocolat.css" />
+    <Content Include="ContentOnline\css\font-awesome.css" />
     <Content Include="ContentOnline\css\style.css" />
+    <Content Include="ContentOnline\fonts\fontawesome-webfont.svg" />
     <Content Include="ContentOnline\images\10.jpg" />
     <Content Include="ContentOnline\images\2.jpg" />
     <Content Include="ContentOnline\images\3.jpg" />
@@ -240,48 +245,54 @@
     <Content Include="ContentOnline\images\7.jpg" />
     <Content Include="ContentOnline\images\8.jpg" />
     <Content Include="ContentOnline\images\9.jpg" />
-    <Content Include="ContentOnline\images\avatar.png" />
+    <Content Include="ContentOnline\images\about.jpg" />
+    <Content Include="ContentOnline\images\b1.jpg" />
+    <Content Include="ContentOnline\images\b2.jpg" />
+    <Content Include="ContentOnline\images\b3.jpg" />
+    <Content Include="ContentOnline\images\b4.jpg" />
+    <Content Include="ContentOnline\images\b5.jpg" />
     <Content Include="ContentOnline\images\banner.jpg" />
-    <Content Include="ContentOnline\images\book.png" />
-    <Content Include="ContentOnline\images\bullet.png" />
-    <Content Include="ContentOnline\images\c1.jpg" />
-    <Content Include="ContentOnline\images\c2.jpg" />
-    <Content Include="ContentOnline\images\c3.jpg" />
-    <Content Include="ContentOnline\images\c4.jpg" />
+    <Content Include="ContentOnline\images\banner1.jpg" />
+    <Content Include="ContentOnline\images\career_poster_use - Copy.jpg" />
+    <Content Include="ContentOnline\images\close.gif" />
     <Content Include="ContentOnline\images\close.png" />
-    <Content Include="ContentOnline\images\img-sprite.png" />
-    <Content Include="ContentOnline\images\index-1_img-1.jpg" />
-    <Content Include="ContentOnline\images\index-1_img-2.jpg" />
-    <Content Include="ContentOnline\images\index-1_img-3.jpg" />
-    <Content Include="ContentOnline\images\index-1_img-4.jpg" />
-    <Content Include="ContentOnline\images\index-1_img-5.jpg" />
-    <Content Include="ContentOnline\images\index-3_img-1.jpg" />
-    <Content Include="ContentOnline\images\index-3_img-2.jpg" />
-    <Content Include="ContentOnline\images\index-3_img-3.jpg" />
-    <Content Include="ContentOnline\images\logo.png" />
-    <Content Include="ContentOnline\images\mem.jpg" />
+    <Content Include="ContentOnline\images\icon_1.png" />
+    <Content Include="ContentOnline\images\icon_2.png" />
+    <Content Include="ContentOnline\images\icon_3.png" />
+    <Content Include="ContentOnline\images\icon_4.png" />
+    <Content Include="ContentOnline\images\icon_5.png" />
+    <Content Include="ContentOnline\images\menu.png" />
+    <Content Include="ContentOnline\images\more.png" />
     <Content Include="ContentOnline\images\mspower.png" />
-    <Content Include="ContentOnline\images\nav.png" />
-    <Content Include="ContentOnline\images\navred.png" />
     <Content Include="ContentOnline\images\next.png" />
-    <Content Include="ContentOnline\images\p1.jpg" />
-    <Content Include="ContentOnline\images\p2.jpg" />
-    <Content Include="ContentOnline\images\p3.jpg" />
+    <Content Include="ContentOnline\images\pic1.jpg" />
+    <Content Include="ContentOnline\images\pic10.jpg" />
+    <Content Include="ContentOnline\images\pic11.jpg" />
+    <Content Include="ContentOnline\images\pic12.jpg" />
+    <Content Include="ContentOnline\images\pic13.jpg" />
+    <Content Include="ContentOnline\images\pic14.jpg" />
+    <Content Include="ContentOnline\images\pic15.jpg" />
+    <Content Include="ContentOnline\images\pic16.jpg" />
+    <Content Include="ContentOnline\images\pic17.jpg" />
+    <Content Include="ContentOnline\images\pic18.jpg" />
+    <Content Include="ContentOnline\images\pic19.jpg" />
+    <Content Include="ContentOnline\images\pic2.jpg" />
+    <Content Include="ContentOnline\images\pic3.jpg" />
+    <Content Include="ContentOnline\images\pic4.jpg" />
+    <Content Include="ContentOnline\images\pic5.png" />
+    <Content Include="ContentOnline\images\pic6.jpg" />
+    <Content Include="ContentOnline\images\pic7.jpg" />
+    <Content Include="ContentOnline\images\pic8.jpg" />
+    <Content Include="ContentOnline\images\pic9.jpg" />
     <Content Include="ContentOnline\images\prev.png" />
-    <Content Include="ContentOnline\images\product-1.jpg" />
-    <Content Include="ContentOnline\images\product-2.jpg" />
-    <Content Include="ContentOnline\images\product-3.jpg" />
-    <Content Include="ContentOnline\images\product-4.jpg" />
-    <Content Include="ContentOnline\images\product-5.jpg" />
-    <Content Include="ContentOnline\images\product-6.jpg" />
-    <Content Include="ContentOnline\images\search.png" />
-    <Content Include="ContentOnline\images\subscribe-bg.jpg" />
-    <Content Include="ContentOnline\images\t-bg.jpg" />
-    <Content Include="ContentOnline\js\jquery.flexisel.js" />
-    <Content Include="ContentOnline\js\jquery.min.js" />
-    <Content Include="ContentOnline\js\lightbox.js" />
-    <Content Include="ContentOnline\js\owl.carousel.js" />
+    <Content Include="ContentOnline\js\jquery-1.11.1.min.js" />
+    <Content Include="ContentOnline\js\jquery.chocolat.js" />
     <Content Include="ContentOnline\js\wow.min.js" />
+    <Content Include="ContentOnline\Slider Images\powerindustry1496x581.jpg" />
+    <Content Include="ContentOnline\Slider Images\railindustry1496x581.jpg" />
+    <Content Include="ContentOnline\Slider Images\steelindustry1496x581.jpg" />
+    <Content Include="ContentOnline\Slider Images\weldingindustry1496x581.jpg" />
+    <Content Include="ContentOnline\Slider Images\windindustry.jpg" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap.css" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\AdminLTE\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -826,6 +837,8 @@
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Content\AdminLTE\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\Common Images\pdf.jpg" />
+    <Content Include="Content\Common Images\Word-Logo.jpg" />
     <Content Include="Content\css\bluimp\jquery.fileupload-ui-noscript.css" />
     <Content Include="Content\css\bluimp\jquery.fileupload-ui.css" />
     <Content Include="Content\css\bluimp\style.css" />
@@ -834,6 +847,22 @@
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\print.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Images\Product Categories\Discrete thyristor.jpg" />
+    <Content Include="Content\Images\Product Categories\2.jpg" />
+    <Content Include="Content\Images\Product Categories\Discrete thyristor.jpg" />
+    <Content Include="Content\Images\Product Categories\Discrete_diode[1].jpg" />
+    <Content Include="Content\Images\Product Categories\Fast recovery diodes.png" />
+    <Content Include="Content\Images\Product Categories\Fast Switching Thyristor .png" />
+    <Content Include="Content\Images\Product Categories\Phase control thyristor_stud flat base.jpg" />
+    <Content Include="Content\Images\Product Categories\Phase controlThyristor  - disc hockey puk.png" />
+    <Content Include="Content\Images\Product Categories\power bridges.JPG" />
+    <Content Include="Content\Images\Product Categories\Rectifier diode modules.jpg" />
+    <Content Include="Content\Images\Product Categories\Rectifier Diodes_Disc hockey puk.png" />
+    <Content Include="Content\Images\Product Categories\Rectifier diodes_Stud flat base.jpg" />
+    <Content Include="Content\Images\Product Categories\Thyristor modues non isolated base.JPG" />
+    <Content Include="Content\Images\Product Categories\thyristor modules for phase control.png" />
+    <Content Include="Content\Images\Product Categories\thyristor-diode modules for phase control .png" />
+    <Content Include="Content\Images\Service Category\2.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -984,8 +1013,12 @@
     <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="Content\fonts\ionicons.ttf" />
     <Content Include="Content\fonts\ionicons.woff" />
-    <Content Include="ContentOnline\fonts\Roboto-Bold.ttf" />
-    <Content Include="ContentOnline\fonts\Roboto-Regular.ttf" />
+    <Content Include="ContentOnline\fonts\fontawesome-webfont.eot" />
+    <Content Include="ContentOnline\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ContentOnline\fonts\fontawesome-webfont.woff" />
+    <Content Include="ContentOnline\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ContentOnline\fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\MSPower.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\AboutUs\aboutus_events.js" />
     <Content Include="Scripts\AboutUs\aboutus_method.js" />
@@ -999,6 +1032,7 @@
     <Content Include="Scripts\Enquiry\enquiry_method.js" />
     <Content Include="Scripts\Enquiry\enquiry_search_events.js" />
     <Content Include="Scripts\Enquiry\enquiry_search_method.js" />
+    <Content Include="Scripts\Enquiry\enquiry_validation.js" />
     <Content Include="Scripts\Event\event_events.js" />
     <Content Include="Scripts\Event\event_method.js" />
     <Content Include="Scripts\Event\event_search_events.js" />
@@ -1013,10 +1047,13 @@
     <Content Include="Scripts\genric.authorize.js" />
     <Content Include="Scripts\ImageUpload\image_upload_method.js" />
     <Content Include="Scripts\ImageUpload\image_upload_events.js" />
+    <Content Include="Scripts\Job_Application\job_application_details_events.js" />
+    <Content Include="Scripts\Job_Application\job_application_details_method.js" />
     <Content Include="Scripts\Job_Application\job_application_events.js" />
     <Content Include="Scripts\Job_Application\job_application_method.js" />
     <Content Include="Scripts\Job_Application\job_application_search_events.js" />
     <Content Include="Scripts\Job_Application\job_application_search_method.js" />
+    <Content Include="Scripts\Job_Application\job_application_validation.js" />
     <Content Include="Scripts\Job_Opening\job_opening_events.js" />
     <Content Include="Scripts\Job_Opening\job_opening_method.js" />
     <Content Include="Scripts\Job_Opening\job_opening_search_events.js" />
@@ -1040,17 +1077,29 @@
     <Content Include="Scripts\NewsLetter\newsletter_method.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_events.js" />
     <Content Include="Scripts\NewsLetter\newsletter_search_method.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_event.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_method.js" />
+    <Content Include="Scripts\NewsLetter\newsletter_validation.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_event.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_method.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_search_events.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_search_method.js" />
+    <Content Include="Scripts\ProductDetails\productdetail_validation.js" />
     <Content Include="Scripts\Product\product_event.js" />
     <Content Include="Scripts\Product\product_method.js" />
     <Content Include="Scripts\Product\product_search_event.js" />
     <Content Include="Scripts\Product\product_search_method.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_search_events.js" />
-    <Content Include="Scripts\ProductDetail\productdetail_search_method.js" />
-    <Content Include="Scripts\Services\services_events.js" />
-    <Content Include="Scripts\Services\services_search_event.js" />
-    <Content Include="Scripts\Services\services_search_method.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_events.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_methods.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_search_event.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_search_method.js" />
+    <Content Include="Scripts\ServiceCategory\servicecategory_validation.js" />
+    <Content Include="Scripts\WebSite\events_event.js" />
+    <Content Include="Scripts\WebSite\main_event.js" />
+    <Content Include="Scripts\WebSite\product_events.js" />
+    <Content Include="Scripts\WebSite\product_listing_events.js" />
+    <Content Include="Scripts\WebSite\product_search_events.js" />
+    <Content Include="Views\WebSite\Product.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1086,16 +1135,15 @@
     <Content Include="Views\ContactUs\Index.cshtml" />
     <Content Include="Views\NewsLetter\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\ServiceCategory\Index.cshtml" />
     <Content Include="Views\WebSite\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
     <Content Include="Views\NewsLetter\Search.cshtml" />
     <Content Include="Views\ContactUs\Search.cshtml" />
-    <Content Include="Views\Services\Search.cshtml" />
+    <Content Include="Views\ServiceCategory\Search.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\WebSite\ProductListing.cshtml" />
-    <Content Include="Views\WebSite\Product.cshtml" />
     <Content Include="Views\Shared\_Sidebar_Online.cshtml" />
     <Content Include="Views\WebSite\ServiceListing.cshtml" />
     <Content Include="Views\WebSite\Service.cshtml" />
@@ -1124,9 +1172,14 @@
     <Content Include="Views\ProductDetail\Index.cshtml" />
     <Content Include="Views\ProductDetail\Search.cshtml" />
     <Content Include="Views\ImageUpload\Index.cshtml" />
-    <Content Include="Views\ImageUpload\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutOnline.cshtml" />
     <Content Include="Views\Event\Search.cshtml" />
+    <Content Include="Views\WebSite\_Product_Search.cshtml" />
+    <Content Include="Views\WebSite\Events.cshtml" />
+    <Content Include="Views\WebSite\_Events_Images.cshtml" />
+    <Content Include="Views\ProductDetails\Index.cshtml" />
+    <Content Include="Views\ProductDetails\Search.cshtml" />
+    <Content Include="Views\WebSite\_Product_Volts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1136,7 +1189,10 @@
     <Folder Include="Content\Documents\Product\" />
     <Folder Include="Content\Documents\Services\" />
     <Folder Include="Content\Events\" />
-    <Folder Include="Content\Images\" />
+    <Folder Include="Content\Job Application\" />
+    <Folder Include="Content\PDF\News Letter\" />
+    <Folder Include="Content\PDF\Product Details\" />
+    <Folder Include="Content\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1150,6 +1206,9 @@
       <Project>{1d660812-a713-499c-95c8-eb1eeec5dd68}</Project>
       <Name>MSPowerManager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

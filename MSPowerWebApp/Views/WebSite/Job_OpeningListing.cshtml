@@ -1,70 +1,95 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@model MSPowerWebApp.Models.Job_OpeningViewModel
+
+@{
+    ViewBag.Title = "JobOpening";
 }
 
-@* Job Opening Listing @Session["Language"].ToString();*@
 
+<div class="lang-toggles">
+    <select style="border:0px; outline:0px;" id="drpMainlang">
+        @if (Session["Language"].ToString() == "en")
+        {
+            <option value="en" selected>English</option>
+        }
+        else
+        {
+            <option value="en">English</option>
+        }
 
+        @if (Session["Language"].ToString() == "ch")
+        {
+            <option value="ch" selected>Chinese</option>
+        }
+        else
+        {
+            <option value="ch">Chinese</option>
+        }
+    </select>
+</div>
 
 <div class="content">
-    <div class="blog-section">
+    <div class="grid_4">
         <div class="container">
-            <div class="col-md-12">
-                <h2 class="with-line">Job Openings</h2>
-                <article class="clearfix">
-                    <header class="grid_8 alpha">
-                        <div class="head_element"><span class="el_1">07</span><span class="el_2">May</span></div>
-                        <div class="sub">
-                            <a href="single.html" class="readblog">Lorem ipsum dolor sit amet</a>
-                            <p class="sub_head">Posted by <a href="#">Admin</a> with <a href="#">3 comment(s)</a></p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </header>
-                    <div class="alpha1"><a href="single.html">
-                        @*<img src="../ContentOnline/images/index-3_img-1.jpg" alt="" />*@</a></div>
-                    <div class="grid_b4">
-                        @*<h5>Phasellus porta. Fusce suscipit varius mi. Cum sociis natoque penatibus et mag.</h5>*@
-                        <p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.</p>
-                        <a href="single.html" class="btn btn-1 btn-1c">Read More</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </article>
-                <article class="clearfix">
-                    <header class="grid_8 alpha">
-                        <div class="head_element"><span class="el_1">04</span><span class="el_2">May</span></div>
-                        <div class="sub">
-                            <a href="single.html" class="readblog">Praesent vestibulum molestie</a>
-                            <p class="sub_head">Posted by <a href="#">Admin</a> with <a href="#">3 comment(s)</a></p>
-                        </div>
-                        <div class="clearfix"></div>
+            <h1 class="blog_head">Job Openings</h1>
+            @{
 
-                    </header>
-                    <div class="alpha1"><a href="single.html">
-                        @*<img src="../ContentOnline/images/index-3_img-2.jpg" alt="" />*@</a></div>
-                    <div class="grid_b4">
-                        @*<h5>Fusce feugiat malesuada odio. Morbi nunc odio, gravida at, cursus nec, luctus a.</h5>*@
-                        <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutem. Lorem ipsum dolor sit amet, conectetu er adipiscing elit. Praesent vestibulum.</p>
-                        <a href="single.html" class="btn btn-1 btn-1c">Read More</a>
-                    </div>
-                </article>
-                <article class="clearfix">
-                    <header class="grid_8 alpha">
-                        <div class="head_element"><span class="el_1">02</span><span class="el_2">May</span></div>
-                        <div class="sub">
-                            <a href="single.html" class="readblog">Cum sociis natoque penatib</a>
-                            <p class="sub_head">Posted by <a href="#">Admin</a> with <a href="#">3 comment(s)</a></p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </header>
-                    <div class="alpha1"><a href="single.html">
-                        @*<img src="../ContentOnline/images/index-3_img-3.jpg" alt="">*@</a></div>
-                    <div class="grid_b4">
-                        @*<h5>Maecenas tristique orci ac sem. Duis ultri cies pharetra magna. Donec accumsan.</h5>*@
-                        <p>Rutrum ante eu lacus. Lorem ipsum dolor sit amet, piscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Phasellus porta. </p>
-                        <a href="single.html" class="btn btn-1 btn-1c">Read More</a>
-                    </div>
-                </article>
+            int i = 1;
+            foreach (var item in Model.Job_Openings)
+            {
+                if (i == 1 || i % 2 == 0)
+                {
+        @:<div class="blog_grid span2">
+                }
+        <div class="col-md-6">
+            <h3><a href="#">@item.Job_Title</a></h3>
+            <div class="links">
+                <ul>
+                    <li><i class="fa blog-icon fa-calendar"> </i><span>@item.Updated_On.ToShortDateString()</span></li>
+                </ul>
             </div>
+            <p>
+                @if (item.Job_Description.Length > 300)
+                        {
+                        @Html.Raw(item.Job_Description.Substring(0, 300).ToString() + "...")
+                        }
+                        else
+                        {
+                        @Html.Raw(item.Job_Description)
+                        }
+            </p>
+            @if (item.Language_Id == 1)
+{
+                    <a href="/en/job_opening?Job_Opening_Id=@item.Job_Opening_Id" class="btn btn-1 btn-1c">Read More</a>
+
+
+}
+            else
+            {
+                <a href="/en/job_opening?Job_Opening_Id=@item.Job_Opening_Id" class="btn btn-1 btn-1c">Read More</a>
+            }
+
+        </div>
+
+                if (i % 2 == 0)
+                {
+        @:<div class="clearfix"> </div>
+        @:</div>
+                }
+                i++;
+            }
+
+            }
+
         </div>
     </div>
-</div>
+
+    </div>
+    <script>
+        $(function () {
+
+            $(".top-menu").find("li").removeClass();
+
+            $("#liJobOpening").addClass("active");
+
+        });
+    </script>

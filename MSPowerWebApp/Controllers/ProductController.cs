@@ -89,7 +89,7 @@ namespace MSPowerWebApp.Controllers
 
                 pViewModel.Product.Product_Id = pMan.Insert_Product(pViewModel.Product);
 
-                pViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                pViewModel.Friendly_Message.Add(MessageStore.Get("P001"));
             }
             catch (Exception ex)
             {
@@ -131,7 +131,7 @@ namespace MSPowerWebApp.Controllers
 
                 pMan.Update_Product(pViewModel.Product);
 
-                pViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                pViewModel.Friendly_Message.Add(MessageStore.Get("P002"));
             }
             catch (Exception ex)
            

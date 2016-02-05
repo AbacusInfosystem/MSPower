@@ -11,19 +11,28 @@ namespace MSPowerInfo
 
         public ProductCategoryInfo()
         {
-
-
+            Product_Category_Column_Mappings = new List<ProductCategoryColumnMappingInfo>();
         }
 
         public int Product_Category_Id { get; set; }
 
         public int Language_Id { get; set; }
 
+        public string Product_Category { get; set; }
+
+        public int Parent_Category_Id { get; set; }
+
         public string Product_Category1 { get; set; }
 
         public string Product_Category2 { get; set; }
 
         public string Product_Category3 { get; set; }
+
+        public string Product_Category_Image { get; set; }
+
+        public string Product_Category_Description { get; set; }
+
+        public List<ProductCategoryColumnMappingInfo> Product_Category_Column_Mappings { get; set; }
 
     }
 }

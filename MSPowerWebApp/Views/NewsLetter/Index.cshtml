@@ -10,6 +10,7 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -40,7 +41,7 @@
 
                             <div class="col-md-12">
 
-                                <form id="frmNewsLetter">
+                                <form id="frmNewsLetter" method="POST" enctype="multipart/form-data">
 
                                     <div class="form-group">
                                         <label style="color: #333" for="txtNewsLetter_Title">NewsLetter Title</label>
@@ -54,13 +55,13 @@
                                         <textarea id="editor1" rows="10" cols="80" name="NewsLetter.NewsLetter_Description">@Model.NewsLetter.NewsLetter_Description</textarea>
                                     </div>
 
-                                    @*<div class="form-group">
+                                        @*<div class="form-group">
                                         <label style="color: #333" for="fileUpload_NewsLetter_Image">Upload NewsLetter Images</label>
 
                                         <input type="file" class="form-control input-sm" id="fileUpload_NewsLetter_Image" placeholder="Upload NewsLetter Image" name="">
 
                                         <button type="button" class="btn btn-default btn-sm" id="btnUpload">Upload Image</button>
-                                    </div>*@
+                                        </div>*@
 
                                     <div class="form-group">
 
@@ -76,9 +77,21 @@
                                                 }
 
                                             <input type="hidden" id="hdnNewsLettert_Status" name="NewsLetter.Is_Active" value="@Model.NewsLetter.Is_Active">
+                                        
                                         </label>
 
                                     </div>
+
+                                    <div class="form-group">
+                                        <input type="file" name="Upload_File" id="file" />
+                                    </div>
+
+                                    @if (Model.Is_PDF_Exists)
+                                    {
+                                        <div class="form-group">
+                                            <input type="button" id="btnDownloadPDF" class="btn btn-sm" value="Download PDF" />
+                                        </div>
+                                    }
 
                                     <div class="btn-group">
 
@@ -88,7 +101,7 @@
 
                                         <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "NewsLetter")" role="button">Cancel</a>
 
-                                        <button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>
+                                        @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
 
                                         <input type="hidden" name="NewsLetter.NewsLetter_Id" id="hdnNewsLetter_Id" value="@Model.NewsLetter.NewsLetter_Id">
 

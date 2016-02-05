@@ -24,6 +24,10 @@ namespace MSPowerInfo
 
         public int Service_Category_Id { get; set; }
 
+        public string Service_Category_Image { get; set; }
+
+        public string Service_Category { get; set; }
+
         [AllowHtml]
 
         public string Service_Description { get; set; }

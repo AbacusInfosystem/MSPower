@@ -9,6 +9,8 @@ using MSPowerWebApp.Common;
 using MSPowerWebApp.Models;
 using MSPowerManager;
 using ExceptionManagement.Logger;
+using System.Configuration;
+using System.IO;
 
 namespace MSPowerWebApp.Controllers
 {
@@ -25,6 +27,14 @@ namespace MSPowerWebApp.Controllers
         {
 
             ViewBag.Title = "MS POWER ERP :: Create, Update";
+
+
+            if(TempData["nlViewModel"] != null)
+            {
+                nlViewModel = (NewsLetterViewModel)TempData["nlViewModel"];
+            }
+
+            
 
             return View(nlViewModel);
         }
@@ -75,7 +85,9 @@ namespace MSPowerWebApp.Controllers
 
                 nlViewModel.NewsLetter.NewsLetter_Id = nlMan.Insert_NewsLetter(nlViewModel.NewsLetter);
 
-                nlViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
+                PdfUpload(nlViewModel.Upload_File, nlViewModel.NewsLetter.NewsLetter_Id.ToString());
+
+                nlViewModel.Friendly_Message.Add(MessageStore.Get("N001"));
             }
             catch (Exception ex)
             {
@@ -87,6 +99,22 @@ namespace MSPowerWebApp.Controllers
             //TempData["nlViewModel"] = nlViewModel;
 
             //return RedirectToAction("Search");
+
+            TempData["nlViewModel"] = nlViewModel;
+
+            string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadNewsLetterPath"]).ToString(), nlViewModel.NewsLetter.NewsLetter_Id + ".pdf");
+
+            if (nlViewModel.NewsLetter.NewsLetter_Id != 0)
+            {
+                if (System.IO.File.Exists(path))
+                {
+                    nlViewModel.Is_PDF_Exists = true;
+                }
+                else
+                {
+                    nlViewModel.Is_PDF_Exists = false;
+                }
+            }
 
             return View("Index", nlViewModel);
 
@@ -118,7 +146,9 @@ namespace MSPowerWebApp.Controllers
 
                 nlMan.Update_NewsLetter(nlViewModel.NewsLetter);
 
-                nlViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
+                PdfUpload(nlViewModel.Upload_File, nlViewModel.NewsLetter.NewsLetter_Id.ToString());
+
+                nlViewModel.Friendly_Message.Add(MessageStore.Get("N002"));
             }
             catch (Exception ex)
             {
@@ -130,6 +160,22 @@ namespace MSPowerWebApp.Controllers
             //TempData["nlViewModel"] = nlViewModel;
 
             //return RedirectToAction("Search");
+
+            TempData["nlViewModel"] = nlViewModel;
+
+            string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadNewsLetterPath"]).ToString(), nlViewModel.NewsLetter.NewsLetter_Id + ".pdf");
+
+            if (nlViewModel.NewsLetter.NewsLetter_Id != 0)
+            {
+                if (System.IO.File.Exists(path))
+                {
+                    nlViewModel.Is_PDF_Exists = true;
+                }
+                else
+                {
+                    nlViewModel.Is_PDF_Exists = false;
+                }
+            }
 
             return View("Index", nlViewModel);
 
@@ -197,6 +243,20 @@ namespace MSPowerWebApp.Controllers
                 NewsLetterManager nlMan = new NewsLetterManager();
 
                 nlViewModel.NewsLetter = nlMan.Get_NewsLetter_By_Id(nlViewModel.Filter.NewsLetter_Id, language_Id);
+
+                string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadNewsLetterPath"]).ToString(), nlViewModel.NewsLetter.NewsLetter_Id + ".pdf");
+
+                if (nlViewModel.NewsLetter.NewsLetter_Id != 0)
+                {
+                    if (System.IO.File.Exists(path))
+                    {
+                        nlViewModel.Is_PDF_Exists = true;
+                    }
+                    else
+                    {
+                        nlViewModel.Is_PDF_Exists = false;
+                    }
+                }
             }
 
             catch (Exception ex)
@@ -251,6 +311,46 @@ namespace MSPowerWebApp.Controllers
 
             return Json(nlViewModel, JsonRequestBehavior.AllowGet);
 
+        }
+
+        public void PdfUpload(HttpPostedFileBase file, string id)
+        {
+            ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
+
+            if (file != null && file.ContentLength > 0)
+                try
+                {
+                    if ((Path.GetExtension(file.FileName) == ".pdf"))
+                    {
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadNewsLetterPath"]).ToString(), id + ".pdf");
+
+                        System.IO.File.Delete(path);
+
+                        file.SaveAs(path);
+
+                        ViewBag.Message = "File uploaded successfully";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Debug(ex.StackTrace);
+                }
+        }
+
+        public FileResult Download_Product_Details_PDF(int newsLetter_Id)
+        {
+            string path = "";
+
+            try
+            {
+                path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadNewsLetterPath"]).ToString(), newsLetter_Id + ".pdf");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Product Details Controller - Download_Product_Details_PDF" + ex.ToString());
+            }
+
+            return File(path, "application/pdf", "Product Details.pdf");
         }
     }
 }

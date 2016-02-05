@@ -1,5 +1,6 @@
 ﻿@model MSPowerWebApp.Models.Job_ApplicationViewModel
 
+  
 
 
 @{
@@ -24,6 +25,8 @@
 
     <script src="~/Scripts/Job_Application/job_application_method.js"></script>
 
+    <script src="~/Scripts/Job_Application/job_application_validation.js"></script>
+
 </head>
 
 <body>
@@ -45,77 +48,47 @@
 
                             <div class="col-md-12">
 
-                                <form id="frmJob_Application">
+                                <div></div>
 
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtReference">Reference : @Model.Job_Application.Reference</label>
+
+                                </div>
+
+                                <div></div>
+
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtAdditional_Information">Additional Information : @Model.Job_Application.Additional_Information</label>
+
+                                </div>
+
+                                <div></div>
+
+                                <div class="form-group">
+
+                                    <label style="color: #333" for="txtCreated_On">Created On : @Model.Job_Application.Created_On</label>
+
+                                </div>
+
+                                @if (Model.Job_Application.Is_DOCX_Exists)
+                                {
                                     <div class="form-group">
-                                        <label style="color: #333" for="txtFirst_Name">First Name</label>
 
-                                        <input type="text" class="form-control input-sm" id="txtFirst_Name" placeholder="Enter First Name" value="@Model.Job_Application.First_Name" name="Job_Application.First_Name">
-                                    </div>
-
-                                    <div></div>
-
-
-                                    <div class="form-group">
-                                        <label style="color: #333" for="txtLast_Name">Last Name</label>
-
-                                        <input type="text" class="form-control input-sm" id="txtLast_Name" placeholder="Enter Last Name" value="@Model.Job_Application.Last_Name" name="Job_Application.Last_Name">
-                                    </div>
-
-                                    <div></div>
-
-
-                                    <div class="form-group">
-                                        <label style="color: #333" for="txtEmail">Email</label>
-
-                                        <input type="text" class="form-control input-sm" id="txtEmail" placeholder="Enter Email" value="@Model.Job_Application.Email" name="Job_Application.Email">
-                                    </div>
-
-                                    <div></div>
-
-
-                                    <div class="form-group">
-                                        <label style="color: #333" for="txtReference">Reference</label>
-
-                                        <input type="text" class="form-control input-sm" id="txtReference" placeholder="Enter Reference" value="@Model.Job_Application.Reference" name="Job_Application.Reference">
-                                    </div>
-
-                                    <div></div>
-
-
-                                    <div class="form-group">
-                                        <label style="color: #333" for="txtAdditional_Information">Additional Information</label>
-
-                                        <textarea id="editor1" rows="4" cols="80" name="Job_Application.Additional_Information">@Model.Job_Application.Additional_Information</textarea>
-                                    </div>
-
-                                    <div></div>
-
-                                   
-                                    <div class="form-group">
-                                        <label style="color: #333" for="txtCreated_On">Created On</label>
-
-                                        <input type="text" class="form-control input-sm" id="txtCreated_On" placeholder="Created On" value="@Model.Job_Application.Created_On" name="Job_Application.Created_On">
-                                    </div>
-
-
-                                    <div class="btn-group">
-
-                                        <button type="button" class="btn btn-default btn-sm" id="btnSave">Save</button>
-
-                                        <button type="button" class="btn btn-default btn-sm" id="btnReset">Reset</button>
-
-                                        <a id="btnCancel" class="btn btn-default btn-sm" href="@Url.Action("Search", "Job_Application")" role="button">Cancel</a>
-
-                                        @*<button type="button" class="btn btn-default btn-sm" id="btnUploadImage">Upload Image</button>*@
-
-                                        <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
-
-                                        @*<input type="hidden" name="Job_Application.Job_Application_Id" id="hdfJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">*@
+                                        <input type="button" id="btnDownloadDOCX" class="btn btn-sm" value="Download DOCX" />
 
                                     </div>
+                                }
 
-                                </form>
+                                <div class="btn-group">
+
+                                    <input type="hidden" name="Job_Application.Job_Application_Id" id="hdnJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">
+
+                                    @*<input type="hidden" name="Job_Application.Job_Application_Id" id="hdfJob_Application_Id" value="@Model.Job_Application.Job_Application_Id">*@
+
+                                </div>
+
                             </div>
 
                         </div>
