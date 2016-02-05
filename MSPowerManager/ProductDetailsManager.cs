@@ -70,7 +70,11 @@ namespace MSPowerManager
         public ProductCategoryColumnMappingInfo Get_Product_Detail_By_Name(string Col1)
         {
             return _pdRepo.Get_Product_Detail_By_Name(Col1);
+        }
 
+        public ProductCategoryColumnMappingInfo Get_Product_Detail_By_Competitor_Name(string competitor)
+        {
+            return _pdRepo.Get_Product_Detail_By_Competitor_Name(competitor);
         }
 
         public string Genrate_Html_For_Product_Categories_Images(int language_Id, int parent_Category_Id)

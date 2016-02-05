@@ -72,6 +72,8 @@ namespace MSPowerInfo
 
         Get_Product_Details_Name_Sp,
 
+        Get_Product_Details_By_Competitors_Name_Sp,
+
 
         // Services Store Procedures
 

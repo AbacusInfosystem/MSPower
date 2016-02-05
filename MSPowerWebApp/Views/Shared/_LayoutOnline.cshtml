@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <style>
 
@@ -255,23 +257,31 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label for="usr1">Search by Products:</label>
+                                    <label for="usr1">Search by Keyword:</label>
                                     <input type="text" class="form-control" id="usr1">
                                 </div>
                             </div>
 
                             <div class="col-md-2">
+                                
                                 <div class="form-group">
-                                    <label for="usr2">Search by Competitor Product Names:</label>
+                                    <label for="usr2">Search by Competitor:</label>
                                     <input type="text" class="form-control" id="usr2">
                                 </div>
+                                
                             </div>
 
-                            <div class="col-md-1" id="or">
-                                <h3>- OR -</h3>
+                            @*<div class="col-md-1" id="or">
+                                
+                            </div>*@
+
+                        <div class="col-md-6">
+
+                            <div id="dvProductCategory">
+
                             </div>
 
-                        <div class="col-md-4"></div>
+                        </div>
                         
 
                         @*<div class="col-md-2">
@@ -310,9 +320,7 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
                                 </div>
                             </div>*@
 
-                        <div id="dvProductCategory">
-
-                        </div>
+                       
 
                     </div>
 
@@ -426,13 +434,24 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
         $("#searchsubmit").click(function () {
 
-            //$("#searchform").attr("action", "/" + $("#hdfsessionLanguage").val() + "/product-listing?product_Category_Id=" + $("#hdfSearchProductCategoryId").val() + "/" +  $("#usr1").val());
+            
 
-            $("#searchform").attr("action", "/" + $("#hdfsessionLanguage").val() + "/product-listing" + "/" + $("#hdfSearchProductCategoryId").val() + "/" + $("#usr1").val());
+            if ($("#usr1").val() == "") {
+                $("#usr1").val("_");
+            }
+
+            if ($("#usr2").val() == "") {
+                $("#usr2").val("_");
+            }
+
+            $("#searchform").attr("action", "/" + $("#hdfsessionLanguage").val() + "/product-listing?product_Category_Id=" + $("#hdfSearchProductCategoryId").val() + "&keyword=" + $("#usr1").val() + "&competitor=" + $("#usr2").val());
 
             $("#searchform").attr("method", "POST");
 
             $("#searchform").submit();
+
+
+
         });
 
         $("body").on("change", ".drp-product-category", function () {
@@ -487,7 +506,7 @@ Context.Request.Url.ToString() == "http://localhost:61034/")
 
         var html = "";
 
-        html += "<div class='col-md-2 row-product-cat'>";
+        html += "<div class='col-md-4 row-product-cat'>";
 
         html += "<label> Category :</label>";
 

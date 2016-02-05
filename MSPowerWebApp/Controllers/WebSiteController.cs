@@ -19,7 +19,6 @@ namespace MSPowerWebApp.Controllers
 {
     public class WebSiteController : Controller
     {
-        
         //
         // GET: /WebSite/
 
@@ -32,7 +31,9 @@ namespace MSPowerWebApp.Controllers
 
         [Language]
 
-        public ActionResult ProductListing(string language, int product_Category_Id, string Col1)
+        //public ActionResult ProductListing(string language, int product_Category_Id, string Col1, string competitor)
+
+        public ActionResult ProductListing(string language, int product_Category_Id, string keyword, string competitor)
         {
             ProductDetailViewModel pViewModel = new ProductDetailViewModel();
 
@@ -61,16 +62,16 @@ namespace MSPowerWebApp.Controllers
 
                     pViewModel.Volts = _pMan.Get_Product_Volts(product_Category_Id);
 
-                    if(pViewModel.Volts.Count>0)
-                    {
-                        product_Category_Id = 0;
-                    }
+                    //if(pViewModel.Volts.Count>0)
+                    //{
+                    //    product_Category_Id = 0;
+                    //}
                 }
 
-                else if(!string.IsNullOrEmpty(Col1))
-                {
-                    //pViewModel.Volts.Add(_pMan.Get_Product_Detail_By_Name(Col1));
-                }
+                //else if (!string.IsNullOrEmpty(keyword))
+                //{
+                //    //pViewModel.Volts.Add(_pMan.Get_Product_Detail_By_Name(Col1));
+                //}
             }
             catch (Exception ex)
             {
@@ -79,22 +80,33 @@ namespace MSPowerWebApp.Controllers
                 Logger.Error("WebSite Controller - ProductListing" + ex.ToString());
             }
 
-            if (product_Category_Id != 0)
+            //if (product_Category_Id != 0)
+            //{
+            //    return View(pViewModel);
+            //}
+
+
+            if ((product_Category_Id == 0 && string.IsNullOrEmpty(competitor) && string.IsNullOrEmpty(keyword)) || (pViewModel.Volts.Count == 0 && (competitor == "_" || string.IsNullOrEmpty(competitor)) && (keyword == "_" || string.IsNullOrEmpty(keyword)))) //if (pViewModel.Volts.Count == 0)
             {
                 return View(pViewModel);
             }
             else
             {
-                if (!string.IsNullOrEmpty(Col1))
-                {
-                    return RedirectToAction("Get_Product_Detail_By_Name", new System.Web.Routing.RouteValueDictionary { { "language", language }, { "Col1", Col1 } });
-                }
-                else
+                if (product_Category_Id != 0)
                 {
                     return RedirectToAction("Product", new System.Web.Routing.RouteValueDictionary { { "language", language }, { "product_Category_Id", pViewModel.Product_Category.Product_Category_Id } });
                 }
+                else if (competitor == "_" && keyword != "_")
+                {
+                    return RedirectToAction("Get_Product_Detail_By_Name", new System.Web.Routing.RouteValueDictionary { { "language", language }, { "Col1", keyword } });
+                }
+                else //(keyword == "_" && competitor != "_")
+                {
+                    return RedirectToAction("Get_Product_Detail_By_Competitor_Name", new System.Web.Routing.RouteValueDictionary { { "language", language }, { "competitor", competitor } });
+                }
             }
         }
+
 
         public ActionResult Product(string language, int product_Category_Id)
         {
@@ -1035,6 +1047,51 @@ namespace MSPowerWebApp.Controllers
             }
 
             
+
+            return View("Product", pViewModel);
+        }
+
+        public ActionResult Get_Product_Detail_By_Competitor_Name(string language, string competitor)
+        {
+
+            ProductDetailViewModel pViewModel = new ProductDetailViewModel();
+
+            ProductDetailsManager _pMan = new ProductDetailsManager();
+
+            int language_Id = 0;
+
+            if (Language.en.ToString() == language)
+            {
+                language_Id = (int)Language.en;
+            }
+            else
+            {
+                language_Id = (int)Language.ch;
+            }
+
+            pViewModel.Volts.Add(_pMan.Get_Product_Detail_By_Competitor_Name(competitor));
+
+            foreach (var item in pViewModel.Volts)
+            {
+                item.Product_Details_Header = _pMan.Get_Product_Details_Header(item.Product_Column_Ref_Id);
+
+                foreach (var itm in item.Product_Details)
+                {
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+
+                    if (System.IO.File.Exists(path))
+                    {
+                        itm.Is_PDF_Exists = true;
+                    }
+                    else
+                    {
+                        itm.Is_PDF_Exists = false;
+                    }
+                }
+
+            }
+
+
 
             return View("Product", pViewModel);
         }

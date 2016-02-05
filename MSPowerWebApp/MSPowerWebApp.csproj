@@ -225,6 +225,7 @@
     <Compile Include="Models\NewsLetterViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\ServiceCategoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

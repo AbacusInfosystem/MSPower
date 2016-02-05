@@ -715,6 +715,57 @@ namespace MSPowerRepo
             return volts;
         }
 
+        public ProductCategoryColumnMappingInfo Get_Product_Detail_By_Competitor_Name(string competitor)
+        {
+            ProductCategoryColumnMappingInfo volts = new ProductCategoryColumnMappingInfo();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Competitor", competitor));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_By_Competitors_Name_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            _con.Close();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                    volts = Get_Product_Volt_Values(dr);
+
+                    _con.Open();
+
+                    // Product Detail Headers
+
+                    param = new List<SqlParameter>();
+
+                    param.Add(new SqlParameter("@Product_Column_Ref_Id", volts.Product_Column_Ref_Id));
+
+                    DataTable dt1 = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_Product_Details_Headers_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+                    _con.Close();
+
+                    int headerCount = 0;
+
+                    if (dt1 != null)
+                    {
+                        headerCount = dt1.Rows.Count;
+                    }
+
+                    volts.Product_Details.Add(Get_Product_Details_Values(dr, headerCount));
+                }
+            }
+
+            return volts;
+        }
+
         public string Genrate_Html_For_Product_Categories_Images(List<ProductCategoryInfo> product_Categories, int parent_Category_Id, int language_Id)
         {
             string html = "";
