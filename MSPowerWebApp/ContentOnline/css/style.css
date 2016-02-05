@@ -123,20 +123,11 @@ span.main {
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -o-transition: 0.5s all;
-  -ms-transition: 0.5s all;
-  -moz-transition: 0.5s all;
   padding: 38px 20px 36px 20px;
 }
 .top-nav1 ul li.active a, .top-nav1 ul li a:hover{
 	color:#fff;
 	background:#EE1C25;
-	-webkit-transform: rotateY(70deg);
-	-moz-transform: rotateY(70deg);
-	-ms-transform: rotateY(70deg);
-	transform: rotateY(70deg);
 }
 
 
@@ -151,20 +142,11 @@ span.main {
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -o-transition: 0.5s all;
-  -ms-transition: 0.5s all;
-  -moz-transition: 0.5s all;
   padding: 38px 20px 36px 20px;
 }
 .top-nav ul li.active a, .top-nav ul li a:hover{
 	color:#fff;
 	background:#EE1C25;
-	-webkit-transform: rotateY(70deg);
-	-moz-transform: rotateY(70deg);
-	-ms-transform: rotateY(70deg);
-	transform: rotateY(70deg);
 }
 .border-side{
 	position: absolute;
@@ -371,7 +353,7 @@ input, textarea {
 }
 }
 .hexagon_box {
-  padding-top: 86px;
+  padding-top: 0px;
   text-align: center;
 }
 .effect-1 {
@@ -430,8 +412,80 @@ input, textarea {
 }
 .hexagon_box ul:last-child {
   margin-top: 0px;
-  margin-bottom: 106px;
+  margin-bottom: 0px;
 }
+
+/*--added Nishant start--*/
+.hexagon_box .circle1{
+	height: 300px;
+	width: 300px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 185px;
+	border: 1px solid #231F20;
+}
+.hexagon_box .circle1 img{
+	width: 130%;
+	height: 104%;
+}
+
+.hexagon_box .circle2{
+	height: 300px;
+	width: 300px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 185px;
+	border: 1px solid #231F20;
+}
+.hexagon_box .circle2 img{
+	width: 130%;
+	height: 104%;
+}
+
+.hexagon_box .circle3{
+	height: 300px;
+	width: 300px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 185px;
+	border: 1px solid #231F20;
+}
+.hexagon_box .circle3 img{
+	width: 130%;
+	height: 104%;
+}
+
+.hexagon_box .circle4{
+	background:url("../images/Discrete-thyristor700x450.jpg");
+	height: 300px;
+	width: 300px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 185px;
+	border: 1px solid #231F20;
+}
+.hexagon_box .circle4 img{
+	width: 130%;
+	height: 104%;
+}
+
+.hexagon_box .circle5{
+	background:url("../images/Discrete-thyristor700x450.jpg");
+	height: 300px;
+	width: 300px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 185px;
+	border: 1px solid #231F20;
+}
+.hexagon_box .circle5 img{
+	width: 130%;
+	height: 104%;
+}
+/*--added Nishant end--*/
+
+
+
 .btn.btn-primary, .btn.btn-normal {
   background:none;
   margin: 14px 26px;
@@ -458,7 +512,7 @@ input, textarea {
   transition: 0.8s;
 }
 .grid_1{
- 	padding:8em 0;
+ 	padding:3em 0;
 }
 .desc{
 	padding:2em;
@@ -1210,6 +1264,32 @@ a:hover, a:focus {
 	text-decoration:none !important;
 }
 /*--responsive design--*/
+
+/*--added Nishant start--*/
+@media (max-width:1200px){
+.hexagon_box .circle1{
+	height: 250px;
+	width: 250px;
+}
+.hexagon_box .circle2{
+	height: 250px;
+	width: 250px;
+}
+.hexagon_box .circle3{
+	height: 250px;
+	width: 250px;
+}
+.hexagon_box .circle4{
+	height: 250px;
+	width: 250px;
+}
+.hexagon_box .circle5{
+	height: 250px;
+	width: 250px;
+}
+}
+/*--added Nishant end--*/
+
 @media (max-width:1024px){
 .header {
 	min-height:550px;
@@ -1321,6 +1401,33 @@ h3.m_3 {
   font-size:1.8em;
 }  
 }
+
+/*--added Nishant start--*/
+@media (max-width:990px){
+.hexagon_box .circle1{
+	height: 200px;
+	width: 200px;
+}
+.hexagon_box .circle2{
+	height: 200px;
+	width: 200px;
+}
+.hexagon_box .circle3{
+	height: 200px;
+	width: 200px;
+}
+.hexagon_box .circle4{
+	height: 200px;
+	width: 200px;
+}
+.hexagon_box .circle5{
+	height: 200px;
+	width: 200px;
+}
+}
+/*--added Nishant end--*/
+
+
 @media (max-width:930px){
 .top-nav1 ul li a{
 	
@@ -1578,6 +1685,32 @@ figure.icon img {
   border-top: 60px solid #312934;
 }
 }
+
+/*--added Nishant start--*/
+@media (max-width:680px){
+.hexagon_box .circle1{
+	height: 150px;
+	width: 150px;
+}
+.hexagon_box .circle2{
+	height: 150px;
+	width: 150px;
+}
+.hexagon_box .circle3{
+	height: 150px;
+	width: 150px;
+}
+.hexagon_box .circle4{
+	height: 150px;
+	width: 150px;
+}
+.hexagon_box .circle5{
+	height: 150px;
+	width: 150px;
+}
+}
+/*--added Nishant end--*/
+
 @media (max-width:640px){
 .top-nav1{
 	
@@ -1678,6 +1811,57 @@ label.btn1.btn2.btn-8.btn-8c {
 	width: 34%;
 }
 }
+
+/*--added Nishant start--*/
+@media (max-width:530px){
+.hexagon_box .circle1{
+	height: 120px;
+	width: 120px;
+}
+.hexagon_box .circle2{
+	height: 120px;
+	width: 120px;
+}
+.hexagon_box .circle3{
+	height: 120px;
+	width: 120px;
+}
+.hexagon_box .circle4{
+	height: 120px;
+	width: 120px;
+}
+.hexagon_box .circle5{
+	height: 120px;
+	width: 120px;
+}
+}
+
+/*--added Nishant start--*/
+@media (max-width:430px){
+.hexagon_box .circle1{
+	height: 100px;
+	width: 100px;
+}
+.hexagon_box .circle2{
+	height: 100px;
+	width: 100px;
+}
+.hexagon_box .circle3{
+	height: 100px;
+	width: 100px;
+}
+.hexagon_box .circle4{
+	height: 100px;
+	width: 100px;
+}
+.hexagon_box .circle5{
+	height: 100px;
+	width: 100px;
+}
+}
+/*--added Nishant end--*/
+
+/*--added Nishant end--*/
 @media (max-width:480px){
 .header {
   min-height:270px;
@@ -1834,6 +2018,31 @@ label.btn1.btn2.btn-8.btn-8c {
 	min-height: 150px;
 }
 }
+
+/*--added Nishant start--*/
+@media (max-width:360px){
+.hexagon_box .circle1{
+	height: 80px;
+	width: 80px;
+}
+.hexagon_box .circle2{
+	height: 80px;
+	width: 80px;
+}
+.hexagon_box .circle3{
+	height: 80px;
+	width: 80px;
+}
+.hexagon_box .circle4{
+	height: 80px;
+	width: 80px;
+}
+.hexagon_box .circle5{
+	height: 80px;
+	width: 80px;
+}
+}
+/*--added Nishant end--*/
 @media (max-width:320px){
 .top-nav1{
 	
