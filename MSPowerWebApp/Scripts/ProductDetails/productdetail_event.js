@@ -73,7 +73,11 @@
 
         $("#frmProductDetail").validate().cancelSubmit = true;
 
-        $("#frmProductDetail").attr("action", "/cms/product-detail/download-pdf/" + $("#hdnProductDetail_Id").val());
+        //alert ($("#hdnCol1").val());
+
+        $("#frmProductDetail").attr("action", "/cms/product-detail/download-pdf/" + $("#hdnCol1").val());
+
+        //$("#frmProductDetail").attr("action", "/cms/product-detail/download-pdf/" + $("#hdnProductDetail_Id").val());
 
         $("#frmProductDetail").attr("method", "POST");
 

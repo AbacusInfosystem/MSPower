@@ -181,8 +181,8 @@ namespace MSPowerWebApp
 
             routes.MapRoute(
              name: "productdetail-8",
-             url: "cms/product-detail/download-pdf/{product_Details_Id}",
-             defaults: new { controller = "ProductDetails", action = "Download_Product_Details_PDF", product_Details_Id = UrlParameter.Optional }
+             url: "cms/product-detail/download-pdf/{col1}",
+             defaults: new { controller = "ProductDetails", action = "Download_Product_Details_PDF", col1 = UrlParameter.Optional }
          );
 
             #endregion
