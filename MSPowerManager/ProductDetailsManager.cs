@@ -86,5 +86,7 @@ namespace MSPowerManager
         {
             return _pdRepo.Get_Product_Details_By_Col(ref pager, product_category_column_mapping_Id, product_column_ref_Id, col_Filter);
         }
+
+       
     }
 }

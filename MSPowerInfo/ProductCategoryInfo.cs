@@ -32,6 +32,8 @@ namespace MSPowerInfo
 
         public string Product_Category_Description { get; set; }
 
+        public string Application_Include { get; set; }
+
         public List<ProductCategoryColumnMappingInfo> Product_Category_Column_Mappings { get; set; }
 
     }

@@ -41,9 +41,23 @@
             <br><br>
             <div class="products">
                 <form id="frmProduct">
+
+                    <h4>@Model.Product_Category.Product_Category_Description</h4><br>
+                    @*<h3>Applications  Include :</h3>
+                    <ul>
+                        <li> Battery Chargers</li>
+                        <li>Power Supplies</li>
+                        <li> Motor Controls </li>
+                        <li>Transportation</li>
+                        <li>Welding</li>
+                        <li>Induction Heating / Melting</li>
+                        <li>UPS</li>
+                    </ul>*@
+                    <br>
+
                     @foreach (var item in Model.Volts)
                     {
-                         <h4>@Model.Product_Category.Product_Category_Description</h4><br>
+                         
                         <div id="dv_@item.Product_Category_Column_Mapping_Id" class="div-volts">
 
                     @{Html.RenderPartial("_Product_Volts", item);}

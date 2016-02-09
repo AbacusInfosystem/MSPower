@@ -19,6 +19,8 @@ $(function () {
 
     Get_Product_Categories_Images($("#hdfProduct_Category_Id").val());
 
+    
+
 });
 
 function Get_Product_Categories(parent_Category_Id)
@@ -58,3 +60,4 @@ function Get_Product_Categories_Images(parent_Category_Id) {
 
     });
 }
+

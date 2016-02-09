@@ -38,6 +38,11 @@
         
     }
 
+    .li-include {
+        list-style-type: none;
+        padding-left: 12px;
+    }
+
     /*.fa-chevron-right:after {
         content: "\00a0";
     }*/
@@ -60,7 +65,7 @@
 
             @*<input type="hidden" name="Filter.Product_Detail_Id" id="hdnProductDetail_Id" value="@Model.Filter.Product_Detail_Id">
 
-            <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">*@
+                <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">*@
 
             <div class="box-body">
 
@@ -70,10 +75,10 @@
                     {
                         <h2> High Power Thyristors & Diodes</h2>
                     }
-                    
+
                     else
                     {
-                        <h2> @Model.Product_Category.Product_Category</h2>
+                        <h2>@Html.Raw(Model.Product_Category.Product_Category)</h2>
                     }
 
                 </header>
@@ -82,7 +87,7 @@
 
                 @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category_Description))
                 {
-                    
+
                     <p class="text-center">
 
                         Discover our broad range of thyristor and diode devices. PowerBLOCK modules are available for a voltage range from 1600V to 4400V and a current range from 60A up to 1100A. Press pack disc housings include parts for a voltage range from 200 V to 9500 V and a current range from 56 A to 8400 A.
@@ -90,11 +95,10 @@
                     </p>
                 }
                 else
-                
                 {
                     <p class="text-center">
 
-                        @Model.Product_Category.Product_Category_Description
+                        @Html.Raw(Model.Product_Category.Product_Category_Description)
 
                     </p>
                 }
@@ -104,12 +108,25 @@
                 <div id="dvProduct_Listing">
 
                 </div>
-            </div>
+                <br><br>
+                @if (!string.IsNullOrEmpty(Model.Product_Category.Application_Include))
+                {
+                    @*<div class="grid_4">
 
-            <div class="grid_4">
+                        <div class="container" id="dvProduct_Listing_Application_Include">*@
+                            @(Html.Raw(Model.Product_Category.Application_Include))
+                        @*</div>
 
-                <div class="container" id="dvProduct_Listing_Images">
-                   
+                    </div>*@
+
+                }
+
+                <div class="grid_4">
+
+                    <div class="container" id="dvProduct_Listing_Images">
+
+                    </div>
+
                 </div>
 
             </div>
@@ -121,6 +138,8 @@
     </div>
 
 </div>
+
+
 
 <script>
 
