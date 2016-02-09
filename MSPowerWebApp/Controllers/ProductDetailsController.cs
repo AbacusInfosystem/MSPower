@@ -176,7 +176,7 @@ namespace MSPowerWebApp.Controllers
                 {
                     // check for pdf
 
-                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), pdViewModel.Product_Details[i].Product_Detail_Id + ".pdf");
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), pdViewModel.Product_Details[i].Col1 + ".pdf");
 
                     if (CheckPathExists(path))
                     {
@@ -226,7 +226,7 @@ namespace MSPowerWebApp.Controllers
 
                 pdViewModel.Product_Detail = pdMan.Get_Product_Detail_By_Id(pdViewModel.Filter.Product_Detail_Id, pdViewModel.Filter.Product_Column_Ref_Id);
 
-                string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), pdViewModel.Product_Detail.Product_Detail_Id + ".pdf");
+                string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), pdViewModel.Product_Detail.Col1 + ".pdf");
 
                 if (System.IO.File.Exists(path))
                 {
@@ -263,7 +263,7 @@ namespace MSPowerWebApp.Controllers
 
                 pdViewModel.Filter.Product_Detail_Id = pdViewModel.Product_Detail.Product_Detail_Id;
 
-                PdfUpload(pdViewModel.Upload_File, pdViewModel.Product_Detail.Product_Detail_Id.ToString());
+                PdfUpload(pdViewModel.Upload_File, pdViewModel.Product_Detail.Col1.ToString());
 
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("PD001"));
             }
@@ -301,7 +301,7 @@ namespace MSPowerWebApp.Controllers
 
                 //name = pdViewModel.Product_Detail.Product_Detail_Id.ToString() + "_" + pdViewModel.Product_Detail.
 
-                PdfUpload(pdViewModel.Upload_File, pdViewModel.Product_Detail.Product_Detail_Id.ToString());
+                PdfUpload(pdViewModel.Upload_File, pdViewModel.Product_Detail.Col1.ToString());
 
                 pdViewModel.Friendly_Message.Add(MessageStore.Get("PD002"));
             }
@@ -319,7 +319,7 @@ namespace MSPowerWebApp.Controllers
 
         }
 
-        public void PdfUpload(HttpPostedFileBase file, string id)
+        public void PdfUpload(HttpPostedFileBase file, string col1)
         {
             ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
 
@@ -328,7 +328,7 @@ namespace MSPowerWebApp.Controllers
                 {
                     if ((Path.GetExtension(file.FileName) == ".pdf"))
                     {
-                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), id + ".pdf");
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), col1 + ".pdf");
 
                         System.IO.File.Delete(path);
 
@@ -343,20 +343,20 @@ namespace MSPowerWebApp.Controllers
                 }
         }
 
-        public FileResult Download_Product_Details_PDF(int product_Details_Id)
+        public FileResult Download_Product_Details_PDF(string col1)
         {
             string path = "";
 
             try
             {
-                path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), product_Details_Id + ".pdf");
+                path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), col1 + ".pdf");
             }
             catch (Exception ex)
             {
                 Logger.Error("Product Details Controller - Download_Product_Details_PDF" + ex.ToString());
             }
 
-            return File(path, "application/pdf", "Product Details.pdf");
+            return File(path, "application/pdf", col1+".pdf");
         }
 
         public JsonResult Get_Product_Categories_By_Language_Parent(int parent_Product_Category_Id)

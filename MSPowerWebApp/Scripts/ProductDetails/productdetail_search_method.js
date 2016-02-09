@@ -209,6 +209,8 @@ function Bind_Product_Details(data) {
 
             htmlText += "<input type='hidden' class='product-detail-id' value='" + data.Product_Details[i].Product_Detail_Id + "' />";
 
+            htmlText += "<input type='hidden' class='col1' value='" + data.Product_Details[i].Col1 + "' />";
+
             htmlText += "</td>";
 
             if (data.Product_Details_Header.length >= 1) {
@@ -441,8 +443,14 @@ function Bind_Product_Details(data) {
 
                 htmlText += "</td>";
             }
+            else {
 
-            
+                htmlText += "<td>";
+
+                htmlText += "";
+
+                htmlText += "</td>";
+            }
 
             htmlText += "</tr>";
         }
@@ -615,6 +623,7 @@ function Get_Product_Category_By_Parent(parent_Id)
             if(data != null)
             {
                 if (data.length > 0) {
+
                    var html = Callback_Parent_Category(data);
 
                    $("#dvProductCategory").append(html);

@@ -57,7 +57,7 @@
 
                                     <input type="hidden" name="Filter.Product_Category_Column_Mapping_Id" id="hdnProductCategoryColumnMapping_Id" value="@Model.Filter.Product_Category_Column_Mapping_Id">
 
-                                    
+                                    <input type="hidden" name="Filter.Col1" id="hdnCol1" value="@Model.Product_Detail.Col1" />
 
                                     @{
 
@@ -67,7 +67,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_1">@Model.Product_Details_Header[0].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_1">@Html.Raw(Model.Product_Details_Header[0].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_1" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col1" name="Product_Detail.Col1">
                                             </div>
@@ -76,7 +76,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_2">@Model.Product_Details_Header[1].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_2">@Html.Raw(Model.Product_Details_Header[1].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_2" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col2" name="Product_Detail.Col2">
                                             </div>
@@ -85,7 +85,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_3">@Model.Product_Details_Header[2].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_3">@Html.Raw(Model.Product_Details_Header[2].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_3" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col3" name="Product_Detail.Col3">
                                             </div>
@@ -94,7 +94,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_4">@Model.Product_Details_Header[3].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_4">@Html.Raw(Model.Product_Details_Header[3].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_4" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col4" name="Product_Detail.Col4">
                                             </div>
@@ -103,7 +103,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_5">@Model.Product_Details_Header[4].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_5">@Html.Raw(Model.Product_Details_Header[4].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_5" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col5" name="Product_Detail.Col5">
                                             </div>
@@ -112,7 +112,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_6">@Model.Product_Details_Header[5].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_6">@Html.Raw(Model.Product_Details_Header[5].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_6" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col6" name="Product_Detail.Col6">
                                             </div>
@@ -121,7 +121,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_7">@Model.Product_Details_Header[6].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_7">@Html.Raw(Model.Product_Details_Header[6].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_7" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col7" name="Product_Detail.Col7">
                                             </div>
@@ -130,7 +130,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_8">@Model.Product_Details_Header[7].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_8">@Html.Raw(Model.Product_Details_Header[7].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_8" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col8" name="Product_Detail.Col8">
                                             </div>
@@ -139,7 +139,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_9">@Model.Product_Details_Header[8].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_9">@Html.Raw(Model.Product_Details_Header[8].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_9" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col9" name="Product_Detail.Col9">
                                             </div>
@@ -148,7 +148,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_10">@Model.Product_Details_Header[9].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_10">@Html.Raw(Model.Product_Details_Header[9].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_10" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col10" name="Product_Detail.Col10">
                                             </div>
@@ -157,7 +157,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_11">@Model.Product_Details_Header[10].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_11">@Html.Raw(Model.Product_Details_Header[10].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_11" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col11" name="Product_Detail.Col11">
                                             </div>
@@ -166,7 +166,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_12">@Model.Product_Details_Header[11].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_12">@Html.Raw(Model.Product_Details_Header[11].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_12" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col12" name="Product_Detail.Col12">
                                             </div>
@@ -175,7 +175,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_13">@Model.Product_Details_Header[12].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_13">@Html.Raw(Model.Product_Details_Header[12].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_13" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col13" name="Product_Detail.Col13">
                                             </div>
@@ -184,7 +184,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_14">@Model.Product_Details_Header[13].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_14">@Html.Raw(Model.Product_Details_Header[13].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_14" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col14" name="Product_Detail.Col14">
                                             </div>
@@ -193,7 +193,7 @@
                                         {
                                             <div class="form-group">
 
-                                                <label style="color: #333" for="txtProductDetail_15">@Model.Product_Details_Header[14].Product_Column_Name</label>
+                                                <label style="color: #333" for="txtProductDetail_15">@Html.Raw(Model.Product_Details_Header[14].Product_Column_Name)</label>
 
                                                 <input type="text" class="form-control input-sm" id="txtProductDetail_15" placeholder="Enter ProductDetail Column" value="@Model.Product_Detail.Col15" name="Product_Detail.Col15">
                                             </div>

@@ -107,7 +107,6 @@ namespace MSPowerWebApp.Controllers
             }
         }
 
-
         public ActionResult Product(string language, int product_Category_Id)
         {
             ProductDetailViewModel pdViewModel = new ProductDetailViewModel();
@@ -443,6 +442,7 @@ namespace MSPowerWebApp.Controllers
             return View(joViewModel);
 
         }
+
 
         public ActionResult Get_Job_Opening_By_Id(int Job_Opening_Id)
         {
@@ -1122,12 +1122,7 @@ namespace MSPowerWebApp.Controllers
 
             }
 
-
-
             return View("Product", pViewModel);
         }
-
-         
-
     }
 }
