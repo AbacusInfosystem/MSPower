@@ -8,10 +8,10 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr class="danger">
-            <th>
+           
+            <th colspan=16 style="text-align:left;">
                 <input type="button" value="Reset" class="reset-col btn btn-default">
-            </th>
-            <th colspan=13 style="text-align:center;"> @Model.Volts &nbsp; Volts</th></tr>
+                 &nbsp;&nbsp;&nbsp;&nbsp;upto @Model.Volts  &nbsp; Volts</th></tr>
             <tr class="info">
                 @foreach (var itm in Model.Product_Details_Header)
                 {
@@ -79,7 +79,7 @@
                             <select id="drpCol3" name="Col3" multiple class="col-3 filter-col">
                                 @foreach (var it in Model.Product_Details.Select(a => a.Col3).Distinct())
                                 {
-                                    if (Model.Col_Filter.Col3.Contains(it)) 
+                                    if (Model.Col_Filter.Col3.Contains(it))
                                     { 
                                         <option value="@it" selected="selected">@it</option>
                                     }

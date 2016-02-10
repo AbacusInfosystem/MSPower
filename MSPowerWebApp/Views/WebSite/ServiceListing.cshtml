@@ -7,135 +7,160 @@
 @*Application Listing. @Session["Language"].ToString();*@
   
 
-<div class="lang-toggles">
-    <select style="border:0px; outline:0px;" id="drpMainlang">
-        @if (Session["Language"].ToString() == "en")
-        {
-            <option value="en" selected>English</option>
-        }
-        else
-        {
-            <option value="en">English</option>
-        }
+<div class="grid_1">
+    <div class="container">
+        <div class="box_1">
+            <h3></h3>
+        </div>
+        
+        <div class="col-md-6 about_banner col-md-offset-3"><img src="~/ContentOnline/images/page_under_construction.gif" class="img-responsive" alt="" /></div>
+        @*<div class="box_20">
+            <div class="col-sm-12 box_3" style="color:#333;">
+                <p>@Html.Raw(Model.AboutUs.About_Us_Description)</p>
+            </div>
 
-        @if (Session["Language"].ToString() == "ch")
-        {
-            <option value="ch" selected>Chinese</option>
-        }
-        else
-        {
-            <option value="ch">Chinese</option>
-        }
-    </select>
+            <div class="clearfix"> </div>
+        </div>*@
+    </div>
 </div>
 
-<div class="content">
 
-    <div class="container">
 
-        <!---->
 
-        <form id="frmService_Listing">
 
-            <input type="hidden" id="hdfLanguage" value="@Model.ServiceCategory.Language_Id">
-            <div class="grid_4">
-                <div class="container">
 
-                    <h1 class="blog_head">Services</h1>
 
-                    @{
 
-                        int i = 1;
 
-                        foreach (var item in Model.ServiceCategories)
-                        {
 
-                            if (i == 1)
+
+
+
+@*<div class="lang-toggles">
+        <select style="border:0px; outline:0px;" id="drpMainlang">
+            @if (Session["Language"].ToString() == "en")
+            {
+                <option value="en" selected>English</option>
+            }
+            else
+            {
+                <option value="en">English</option>
+            }
+
+            @if (Session["Language"].ToString() == "ch")
+            {
+                <option value="ch" selected>Chinese</option>
+            }
+            else
+            {
+                <option value="ch">Chinese</option>
+            }
+        </select>
+    </div>
+
+    <div class="content">
+
+        <div class="container">
+
+            <!---->
+
+            <form id="frmService_Listing">
+
+                <input type="hidden" id="hdfLanguage" value="@Model.ServiceCategory.Language_Id">
+                <div class="grid_4">
+                    <div class="container">
+
+                        <h1 class="blog_head">Services</h1>
+
+                        @{
+
+                            int i = 1;
+
+                            foreach (var item in Model.ServiceCategories)
                             {
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <h3>@item.Service_Category</h3>
-                                        <p>
-                                            @if(item.Service_Category_Description.Length > 200)
-                                            { 
-                                                @(Html.Raw(item.Service_Category_Description.Substring(0,200) + "..."))
+
+                                if (i == 1)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h3>@item.Service_Category</h3>
+                                            <p>
+                                                @if(item.Service_Category_Description.Length > 200)
+                                                {
+                                                    @(Html.Raw(item.Service_Category_Description.Substring(0,200) + "..."))
+                                                }
+                                                else
+                                                {
+                                                    @(Html.Raw(item.Service_Category_Description))
+                                                }
+
+                                                @if (item.Language_Id == 1)
+                                                {
+                                                    <a href="/en/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="/ch/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
+
+                                                }
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img src="../Content/Images/Service Category/@item.Service_Category_Img" style="width:80%" class="img-responsive" alt="" />
+                                        </div>
+                                    </div>
+
+                                                i = 2;
+                                }
+
+                                else
+                                {
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../Content/Images/Service Category/@item.Service_Category_Img" style="width:80%" class="img-responsive" alt="" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3>@item.Service_Category</h3>
+                                            <p>
+                                              @if (item.Service_Category_Description.Length > 200)
+                                            {
+                                                @(Html.Raw(item.Service_Category_Description.Substring(0, 200) + "..."))
                                             }
                                             else
                                             {
                                                 @(Html.Raw(item.Service_Category_Description))
                                             }
 
-                                            @if (item.Language_Id == 1)
-                                            {
-                                                <a href="/en/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
-                                            }
-                                            else
-                                            {
-                                                <a href="/ch/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
+                                                @if (item.Language_Id == 1)
+                                                {
+                                                   <a href="/en/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="/ch/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
 
-                                            }
-                                        </p>
+                                                }
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <img src="../Content/Images/Service Category/@item.Service_Category_Img" style="width:80%" class="img-responsive" alt="" />
-                                    </div>
-                                </div>
-
-                                            i = 2;
-                            }
-
-                            else
-                            {
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="../Content/Images/Service Category/@item.Service_Category_Img" style="width:80%" class="img-responsive" alt="" />
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h3>@item.Service_Category</h3>
-                                        <p>
-                                          @if (item.Service_Category_Description.Length > 200)
-                                        {
-                                            @(Html.Raw(item.Service_Category_Description.Substring(0, 200) + "..."))
-                                        }
-                                        else
-                                        {
-                                            @(Html.Raw(item.Service_Category_Description))
-                                        }
-
-                                            @if (item.Language_Id == 1)
-                                            {
-                                               <a href="/en/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
-                                            }
-                                            else
-                                            {
-                                                <a href="/ch/service?Service_Category_Id=@item.Service_Category_Id">Click for more...</a>
-
-                                            }
-                                        </p>
-                                    </div>
-                                </div>
-                                            i = 1;
+                                                i = 1;
+                                }
                             }
                         }
-                    }
 
-                    <br>
-                    @*<div class="panel panel-default">
-                        <div class="panel-body">
+                        <br>
 
-                        </div>
-                    </div>*@
+                    </div>
+
+
+
                 </div>
 
-
-
-            </div>
-
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
+*@
 <script>
     $(function () {
 

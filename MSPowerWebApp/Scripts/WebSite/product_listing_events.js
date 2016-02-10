@@ -33,9 +33,13 @@ function Get_Product_Categories(parent_Category_Id)
 
         success:function(data){
         
-            if(data != null)
+            if(data != null && data != "")
             {
                 $("#dvProduct_Listing").append(data);
+            }
+            else
+            {
+                $("#subcategory").hide();
             }
         }
 

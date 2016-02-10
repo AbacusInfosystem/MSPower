@@ -28,14 +28,14 @@
                     <a href="@Url.Action("NewsLetter", "WebSite", new { language = Session["Language"].ToString() })">News Letter</a>
                 </li>*@
             <li id="liJobOpening">
-                <a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })">carriers</a>
+                <a href="@Url.Action("Job_OpeningListing", "WebSite", new { language = Session["Language"].ToString() })">careers</a>
             </li>
 
            
 
-            <li id="liJobApplication">
-                <a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })">Job Application</a>
-            </li>
+            @*<li id="liJobApplication">
+              
+            </li>*@
             
             <li id="liEnquiry">
                 <a href="@Url.Action("Enquiry", "Website", new { language = Session["Language"].ToString() })">Enquiry</a>

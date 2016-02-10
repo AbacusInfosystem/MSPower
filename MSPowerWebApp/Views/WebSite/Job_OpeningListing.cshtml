@@ -31,6 +31,8 @@
     <div class="grid_4">
         <div class="container">
             <h1 class="blog_head">Job Openings</h1>
+
+            <h2 class="text-right"><a href="@Url.Action("Job_Application", "WebSite", new { language = Session["Language"].ToString() })" class="btn btn-danger" >Job Application</a></h2>
             @{
 
             int i = 1;

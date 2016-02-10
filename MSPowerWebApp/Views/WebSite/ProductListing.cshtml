@@ -40,7 +40,7 @@
 
     .li-include {
         list-style-type: none;
-        padding-left: 12px;
+        /*padding-left: 12px;*/
     }
 
     /*.fa-chevron-right:after {
@@ -83,32 +83,38 @@
 
                 </header>
 
-                <br><br>
+                
 
                 @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category_Description))
                 {
 
-                    <p class="text-center">
+                    <p class="text-left">
 
-                        Discover our broad range of thyristor and diode devices. PowerBLOCK modules are available for a voltage range from 1600V to 4400V and a current range from 60A up to 1100A. Press pack disc housings include parts for a voltage range from 200 V to 9500 V and a current range from 56 A to 8400 A.
+                        Discover our broad range of thyristors, diodes, Power Modules and Power Bridge devices. Our broad range of  diodes containing  pellets in voltage range of 200 V to 6000 V. V and a current range of 25A to 7100 A. Thyristors  are available in voltage range of 200 V to 4400 V and a current range of 30A to 5000 A.We offer a wide range of Power Modules in voltage range of 200V to 2200V and a current of 25A up to 710A. Also available wide range of Power Bridges in voltage range of 200V to 2200V and a current of 25A up to 500A
+
 
                     </p>
+                    <br>
+                    <h3 id="subcategory"> High Power Thyristors & Diodes Subcategories</h3>
                 }
                 else
                 {
-                    <p class="text-center">
+                    <p class="text-left">
 
                         @Html.Raw(Model.Product_Category.Product_Category_Description)
 
                     </p>
+                    <br>
+                    <h3 id="subcategory"> @Html.Raw(Model.Product_Category.Product_Category + " Subcategories") </h3>
                 }
 
-                <br><br>
+                <br>
 
                 <div id="dvProduct_Listing">
 
                 </div>
-                <br><br>
+                <br>
+                
                 @if (!string.IsNullOrEmpty(Model.Product_Category.Application_Include))
                 {
                     @*<div class="grid_4">
@@ -121,7 +127,7 @@
 
                 }
 
-                <div class="grid_4">
+                <div class="">
 
                     <div class="container" id="dvProduct_Listing_Images">
 

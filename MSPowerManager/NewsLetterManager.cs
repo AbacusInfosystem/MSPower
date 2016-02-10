@@ -39,5 +39,10 @@ namespace MSPowerManager
             _nlRepo.Update_NewsLetter(newsletter);
         }
 
+        public List<NewsLetterInfo> Get_NewsLetters_Active(ref PaginationInfo pager, int language_Id)
+        {
+           return _nlRepo.Get_NewsLetters_Active(ref pager, language_Id);
+        }
+
     }
 }
