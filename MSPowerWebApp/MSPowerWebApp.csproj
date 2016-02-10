@@ -265,6 +265,7 @@
     <Content Include="ContentOnline\images\more.png" />
     <Content Include="ContentOnline\images\mspower.png" />
     <Content Include="ContentOnline\images\next.png" />
+    <Content Include="ContentOnline\images\page_under_construction.gif" />
     <Content Include="ContentOnline\images\pic1.jpg" />
     <Content Include="ContentOnline\images\pic10.jpg" />
     <Content Include="ContentOnline\images\pic11.jpg" />
@@ -861,6 +862,7 @@
     <Content Include="Content\Images\Product Categories\Phase control thyristor_stud flat base.jpg" />
     <Content Include="Content\Images\Product Categories\Phase controlThyristor  - disc hockey puk.png" />
     <Content Include="Content\Images\Product Categories\power bridges.JPG" />
+    <Content Include="Content\Images\Product Categories\Power stack.JPG" />
     <Content Include="Content\Images\Product Categories\Rectifier diode modules.jpg" />
     <Content Include="Content\Images\Product Categories\Rectifier Diodes_Disc hockey puk.png" />
     <Content Include="Content\Images\Product Categories\Rectifier diodes_Stud flat base.jpg" />

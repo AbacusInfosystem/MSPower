@@ -106,6 +106,8 @@ namespace MSPowerInfo
 
         Get_NewsLetters_Sp,
 
+        Get_NewsLetters_Active_Sp,
+
         Insert_NewsLetter_Sp,
 
         Update_NewsLetter_Sp,

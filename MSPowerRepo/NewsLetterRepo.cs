@@ -54,6 +54,33 @@ namespace MSPowerRepo
             return newsletters;
         }
 
+        public List<NewsLetterInfo> Get_NewsLetters_Active(ref PaginationInfo pager, int language_Id)
+        {
+            List<NewsLetterInfo> newsletters = new List<NewsLetterInfo>();
+
+            SqlDataAccess sqlDataAccess = new SqlDataAccess();
+
+            SqlConnection con = sqlDataAccess.GetConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ToString());
+
+            _con.Open();
+
+            List<SqlParameter> param = new List<SqlParameter>();
+
+            param.Add(new SqlParameter("@Language_Id", language_Id));
+
+            DataTable dt = _sqlDataAccess.ExecuteDataTable(param, StoredProcedures.Get_NewsLetters_Active_Sp.ToString(), CommandType.StoredProcedure, _con);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in Helper.GetRows(dt, ref pager))
+                {
+                    newsletters.Add(Get_NewsLetter_Values(dr));
+                }
+            }
+
+            return newsletters;
+        }
+
         //private List<NewsLetterInfo> Seed_NewsLetter()
         //{
         //    List<NewsLetterInfo> retVal = new List<NewsLetterInfo>();

@@ -28,7 +28,7 @@
 
         @foreach (var item in Model.ContactUss)
         {
-            string link = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBJBrUCFt7OZ0Twm0qu6xXyKccbZZjjcEY&q=" + item.Latitude + "," + item.Longitude + "&zoom=18";
+            string link = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBJBrUCFt7OZ0Twm0qu6xXyKccbZZjjcEY&q=" + item.Latitude + "," + item.Longitude + "&zoom=12";
             <div class="well">
                 <div class="row">
                     <div class="col-md-10">
@@ -38,9 +38,9 @@
                     </div>
                     <div class="col-md-2">
                         <dl>
-                            <dd>@item.ContactUs_Title</dd>
+                            <dd><b>@item.ContactUs_Title</b></dd>
 
-                            <dt>@(Html.Raw(item.ContactUs_Address)) </dt>
+                            <dd>@(Html.Raw(item.ContactUs_Address)) </dd>
 
 
 

@@ -140,7 +140,7 @@ namespace MSPowerWebApp.Controllers
                     
                     foreach (var itm in item.Product_Details)
                     {
-                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Col1 + ".pdf");
 
                         if (System.IO.File.Exists(path))
                         {
@@ -847,9 +847,9 @@ namespace MSPowerWebApp.Controllers
 
                 pager = nlViewModel.Pager;
 
-                pager.PageSize = 1; // as Per requirement display only one record on landing page 
+               // pager.PageSize = 1; // as Per requirement display only one record on landing page 
 
-                nlViewModel.NewsLetters = nlMan.Get_NewsLetters(ref pager, language_Id);
+                nlViewModel.NewsLetters = nlMan.Get_NewsLetters_Active(ref pager, language_Id);
             }
             catch (Exception ex)
             {
@@ -1001,7 +1001,7 @@ namespace MSPowerWebApp.Controllers
 
                 foreach (var itm in pdViewModel.Volt.Product_Details)
                 {
-                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Col1 + ".pdf");
 
                     if (System.IO.File.Exists(path))
                     {
@@ -1063,7 +1063,7 @@ namespace MSPowerWebApp.Controllers
 
                 foreach (var itm in item.Product_Details)
                 {
-                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Col1 + ".pdf");
 
                     if (System.IO.File.Exists(path))
                     {
@@ -1108,7 +1108,7 @@ namespace MSPowerWebApp.Controllers
 
                 foreach (var itm in item.Product_Details)
                 {
-                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+                    string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Col1 + ".pdf");
 
                     if (System.IO.File.Exists(path))
                     {

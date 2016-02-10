@@ -571,13 +571,13 @@ namespace MSPowerRepo
 
         public string Genrate_Html_For_Product_Categories(List<ProductCategoryInfo> product_Categories, int parent_Category_Id, int language_Id)
         {
-            string html = "";
-
-            html += "<div class='row'>";
+            string html = "";            
 
             foreach (var item in product_Categories.Where(a => a.Parent_Category_Id == parent_Category_Id))
             {
-                html += "<div class='col-md-4'>";
+                html += "<div class='row'>";
+
+                html += "<div class='col-md-12'>";
 
                 html += "<ul>";
 
@@ -621,9 +621,9 @@ namespace MSPowerRepo
                 html += "</ul>";
 
                 html += "</div>";
-            }
 
-            html += "</div>";
+                html += "</div>";
+            }
 
             return html;
         }
@@ -782,24 +782,14 @@ namespace MSPowerRepo
             {
                 if (!string.IsNullOrEmpty(item.Product_Category_Image))
                 {
-                    if (i % 3 == 0 || i == 0)
+                    if (i % 2 == 0 || i == 0)
                     {
-                        html += "<div class='about-grids service_box'>";
+                        html += "<div class='about-grids'>";
                     }
 
-                    html += "<div class='col-sm-4 about-grid'>";
+                    html += "<div class='col-sm-1'></div>";
 
-                    html += "<a href='/en/product-listing?product_Category_Id=" + item.Product_Category_Id + "' title='name' rel='" + item.Product_Category + "'>";
-
-                    html += "<div class='view view-first'>";
-
-                    html += "<img src='/Content/Images/Product%20Categories/" + item.Product_Category_Image.Replace(" ", "%20") + "' class='img-responsive' alt='" + item.Product_Category_Image + "' />";
-
-                    html += "</div>";
-
-                    html += "</a>";
-
-                    // html += "<h3><a href='#'>" + item.Product_Category + "</a></h3>";
+                    html += "<div class='col-sm-5 about-grid text-center'>";
 
                     if (language_Id == 1)
                     {
@@ -810,11 +800,27 @@ namespace MSPowerRepo
                         html += "<h3> <a href='/ch/product-listing?product_Category_Id=" + item.Product_Category_Id + "'>" + item.Product_Category + "</h3>";
                     }
 
+                    html += "<a href='/en/product-listing?product_Category_Id=" + item.Product_Category_Id + "' title='name' rel='" + item.Product_Category + "'>";
+
+                    html += "<div class='view view-first'>";
+
+                    html += "<img src='/Content/Images/Product%20Categories/" + item.Product_Category_Image.Replace(" ", "%20") + "' class='img-responsive' alt='" + item.Product_Category_Image + "' style='width:100%'/>";
+
                     html += "</div>";
+
+                    html += "</a>";
+
+                    // html += "<h3><a href='#'>" + item.Product_Category + "</a></h3>";
+
+                    
+
+                    html += "</div>";
+
+                    html += "<div class='col-sm-1'></div>";
 
                     i++;
 
-                    if (i % 3 == 0 )
+                    if (i % 2 == 0 )
                     {
                         html += "<div class='clearfix'> </div>";
 

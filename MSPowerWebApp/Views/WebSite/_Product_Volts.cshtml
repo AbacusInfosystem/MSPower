@@ -8,10 +8,10 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr class="danger">
-            <th>
+           
+            <th colspan=16 style="text-align:left;">
                 <input type="button" value="Reset" class="reset-col btn btn-default">
-            </th>
-            <th colspan=13 style="text-align:center;"> @Model.Volts &nbsp; Volts</th></tr>
+                 &nbsp;&nbsp;&nbsp;&nbsp;upto @Model.Volts  &nbsp; Volts</th></tr>
             <tr class="info">
                 @foreach (var itm in Model.Product_Details_Header)
                 {
@@ -417,7 +417,7 @@
                     if (itm.Is_PDF_Exists == true)
                     {
                         <td>
-                            <a href="#" class="download-pdf" name="@itm.Product_Detail_Id">
+                            <a href="#" class="download-pdf" name="@itm.Col1">
                                 <img style="width: auto; height: 35px; align: center" class="download-pdf" alt="Product Detail" src="/Content/Common Images/pdf.jpg">
                             </a>
                         </td>
