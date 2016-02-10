@@ -140,7 +140,7 @@ namespace MSPowerWebApp.Controllers
                     
                     foreach (var itm in item.Product_Details)
                     {
-                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Product_Detail_Id + ".pdf");
+                        string path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["PdfUploadProductDetailsPath"]).ToString(), itm.Col1 + ".pdf");
 
                         if (System.IO.File.Exists(path))
                         {
@@ -998,8 +998,11 @@ namespace MSPowerWebApp.Controllers
 
             using (StringWriter sw = new StringWriter())
             {
+
                 ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+
                 ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+
                 viewResult.View.Render(viewContext, sw);
 
                 return sw.GetStringBuilder().ToString();
@@ -1046,8 +1049,6 @@ namespace MSPowerWebApp.Controllers
 
             }
 
-            
-
             return View("Product", pViewModel);
         }
 
@@ -1072,6 +1073,7 @@ namespace MSPowerWebApp.Controllers
             pViewModel.Volts.Add(_pMan.Get_Product_Detail_By_Competitor_Name(competitor));
 
             foreach (var item in pViewModel.Volts)
+            
             {
                 item.Product_Details_Header = _pMan.Get_Product_Details_Header(item.Product_Column_Ref_Id);
 

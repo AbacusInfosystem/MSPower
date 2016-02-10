@@ -164,6 +164,7 @@ namespace MSPowerWebApp.Common
         /// <typeparam name="K">Key</typeparam>
         /// <typeparam name="V">Value</typeparam>
         /// <remarks>Object for FixedSizeGenericHashTable of key K and of value V</remarks>
+        /// 
         public class FixedSizeGenericHashTable<K, V>
         {
             private readonly int size;
@@ -242,9 +243,11 @@ namespace MSPowerWebApp.Common
             /// <param name="position">The position.</param>
             /// <returns></returns>
             /// <remarks></remarks>
+            /// 
             protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)
             {
                 LinkedList<KeyValue<K, V>> linkedList = items[position];
+
                 if (linkedList == null)
                 {
                     linkedList = new LinkedList<KeyValue<K, V>>();

@@ -13,11 +13,17 @@ namespace MSPowerWebApp.Common
             if (routeDirection == RouteDirection.IncomingRequest)
             {
                 string language = values["language"].ToString();
+
                 if (language == "en" || language == "ch")
+
                     return true;
+
                 else
+
                     return false;
+
             }
+            
             return false;
         }
     }
