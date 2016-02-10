@@ -98,6 +98,8 @@ namespace MSPowerRepo
 
             retVal.Product_Category_Description = Convert.ToString(dr["Product_Category_Description"]);
 
+            retVal.Application_Include = Convert.ToString(dr["Application_Include"]);
+
             retVal.Product_Category_Image = Convert.ToString(dr["Product_Category_Img"]);
 
             return retVal;
@@ -515,6 +517,8 @@ namespace MSPowerRepo
 
                     retVal.Product_Category_Description = Convert.ToString(dr["Product_Category_Description"]);
 
+                    retVal.Application_Include = Convert.ToString(dr["Application_Include"]);
+
                     retVal.Product_Category_Column_Mappings = Get_Product_Category_Column_By_Category_Id(retVal.Product_Category_Id);
 
                     product_Categories.Add(retVal);
@@ -658,6 +662,7 @@ namespace MSPowerRepo
 
                     product_Category.Product_Category_Description = Convert.ToString(dr["Product_Category_Description"]);
 
+                    product_Category.Application_Include = Convert.ToString(dr["Application_Include"]);
                 }
             }
 
@@ -816,47 +821,47 @@ namespace MSPowerRepo
                         html += "</div>";
                     }
 
-                    foreach (var itm in product_Categories.Where(x => x.Parent_Category_Id == item.Product_Category_Id))
-                    {
-                        if (i % 3 == 0 || i == 0)
-                        {
-                            html += "<div class='about-grids service_box'>";
-                        }
+                    //foreach (var itm in product_Categories.Where(x => x.Parent_Category_Id == item.Product_Category_Id))
+                    //{
+                    //    if (i % 3 == 0 || i == 0)
+                    //    {
+                    //        html += "<div class='about-grids service_box'>";
+                    //    }
 
-                        html += "<div class='col-sm-4 about-grid'>";
+                    //    html += "<div class='col-sm-4 about-grid'>";
 
-                        html += "<a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "' title='name' rel='" + itm.Product_Category + "'>";
+                    //    html += "<a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "' title='name' rel='" + itm.Product_Category + "'>";
 
-                        html += "<div class='view view-first'>";
+                    //    html += "<div class='view view-first'>";
 
-                        html += "<img src='/Content/Images/Product%20Categories/" + itm.Product_Category_Image.Replace(" ", "%20") + "' class='img-responsive' alt='" + itm.Product_Category_Image + "' />";
+                    //    html += "<img src='/Content/Images/Product%20Categories/" + itm.Product_Category_Image.Replace(" ", "%20") + "' class='img-responsive' alt='" + itm.Product_Category_Image + "' />";
 
-                        html += "</div>";
+                    //    html += "</div>";
 
-                        html += "</a>";
+                    //    html += "</a>";
 
-                        // html += "<h3><a href='#'>" + item.Product_Category + "</a></h3>";
+                    //    // html += "<h3><a href='#'>" + item.Product_Category + "</a></h3>";
 
-                        if (language_Id == 1)
-                        {
-                            html += "<h3> <a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'>" + itm.Product_Category + "</h3>";
-                        }
-                        else
-                        {
-                            html += "<h3> <a href='/ch/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'>" + itm.Product_Category + "</h3>";
-                        }
+                    //    if (language_Id == 1)
+                    //    {
+                    //        html += "<h3> <a href='/en/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'>" + itm.Product_Category + "</h3>";
+                    //    }
+                    //    else
+                    //    {
+                    //        html += "<h3> <a href='/ch/product-listing?product_Category_Id=" + itm.Product_Category_Id + "'>" + itm.Product_Category + "</h3>";
+                    //    }
 
-                        html += "</div>";
+                    //    html += "</div>";
 
-                        i++;
+                    //    i++;
 
-                        if (i % 3 == 0)
-                        {
-                            html += "<div class='clearfix'> </div>";
+                    //    if (i % 3 == 0)
+                    //    {
+                    //        html += "<div class='clearfix'> </div>";
 
-                            html += "</div>";
-                        }
-                    }
+                    //        html += "</div>";
+                    //    }
+                    //}
                 }
             }
 
@@ -944,5 +949,7 @@ namespace MSPowerRepo
 
             return productDetails;
         }
+
+       
     }
 }

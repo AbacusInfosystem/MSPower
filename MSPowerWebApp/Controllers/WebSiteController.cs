@@ -324,7 +324,36 @@ namespace MSPowerWebApp.Controllers
 
         public ActionResult ContactUs(string language)
         {
-            return View();
+            ContactUsViewModel cViewModel = new ContactUsViewModel();
+
+            ContactUsManager _cMan = new ContactUsManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
+            int language_Id = 0;
+
+            if (Session["Language"].ToString() == Language.en.ToString())
+            {
+                language_Id = Convert.ToInt32(Language.en);
+            }
+            else
+            {
+                language_Id = Convert.ToInt32(Language.ch);
+            }
+
+            try
+            {
+                cViewModel.ContactUss = _cMan.Get_ContactUss(ref pager,language_Id);
+            }
+            catch(Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Controller - Get_Tests" + ex.ToString());
+            }
+            return View(cViewModel);
         }
 
         [Language]
@@ -818,6 +847,8 @@ namespace MSPowerWebApp.Controllers
 
                 pager = nlViewModel.Pager;
 
+                pager.PageSize = 1; // as Per requirement display only one record on landing page 
+
                 nlViewModel.NewsLetters = nlMan.Get_NewsLetters(ref pager, language_Id);
             }
             catch (Exception ex)
@@ -1095,6 +1126,5 @@ namespace MSPowerWebApp.Controllers
 
             return View("Product", pViewModel);
         }
-
     }
 }

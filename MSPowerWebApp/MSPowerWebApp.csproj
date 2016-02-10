@@ -293,6 +293,11 @@
     <Content Include="ContentOnline\Slider Images\steelindustry1496x581.jpg" />
     <Content Include="ContentOnline\Slider Images\weldingindustry1496x581.jpg" />
     <Content Include="ContentOnline\Slider Images\windindustry.jpg" />
+    <Content Include="ContentOnline\Testing Facilities\DSC_3557.JPG" />
+    <Content Include="ContentOnline\Testing Facilities\DSC_3560.JPG" />
+    <Content Include="ContentOnline\Testing Facilities\DSC_3578.JPG" />
+    <Content Include="ContentOnline\Testing Facilities\DSC_3585.JPG" />
+    <Content Include="ContentOnline\Testing Facilities\DSC_3591.JPG" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap.css" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\AdminLTE\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -862,6 +867,7 @@
     <Content Include="Content\Images\Product Categories\Thyristor modues non isolated base.JPG" />
     <Content Include="Content\Images\Product Categories\thyristor modules for phase control.png" />
     <Content Include="Content\Images\Product Categories\thyristor-diode modules for phase control .png" />
+    <Content Include="Content\Images\Product Categories\welding diode.jpg" />
     <Content Include="Content\Images\Service Category\2.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
