@@ -9,7 +9,7 @@
 <script src="~/Scripts/WebSite/product_listing_events.js"></script>
 
 
-<div class="lang-toggles">
+@*<div class="lang-toggles">
     <select style="border:0px; outline:0px;" id="drpMainlang">
         @if (Session["Language"].ToString() == "en")
         {
@@ -29,7 +29,7 @@
             <option value="ch">Chinese</option>
         }
     </select>
-</div>
+</div>*@
 
 <style>
     .prod-li {
@@ -83,7 +83,7 @@
 
                 </header>
 
-                
+                <br />
 
                 @if (string.IsNullOrEmpty(Model.Product_Category.Product_Category_Description))
                 {
@@ -105,7 +105,16 @@
 
                     </p>
                     <br>
+                    
+                     if (Session["Language"].ToString() == "en")
+                {
+
                     <h3 id="subcategory"> @Html.Raw(Model.Product_Category.Product_Category + " Subcategories") </h3>
+                }  
+                         else
+                         {
+                              <h3 id="subcategory"> @Html.Raw(Model.Product_Category.Product_Category + "  小类") </h3>
+                         }
                 }
 
                 <br>
@@ -113,6 +122,7 @@
                 <div id="dvProduct_Listing">
 
                 </div>
+
                 <br>
                 
                 @if (!string.IsNullOrEmpty(Model.Product_Category.Application_Include))
