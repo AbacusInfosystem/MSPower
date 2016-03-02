@@ -20,6 +20,7 @@ namespace MSPowerWebApp.Controllers
     public class WebSiteController : Controller
     {
         //
+
         // GET: /WebSite/
 
         [Language]
