@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSPowerInfo
 {
+
     public class AttachmentsInfo
     {
         public long Attachment_Id { get; set; }

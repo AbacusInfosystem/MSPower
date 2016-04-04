@@ -11,6 +11,7 @@ namespace MSPowerWebApp.Models
 {
     public class ProductViewModel
     {
+
         public ProductInfo Product { get; set; }
 
         public PaginationInfo Pager { get; set; }
@@ -27,6 +28,7 @@ namespace MSPowerWebApp.Models
 
         public ProductViewModel()
         {
+
             Product = new ProductInfo();
 
             Pager = new PaginationInfo();
@@ -36,6 +38,7 @@ namespace MSPowerWebApp.Models
             Friendly_Message = new List<FriendlyMessageInfo>();
 
             //Product_Categories = new List<LookUpInfo>();
+
         }
     }
 

@@ -23,6 +23,7 @@ namespace MSPowerWebApp.Models
         public Job_Opening_Filter Filter { get; set; }
 
         public Job_OpeningViewModel()
+
         {
             Job_Opening = new Job_OpeningInfo();
 
@@ -31,6 +32,7 @@ namespace MSPowerWebApp.Models
             Job_Openings = new List<Job_OpeningInfo>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
         }
     }
 

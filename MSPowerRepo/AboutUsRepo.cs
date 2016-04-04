@@ -13,6 +13,7 @@ using System.Data;
 
 namespace MSPowerRepo
 {
+
     public class AboutUsRepo
     {
 
@@ -164,7 +165,6 @@ namespace MSPowerRepo
             return param;
         }
 
-
         public AboutUsInfo Get_AboutUs( int language_Id)
         {
             AboutUsInfo aboutus = new AboutUsInfo();
@@ -191,7 +191,6 @@ namespace MSPowerRepo
 
             return aboutus;
         }
-
 
     }
 }

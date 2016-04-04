@@ -13,8 +13,10 @@ using System.Data;
 
 namespace MSPowerRepo
 {
+
     public class ProductRepo
     {
+
         SqlDataAccess _sqlDataAccess = null;
 
         SqlConnection _con = null;
@@ -171,8 +173,6 @@ namespace MSPowerRepo
 
             return param;
         }
-
-      
 
     }
 }

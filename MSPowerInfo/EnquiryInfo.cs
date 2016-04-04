@@ -16,11 +16,9 @@ namespace MSPowerInfo
           
           }
 
-
         public int Enquiry_Id { get; set; }
 
         public int Language_Id { get; set; }
-
 
         [AllowHtml]
 

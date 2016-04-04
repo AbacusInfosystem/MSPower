@@ -11,7 +11,7 @@ namespace MSPowerWebApp.Models
     public class AboutUsViewModel
     {
 
-         public AboutUsInfo AboutUs { get; set; }
+        public AboutUsInfo AboutUs { get; set; }
 
         public PaginationInfo Pager { get; set; }
 

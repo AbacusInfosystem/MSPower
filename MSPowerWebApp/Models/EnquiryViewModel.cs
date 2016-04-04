@@ -33,6 +33,7 @@ namespace MSPowerWebApp.Models
             Enquirys = new List<EnquiryInfo>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
         }
     }
 

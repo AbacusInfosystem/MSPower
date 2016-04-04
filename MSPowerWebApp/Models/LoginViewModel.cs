@@ -20,6 +20,5 @@ namespace MSPowerWebApp.Models
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
         
-
     }
 }

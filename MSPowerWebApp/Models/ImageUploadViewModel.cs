@@ -10,7 +10,6 @@ namespace MSPowerWebApp.Models
     public class ImageUploadViewModel
     {
 
-      
         public ImageUploadViewModel()
         {
             File_Name = new List<string>();

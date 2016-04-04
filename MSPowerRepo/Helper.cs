@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace MSPowerRepo
 {
+
     public static class Helper
     {
+
         public static List<DataRow> GetRows(DataTable dt, ref PaginationInfo pager)
         {
+
             List<DataRow> drList = new List<DataRow>();
 
             if (dt != null && dt.Rows.Count > 0)
@@ -35,6 +38,7 @@ namespace MSPowerRepo
             }
 
             return drList;
+
         }
     }
 }

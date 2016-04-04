@@ -13,7 +13,6 @@ namespace MSPowerInfo
         public ProductDetailHeaderInfo()
         {
 
-
         }
 
         public int Product_Column_Ref_Id { get; set; }

@@ -13,6 +13,7 @@ using System.Data;
 
 namespace MSPowerRepo
 {
+
     public class ServiceCategoryRepo
     {
 

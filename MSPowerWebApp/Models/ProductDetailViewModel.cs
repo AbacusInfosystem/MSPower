@@ -88,5 +88,4 @@ namespace MSPowerWebApp.Models
 
     }
 
-    
 }

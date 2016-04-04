@@ -43,7 +43,6 @@ namespace MSPowerWebApp.Controllers
             return View("Search", eViewModel);
         }
 
-
         // IF USER CLICKS ON SAVE BUTTON, AND IF USER IS CREATING A NEW RECORD, THEN THIS METHOD WOULD GET HIT.
 
         //public ActionResult Insert(EnquiryViewModel eViewModel)

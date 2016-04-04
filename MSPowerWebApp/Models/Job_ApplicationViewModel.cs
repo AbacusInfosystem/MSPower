@@ -13,6 +13,7 @@ namespace MSPowerWebApp.Models
 {
     public class Job_ApplicationViewModel
     {
+
         public Job_ApplicationInfo Job_Application { get; set; }
 
         public PaginationInfo Pager { get; set; }
@@ -37,7 +38,9 @@ namespace MSPowerWebApp.Models
             Job_Applications = new List<Job_ApplicationInfo>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
         }
+
     }
 
     public class Job_Application_Filter

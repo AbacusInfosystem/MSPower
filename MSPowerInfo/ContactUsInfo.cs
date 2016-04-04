@@ -17,9 +17,7 @@ namespace MSPowerInfo
 
         public string ContactUs_Title { get; set; }
 
-
         [AllowHtml]
-
 
         public string ContactUs_Address { get; set; }
 

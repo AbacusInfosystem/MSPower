@@ -12,8 +12,10 @@ using System.Threading.Tasks;
 
 namespace MSPowerRepo
 {
+
     public class AuthenticateRepo
     {
+
         private string _sqlCon = string.Empty;
 
         private SqlDataAccess _sqlDataAccess = null;
@@ -138,5 +140,6 @@ namespace MSPowerRepo
             if (con != null)
                 con.Close();
         }
+
     }
 }

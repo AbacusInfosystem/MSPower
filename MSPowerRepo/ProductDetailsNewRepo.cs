@@ -85,6 +85,7 @@ namespace MSPowerRepo
         }
 
         public ProductCategoryInfo Get_Product_Category_Values(DataRow dr)
+
         {
             ProductCategoryInfo retVal = new ProductCategoryInfo();
 
@@ -103,6 +104,7 @@ namespace MSPowerRepo
             retVal.Product_Category_Image = Convert.ToString(dr["Product_Category_Img"]);
 
             return retVal;
+
         }
 
         public List<ProductCategoryColumnMappingInfo> Get_Product_Volts(int product_category_Id)

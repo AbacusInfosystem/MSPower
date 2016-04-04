@@ -10,6 +10,7 @@ namespace MSPowerWebApp.Models
 {
     public class NewsLetterViewModel
     {
+
         public NewsLetterInfo NewsLetter { get; set; }
 
         public PaginationInfo Pager { get; set; }
@@ -25,6 +26,7 @@ namespace MSPowerWebApp.Models
         public bool Is_PDF_Exists { get; set; }
 
         public NewsLetterViewModel()
+
         {
             NewsLetter = new NewsLetterInfo();
 
@@ -33,6 +35,7 @@ namespace MSPowerWebApp.Models
             NewsLetters = new List<NewsLetterInfo>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
         }
 
     }

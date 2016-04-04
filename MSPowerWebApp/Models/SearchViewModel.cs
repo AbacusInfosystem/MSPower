@@ -16,6 +16,5 @@ namespace MSPowerWebApp.Models
 
         public string Compitetor { get; set; }
 
-
     }
 }

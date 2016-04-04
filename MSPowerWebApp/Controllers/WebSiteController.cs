@@ -444,7 +444,6 @@ namespace MSPowerWebApp.Controllers
 
         }
 
-
         public ActionResult Get_Job_Opening_By_Id(int Job_Opening_Id)
         {
             Job_OpeningViewModel joViewModel = new Job_OpeningViewModel();

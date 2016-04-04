@@ -23,6 +23,7 @@ namespace MSPowerWebApp.Models
 
         public ContactUsViewModel()
         {
+
             ContactUs = new ContactUsInfo();
 
             Pager = new PaginationInfo();
@@ -30,6 +31,7 @@ namespace MSPowerWebApp.Models
             ContactUss = new List<ContactUsInfo>();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
+
         }
     }
 

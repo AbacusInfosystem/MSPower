@@ -13,6 +13,7 @@ using ExceptionManagement.Logger;
 namespace MSPowerWebApp.Controllers
 {
     public class AuthenticateController : Controller
+
     {
         public ActionResult Index(LoginViewModel loginViewModel)
         {
@@ -41,6 +42,7 @@ namespace MSPowerWebApp.Controllers
         }
 
         [HttpPost]
+
         public ActionResult Authenticate(LoginViewModel loginViewModel)
         {
             try
@@ -164,5 +166,6 @@ namespace MSPowerWebApp.Controllers
 
             Response.Redirect("/");
         }
+
     }
 }

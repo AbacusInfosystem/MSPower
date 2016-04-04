@@ -23,8 +23,6 @@ namespace MSPowerWebApp.Controllers
 
         // IF USER CLICKS ON CREATE BUTTON, THEN THIS METHOD WOULD GET HIT.
 
-
-
         public ActionResult Index(EventViewModel eViewModel)
         {
 
@@ -32,7 +30,6 @@ namespace MSPowerWebApp.Controllers
 
             return View(eViewModel);
         }
-
 
         [HttpPost]
 
@@ -78,7 +75,6 @@ namespace MSPowerWebApp.Controllers
             return RedirectToAction("Get_Event_By_Id");
         }
 
-
         public JsonResult GetImages(int event_Id)
         {
             EventViewModel eViewModel = new EventViewModel();
@@ -111,9 +107,6 @@ namespace MSPowerWebApp.Controllers
                 System.IO.File.Delete(path);
             }
         }
-
-
-
 
         // THIS IS THE FIRST ACTION METHOD WHICH GETS HIT WHEN PRODUCT LISTING PAGE IS CALLED.
 

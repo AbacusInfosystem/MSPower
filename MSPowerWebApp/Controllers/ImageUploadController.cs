@@ -56,7 +56,6 @@ namespace MSPowerWebApp.Controllers
             return View("Index",iuViewModel);
         }
 
-
         public JsonResult GetImages()
         {
             ImageUploadViewModel imgViewModel = new ImageUploadViewModel();
